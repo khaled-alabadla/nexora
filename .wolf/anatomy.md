@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:22:12.169Z
-> Files: 76 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:27:49.096Z
+> Files: 83 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -20,7 +20,7 @@
 - `docker-compose.yml` — Docker Compose services (~1012 tok)
 - `GEMINI.md` — OpenWolf (~75 tok)
 - `Makefile` — Nexora — developer command surface. (~1002 tok)
-- `README.md` — Project documentation (~819 tok)
+- `README.md` — Project documentation (~829 tok)
 
 ## .github/workflows/
 
@@ -33,6 +33,7 @@
 - `phpstan.neon` (~92 tok)
 - `phpunit.xml` (~432 tok)
 - `pint.json` (~169 tok)
+- `README.md` — Project documentation (~232 tok)
 
 ## backend/app/Console/Commands/
 
@@ -105,7 +106,13 @@
 
 ## docs/
 
+- `API.md` — Nexora — API Specification (~811 tok)
+- `ARCHITECTURE.md` — Nexora — Architecture (~968 tok)
+- `DATABASE.md` — Nexora — Database Design (~797 tok)
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
+- `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
+- `ROADMAP.md` — Nexora — Development Roadmap (~856 tok)
+- `SECURITY.md` — Nexora — Security Requirements (~983 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~679 tok)
 
 ## docs/adr/

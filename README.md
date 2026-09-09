@@ -18,7 +18,7 @@ operations, and a comprehensive automated test suite.
 | Layer | Technology |
 |---|---|
 | Backend | PHP 8.4, Laravel 12, Laravel Sanctum |
-| Database | MySQL 8.4 |
+| Database | MySQL 8 (`mysql:8.0`, override via `MYSQL_IMAGE`) |
 | Cache / Queue / Rate limiting | Redis 7 |
 | Frontend | React 19, TypeScript, Vite, TailwindCSS, shadcn/ui, TanStack Query, Zustand |
 | Mail (dev) | Mailpit |

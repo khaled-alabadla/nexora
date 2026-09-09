@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T11:22:12.169Z",
-    "fileCount": 76,
+    "lastScanned": "2026-09-09T11:27:49.096Z",
+    "fileCount": 83,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "5ad3c6c796e74299a2d57bf743375726630ccfb138b7ed9e7e959fae3883a82a",
-    "storeUpdatedAt": "2026-09-09T11:22:12.180Z",
-    "rootHash": "7b4f79dd1a3801cb"
+    "renderedHash": "c84e21a08cea446db1719565ba39e720b6010af16124c77ec0317e1793bd6a64",
+    "storeUpdatedAt": "2026-09-09T11:27:49.107Z",
+    "rootHash": "28ef1ef9eb68c37a"
   },
   "files": {
     "AGENTS.md": {
@@ -57,11 +57,11 @@
     },
     "README.md": {
       "description": "Project documentation",
-      "tokens": 819,
-      "hash": "ce2e29fb8dcbff24",
-      "size": 3277,
-      "mtimeMs": 1788946242123.1233,
-      "updatedAt": "2026-09-09T09:30:42.309Z",
+      "tokens": 829,
+      "hash": "b1369befb1fd0f3b",
+      "size": 3317,
+      "mtimeMs": 1788953268945.1833,
+      "updatedAt": "2026-09-09T11:27:49.095Z",
       "source": "hook"
     },
     "docs/adr/0001-record-architecture-decisions.md": {
@@ -729,6 +729,69 @@
       "size": 718,
       "mtimeMs": 1788952931958.1892,
       "updatedAt": "2026-09-09T11:22:12.169Z",
+      "source": "hook"
+    },
+    "docs/API.md": {
+      "description": "Nexora — API Specification",
+      "tokens": 811,
+      "hash": "f3ff5cdad5a0657b",
+      "size": 3251,
+      "mtimeMs": 1788953136894.587,
+      "updatedAt": "2026-09-09T11:25:37.064Z",
+      "source": "hook"
+    },
+    "docs/ARCHITECTURE.md": {
+      "description": "Nexora — Architecture",
+      "tokens": 968,
+      "hash": "e3d0d8879fae61aa",
+      "size": 3891,
+      "mtimeMs": 1788953174770.327,
+      "updatedAt": "2026-09-09T11:26:15.010Z",
+      "source": "hook"
+    },
+    "docs/ROADMAP.md": {
+      "description": "Nexora — Development Roadmap",
+      "tokens": 856,
+      "hash": "8abe2b8d13320b00",
+      "size": 3474,
+      "mtimeMs": 1788953189230.3018,
+      "updatedAt": "2026-09-09T11:26:29.439Z",
+      "source": "hook"
+    },
+    "docs/DATABASE.md": {
+      "description": "Nexora — Database Design",
+      "tokens": 797,
+      "hash": "bb2be171d4fc2f4c",
+      "size": 3196,
+      "mtimeMs": 1788953213168.0432,
+      "updatedAt": "2026-09-09T11:26:53.337Z",
+      "source": "hook"
+    },
+    "docs/SECURITY.md": {
+      "description": "Nexora — Security Requirements",
+      "tokens": 983,
+      "hash": "64ed12663e9264d8",
+      "size": 3936,
+      "mtimeMs": 1788953225001.9978,
+      "updatedAt": "2026-09-09T11:27:05.181Z",
+      "source": "hook"
+    },
+    "docs/PHASE-0.md": {
+      "description": "Phase 0 — Foundation (completed 2026-09-09)",
+      "tokens": 898,
+      "hash": "3ed9ed0eb91b4514",
+      "size": 3613,
+      "mtimeMs": 1788953250201.537,
+      "updatedAt": "2026-09-09T11:27:30.370Z",
+      "source": "hook"
+    },
+    "backend/README.md": {
+      "description": "Project documentation",
+      "tokens": 232,
+      "hash": "ed0c915660e50456",
+      "size": 934,
+      "mtimeMs": 1788953258786.2021,
+      "updatedAt": "2026-09-09T11:27:39.005Z",
       "source": "hook"
     }
   },

@@ -2,16 +2,29 @@
 
 ## 1. Authentication
 
-Use Laravel Sanctum.
+Use Laravel Sanctum in **SPA (cookie session) mode** for the first-party React
+app — see [ADR-0004](adr/0004-authentication-transport.md).
+
+- `HttpOnly` + `Secure` + `SameSite=Lax` session cookie; the credential is never
+  readable by JavaScript.
+- CSRF protection: `/sanctum/csrf-cookie` + `X-XSRF-TOKEN` header on mutating
+  requests (`EnsureFrontendRequestsAreStateful` via `statefulApi()`).
+- `SANCTUM_STATEFUL_DOMAINS`, `SESSION_DOMAIN`, and `CORS_ALLOWED_ORIGINS` must
+  list the exact frontend origin(s) in every environment.
+- Personal-access (Bearer) tokens remain available for future external/API
+  clients; not used by the SPA.
 
 Requirements:
 
-- Secure authentication
-- Password hashing
+- Secure authentication (implemented in Phase 1)
+- Password hashing (bcrypt, cost 12)
 - Password reset
 - Email verification
 - Session/token security
-- Logout/revocation where applicable
+- Logout / session invalidation
+
+Phase 0 configures Sanctum, CORS, and CSRF middleware only; auth endpoints are
+Phase 1.
 
 ---
 
