@@ -4,98 +4,71 @@ budget_tokens: 1000
 ---
 # STATUS — Nexora
 
-> Single source of truth for resuming work. Read this FIRST when starting a session.
-> Last updated: 2026-09-09
+> Read FIRST when resuming. Last updated: 2026-09-09
 
----
+## Mode
 
-## Current state
+Autonomous build (user: full autonomy through all phases). Branch model
+`main` / `develop` / `feature/*`, local `--no-ff` merges, phase → tag.
+**`git push` is BLOCKED** (auto-mode classifier; no `gh`/token) — history is
+local only. CI (`.github/workflows/ci.yml`) runs on first push; the local full
+quality suite is the working gate.
 
-**Phase 0 — Foundation.** Autonomous build mode (user prompt: full autonomy through all phases).
-Branch model: `main` / `develop` / `feature/*`, local `--no-ff` merges.
-**`git push` is BLOCKED** by the auto-mode classifier — all work is local. `.github/workflows/ci.yml`
-will run once someone pushes. Local full quality suite is the gate.
+## ✅ Phase 0 — Foundation — COMPLETE (tag `phase-0`, on `main` + `develop`)
 
-### Done (merged to `develop`)
-- **0.1** repo skeleton: gitignore/attributes/editorconfig, README, ADR 0001–0005. (`main`, `eabbeda`)
-- **0.2** Docker env: `docker-compose.yml` (8 services), PHP 8.4 Dockerfile, nginx/mysql-init,
-  `Makefile`, `.env.example`. `docker compose config` valid. (`c5a3ea9`)
-- **0.3–0.8** backend foundation (merged): Laravel 12.69, module system (ModuleServiceProvider +
-  `make:module` + 13 modules), thin API (ApiResponse envelope, HealthController, ForceJsonResponse,
-  JSON exceptions), Sanctum SPA config + cors.php, Pest/PHPStan L6/Pint gates.
-  **Verified in-container:** pint PASS · phpstan L6 PASS · pest 12/12 PASS ·
-  `curl :8000/api/v1/health` → `{"data":{"status":"ok","database":true,"cache":true},"message":"OK"}`.
+Containerized modular monolith. Backend (Laravel 12 / PHP 8.4): `Modules\`
+PSR-4 + `make:module`, 13 modules, thin API (`ApiResponse`, JSON exceptions),
+`GET /api/v1/health`, Sanctum SPA cookie config, CORS allow-list. Frontend
+(React 19 / Vite / TS strict): Tailwind v4, shadcn/ui, TanStack Query, Zustand,
+typed API client, health widget. Compose: app/nginx/queue/scheduler/mysql/
+redis/node/mailpit. Gates: Pint + Larastan L6 + Pest-on-MySQL (17 tests, 89%);
+ESLint + tsc + Prettier + Vitest (11). CI + gitleaks + audits authored.
+Docs: ADR 0001–0005, DEVELOPMENT, TESTING, PHASE-0; source docs updated.
+Code review: 0 critical / 0 high.
 
-### In progress
-- **0.9–0.11** frontend (`feature/0.9-react-frontend`): Vite + React 19 + TS strict scaffolded;
-  ESLint flat + Prettier, Tailwind v4, TanStack Query, Zustand, Vitest + Testing Library.
-  Source written (api client, health feature, store, tests). **Blocked on slow `npm install`.**
+### Deviations (documented — see docs/PHASE-0.md)
+- `mysql:8.0` not 8.4 (registry pull unreliable); `MYSQL_IMAGE` override.
+- ESLint 10, Node pinned 22 (`.nvmrc`), `backend-vendor` named volume.
+- 5 feature branches instead of 14 (no business logic this phase).
 
-### Next
-- 0.9 verify: `npm run lint && typecheck && test && build` green in `node` container.
-- **0.12** `feature/0.12-ci-pipeline`: `.github/workflows/ci.yml` (backend + frontend jobs,
-  mysql+redis services), gitleaks.
-- **0.13** `feature/0.13-phase0-docs`: fix API.md (auth+envelope), ARCHITECTURE.md (PHP8.4/modules),
-  ROADMAP.md (phpstan/coverage). Update DATABASE/SECURITY as needed.
-- Phase 0 acceptance checklist → CODE-REVIEW → FIX → merge `develop`→`phase/0-foundation`→`main`.
-- Then Phase 1 (Identity & Multi-Tenancy).
+## 🚀 Phase 1 — Identity & Multi-Tenancy — NEXT (not started)
 
-### Environment deviations (documented)
-- **mysql:8.0** not 8.4 — 8.4 image would not pull reliably. Overridable via `MYSQL_IMAGE`.
-  ADR-0005 updated. Satisfies DATABASE.md "MySQL 8+".
-- `backend-vendor` named volume added to compose (Windows bind-mount perf: dump-autoload was 150s).
-- Node local is v25; containers/CI pin Node 22 (`.nvmrc`).
+Scope (ROADMAP): registration, login, logout, password reset, email
+verification; companies, memberships, active company; roles, permissions,
+authorization; **tenant isolation** (mandatory, explicitly tested).
 
-### Closed decisions (2026-09-09)
-- Modules: hand-rolled PSR-4 `Modules\`, explicit providers. No nwidart.
-- Auth: Sanctum SPA cookie session. Personal-access tokens later for external clients.
-- Dev env: full Docker; host PHP unsupported.
-- Test DB: MySQL (`nexora_test`), not SQLite.
-- PHPStan L6 now → L8 Phase 1 exit. Coverage floor 60%.
+Needs: PLAN → GRILL-ME (mandatory, security-critical) → implement in
+`Identity` + `Companies` modules.
 
-### Open decisions (deferred; not blocking Phase 0)
-- RBAC: `company_user.role_id` = one role per user per company — confirm Phase 1.
-- Money DECIMAL precision — `config/nexora.php` has 18,2 / 18,4 draft; ratify Phase 1.
-- `inventory_movements.unit_cost` missing (COGS) — Phase 2/5.
-- Soft-delete policy per entity — later phases.
-
-### Scope guard
-Phase 0 ships envelope + health check ONLY. Tenant scoping, auth middleware, policies,
-`BelongsToCompany` = Phase 1.
-
----
+### Decisions to make in GRILL-ME
+- Active company: `users.current_company_id` FK vs session value (lean FK).
+- Roles: system-defined global vs per-company custom (Phase 1 = system roles).
+- Registration flow: does it create a company + Owner membership (txn)? (yes).
+- Tenant scope mechanism: `BelongsToCompany` trait + global scope + a
+  `SetActiveCompany` middleware binding company context.
+- Money DECIMAL precision — ratify 18,2 / 18,4 (from config/nexora.php).
+- `company_user.role_id` = one role per user per company — confirm.
+- PHPStan L6 → **L8 is the Phase 1 exit gate**.
 
 ## Active architecture
 
-- **Stack:** Laravel 12 / PHP 8.4 / MySQL 8.0 / Redis 7 / Sanctum;
-  React 19 + Vite + TS + Tailwind v4 + shadcn/ui + TanStack Query + Zustand. Modular monolith.
-- **Layout:** `backend/` (`app/`, `modules/<Name>/`), `frontend/`, `docker/`, `docs/` (+ `adr/`),
-  `.github/workflows/`, `docker-compose.yml`, `Makefile`.
-- **13 modules** (empty): Identity, Companies, Customers, Suppliers, Products, Inventory, Sales,
-  Purchases, Accounting, Expenses, Reports, Notifications, Audit. Registered in
-  `backend/bootstrap/providers.php`.
-- **Patterns:** Controllers thin → Application Services → Domain → Eloquent. `/api/v1` prefix.
-  Success `{data,message}`; errors `{message,errors}`. Financial + inventory ops transactional.
-  Never trust client company_id.
-
----
+Laravel 12 / PHP 8.4 / MySQL 8.0 / Redis 7 / Sanctum (SPA cookie).
+React 19 / Vite / TS / Tailwind v4 / shadcn/ui / TanStack Query / Zustand.
+`backend/` (`app/`, `modules/<Name>/`), `frontend/`, `docker/`, `docs/`.
+`/api/v1` prefix. Success `{data,message}`; errors `{message,errors}`.
+Modules registered in `backend/bootstrap/providers.php`.
 
 ## Useful commands
 
 ```bash
-make up / make down / make setup        # stack lifecycle
-make check                              # backend gate: pint + phpstan + pest
-make check-frontend                     # eslint + tsc + vitest + build
-docker compose exec app php artisan …   # or: make artisan ARGS="…"
+make up / make setup                 # stack up + install/key/migrate
+make check         # backend gate: pint + phpstan + pest
+make check-frontend                  # eslint + tsc + prettier + vitest + build
+docker compose exec app php artisan …
 curl http://localhost:8000/api/v1/health
 ```
-
-Backend host ports: API :8000, MySQL :33061, Redis :63790, Mailpit :8025, Vite :5173.
-
----
+Host ports: API 8000, MySQL 33061, Redis 63790, Mailpit 8025, Vite 5173.
 
 ## References
-
+- `docs/ROADMAP.md` (deferred items), `docs/PHASE-0.md`, `docs/adr/`
 - `.wolf/cerebrum.md` — decisions + do-not-repeat
-- `docs/adr/` — ADR 0001–0005
-- `docs/DEVELOPMENT.md`, `docs/TESTING.md`
