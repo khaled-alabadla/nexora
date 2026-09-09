@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T10:49:46.817Z
-> Files: 45 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:08:37.648Z
+> Files: 71 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -13,6 +13,7 @@
 - `.editorconfig` — https://editorconfig.org (~104 tok)
 - `.gitattributes` — Normalize line endings: LF in the repo, regardless of host OS. (~220 tok)
 - `.gitignore` — Git ignore rules (~336 tok)
+- `.nvmrc` (~1 tok)
 - `AGENTS.md` — OpenWolf (~75 tok)
 - `CLAUDE.md` — OpenWolf (~99 tok)
 - `docker-compose.yml` — Docker Compose services (~1012 tok)
@@ -108,3 +109,46 @@
 - `0003-docker-dev-environment.md` — ADR-0003: Full Docker development environment (~416 tok)
 - `0004-authentication-transport.md` — ADR-0004: Authentication transport — Sanctum SPA cookie session (~504 tok)
 - `0005-test-database-mysql.md` — ADR-0005: Run the test suite against MySQL, not SQLite (~586 tok)
+
+## frontend/
+
+- `.gitignore` — Git ignore rules (~77 tok)
+- `.prettierignore` (~16 tok)
+- `.prettierrc.json` (~31 tok)
+- `components.json` (~122 tok)
+- `eslint.config.js` (~370 tok)
+- `index.html` — Nexora (~96 tok)
+- `package.json` — Node.js package manifest (~440 tok)
+- `README.md` — Project documentation (~415 tok)
+- `tsconfig.app.json` (~266 tok)
+- `tsconfig.node.json` (~171 tok)
+- `vite.config.ts` — /*.{ts,tsx}'], (~216 tok)
+
+## frontend/src/
+
+- `App.tsx` — App (~74 tok)
+- `index.css` — Styles: 1 rules (~51 tok)
+- `main.tsx` — queryClient (~174 tok)
+- `vite-env.d.ts` — / <reference types="vite/client" /> (~45 tok)
+
+## frontend/src/features/health/
+
+- `HealthCard.test.tsx` — fetchMock (~402 tok)
+- `HealthCard.tsx` — Indicator (~459 tok)
+- `useHealth.ts` — Exports HealthStatus, useHealth (~104 tok)
+
+## frontend/src/lib/
+
+- `api.test.ts` — API routes: GET, POST (6 endpoints) (~517 tok)
+- `api.ts` — Minimal typed API client for the Nexora backend. (~741 tok)
+- `utils.test.ts` — Declares names (~85 tok)
+- `utils.ts` — Merge conditional class names, de-duplicating Tailwind utilities. (~71 tok)
+
+## frontend/src/store/
+
+- `ui.ts` — Small client-only UI store. Real app/session state lives server-side and is (~154 tok)
+
+## frontend/src/test/
+
+- `setup.ts` (~46 tok)
+- `utils.tsx` — createTestQueryClient (~212 tok)

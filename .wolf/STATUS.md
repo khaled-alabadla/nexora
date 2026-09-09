@@ -5,80 +5,97 @@ budget_tokens: 1000
 # STATUS — Nexora
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
-> Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
 > Last updated: 2026-09-09
 
 ---
 
-## ✅ Done
+## Current state
 
-<!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+**Phase 0 — Foundation.** Autonomous build mode (user prompt: full autonomy through all phases).
+Branch model: `main` / `develop` / `feature/*`, local `--no-ff` merges.
+**`git push` is BLOCKED** by the auto-mode classifier — all work is local. `.github/workflows/ci.yml`
+will run once someone pushes. Local full quality suite is the gate.
 
-- (nothing yet — fill in as work completes)
+### Done (merged to `develop`)
+- **0.1** repo skeleton: gitignore/attributes/editorconfig, README, ADR 0001–0005. (`main`, `eabbeda`)
+- **0.2** Docker env: `docker-compose.yml` (8 services), PHP 8.4 Dockerfile, nginx/mysql-init,
+  `Makefile`, `.env.example`. `docker compose config` valid. (`c5a3ea9`)
+- **0.3–0.8** backend foundation (merged): Laravel 12.69, module system (ModuleServiceProvider +
+  `make:module` + 13 modules), thin API (ApiResponse envelope, HealthController, ForceJsonResponse,
+  JSON exceptions), Sanctum SPA config + cors.php, Pest/PHPStan L6/Pint gates.
+  **Verified in-container:** pint PASS · phpstan L6 PASS · pest 12/12 PASS ·
+  `curl :8000/api/v1/health` → `{"data":{"status":"ok","database":true,"cache":true},"message":"OK"}`.
 
----
+### In progress
+- **0.9–0.11** frontend (`feature/0.9-react-frontend`): Vite + React 19 + TS strict scaffolded;
+  ESLint flat + Prettier, Tailwind v4, TanStack Query, Zustand, Vitest + Testing Library.
+  Source written (api client, health feature, store, tests). **Blocked on slow `npm install`.**
 
-## 🚀 Next phase
+### Next
+- 0.9 verify: `npm run lint && typecheck && test && build` green in `node` container.
+- **0.12** `feature/0.12-ci-pipeline`: `.github/workflows/ci.yml` (backend + frontend jobs,
+  mysql+redis services), gitleaks.
+- **0.13** `feature/0.13-phase0-docs`: fix API.md (auth+envelope), ARCHITECTURE.md (PHP8.4/modules),
+  ROADMAP.md (phpstan/coverage). Update DATABASE/SECURITY as needed.
+- Phase 0 acceptance checklist → CODE-REVIEW → FIX → merge `develop`→`phase/0-foundation`→`main`.
+- Then Phase 1 (Identity & Multi-Tenancy).
 
-**Goal:** Phase 0 — Foundation. Containerized dev env + Laravel 12 backend skeleton (module structure, thin API layer, health endpoint) + React 19 SPA skeleton + full quality gates (Pest on MySQL, PHPStan L6, Pint, Vitest, ESLint) + CI + docs. No business features.
-
-**State:** PLAN + GRILL-ME done. 4 blocking decisions resolved (below). Awaiting user approval of final plan before IMPLEMENT.
-
-### Acceptance criteria
-1. `docker compose up` — all services healthy (app php8.4, nginx, mysql:8.4, redis:7, queue, scheduler, node, mailpit).
-2. `composer check` (pint --test + phpstan L6 + pest) green; Pest runs against MySQL `nexora_test`.
-3. Frontend `npm run lint && typecheck && test && build` green.
-4. `GET /api/v1/health` → `{"data":{"status":"ok","db":true,"redis":true},"message":"OK"}`.
-5. Frontend page renders health status (CORS verified).
-6. CI workflow authored (`.github/workflows/ci.yml`); remote deferred.
-7. `.env` gitignored, `.env.example` complete, no secrets tracked.
-8. README lets a new dev go clone → running.
-9. 13 empty module skeletons load without error.
+### Environment deviations (documented)
+- **mysql:8.0** not 8.4 — 8.4 image would not pull reliably. Overridable via `MYSQL_IMAGE`.
+  ADR-0005 updated. Satisfies DATABASE.md "MySQL 8+".
+- `backend-vendor` named volume added to compose (Windows bind-mount perf: dump-autoload was 150s).
+- Node local is v25; containers/CI pin Node 22 (`.nvmrc`).
 
 ### Closed decisions (2026-09-09)
-- Modules: hand-rolled PSR-4 `Modules\` → `backend/modules/`, explicit providers. No nwidart.
-- Auth: Sanctum SPA cookie session (Phase 1 work); tokens available for later external clients. Update API.md.
-- Dev env: full Docker; host PHP 8.2 unsupported.
-- Test DB: MySQL 8 (`nexora_test`), not SQLite.
-- Git: `git init` now, CI authored, remote deferred. No commits unless asked.
-- PHPStan L6 now → L8 Phase 1 exit. Coverage floor 60% now.
+- Modules: hand-rolled PSR-4 `Modules\`, explicit providers. No nwidart.
+- Auth: Sanctum SPA cookie session. Personal-access tokens later for external clients.
+- Dev env: full Docker; host PHP unsupported.
+- Test DB: MySQL (`nexora_test`), not SQLite.
+- PHPStan L6 now → L8 Phase 1 exit. Coverage floor 60%.
 
-### Open decisions (deferred, not blocking Phase 0)
-- RBAC: `company_user.role_id` implies one role per user per company — confirm in Phase 1.
-- Money DECIMAL precision standard — decide Phase 1.
-- `inventory_movements.unit_cost` missing (COGS) — address Phase 2/5.
+### Open decisions (deferred; not blocking Phase 0)
+- RBAC: `company_user.role_id` = one role per user per company — confirm Phase 1.
+- Money DECIMAL precision — `config/nexora.php` has 18,2 / 18,4 draft; ratify Phase 1.
+- `inventory_movements.unit_cost` missing (COGS) — Phase 2/5.
 - Soft-delete policy per entity — later phases.
 
 ### Scope guard
-Phase 0 ships envelope + health check ONLY. Tenant scoping, auth middleware, policies, `BelongsToCompany` = Phase 1.
+Phase 0 ships envelope + health check ONLY. Tenant scoping, auth middleware, policies,
+`BelongsToCompany` = Phase 1.
 
 ---
 
-## 📁 Active architecture
+## Active architecture
 
-- **Stack:** Laravel 12 / PHP 8.4 / MySQL 8.4 / Redis 7 / Sanctum; React 19 + Vite + TS + Tailwind + shadcn/ui + TanStack Query + Zustand. Modular monolith.
-- **Layout:** `backend/` (app/, modules/), `frontend/`, `docker/`, `docs/` (+ adr/), `.github/workflows/`, `docker-compose.yml`.
-- **Modules (13, empty in P0):** Identity, Companies, Customers, Suppliers, Products, Inventory, Sales, Purchases, Accounting, Expenses, Reports, Notifications, Audit.
-- **Patterns:** Controllers thin → Application Services → Domain → Repositories/Eloquent. `/api/v1` prefix. Response envelope `{data,message}` / `{data,meta}`. Error envelope `{message,errors}`. Financial + inventory ops transactional. Never trust client company_id.
+- **Stack:** Laravel 12 / PHP 8.4 / MySQL 8.0 / Redis 7 / Sanctum;
+  React 19 + Vite + TS + Tailwind v4 + shadcn/ui + TanStack Query + Zustand. Modular monolith.
+- **Layout:** `backend/` (`app/`, `modules/<Name>/`), `frontend/`, `docker/`, `docs/` (+ `adr/`),
+  `.github/workflows/`, `docker-compose.yml`, `Makefile`.
+- **13 modules** (empty): Identity, Companies, Customers, Suppliers, Products, Inventory, Sales,
+  Purchases, Accounting, Expenses, Reports, Notifications, Audit. Registered in
+  `backend/bootstrap/providers.php`.
+- **Patterns:** Controllers thin → Application Services → Domain → Eloquent. `/api/v1` prefix.
+  Success `{data,message}`; errors `{message,errors}`. Financial + inventory ops transactional.
+  Never trust client company_id.
 
 ---
 
-## ⚠️ External blockers (don't block coding)
-
-- _<env vars, secrets, external accounts, manual steps>_
-
----
-
-## 🔧 Useful commands
+## Useful commands
 
 ```bash
-# add the most-used commands here so the next session has them ready
+make up / make down / make setup        # stack lifecycle
+make check                              # backend gate: pint + phpstan + pest
+make check-frontend                     # eslint + tsc + vitest + build
+docker compose exec app php artisan …   # or: make artisan ARGS="…"
+curl http://localhost:8000/api/v1/health
 ```
+
+Backend host ports: API :8000, MySQL :33061, Redis :63790, Mailpit :8025, Vite :5173.
 
 ---
 
-## 📚 References (read IF needed)
+## References
 
-- `.wolf/cerebrum.md` — User Preferences + Do-Not-Repeat + Decision Log
-- `.wolf/anatomy.md` — token-efficient file index
-- `.wolf/buglog.json` — known bugs + fixes
+- `.wolf/cerebrum.md` — decisions + do-not-repeat
+- `docs/adr/` — ADR 0001–0005
+- `docs/DEVELOPMENT.md`, `docs/TESTING.md`
