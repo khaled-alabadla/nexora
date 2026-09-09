@@ -1,5 +1,7 @@
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 
+import { jsonResponse as json } from '@/test/utils'
+
 import { api, ApiError } from './api'
 
 const fetchMock = vi.fn()
@@ -14,16 +16,6 @@ afterEach(() => {
   fetchMock.mockReset()
   document.cookie = 'XSRF-TOKEN=; expires=Thu, 01 Jan 1970 00:00:00 GMT'
 })
-
-function json(body: unknown, ok = true, status = 200): Response {
-  return {
-    ok,
-    status,
-    statusText: ok ? 'OK' : 'Error',
-    headers: new Headers({ 'content-type': 'application/json' }),
-    json: () => Promise.resolve(body),
-  } as Response
-}
 
 it('unwraps the { data } envelope', async () => {
   fetchMock.mockResolvedValue(json({ data: { ok: true }, message: 'OK' }))
@@ -48,7 +40,10 @@ it('sends X-XSRF-TOKEN on mutating requests only', async () => {
 
 it('throws ApiError carrying status and validation errors', async () => {
   fetchMock.mockResolvedValue(
-    json({ message: 'Validation failed', errors: { email: ['required'] } }, false, 422),
+    json(
+      { message: 'Validation failed', errors: { email: ['required'] } },
+      { ok: false, status: 422 },
+    ),
   )
 
   await expect(api.get('/x')).rejects.toMatchObject({

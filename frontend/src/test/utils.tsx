@@ -20,3 +20,14 @@ export function renderWithProviders(ui: ReactElement, options?: Omit<RenderOptio
 
   return { queryClient, ...render(ui, { wrapper: Wrapper, ...options }) }
 }
+
+/** Build a minimal JSON `Response` for stubbing `fetch` in tests. */
+export function jsonResponse(body: unknown, { ok = true, status = 200 } = {}): Response {
+  return {
+    ok,
+    status,
+    statusText: ok ? 'OK' : 'Error',
+    headers: new Headers({ 'content-type': 'application/json' }),
+    json: () => Promise.resolve(body),
+  } as Response
+}
