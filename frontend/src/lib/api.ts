@@ -1,13 +1,16 @@
 /**
  * Minimal typed API client for the Nexora backend.
  *
- * The first-party SPA authenticates with Sanctum cookie sessions (ADR-0004),
- * so every request is sent with credentials. Before the first mutating request
- * the caller must prime the CSRF cookie via `csrf()`.
+ * The first-party SPA authenticates with Sanctum cookie sessions (ADR-0004):
+ *  - every request is sent with credentials;
+ *  - `csrf()` primes the XSRF-TOKEN cookie before the first mutating request;
+ *  - mutating requests echo that cookie back in the `X-XSRF-TOKEN` header.
  */
 
 const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 const API_PREFIX = '/api/v1'
+
+const SAFE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS'])
 
 export class ApiError extends Error {
   readonly status: number
@@ -27,15 +30,28 @@ interface ApiEnvelope<T> {
   meta?: unknown
 }
 
+function readCookie(name: string): string | undefined {
+  const match = new RegExp(`(?:^|; )${name}=([^;]*)`).exec(document.cookie)
+  return match?.[1] ? decodeURIComponent(match[1]) : undefined
+}
+
 async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
+  const method = (init.method ?? 'GET').toUpperCase()
   const headers = new Headers(init.headers)
   headers.set('Accept', 'application/json')
+
   if (init.body != null && !headers.has('Content-Type')) {
     headers.set('Content-Type', 'application/json')
   }
 
+  if (!SAFE_METHODS.has(method)) {
+    const token = readCookie('XSRF-TOKEN')
+    if (token) headers.set('X-XSRF-TOKEN', token)
+  }
+
   const response = await fetch(`${API_BASE}${API_PREFIX}${path}`, {
     ...init,
+    method,
     credentials: 'include',
     headers,
   })
