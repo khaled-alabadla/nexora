@@ -74,3 +74,33 @@ description: chronological action log per session, consolidated weekly
 | 13:47 | Edited backend/app/Http/Responses/ApiResponse.php | added 1 import(s) | ~42 |
 | 13:47 | Edited backend/app/Http/Responses/ApiResponse.php | JsonResponse() → Response() | ~50 |
 | 13:49 | Edited backend/app/Providers/AppServiceProvider.php | modified configureModels() | ~32 |
+| 13:51 | Created frontend/package.json | — | ~438 |
+| 13:51 | Created frontend/package.json | — | ~215 |
+| 13:55 | Created frontend/tsconfig.app.json | — | ~256 |
+| 13:55 | Created frontend/vite.config.ts | — | ~216 |
+| 13:55 | Created frontend/eslint.config.js | — | ~370 |
+| 13:55 | Created frontend/.prettierrc.json | — | ~31 |
+| 13:55 | Created frontend/.prettierignore | — | ~16 |
+| 13:56 | Created frontend/src/index.css | — | ~51 |
+| 13:56 | Created frontend/src/lib/utils.ts | — | ~71 |
+| 13:56 | Created frontend/src/lib/api.ts | — | ~529 |
+| 13:56 | Created frontend/src/features/health/useHealth.ts | — | ~104 |
+| 13:57 | Created frontend/src/features/health/HealthCard.tsx | — | ~459 |
+| 13:57 | Created frontend/src/store/ui.ts | — | ~154 |
+| 13:57 | Created frontend/src/App.tsx | — | ~74 |
+| 13:57 | Created frontend/src/main.tsx | — | ~174 |
+| 13:57 | Created frontend/src/test/setup.ts | — | ~46 |
+| 13:57 | Created frontend/src/test/utils.tsx | — | ~212 |
+| 13:57 | Created frontend/src/features/health/HealthCard.test.tsx | — | ~372 |
+| 13:57 | Created frontend/src/lib/utils.test.ts | — | ~85 |
+| 13:58 | Created frontend/src/vite-env.d.ts | — | ~45 |
+| 13:58 | Edited frontend/index.html | inline fix | ~7 |
+| 13:58 | Edited frontend/tsconfig.node.json | 4→5 lines | ~34 |
+| 13:59 | Edited frontend/.gitignore | 4→8 lines | ~19 |
+| 13:59 | Created .nvmrc | — | ~1 |
+| 13:59 | Created frontend/components.json | — | ~122 |
+| 13:59 | Created frontend/README.md | — | ~443 |
+| 14:02 | Edited frontend/tsconfig.app.json | 5→4 lines | ~35 |
+| 14:02 | Created frontend/package.json | — | ~440 |
+| 14:02 | Created frontend/src/lib/api.ts | — | ~592 |
+| 14:03 | Edited frontend/src/features/health/HealthCard.test.tsx | CSS: timeout | ~71 |

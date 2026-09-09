@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T10:49:46.817Z",
-    "fileCount": 45,
+    "lastScanned": "2026-09-09T11:03:46.675Z",
+    "fileCount": 70,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "814a7d2f8a6a2d0597b2b7fc6ba1bb82301fa771abfc395c8bcec143949d8ec5",
-    "storeUpdatedAt": "2026-09-09T10:49:46.829Z",
-    "rootHash": "ce258f87573ff108"
+    "renderedHash": "e916fdade28e102a9134939507798c278a34ec6f1c5eea9dfc26e33e6b61e053",
+    "storeUpdatedAt": "2026-09-09T11:03:46.685Z",
+    "rootHash": "ed65482bfdc0e1b7"
   },
   "files": {
     "AGENTS.md": {
@@ -413,6 +413,261 @@
       "size": 1159,
       "mtimeMs": 1788950793283.428,
       "updatedAt": "2026-09-09T10:46:33.695Z",
+      "source": "hook"
+    },
+    "frontend/package.json": {
+      "description": "Node.js package manifest",
+      "tokens": 440,
+      "hash": "37a0930bf1710376",
+      "size": 1537,
+      "mtimeMs": 1788951742328.9087,
+      "updatedAt": "2026-09-09T11:02:22.552Z",
+      "source": "hook"
+    },
+    "frontend/tsconfig.app.json": {
+      "description": "",
+      "tokens": 266,
+      "hash": "f2bb9e2382f1a445",
+      "size": 929,
+      "mtimeMs": 1788951721325.0696,
+      "updatedAt": "2026-09-09T11:02:01.663Z",
+      "source": "hook"
+    },
+    "frontend/vite.config.ts": {
+      "description": "/*.{ts,tsx}'],",
+      "tokens": 216,
+      "hash": "5f94a76f6fa723c8",
+      "size": 753,
+      "mtimeMs": 1788951330104.7632,
+      "updatedAt": "2026-09-09T10:55:30.316Z",
+      "source": "hook"
+    },
+    "frontend/eslint.config.js": {
+      "description": "",
+      "tokens": 370,
+      "hash": "33fc8c052e90bccd",
+      "size": 1292,
+      "mtimeMs": 1788951348077.624,
+      "updatedAt": "2026-09-09T10:55:48.391Z",
+      "source": "hook"
+    },
+    "frontend/.prettierrc.json": {
+      "description": "",
+      "tokens": 31,
+      "hash": "71f26e96c879ff57",
+      "size": 107,
+      "mtimeMs": 1788951352345.807,
+      "updatedAt": "2026-09-09T10:55:52.563Z",
+      "source": "hook"
+    },
+    "frontend/.prettierignore": {
+      "description": "",
+      "tokens": 16,
+      "hash": "53b98cd28ff74a1a",
+      "size": 60,
+      "mtimeMs": 1788951358488.6355,
+      "updatedAt": "2026-09-09T10:55:58.715Z",
+      "source": "hook"
+    },
+    "frontend/src/index.css": {
+      "description": "Styles: 1 rules",
+      "tokens": 51,
+      "hash": "f2d89aac53b38759",
+      "size": 178,
+      "mtimeMs": 1788951372180.2866,
+      "updatedAt": "2026-09-09T10:56:12.502Z",
+      "source": "hook"
+    },
+    "frontend/src/lib/utils.ts": {
+      "description": "Merge conditional class names, de-duplicating Tailwind utilities.",
+      "tokens": 71,
+      "hash": "4866f2ab9827d9e0",
+      "size": 247,
+      "mtimeMs": 1788951381695.1355,
+      "updatedAt": "2026-09-09T10:56:21.984Z",
+      "source": "hook"
+    },
+    "frontend/src/lib/api.ts": {
+      "description": "Minimal typed API client for the Nexora backend.",
+      "tokens": 592,
+      "hash": "ea7db56febdfad12",
+      "size": 2069,
+      "mtimeMs": 1788951769134.2576,
+      "updatedAt": "2026-09-09T11:02:49.289Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "ApiError",
+          "kind": "class",
+          "startLine": 12,
+          "endLine": 23,
+          "tokens": 88
+        },
+        {
+          "name": "ApiEnvelope",
+          "kind": "section",
+          "startLine": 24,
+          "endLine": 29,
+          "tokens": 22
+        },
+        {
+          "name": "request",
+          "kind": "fn",
+          "startLine": 30,
+          "endLine": 54,
+          "tokens": 258
+        },
+        {
+          "name": "csrf",
+          "kind": "fn",
+          "startLine": 55,
+          "endLine": 67,
+          "tokens": 116
+        }
+      ]
+    },
+    "frontend/src/features/health/useHealth.ts": {
+      "description": "Exports HealthStatus, useHealth",
+      "tokens": 104,
+      "hash": "2629e61ae36ef905",
+      "size": 362,
+      "mtimeMs": 1788951411532.397,
+      "updatedAt": "2026-09-09T10:56:51.741Z",
+      "source": "hook"
+    },
+    "frontend/src/features/health/HealthCard.tsx": {
+      "description": "Indicator",
+      "tokens": 459,
+      "hash": "befa717a164c8b7e",
+      "size": 1606,
+      "mtimeMs": 1788951421692.2876,
+      "updatedAt": "2026-09-09T10:57:01.893Z",
+      "source": "hook"
+    },
+    "frontend/src/store/ui.ts": {
+      "description": "Small client-only UI store. Real app/session state lives server-side and is",
+      "tokens": 154,
+      "hash": "a7fd8472b717e95d",
+      "size": 541,
+      "mtimeMs": 1788951430605.8313,
+      "updatedAt": "2026-09-09T10:57:10.755Z",
+      "source": "hook"
+    },
+    "frontend/src/App.tsx": {
+      "description": "App",
+      "tokens": 74,
+      "hash": "8848af19be57047c",
+      "size": 257,
+      "mtimeMs": 1788951437222.9668,
+      "updatedAt": "2026-09-09T10:57:17.437Z",
+      "source": "hook"
+    },
+    "frontend/src/main.tsx": {
+      "description": "queryClient",
+      "tokens": 174,
+      "hash": "00588ed7e45d47a8",
+      "size": 607,
+      "mtimeMs": 1788951444044.8362,
+      "updatedAt": "2026-09-09T10:57:24.230Z",
+      "source": "hook"
+    },
+    "frontend/src/test/setup.ts": {
+      "description": "",
+      "tokens": 46,
+      "hash": "81c5f1d7ba79bea9",
+      "size": 161,
+      "mtimeMs": 1788951448530.7756,
+      "updatedAt": "2026-09-09T10:57:28.764Z",
+      "source": "hook"
+    },
+    "frontend/src/test/utils.tsx": {
+      "description": "createTestQueryClient",
+      "tokens": 212,
+      "hash": "77a8c3b16ddeae18",
+      "size": 741,
+      "mtimeMs": 1788951454670.197,
+      "updatedAt": "2026-09-09T10:57:34.836Z",
+      "source": "hook"
+    },
+    "frontend/src/features/health/HealthCard.test.tsx": {
+      "description": "fetchMock",
+      "tokens": 402,
+      "hash": "a93e53d91d8cf1cf",
+      "size": 1404,
+      "mtimeMs": 1788951826510.9524,
+      "updatedAt": "2026-09-09T11:03:46.674Z",
+      "source": "hook"
+    },
+    "frontend/src/lib/utils.test.ts": {
+      "description": "Declares names",
+      "tokens": 85,
+      "hash": "6e2cf45efff1b92e",
+      "size": 296,
+      "mtimeMs": 1788951468993.8062,
+      "updatedAt": "2026-09-09T10:57:49.140Z",
+      "source": "hook"
+    },
+    "frontend/src/vite-env.d.ts": {
+      "description": "/ <reference types=\"vite/client\" />",
+      "tokens": 45,
+      "hash": "75873b2909aa5b58",
+      "size": 156,
+      "mtimeMs": 1788951491134.692,
+      "updatedAt": "2026-09-09T10:58:11.355Z",
+      "source": "hook"
+    },
+    "frontend/index.html": {
+      "description": "Nexora",
+      "tokens": 96,
+      "hash": "db04578dd4d0f494",
+      "size": 358,
+      "mtimeMs": 1788951495638.618,
+      "updatedAt": "2026-09-09T10:58:15.871Z",
+      "source": "hook"
+    },
+    "frontend/tsconfig.node.json": {
+      "description": "",
+      "tokens": 171,
+      "hash": "450e3ee01ff43117",
+      "size": 598,
+      "mtimeMs": 1788951537394.3787,
+      "updatedAt": "2026-09-09T10:58:57.633Z",
+      "source": "hook"
+    },
+    "frontend/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 77,
+      "hash": "f6f20c579ef23a8d",
+      "size": 288,
+      "mtimeMs": 1788951542361.4705,
+      "updatedAt": "2026-09-09T10:59:02.579Z",
+      "source": "hook"
+    },
+    ".nvmrc": {
+      "description": "",
+      "tokens": 1,
+      "hash": "f14b4987904bcb58",
+      "size": 3,
+      "mtimeMs": 1788951550301.7346,
+      "updatedAt": "2026-09-09T10:59:10.551Z",
+      "source": "hook"
+    },
+    "frontend/components.json": {
+      "description": "",
+      "tokens": 122,
+      "hash": "aa1b56411ed0e8fc",
+      "size": 426,
+      "mtimeMs": 1788951554829.255,
+      "updatedAt": "2026-09-09T10:59:15.044Z",
+      "source": "hook"
+    },
+    "frontend/README.md": {
+      "description": "Project documentation",
+      "tokens": 415,
+      "hash": "6f3ed478d5d4154b",
+      "size": 1737,
+      "mtimeMs": 1788951566120.268,
+      "updatedAt": "2026-09-09T10:59:26.280Z",
       "source": "hook"
     }
   },

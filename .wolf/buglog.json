@@ -1,4 +1,37 @@
 {
   "version": 1,
-  "bugs": []
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-09-09T10:58:15.890Z",
+      "error_message": "Wrong reference: frontend should be Nexora",
+      "file": "frontend/index.html",
+      "root_cause": "Used \"frontend\" instead of \"Nexora\"",
+      "fix": "Changed frontend → Nexora",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "html"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-09T10:58:15.890Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-09-09T11:03:46.691Z",
+      "error_message": "Type error",
+      "file": "frontend/src/features/health/HealthCard.test.tsx",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-09T11:03:46.691Z"
+    }
+  ]
 }
