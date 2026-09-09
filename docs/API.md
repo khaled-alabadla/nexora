@@ -2,128 +2,181 @@
 
 ## 1. Base URL
 
+```
 /api/v1
+```
+
+Configured in `backend/bootstrap/app.php` (`apiPrefix`) and mirrored in
+`config('nexora.api_prefix')`.
 
 ---
 
 ## 2. Authentication
 
-Authentication uses Laravel Sanctum.
+The first-party SPA authenticates with **Laravel Sanctum SPA (cookie) sessions**
+— see [ADR-0004](adr/0004-authentication-transport.md).
 
-Authenticated requests require:
+Flow:
 
-Authorization: Bearer <token>
+1. `GET /sanctum/csrf-cookie` once, to set the `XSRF-TOKEN` cookie.
+2. Send every request with credentials (cookies).
+3. Mutating requests echo the cookie in the `X-XSRF-TOKEN` header.
+
+`Authorization: Bearer <token>` is **reserved for future** external / machine
+clients (Sanctum personal-access tokens); it is not used by the SPA.
+
+Session/CSRF configuration lives in `config/sanctum.php`, `config/session.php`,
+and `SANCTUM_STATEFUL_DOMAINS` / `SESSION_DOMAIN` in the environment.
 
 ---
 
-## 3. Response Format
+## 3. Response format
 
-Successful response:
+**Single resource / object**
 
+```json
 {
-    "data": {},
-    "message": "Success"
+  "data": { },
+  "message": "OK"
 }
+```
 
-Collection response:
+**Collection**
 
+```json
 {
-    "data": [],
-    "meta": {
-        "current_page": 1,
-        "last_page": 10,
-        "per_page": 20,
-        "total": 200
-    }
+  "data": [],
+  "message": "OK",
+  "meta": {
+    "current_page": 1,
+    "last_page": 10,
+    "per_page": 20,
+    "total": 200,
+    "from": 1,
+    "to": 20
+  }
 }
+```
+
+Every success response carries `data` and `message`; collections additionally
+carry `meta`. Built by `App\Http\Responses\ApiResponse`.
+
+`204 No Content` responses (e.g. deletes) have an empty body.
 
 ---
 
 ## 4. Errors
 
-Errors should use a consistent structure.
+Consistent structure, always JSON for `/api/*` (enforced by
+`ForceJsonResponse` + the exception handler):
 
-Example:
-
+```json
 {
-    "message": "Validation failed",
-    "errors": {
-        "email": [
-            "The email field is required."
-        ]
-    }
+  "message": "Validation failed",
+  "errors": {
+    "email": ["The email field is required."]
+  }
 }
+```
+
+`errors` is present only for `422` validation failures. Other failures
+(`401`, `403`, `404`, `409`, `429`, `500`) return `{ "message": "..." }`.
 
 ---
 
 ## 5. Pagination
 
-Collection endpoints support:
+```
+GET /api/v1/products?page=1&per_page=20
+```
 
-?page=1
-&per_page=20
+`per_page` is clamped server-side (default 20, max 100 — enforced per endpoint
+from Phase 2).
 
 ---
 
 ## 6. Filtering
 
-Example:
-
+```
 GET /api/v1/products?status=active
+```
 
 ---
 
 ## 7. Searching
 
-Example:
-
+```
 GET /api/v1/products?search=laptop
+```
 
 ---
 
 ## 8. Sorting
 
-Example:
-
+```
 GET /api/v1/products?sort=-created_at
+```
+
+Leading `-` = descending. Allowed sort fields are whitelisted per endpoint.
 
 ---
 
-## 9. Product Endpoints
+## 9. Health
 
+```
+GET /api/v1/health        (unauthenticated)
+```
+
+```json
+{ "data": { "status": "ok", "database": true, "cache": true }, "message": "OK" }
+```
+
+Returns `503` with `status: "degraded"` if a datastore is unreachable.
+
+---
+
+## 10. Product endpoints
+
+> Implemented in Phase 2.
+
+```
 GET    /api/v1/products
 POST   /api/v1/products
 GET    /api/v1/products/{id}
 PUT    /api/v1/products/{id}
 DELETE /api/v1/products/{id}
+```
 
 Authorization is required for every endpoint.
 
 ---
 
-## 10. Security
+## 11. Security
 
-The API must never trust client-provided:
+The API never trusts client-provided:
 
-- company_id
-- user_id
-- created_by
+- `company_id`
+- `user_id`
+- `created_by`
 - invoice totals
 - calculated prices
 - permissions
 
-The backend derives these values from authenticated context
-and business rules.
+The backend derives these from authenticated context and business rules.
 
 ---
 
-## 11. Rate Limiting
+## 12. Rate limiting
 
-Sensitive endpoints must have appropriate rate limits.
+> Applied from Phase 1 (auth) / Phase 8 (hardening).
 
-Examples:
+Sensitive endpoints (login, password reset, token auth, expensive reports) get
+dedicated throttles via `RateLimiter`.
 
-- login
-- password reset
-- API authentication
-- expensive reports
+---
+
+## 13. CORS
+
+`config/cors.php` — credentialed, with an explicit origin allow-list
+(`CORS_ALLOWED_ORIGINS`, default `http://localhost:5173`). Never `*` with
+credentials.

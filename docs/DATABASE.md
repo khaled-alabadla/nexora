@@ -16,6 +16,17 @@ MySQL 8+
 - Enforce important constraints at database level.
 - Tenant-owned data must contain company_id where appropriate.
 
+### Monetary precision (draft — ratify in Phase 1)
+
+Standard column types, mirrored in `backend/config/nexora.php`:
+
+| Use | Type |
+|---|---|
+| Amounts (totals, balances, line amounts) | `DECIMAL(18, 2)` |
+| Unit prices, tax rates, FX rates, quantities needing fractions | `DECIMAL(18, 4)` |
+
+All money math is done with these scales; never with floats.
+
 ---
 
 ## 3. Tenancy
@@ -99,6 +110,8 @@ inventory_movements
 - warehouse_id
 - type
 - quantity
+- unit_cost          — DECIMAL(18,4); cost per unit at the time of the movement.
+                       Required for inventory valuation / COGS. **Added in Phase 2.**
 - reference_type
 - reference_id
 - created_by
@@ -169,8 +182,12 @@ journal_entry_lines
 - id
 - journal_entry_id
 - account_id
-- debit
-- credit
+- debit             — DECIMAL(18,2)
+- credit            — DECIMAL(18,2)
+
+Tenant scoping: a line is reachable only via `journal_entry_id`. Whether to
+denormalise `company_id` onto the line (faster tenant-scoped reporting) or
+always join through `journal_entries` is decided in **Phase 5**.
 
 Invariant:
 

@@ -1,4 +1,85 @@
 {
   "version": 1,
-  "bugs": []
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-09-09T10:58:15.890Z",
+      "error_message": "Wrong reference: frontend should be Nexora",
+      "file": "frontend/index.html",
+      "root_cause": "Used \"frontend\" instead of \"Nexora\"",
+      "fix": "Changed frontend → Nexora",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "html"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-09T10:58:15.890Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-09-09T11:03:46.691Z",
+      "error_message": "Type error",
+      "file": "frontend/src/features/health/HealthCard.test.tsx",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-09T11:03:46.691Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-09-09T11:19:15.659Z",
+      "error_message": "Type error",
+      "file": "frontend/src/test/utils.tsx",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-09T11:19:15.659Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-09-09T11:19:50.403Z",
+      "error_message": "Significant refactor of api.test.ts",
+      "file": "frontend/src/lib/api.test.ts",
+      "root_cause": "9 lines replaced/restructured",
+      "fix": "Rewrote 26→18 lines (9 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-09T11:19:50.403Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-09-09T11:34:09.340Z",
+      "error_message": "Wrong return value",
+      "file": "backend/app/Http/Controllers/HealthController.php",
+      "root_cause": "Was returning: Cache::get('health:ping') === 'pong';",
+      "fix": "Now returns: Cache::get('health:ping') === $token;",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-09T11:34:09.340Z"
+    }
+  ]
 }

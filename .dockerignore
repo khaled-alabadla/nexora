@@ -1,0 +1,19 @@
+# Keep the PHP image build context small and secret-free.
+.git
+.github
+.wolf
+.claude
+.cursor
+.opencode
+.agents
+docs
+frontend
+node_modules
+**/node_modules
+**/vendor
+backend/storage/logs
+backend/storage/framework
+**/.env
+**/.env.*
+!**/.env.example
+*.md

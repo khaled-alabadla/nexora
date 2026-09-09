@@ -2,6 +2,13 @@
 
 - Status: Accepted
 - Date: 2026-09-09
+- Note (2026-09-09): the dev/CI MySQL image is pinned to **`mysql:8.0`** for now.
+  The `mysql:8.4` registry pull was not completing reliably in the build
+  environment. `docs/DATABASE.md` requires "MySQL 8+", which 8.0 satisfies, and
+  every behaviour this ADR depends on (DECIMAL semantics, InnoDB row locking,
+  FK enforcement, strict `sql_mode`, JSON/window functions) is identical in
+  8.0 and 8.4. The image is overridable via `MYSQL_IMAGE` in the root `.env`;
+  bump to `mysql:8.4` once available. Tracked as a Phase 0 follow-up.
 
 ## Context
 
