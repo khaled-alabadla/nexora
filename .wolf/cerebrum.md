@@ -10,7 +10,15 @@ budget_tokens: 2000
 
 ## User Preferences
 
-<!-- How the user likes things done. Code style, tools, patterns, communication. -->
+- Autonomous build mode: proceed phase→phase without asking; commit/merge locally
+  after gates pass. Only stop for missing credentials / unsafe destructive ops /
+  genuinely ambiguous business requirements. Report `Phase X completed…` not
+  `ready for review`.
+- Environment: `git push` is classifier-blocked; no `gh`/token. Work local-only
+  (branches, commits, `--no-ff` merges, phase tags). CI runs on first push.
+- Docker registry pulls are flaky/slow; npm registry ~17s/request. Prefer
+  reusing running containers (`exec`) over `run --rm`; keep heavy trees on named
+  volumes (Windows bind-mount is slow: dump-autoload was 150s on bind mount).
 
 ## Key Learnings
 
