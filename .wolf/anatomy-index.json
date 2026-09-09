@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T09:36:27.580Z",
-    "fileCount": 21,
+    "lastScanned": "2026-09-09T10:47:13.662Z",
+    "fileCount": 45,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "b366222910a4b44d59d1d8e007d5df268053b80928fa83c62001adb7f2e47584",
-    "storeUpdatedAt": "2026-09-09T09:36:27.591Z",
-    "rootHash": "2f08e5efedba8885"
+    "renderedHash": "35ce78057b318e68a63a4384f5d57412696b075f8b8beb1283d85fe46924b16d",
+    "storeUpdatedAt": "2026-09-09T10:47:13.675Z",
+    "rootHash": "cdd0b5a5c946ffa1"
   },
   "files": {
     "AGENTS.md": {
@@ -102,11 +102,11 @@
     },
     "docs/adr/0005-test-database-mysql.md": {
       "description": "ADR-0005: Run the test suite against MySQL, not SQLite",
-      "tokens": 451,
-      "hash": "8b98b92393558b6f",
-      "size": 1810,
-      "mtimeMs": 1788946313411.8647,
-      "updatedAt": "2026-09-09T09:31:53.572Z",
+      "tokens": 586,
+      "hash": "fddbd7fc9294d9e5",
+      "size": 2347,
+      "mtimeMs": 1788949270317.333,
+      "updatedAt": "2026-09-09T10:21:10.605Z",
       "source": "hook"
     },
     ".gitattributes": {
@@ -174,11 +174,11 @@
     },
     "docker-compose.yml": {
       "description": "Docker Compose services",
-      "tokens": 890,
-      "hash": "9e7654aa3cec6f44",
-      "size": 3115,
-      "mtimeMs": 1788946552008.678,
-      "updatedAt": "2026-09-09T09:35:52.221Z",
+      "tokens": 1012,
+      "hash": "1ede97a2a14df334",
+      "size": 3541,
+      "mtimeMs": 1788949842291.7195,
+      "updatedAt": "2026-09-09T10:30:42.579Z",
       "source": "hook"
     },
     ".dockerignore": {
@@ -197,6 +197,222 @@
       "size": 3763,
       "mtimeMs": 1788946587421.2627,
       "updatedAt": "2026-09-09T09:36:27.580Z",
+      "source": "hook"
+    },
+    "backend/composer.json": {
+      "description": "PHP package manifest",
+      "tokens": 782,
+      "hash": "071298bf621fbabe",
+      "size": 2739,
+      "mtimeMs": 1788947785812.952,
+      "updatedAt": "2026-09-09T09:56:26.012Z",
+      "source": "hook"
+    },
+    "backend/app/Support/Modules/ModuleServiceProvider.php": {
+      "description": "Base provider for every business module (see ADR-0002).",
+      "tokens": 494,
+      "hash": "f11a159bd0951270",
+      "size": 1853,
+      "mtimeMs": 1788947819816.5273,
+      "updatedAt": "2026-09-09T09:57:00.347Z",
+      "source": "hook"
+    },
+    "backend/config/nexora.php": {
+      "description": "",
+      "tokens": 274,
+      "hash": "2774f29566783eea",
+      "size": 1029,
+      "mtimeMs": 1788948176236.7122,
+      "updatedAt": "2026-09-09T10:02:56.426Z",
+      "source": "hook"
+    },
+    "backend/app/Http/Responses/ApiResponse.php": {
+      "description": "Builds the API's canonical success envelope (see docs/API.md):",
+      "tokens": 396,
+      "hash": "5e24885518db2b9e",
+      "size": 1484,
+      "mtimeMs": 1788950833313.825,
+      "updatedAt": "2026-09-09T10:47:13.661Z",
+      "source": "hook"
+    },
+    "backend/app/Http/Middleware/ForceJsonResponse.php": {
+      "description": "Guarantees API clients are treated as JSON consumers even when they omit the",
+      "tokens": 153,
+      "hash": "6c1e6e71a17e975f",
+      "size": 573,
+      "mtimeMs": 1788947888370.338,
+      "updatedAt": "2026-09-09T09:58:08.597Z",
+      "source": "hook"
+    },
+    "backend/app/Http/Controllers/HealthController.php": {
+      "description": "Liveness / readiness probe.",
+      "tokens": 356,
+      "hash": "6d6850eeede4fd9a",
+      "size": 1335,
+      "mtimeMs": 1788950662993.2449,
+      "updatedAt": "2026-09-09T10:44:24.216Z",
+      "source": "hook"
+    },
+    "backend/routes/api.php": {
+      "description": "",
+      "tokens": 152,
+      "hash": "7b69a1433fa4b5a9",
+      "size": 567,
+      "mtimeMs": 1788947901989.0806,
+      "updatedAt": "2026-09-09T09:58:22.229Z",
+      "source": "hook"
+    },
+    "backend/bootstrap/app.php": {
+      "description": "",
+      "tokens": 317,
+      "hash": "bac2fb2ba38f46b6",
+      "size": 1188,
+      "mtimeMs": 1788948169392.795,
+      "updatedAt": "2026-09-09T10:02:49.595Z",
+      "source": "hook"
+    },
+    "backend/app/Providers/AppServiceProvider.php": {
+      "description": "Fail loudly in non-production on lazy loading, bad mass-assignment, and",
+      "tokens": 426,
+      "hash": "9cf724d8941ffff1",
+      "size": 1596,
+      "mtimeMs": 1788947922882.8691,
+      "updatedAt": "2026-09-09T09:58:43.126Z",
+      "source": "hook"
+    },
+    "backend/app/Console/Commands/MakeModuleCommand.php": {
+      "description": "Scaffolds a business module (see ADR-0002) and registers its service",
+      "tokens": 1226,
+      "hash": "73e34874eb91f869",
+      "size": 4594,
+      "mtimeMs": 1788950393303.4841,
+      "updatedAt": "2026-09-09T10:39:53.748Z",
+      "source": "hook"
+    },
+    "backend/phpunit.xml": {
+      "description": "",
+      "tokens": 432,
+      "hash": "ede61d7480de9630",
+      "size": 1619,
+      "mtimeMs": 1788947961933.1577,
+      "updatedAt": "2026-09-09T09:59:22.175Z",
+      "source": "hook"
+    },
+    "backend/pint.json": {
+      "description": "",
+      "tokens": 169,
+      "hash": "c30c4015d9688621",
+      "size": 589,
+      "mtimeMs": 1788947981474.4185,
+      "updatedAt": "2026-09-09T09:59:41.660Z",
+      "source": "hook"
+    },
+    "backend/phpstan.neon": {
+      "description": "",
+      "tokens": 92,
+      "hash": "8e04bf5a079b48e4",
+      "size": 345,
+      "mtimeMs": 1788947992133.4067,
+      "updatedAt": "2026-09-09T09:59:52.356Z",
+      "source": "hook"
+    },
+    "backend/config/cors.php": {
+      "description": "",
+      "tokens": 223,
+      "hash": "bdf7cae94fe29210",
+      "size": 836,
+      "mtimeMs": 1788947998260.4465,
+      "updatedAt": "2026-09-09T09:59:58.480Z",
+      "source": "hook"
+    },
+    "backend/routes/web.php": {
+      "description": "",
+      "tokens": 168,
+      "hash": "44085fea5a03e8ed",
+      "size": 627,
+      "mtimeMs": 1788948011415.1333,
+      "updatedAt": "2026-09-09T10:00:11.603Z",
+      "source": "hook"
+    },
+    "backend/tests/Pest.php": {
+      "description": "Declares apiUrl",
+      "tokens": 336,
+      "hash": "d96fe9c16242a116",
+      "size": 1257,
+      "mtimeMs": 1788948225810.6465,
+      "updatedAt": "2026-09-09T10:03:46.010Z",
+      "source": "hook"
+    },
+    "backend/tests/Feature/HealthEndpointTest.php": {
+      "description": "Declares Pest",
+      "tokens": 197,
+      "hash": "a794eb70880390eb",
+      "size": 737,
+      "mtimeMs": 1788948242087.1816,
+      "updatedAt": "2026-09-09T10:04:02.262Z",
+      "source": "hook"
+    },
+    "backend/tests/TestCase.php": {
+      "description": "Declares TestCase",
+      "tokens": 45,
+      "hash": "1cdd2af8e86d6edb",
+      "size": 168,
+      "mtimeMs": 1788948264591.9175,
+      "updatedAt": "2026-09-09T10:04:24.822Z",
+      "source": "hook"
+    },
+    "docs/TESTING.md": {
+      "description": "Nexora — Testing Strategy",
+      "tokens": 679,
+      "hash": "dca9d1b184634a8b",
+      "size": 2741,
+      "mtimeMs": 1788948314863.21,
+      "updatedAt": "2026-09-09T10:05:15.098Z",
+      "source": "hook"
+    },
+    "docs/DEVELOPMENT.md": {
+      "description": "Nexora — Development Guide",
+      "tokens": 963,
+      "hash": "8458efc47c9f31ad",
+      "size": 3996,
+      "mtimeMs": 1788949190703.3535,
+      "updatedAt": "2026-09-09T10:19:50.973Z",
+      "source": "hook"
+    },
+    "backend/bootstrap/providers.php": {
+      "description": "",
+      "tokens": 269,
+      "hash": "cddeb1168f7461cf",
+      "size": 1006,
+      "mtimeMs": 1788949987759.0166,
+      "updatedAt": "2026-09-09T10:33:08.080Z",
+      "source": "hook"
+    },
+    "backend/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 84,
+      "hash": "dff03ef642dc2f4f",
+      "size": 312,
+      "mtimeMs": 1788950012999.4148,
+      "updatedAt": "2026-09-09T10:33:33.442Z",
+      "source": "hook"
+    },
+    "backend/tests/Feature/ModuleSystemTest.php": {
+      "description": "Declares EXPECTED_MODULES",
+      "tokens": 575,
+      "hash": "48450c2946e4e3c1",
+      "size": 2156,
+      "mtimeMs": 1788950785447.3352,
+      "updatedAt": "2026-09-09T10:46:25.614Z",
+      "source": "hook"
+    },
+    "backend/tests/Unit/ApiResponseTest.php": {
+      "description": "",
+      "tokens": 310,
+      "hash": "875c5e4159aca97c",
+      "size": 1159,
+      "mtimeMs": 1788950793283.428,
+      "updatedAt": "2026-09-09T10:46:33.695Z",
       "source": "hook"
     }
   },

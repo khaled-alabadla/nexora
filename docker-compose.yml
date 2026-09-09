@@ -17,6 +17,9 @@ x-php-common: &php-common
     XDEBUG_MODE: ${XDEBUG_MODE:-off}
   volumes:
     - ./backend:/var/www/html
+    # Keep the heavy, host-irrelevant trees on fast named volumes rather than
+    # the (slow, on Windows/macOS) bind mount.
+    - backend-vendor:/var/www/html/vendor
   networks:
     - nexora
 
@@ -62,7 +65,10 @@ services:
         condition: service_healthy
 
   mysql:
-    image: mysql:8.4
+    # 8.0 by default (see ADR-0005). Set MYSQL_IMAGE=mysql:8.4 once the 8.4
+    # image is available in your environment; behaviour Nexora relies on
+    # (DECIMAL, InnoDB row locking, FK enforcement, sql_mode) is identical.
+    image: ${MYSQL_IMAGE:-mysql:8.0}
     environment:
       MYSQL_DATABASE: ${DB_DATABASE:-nexora}
       MYSQL_USER: ${DB_USERNAME:-nexora}
@@ -127,6 +133,7 @@ volumes:
   mysql-data:
   redis-data:
   frontend-node-modules:
+  backend-vendor:
 
 networks:
   nexora:
