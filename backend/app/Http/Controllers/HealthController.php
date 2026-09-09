@@ -8,6 +8,7 @@ use App\Http\Responses\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Throwable;
 
 /**
@@ -26,10 +27,14 @@ final class HealthController extends Controller
             return true;
         });
 
+        // A round-trip write+read is deliberate: it exercises the cache write
+        // path (not just connectivity). The 5s TTL key is negligible load even
+        // under frequent load-balancer probes.
         $cache = $this->probe(function (): bool {
-            Cache::put('health:ping', 'pong', 5);
+            $token = (string) Str::uuid();
+            Cache::put('health:ping', $token, 5);
 
-            return Cache::get('health:ping') === 'pong';
+            return Cache::get('health:ping') === $token;
         });
 
         $healthy = $database && $cache;
