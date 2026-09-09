@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T11:27:49.096Z",
+    "lastScanned": "2026-09-09T11:34:33.918Z",
     "fileCount": 83,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "c84e21a08cea446db1719565ba39e720b6010af16124c77ec0317e1793bd6a64",
-    "storeUpdatedAt": "2026-09-09T11:27:49.107Z",
-    "rootHash": "28ef1ef9eb68c37a"
+    "renderedHash": "f819ddb2a46b2a0114f0637a972de5f04dbb1a63b03c7d3f6b458563b4d1e34e",
+    "storeUpdatedAt": "2026-09-09T11:34:33.933Z",
+    "rootHash": "3bd3d6791059c924"
   },
   "files": {
     "AGENTS.md": {
@@ -246,11 +246,11 @@
     },
     "backend/app/Http/Controllers/HealthController.php": {
       "description": "Liveness / readiness probe.",
-      "tokens": 356,
-      "hash": "6d6850eeede4fd9a",
-      "size": 1335,
-      "mtimeMs": 1788950662993.2449,
-      "updatedAt": "2026-09-09T10:44:24.216Z",
+      "tokens": 431,
+      "hash": "8e3e194e28ae65b2",
+      "size": 1613,
+      "mtimeMs": 1788953655833.3582,
+      "updatedAt": "2026-09-09T11:34:16.021Z",
       "source": "hook"
     },
     "backend/routes/api.php": {
@@ -688,11 +688,11 @@
     },
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
-      "tokens": 1040,
-      "hash": "9fd682ef2c683899",
-      "size": 3637,
-      "mtimeMs": 1788952275411.3518,
-      "updatedAt": "2026-09-09T11:11:15.857Z",
+      "tokens": 1060,
+      "hash": "216b89f2339781e9",
+      "size": 3709,
+      "mtimeMs": 1788953673656.4653,
+      "updatedAt": "2026-09-09T11:34:33.916Z",
       "source": "hook"
     },
     ".gitleaks.toml": {

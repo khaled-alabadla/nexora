@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:27:49.096Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:34:33.918Z
 > Files: 83 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
@@ -24,7 +24,7 @@
 
 ## .github/workflows/
 
-- `ci.yml` — CI: CI (~1040 tok)
+- `ci.yml` — CI: CI (~1060 tok)
 
 ## backend/
 
@@ -41,7 +41,7 @@
 
 ## backend/app/Http/Controllers/
 
-- `HealthController.php` — Liveness / readiness probe. (~356 tok)
+- `HealthController.php` — Liveness / readiness probe. (~431 tok)
 
 ## backend/app/Http/Middleware/
 
