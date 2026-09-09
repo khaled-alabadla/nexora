@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T11:08:37.648Z",
-    "fileCount": 71,
+    "lastScanned": "2026-09-09T11:22:12.169Z",
+    "fileCount": 76,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "675514f2059b72ec69b781008e1e0dfa66bf9fb666b3f9fe109e273383941238",
-    "storeUpdatedAt": "2026-09-09T11:08:37.672Z",
-    "rootHash": "aed58ca8dc2d1f86"
+    "renderedHash": "5ad3c6c796e74299a2d57bf743375726630ccfb138b7ed9e7e959fae3883a82a",
+    "storeUpdatedAt": "2026-09-09T11:22:12.180Z",
+    "rootHash": "7b4f79dd1a3801cb"
   },
   "files": {
     "AGENTS.md": {
@@ -435,11 +435,11 @@
     },
     "frontend/vite.config.ts": {
       "description": "/*.{ts,tsx}'],",
-      "tokens": 216,
-      "hash": "5f94a76f6fa723c8",
-      "size": 753,
-      "mtimeMs": 1788951330104.7632,
-      "updatedAt": "2026-09-09T10:55:30.316Z",
+      "tokens": 249,
+      "hash": "3373ae7b62ab18c0",
+      "size": 870,
+      "mtimeMs": 1788952634985.9558,
+      "updatedAt": "2026-09-09T11:17:15.139Z",
       "source": "hook"
     },
     "frontend/eslint.config.js": {
@@ -552,12 +552,12 @@
       "source": "hook"
     },
     "frontend/src/store/ui.ts": {
-      "description": "Small client-only UI store. Real app/session state lives server-side and is",
-      "tokens": 154,
-      "hash": "a7fd8472b717e95d",
-      "size": 541,
-      "mtimeMs": 1788951430605.8313,
-      "updatedAt": "2026-09-09T10:57:10.755Z",
+      "description": "Guarded storage: `localStorage` can be unavailable (private mode, disabled",
+      "tokens": 353,
+      "hash": "699e8158104b3173",
+      "size": 1235,
+      "mtimeMs": 1788952872277.515,
+      "updatedAt": "2026-09-09T11:21:12.429Z",
       "source": "hook"
     },
     "frontend/src/App.tsx": {
@@ -588,21 +588,21 @@
       "source": "hook"
     },
     "frontend/src/test/utils.tsx": {
-      "description": "createTestQueryClient",
-      "tokens": 212,
-      "hash": "77a8c3b16ddeae18",
-      "size": 741,
-      "mtimeMs": 1788951454670.197,
-      "updatedAt": "2026-09-09T10:57:34.836Z",
+      "description": "Build a minimal JSON `Response` for stubbing `fetch` in tests.",
+      "tokens": 313,
+      "hash": "637bae00fd0bd8a4",
+      "size": 1093,
+      "mtimeMs": 1788952755445.322,
+      "updatedAt": "2026-09-09T11:19:15.641Z",
       "source": "hook"
     },
     "frontend/src/features/health/HealthCard.test.tsx": {
       "description": "fetchMock",
-      "tokens": 402,
-      "hash": "a93e53d91d8cf1cf",
-      "size": 1404,
-      "mtimeMs": 1788951826510.9524,
-      "updatedAt": "2026-09-09T11:03:46.674Z",
+      "tokens": 345,
+      "hash": "4f87d95755aa81f3",
+      "size": 1205,
+      "mtimeMs": 1788952781754.1848,
+      "updatedAt": "2026-09-09T11:19:41.905Z",
       "source": "hook"
     },
     "frontend/src/lib/utils.test.ts": {
@@ -679,21 +679,57 @@
     },
     "frontend/src/lib/api.test.ts": {
       "description": "API routes: GET, POST (6 endpoints)",
-      "tokens": 517,
-      "hash": "fbb11cfd04416ad1",
-      "size": 1808,
-      "mtimeMs": 1788952078398.4194,
-      "updatedAt": "2026-09-09T11:07:58.575Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "json",
-          "kind": "fn",
-          "startLine": 18,
-          "endLine": 61,
-          "tokens": 410
-        }
-      ]
+      "tokens": 463,
+      "hash": "0acb379e391b1c09",
+      "size": 1619,
+      "mtimeMs": 1788952800696.9988,
+      "updatedAt": "2026-09-09T11:20:00.896Z",
+      "source": "hook"
+    },
+    ".github/workflows/ci.yml": {
+      "description": "CI: CI",
+      "tokens": 1040,
+      "hash": "9fd682ef2c683899",
+      "size": 3637,
+      "mtimeMs": 1788952275411.3518,
+      "updatedAt": "2026-09-09T11:11:15.857Z",
+      "source": "hook"
+    },
+    ".gitleaks.toml": {
+      "description": "Extends the default gitleaks rule set.",
+      "tokens": 74,
+      "hash": "c7552f76e143bec3",
+      "size": 275,
+      "mtimeMs": 1788952289015.7292,
+      "updatedAt": "2026-09-09T11:11:29.169Z",
+      "source": "hook"
+    },
+    "backend/tests/Feature/MakeModuleCommandTest.php": {
+      "description": "Declares SCRATCH_MODULE",
+      "tokens": 655,
+      "hash": "8c2d8136cda33bef",
+      "size": 2456,
+      "mtimeMs": 1788952475763.4705,
+      "updatedAt": "2026-09-09T11:14:35.972Z",
+      "source": "hook"
+    },
+    "frontend/src/App.test.tsx": {
+      "description": "fetchMock",
+      "tokens": 175,
+      "hash": "f12b8523a8d70f7c",
+      "size": 610,
+      "mtimeMs": 1788952767681.3225,
+      "updatedAt": "2026-09-09T11:19:27.915Z",
+      "source": "hook"
+    },
+    "frontend/src/store/ui.test.ts": {
+      "description": "Declares raw",
+      "tokens": 206,
+      "hash": "e4b0a2d73c0ea862",
+      "size": 718,
+      "mtimeMs": 1788952931958.1892,
+      "updatedAt": "2026-09-09T11:22:12.169Z",
+      "source": "hook"
     }
   },
   "preamble": [

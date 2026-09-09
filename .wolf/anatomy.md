@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:08:37.648Z
-> Files: 71 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:22:12.169Z
+> Files: 76 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -13,6 +13,7 @@
 - `.editorconfig` — https://editorconfig.org (~104 tok)
 - `.gitattributes` — Normalize line endings: LF in the repo, regardless of host OS. (~220 tok)
 - `.gitignore` — Git ignore rules (~336 tok)
+- `.gitleaks.toml` — Extends the default gitleaks rule set. (~74 tok)
 - `.nvmrc` (~1 tok)
 - `AGENTS.md` — OpenWolf (~75 tok)
 - `CLAUDE.md` — OpenWolf (~99 tok)
@@ -20,6 +21,10 @@
 - `GEMINI.md` — OpenWolf (~75 tok)
 - `Makefile` — Nexora — developer command surface. (~1002 tok)
 - `README.md` — Project documentation (~819 tok)
+
+## .github/workflows/
+
+- `ci.yml` — CI: CI (~1040 tok)
 
 ## backend/
 
@@ -76,6 +81,7 @@
 ## backend/tests/Feature/
 
 - `HealthEndpointTest.php` — Declares Pest (~197 tok)
+- `MakeModuleCommandTest.php` — Declares SCRATCH_MODULE (~655 tok)
 - `ModuleSystemTest.php` — Declares EXPECTED_MODULES (~575 tok)
 
 ## backend/tests/Unit/
@@ -122,10 +128,11 @@
 - `README.md` — Project documentation (~415 tok)
 - `tsconfig.app.json` (~266 tok)
 - `tsconfig.node.json` (~171 tok)
-- `vite.config.ts` — /*.{ts,tsx}'], (~216 tok)
+- `vite.config.ts` — /*.{ts,tsx}'], (~249 tok)
 
 ## frontend/src/
 
+- `App.test.tsx` — fetchMock (~175 tok)
 - `App.tsx` — App (~74 tok)
 - `index.css` — Styles: 1 rules (~51 tok)
 - `main.tsx` — queryClient (~174 tok)
@@ -133,22 +140,23 @@
 
 ## frontend/src/features/health/
 
-- `HealthCard.test.tsx` — fetchMock (~402 tok)
+- `HealthCard.test.tsx` — fetchMock (~345 tok)
 - `HealthCard.tsx` — Indicator (~459 tok)
 - `useHealth.ts` — Exports HealthStatus, useHealth (~104 tok)
 
 ## frontend/src/lib/
 
-- `api.test.ts` — API routes: GET, POST (6 endpoints) (~517 tok)
+- `api.test.ts` — API routes: GET, POST (6 endpoints) (~463 tok)
 - `api.ts` — Minimal typed API client for the Nexora backend. (~741 tok)
 - `utils.test.ts` — Declares names (~85 tok)
 - `utils.ts` — Merge conditional class names, de-duplicating Tailwind utilities. (~71 tok)
 
 ## frontend/src/store/
 
-- `ui.ts` — Small client-only UI store. Real app/session state lives server-side and is (~154 tok)
+- `ui.test.ts` — Declares raw (~206 tok)
+- `ui.ts` — Guarded storage: `localStorage` can be unavailable (private mode, disabled (~353 tok)
 
 ## frontend/src/test/
 
 - `setup.ts` (~46 tok)
-- `utils.tsx` — createTestQueryClient (~212 tok)
+- `utils.tsx` — Build a minimal JSON `Response` for stubbing `fetch` in tests. (~313 tok)
