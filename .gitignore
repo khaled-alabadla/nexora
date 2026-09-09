@@ -1,0 +1,56 @@
+# ─── Environment / secrets ───────────────────────────────
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+auth.json
+
+# ─── Backend (Laravel / PHP) ─────────────────────────────
+/backend/vendor/
+/backend/node_modules/
+/backend/public/build/
+/backend/public/hot
+/backend/storage/*.key
+/backend/storage/app/*
+!/backend/storage/app/.gitignore
+!/backend/storage/app/public/.gitignore
+/backend/storage/framework/cache/data/*
+/backend/storage/framework/sessions/*
+/backend/storage/framework/testing/*
+/backend/storage/framework/views/*
+/backend/storage/logs/*
+/backend/storage/pail
+/backend/bootstrap/cache/*.php
+/backend/.phpunit.result.cache
+/backend/.phpunit.cache
+/backend/.phpstan.cache
+/backend/.pint.cache
+/backend/Homestead.json
+/backend/Homestead.yaml
+
+# ─── Frontend (Node / Vite) ──────────────────────────────
+/frontend/node_modules/
+/frontend/dist/
+/frontend/dist-ssr/
+/frontend/coverage/
+/frontend/.vite/
+/frontend/*.local
+
+# ─── Docker ──────────────────────────────────────────────
+/docker/data/
+
+# ─── Tooling / OS / IDE ──────────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+/.idea/
+/.vscode/*
+!/.vscode/extensions.json
+!/.vscode/settings.shared.json
+*.swp
+*~
+
+# ─── OpenWolf (runtime state kept local) ─────────────────
+.wolf/*.lock

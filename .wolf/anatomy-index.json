@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "meta": {
+    "lastScanned": "2026-09-09T09:32:18.578Z",
+    "fileCount": 12,
+    "hits": 0,
+    "misses": 0,
+    "renderedHash": "a301a7ad82d198a7419dad1832fe53d115882f52c03ca041ef431345c610f2c8",
+    "storeUpdatedAt": "2026-09-09T09:32:18.592Z",
+    "rootHash": "e062c056906d5578"
+  },
+  "files": {
+    "AGENTS.md": {
+      "description": "OpenWolf",
+      "tokens": 75,
+      "hash": "e401f79554a8d796",
+      "size": 297,
+      "mtimeMs": 1788944210950.9414,
+      "updatedAt": "2026-09-09T08:56:50.978Z",
+      "source": "scan"
+    },
+    "CLAUDE.md": {
+      "description": "OpenWolf",
+      "tokens": 99,
+      "hash": "074d6b42b583729a",
+      "size": 395,
+      "mtimeMs": 1788944210801.8586,
+      "updatedAt": "2026-09-09T08:56:50.978Z",
+      "source": "scan"
+    },
+    "GEMINI.md": {
+      "description": "OpenWolf",
+      "tokens": 75,
+      "hash": "e401f79554a8d796",
+      "size": 297,
+      "mtimeMs": 1788944210951.4475,
+      "updatedAt": "2026-09-09T08:56:50.978Z",
+      "source": "scan"
+    },
+    ".gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 336,
+      "hash": "82309e5e6c1e0053",
+      "size": 1669,
+      "mtimeMs": 1788945969643.0405,
+      "updatedAt": "2026-09-09T09:26:09.798Z",
+      "source": "hook"
+    },
+    ".editorconfig": {
+      "description": "https://editorconfig.org",
+      "tokens": 104,
+      "hash": "bb04e041d1cf1c4b",
+      "size": 389,
+      "mtimeMs": 1788945973897.5515,
+      "updatedAt": "2026-09-09T09:26:14.055Z",
+      "source": "hook"
+    },
+    "README.md": {
+      "description": "Project documentation",
+      "tokens": 819,
+      "hash": "ce2e29fb8dcbff24",
+      "size": 3277,
+      "mtimeMs": 1788946242123.1233,
+      "updatedAt": "2026-09-09T09:30:42.309Z",
+      "source": "hook"
+    },
+    "docs/adr/0001-record-architecture-decisions.md": {
+      "description": "ADR-0001: Record architecture decisions",
+      "tokens": 255,
+      "hash": "04c272531c726b80",
+      "size": 1022,
+      "mtimeMs": 1788946257722.2732,
+      "updatedAt": "2026-09-09T09:30:57.887Z",
+      "source": "hook"
+    },
+    "docs/adr/0002-modular-monolith-layout.md": {
+      "description": "ADR-0002: Modular monolith layout with hand-rolled PSR-4 modules",
+      "tokens": 628,
+      "hash": "6a1e7af1e1ad1221",
+      "size": 2626,
+      "mtimeMs": 1788946273914.4934,
+      "updatedAt": "2026-09-09T09:31:14.077Z",
+      "source": "hook"
+    },
+    "docs/adr/0003-docker-dev-environment.md": {
+      "description": "ADR-0003: Full Docker development environment",
+      "tokens": 416,
+      "hash": "46162895fff04474",
+      "size": 1665,
+      "mtimeMs": 1788946286526.1199,
+      "updatedAt": "2026-09-09T09:31:26.686Z",
+      "source": "hook"
+    },
+    "docs/adr/0004-authentication-transport.md": {
+      "description": "ADR-0004: Authentication transport — Sanctum SPA cookie session",
+      "tokens": 504,
+      "hash": "61d0fb8365a96ed4",
+      "size": 2023,
+      "mtimeMs": 1788946299898.9373,
+      "updatedAt": "2026-09-09T09:31:40.059Z",
+      "source": "hook"
+    },
+    "docs/adr/0005-test-database-mysql.md": {
+      "description": "ADR-0005: Run the test suite against MySQL, not SQLite",
+      "tokens": 451,
+      "hash": "8b98b92393558b6f",
+      "size": 1810,
+      "mtimeMs": 1788946313411.8647,
+      "updatedAt": "2026-09-09T09:31:53.572Z",
+      "source": "hook"
+    },
+    ".gitattributes": {
+      "description": "Normalize line endings: LF in the repo, regardless of host OS.",
+      "tokens": 220,
+      "hash": "9a46d19e62435522",
+      "size": 825,
+      "mtimeMs": 1788946338379.2039,
+      "updatedAt": "2026-09-09T09:32:18.577Z",
+      "source": "hook"
+    }
+  },
+  "preamble": [
+    "> Project structure index. Auto-maintained by OpenWolf hooks and daemon.",
+    "> Run `openwolf scan` to generate, or wait for the first Claude Code session.",
+    "> Status: Pending initial scan"
+  ]
+}
