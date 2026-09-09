@@ -10,6 +10,9 @@ description: chronological action log per session, consolidated weekly
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+| 12:40 | Phase 0 PLAN + GRILL-ME; 4 decisions resolved (modules PSR-4, Sanctum SPA cookie, full Docker, MySQL test DB) | .wolf/cerebrum.md, .wolf/STATUS.md | approved by user | 8k |
+| 13:10 | Task 0.1 repo skeleton: gitignore/attributes/editorconfig, README, ADR 0001-0005; git init, initial commit on main, develop branched | 15 files | committed eabbeda | 6k |
+| 13:30 | Task 0.2 Docker env: compose (8 svc), PHP 8.4 Dockerfile, nginx/mysql-init, Makefile, .env.example, .dockerignore | docker/**, docker-compose.yml, Makefile | compose config valid; image build running | 5k |
 | 12:26 | Created .gitignore | — | ~336 |
 | 12:26 | Created .editorconfig | — | ~104 |
 | 12:30 | Created README.md | — | ~873 |
@@ -19,3 +22,55 @@ description: chronological action log per session, consolidated weekly
 | 12:31 | Created docs/adr/0004-authentication-transport.md | — | ~538 |
 | 12:31 | Created docs/adr/0005-test-database-mysql.md | — | ~482 |
 | 12:32 | Created .gitattributes | — | ~220 |
+| 12:34 | Created docker/php/Dockerfile | — | ~512 |
+| 12:34 | Created docker/php/php.ini | — | ~117 |
+| 12:34 | Created docker/php/xdebug.ini | — | ~78 |
+| 12:34 | Created docker/php/entrypoint.sh | — | ~168 |
+| 12:35 | Created docker/nginx/default.conf | — | ~276 |
+| 12:35 | Created docker/mysql/init/01-create-test-database.sql | — | ~116 |
+| 12:35 | Created docker-compose.yml | — | ~890 |
+| 12:35 | Created .dockerignore | — | ~67 |
+| 12:36 | Created .dockerignore | — | ~67 |
+| 12:36 | Created Makefile | — | ~1002 |
+| 12:56 | Created backend/composer.json | — | ~782 |
+| 12:57 | Created backend/app/Support/Modules/ModuleServiceProvider.php | — | ~494 |
+| 12:57 | Created backend/config/nexora.php | — | ~264 |
+| 12:58 | Created backend/app/Http/Responses/ApiResponse.php | — | ~743 |
+| 12:58 | Created backend/app/Http/Middleware/ForceJsonResponse.php | — | ~153 |
+| 12:58 | Created backend/app/Http/Controllers/HealthController.php | — | ~345 |
+| 12:58 | Created backend/routes/api.php | — | ~152 |
+| 12:58 | Created backend/bootstrap/app.php | — | ~326 |
+| 12:58 | Created backend/app/Providers/AppServiceProvider.php | — | ~426 |
+| 12:59 | Created backend/app/Console/Commands/MakeModuleCommand.php | — | ~1255 |
+| 12:59 | Created backend/phpunit.xml | — | ~432 |
+| 12:59 | Created backend/pint.json | — | ~169 |
+| 12:59 | Created backend/phpstan.neon | — | ~140 |
+| 12:59 | Created backend/phpstan.neon | — | ~92 |
+| 12:59 | Created backend/config/cors.php | — | ~223 |
+| 13:00 | Created backend/routes/web.php | — | ~168 |
+| 13:02 | Edited backend/bootstrap/app.php | env() → config() | ~66 |
+| 13:02 | Edited backend/bootstrap/app.php | 3→3 lines | ~16 |
+| 13:02 | Edited backend/config/nexora.php | 6→7 lines | ~70 |
+| 13:03 | Created backend/tests/Pest.php | — | ~336 |
+| 13:04 | Created backend/tests/Feature/HealthEndpointTest.php | — | ~197 |
+| 13:04 | Created backend/tests/TestCase.php | — | ~45 |
+| 13:05 | Created docs/TESTING.md | — | ~724 |
+| 13:19 | Created docs/DEVELOPMENT.md | — | ~1028 |
+| 13:20 | Edited docker-compose.yml | 3→6 lines | ~82 |
+| 13:21 | Edited docs/adr/0005-test-database-mysql.md | modified Note() | ~154 |
+| 13:25 | Edited backend/app/Console/Commands/MakeModuleCommand.php | 7→7 lines | ~49 |
+| 13:26 | Edited backend/app/Console/Commands/MakeModuleCommand.php | 4→4 lines | ~87 |
+| 13:26 | Edited backend/app/Console/Commands/MakeModuleCommand.php | removed 16 lines | ~1 |
+| 13:30 | Edited docker-compose.yml | 9→12 lines | ~102 |
+| 13:30 | Edited docker-compose.yml | 4→5 lines | ~23 |
+| 13:33 | Created backend/bootstrap/providers.php | — | ~269 |
+| 13:33 | Edited backend/.gitignore | 2→4 lines | ~15 |
+| 13:39 | Edited backend/app/Console/Commands/MakeModuleCommand.php | modified stubRoutes() | ~231 |
+| 13:43 | Created backend/app/Http/Responses/ApiResponse.php | — | ~390 |
+| 13:44 | Edited backend/app/Http/Controllers/HealthController.php | 6→5 lines | ~42 |
+| 13:44 | Edited backend/app/Http/Controllers/HealthController.php | modified probe() | ~35 |
+| 13:46 | Created backend/tests/Feature/ModuleSystemTest.php | — | ~575 |
+| 13:46 | Created backend/tests/Unit/ApiResponseTest.php | — | ~310 |
+| 13:47 | Edited backend/app/Http/Responses/ApiResponse.php | added 1 import(s) | ~42 |
+| 13:47 | Edited backend/app/Http/Responses/ApiResponse.php | JsonResponse() → Response() | ~50 |
+| 13:49 | Edited backend/app/Providers/AppServiceProvider.php | modified configureModels() | ~32 |

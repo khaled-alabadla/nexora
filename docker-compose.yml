@@ -1,0 +1,140 @@
+name: nexora
+
+# ---------------------------------------------------------------------------
+# Shared build definition for the PHP image (app / queue / scheduler).
+# ---------------------------------------------------------------------------
+x-php-build: &php-build
+  context: .
+  dockerfile: docker/php/Dockerfile
+  args:
+    UID: ${UID:-1000}
+    GID: ${GID:-1000}
+
+x-php-common: &php-common
+  build: *php-build
+  image: nexora/app:local
+  environment:
+    XDEBUG_MODE: ${XDEBUG_MODE:-off}
+  volumes:
+    - ./backend:/var/www/html
+    # Keep the heavy, host-irrelevant trees on fast named volumes rather than
+    # the (slow, on Windows/macOS) bind mount.
+    - backend-vendor:/var/www/html/vendor
+  networks:
+    - nexora
+
+services:
+  app:
+    <<: *php-common
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "${APP_FORWARD_PORT:-8000}:80"
+    volumes:
+      - ./backend:/var/www/html:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      - nexora
+
+  queue:
+    <<: *php-common
+    command: php artisan queue:work --sleep=1 --tries=3 --max-time=3600 --max-jobs=1000
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  scheduler:
+    <<: *php-common
+    command: php artisan schedule:work
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  mysql:
+    # 8.0 by default (see ADR-0005). Set MYSQL_IMAGE=mysql:8.4 once the 8.4
+    # image is available in your environment; behaviour Nexora relies on
+    # (DECIMAL, InnoDB row locking, FK enforcement, sql_mode) is identical.
+    image: ${MYSQL_IMAGE:-mysql:8.0}
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-nexora}
+      MYSQL_USER: ${DB_USERNAME:-nexora}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+    ports:
+      - "${DB_FORWARD_PORT:-33061}:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$$MYSQL_ROOT_PASSWORD --silent || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+    networks:
+      - nexora
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "${REDIS_FORWARD_PORT:-63790}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks:
+      - nexora
+
+  node:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "${VITE_FORWARD_PORT:-5173}:5173"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./frontend:/app
+      - frontend-node-modules:/app/node_modules
+    networks:
+      - nexora
+
+  mailpit:
+    image: axllent/mailpit:v1.20
+    ports:
+      - "${MAILPIT_UI_PORT:-8025}:8025"
+      - "${MAILPIT_SMTP_PORT:-1025}:1025"
+    environment:
+      MP_MAX_MESSAGES: 500
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - nexora
+
+volumes:
+  mysql-data:
+  redis-data:
+  frontend-node-modules:
+  backend-vendor:
+
+networks:
+  nexora:
+    driver: bridge
