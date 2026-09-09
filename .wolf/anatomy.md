@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T09:32:18.578Z
-> Files: 12 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T09:36:27.580Z
+> Files: 21 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -9,13 +9,31 @@
 
 ## ./
 
+- `.dockerignore` — Keep the PHP image build context small and secret-free. (~67 tok)
 - `.editorconfig` — https://editorconfig.org (~104 tok)
 - `.gitattributes` — Normalize line endings: LF in the repo, regardless of host OS. (~220 tok)
 - `.gitignore` — Git ignore rules (~336 tok)
 - `AGENTS.md` — OpenWolf (~75 tok)
 - `CLAUDE.md` — OpenWolf (~99 tok)
+- `docker-compose.yml` — Docker Compose services (~890 tok)
 - `GEMINI.md` — OpenWolf (~75 tok)
+- `Makefile` — Nexora — developer command surface. (~1002 tok)
 - `README.md` — Project documentation (~819 tok)
+
+## docker/mysql/init/
+
+- `01-create-test-database.sql` — Runs once on first MySQL container start (empty data dir). (~116 tok)
+
+## docker/nginx/
+
+- `default.conf` (~276 tok)
+
+## docker/php/
+
+- `Dockerfile` — Docker container definition (~512 tok)
+- `entrypoint.sh` (~168 tok)
+- `php.ini` (~117 tok)
+- `xdebug.ini` (~78 tok)
 
 ## docs/adr/
 

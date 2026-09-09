@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T09:32:18.578Z",
-    "fileCount": 12,
+    "lastScanned": "2026-09-09T09:36:27.580Z",
+    "fileCount": 21,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "a301a7ad82d198a7419dad1832fe53d115882f52c03ca041ef431345c610f2c8",
-    "storeUpdatedAt": "2026-09-09T09:32:18.592Z",
-    "rootHash": "e062c056906d5578"
+    "renderedHash": "b366222910a4b44d59d1d8e007d5df268053b80928fa83c62001adb7f2e47584",
+    "storeUpdatedAt": "2026-09-09T09:36:27.591Z",
+    "rootHash": "2f08e5efedba8885"
   },
   "files": {
     "AGENTS.md": {
@@ -116,6 +116,87 @@
       "size": 825,
       "mtimeMs": 1788946338379.2039,
       "updatedAt": "2026-09-09T09:32:18.577Z",
+      "source": "hook"
+    },
+    "docker/php/Dockerfile": {
+      "description": "Docker container definition",
+      "tokens": 512,
+      "hash": "3d02db3853e8913f",
+      "size": 1922,
+      "mtimeMs": 1788946483498.6367,
+      "updatedAt": "2026-09-09T09:34:43.697Z",
+      "source": "hook"
+    },
+    "docker/php/php.ini": {
+      "description": "",
+      "tokens": 117,
+      "hash": "d49f29743896327e",
+      "size": 439,
+      "mtimeMs": 1788946488381.077,
+      "updatedAt": "2026-09-09T09:34:48.570Z",
+      "source": "hook"
+    },
+    "docker/php/xdebug.ini": {
+      "description": "",
+      "tokens": 78,
+      "hash": "4f39c7614f9eb13d",
+      "size": 291,
+      "mtimeMs": 1788946492570.8542,
+      "updatedAt": "2026-09-09T09:34:52.739Z",
+      "source": "hook"
+    },
+    "docker/php/entrypoint.sh": {
+      "description": "",
+      "tokens": 168,
+      "hash": "5190dfa713bda2b2",
+      "size": 630,
+      "mtimeMs": 1788946498275.768,
+      "updatedAt": "2026-09-09T09:34:58.443Z",
+      "source": "hook"
+    },
+    "docker/nginx/default.conf": {
+      "description": "",
+      "tokens": 276,
+      "hash": "692ecdf0c790eb2d",
+      "size": 1034,
+      "mtimeMs": 1788946505627.782,
+      "updatedAt": "2026-09-09T09:35:05.800Z",
+      "source": "hook"
+    },
+    "docker/mysql/init/01-create-test-database.sql": {
+      "description": "Runs once on first MySQL container start (empty data dir).",
+      "tokens": 116,
+      "hash": "43e2c330e07f97a9",
+      "size": 435,
+      "mtimeMs": 1788946510879.909,
+      "updatedAt": "2026-09-09T09:35:11.045Z",
+      "source": "hook"
+    },
+    "docker-compose.yml": {
+      "description": "Docker Compose services",
+      "tokens": 890,
+      "hash": "9e7654aa3cec6f44",
+      "size": 3115,
+      "mtimeMs": 1788946552008.678,
+      "updatedAt": "2026-09-09T09:35:52.221Z",
+      "source": "hook"
+    },
+    ".dockerignore": {
+      "description": "Keep the PHP image build context small and secret-free.",
+      "tokens": 67,
+      "hash": "4914a4b4eca3ec32",
+      "size": 251,
+      "mtimeMs": 1788946567655.3225,
+      "updatedAt": "2026-09-09T09:36:07.863Z",
+      "source": "hook"
+    },
+    "Makefile": {
+      "description": "Nexora — developer command surface.",
+      "tokens": 1002,
+      "hash": "c69a8e53572d17f0",
+      "size": 3763,
+      "mtimeMs": 1788946587421.2627,
+      "updatedAt": "2026-09-09T09:36:27.580Z",
       "source": "hook"
     }
   },
