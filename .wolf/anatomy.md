@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T10:47:13.662Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T10:49:46.817Z
 > Files: 45 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
@@ -46,7 +46,7 @@
 
 ## backend/app/Providers/
 
-- `AppServiceProvider.php` — Fail loudly in non-production on lazy loading, bad mass-assignment, and (~426 tok)
+- `AppServiceProvider.php` — Fail loudly in non-production on lazy loading, bad mass-assignment, and (~417 tok)
 
 ## backend/app/Support/Modules/
 

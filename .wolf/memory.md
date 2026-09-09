@@ -73,3 +73,4 @@ description: chronological action log per session, consolidated weekly
 | 13:46 | Created backend/tests/Unit/ApiResponseTest.php | — | ~310 |
 | 13:47 | Edited backend/app/Http/Responses/ApiResponse.php | added 1 import(s) | ~42 |
 | 13:47 | Edited backend/app/Http/Responses/ApiResponse.php | JsonResponse() → Response() | ~50 |
+| 13:49 | Edited backend/app/Providers/AppServiceProvider.php | modified configureModels() | ~32 |

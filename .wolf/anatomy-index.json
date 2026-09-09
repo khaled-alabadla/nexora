@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T10:47:13.662Z",
+    "lastScanned": "2026-09-09T10:49:46.817Z",
     "fileCount": 45,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "35ce78057b318e68a63a4384f5d57412696b075f8b8beb1283d85fe46924b16d",
-    "storeUpdatedAt": "2026-09-09T10:47:13.675Z",
-    "rootHash": "cdd0b5a5c946ffa1"
+    "renderedHash": "814a7d2f8a6a2d0597b2b7fc6ba1bb82301fa771abfc395c8bcec143949d8ec5",
+    "storeUpdatedAt": "2026-09-09T10:49:46.829Z",
+    "rootHash": "ce258f87573ff108"
   },
   "files": {
     "AGENTS.md": {
@@ -273,11 +273,11 @@
     },
     "backend/app/Providers/AppServiceProvider.php": {
       "description": "Fail loudly in non-production on lazy loading, bad mass-assignment, and",
-      "tokens": 426,
-      "hash": "9cf724d8941ffff1",
-      "size": 1596,
-      "mtimeMs": 1788947922882.8691,
-      "updatedAt": "2026-09-09T09:58:43.126Z",
+      "tokens": 417,
+      "hash": "5d1ae78229596ffb",
+      "size": 1565,
+      "mtimeMs": 1788950986617.0337,
+      "updatedAt": "2026-09-09T10:49:46.816Z",
       "source": "hook"
     },
     "backend/app/Console/Commands/MakeModuleCommand.php": {
