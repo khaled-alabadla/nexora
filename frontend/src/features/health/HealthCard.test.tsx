@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 
-import { renderWithProviders } from '@/test/utils'
+import { jsonResponse, renderWithProviders } from '@/test/utils'
 
 import { HealthCard } from './HealthCard'
 
@@ -15,15 +15,6 @@ afterEach(() => {
   fetchMock.mockReset()
 })
 
-function jsonResponse(body: unknown, ok = true, status = 200): Response {
-  return {
-    ok,
-    status,
-    headers: new Headers({ 'content-type': 'application/json' }),
-    json: () => Promise.resolve(body),
-  } as Response
-}
-
 it('renders the datastore indicators when the backend is healthy', async () => {
   fetchMock.mockResolvedValue(
     jsonResponse({ data: { status: 'ok', database: true, cache: true }, message: 'OK' }),
@@ -37,7 +28,7 @@ it('renders the datastore indicators when the backend is healthy', async () => {
 })
 
 it('shows an error state when the backend is unreachable', async () => {
-  fetchMock.mockResolvedValue(jsonResponse({ message: 'Server error' }, false, 500))
+  fetchMock.mockResolvedValue(jsonResponse({ message: 'Server error' }, { ok: false, status: 500 }))
 
   const { findByRole } = renderWithProviders(<HealthCard />)
 

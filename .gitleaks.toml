@@ -1,0 +1,12 @@
+# Extends the default gitleaks rule set.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Non-secret fixtures and generated files"
+paths = [
+  '''\.env\.example$''',
+  '''(^|/)\.env\.[^/]*\.example$''',
+  '''(^|/)package-lock\.json$''',
+  '''(^|/)composer\.lock$''',
+]
