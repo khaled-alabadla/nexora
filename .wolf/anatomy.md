@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:03:46.675Z
-> Files: 70 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-09T11:08:37.648Z
+> Files: 71 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -139,7 +139,8 @@
 
 ## frontend/src/lib/
 
-- `api.ts` — Minimal typed API client for the Nexora backend. (~592 tok)
+- `api.test.ts` — API routes: GET, POST (6 endpoints) (~517 tok)
+- `api.ts` — Minimal typed API client for the Nexora backend. (~741 tok)
 - `utils.test.ts` — Declares names (~85 tok)
 - `utils.ts` — Merge conditional class names, de-duplicating Tailwind utilities. (~71 tok)
 

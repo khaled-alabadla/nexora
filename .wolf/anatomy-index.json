@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T11:03:46.675Z",
-    "fileCount": 70,
+    "lastScanned": "2026-09-09T11:08:37.648Z",
+    "fileCount": 71,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "e916fdade28e102a9134939507798c278a34ec6f1c5eea9dfc26e33e6b61e053",
-    "storeUpdatedAt": "2026-09-09T11:03:46.685Z",
-    "rootHash": "ed65482bfdc0e1b7"
+    "renderedHash": "675514f2059b72ec69b781008e1e0dfa66bf9fb666b3f9fe109e273383941238",
+    "storeUpdatedAt": "2026-09-09T11:08:37.672Z",
+    "rootHash": "aed58ca8dc2d1f86"
   },
   "files": {
     "AGENTS.md": {
@@ -489,39 +489,46 @@
     },
     "frontend/src/lib/api.ts": {
       "description": "Minimal typed API client for the Nexora backend.",
-      "tokens": 592,
-      "hash": "ea7db56febdfad12",
-      "size": 2069,
-      "mtimeMs": 1788951769134.2576,
-      "updatedAt": "2026-09-09T11:02:49.289Z",
+      "tokens": 741,
+      "hash": "7c37116925b74de6",
+      "size": 2591,
+      "mtimeMs": 1788952117339.7979,
+      "updatedAt": "2026-09-09T11:08:37.647Z",
       "source": "hook",
       "symbols": [
         {
           "name": "ApiError",
           "kind": "class",
-          "startLine": 12,
-          "endLine": 23,
+          "startLine": 15,
+          "endLine": 26,
           "tokens": 88
         },
         {
           "name": "ApiEnvelope",
           "kind": "section",
-          "startLine": 24,
-          "endLine": 29,
+          "startLine": 27,
+          "endLine": 32,
           "tokens": 22
+        },
+        {
+          "name": "readCookie",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 37,
+          "tokens": 57
         },
         {
           "name": "request",
           "kind": "fn",
-          "startLine": 30,
-          "endLine": 54,
-          "tokens": 258
+          "startLine": 38,
+          "endLine": 70,
+          "tokens": 315
         },
         {
           "name": "csrf",
           "kind": "fn",
-          "startLine": 55,
-          "endLine": 67,
+          "startLine": 71,
+          "endLine": 83,
           "tokens": 116
         }
       ]
@@ -669,6 +676,24 @@
       "mtimeMs": 1788951566120.268,
       "updatedAt": "2026-09-09T10:59:26.280Z",
       "source": "hook"
+    },
+    "frontend/src/lib/api.test.ts": {
+      "description": "API routes: GET, POST (6 endpoints)",
+      "tokens": 517,
+      "hash": "fbb11cfd04416ad1",
+      "size": 1808,
+      "mtimeMs": 1788952078398.4194,
+      "updatedAt": "2026-09-09T11:07:58.575Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "json",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 61,
+          "tokens": 410
+        }
+      ]
     }
   },
   "preamble": [
