@@ -13,15 +13,18 @@ remaining inside a single deployable application.
 
 ## 2. Backend Stack
 
-- PHP 8.4+
+- PHP 8.4+ — runs in Docker; the host PHP is not supported (see
+  [ADR-0003](adr/0003-docker-dev-environment.md))
 - Laravel 12
-- MySQL 8+
-- Redis
-- Laravel Queues
-- Laravel Scheduler
+- MySQL 8+ — image pinned to `mysql:8.0`, overridable via `MYSQL_IMAGE`
+  (see [ADR-0005](adr/0005-test-database-mysql.md))
+- Redis 7 — cache, queue, rate limiting
+- Laravel Queues (`queue` container)
+- Laravel Scheduler (`scheduler` container)
 - Laravel Events
 - Laravel Notifications
-- Laravel Sanctum
+- Laravel Sanctum — SPA cookie sessions (see
+  [ADR-0004](adr/0004-authentication-transport.md))
 
 ---
 
@@ -39,7 +42,15 @@ remaining inside a single deployable application.
 
 ## 4. Modules
 
-backend/modules/
+Business capabilities live in `backend/modules/<Name>/` under the `Modules\`
+PSR-4 namespace. Each module has a `<Name>ServiceProvider` (extending
+`App\Support\Modules\ModuleServiceProvider`) registered explicitly in
+`backend/bootstrap/providers.php` — no auto-discovery. The provider loads that
+module's `Routes/api.php` (under `/api/v1`, `api` middleware), migrations, and
+translations. Scaffold with `php artisan make:module <Name>`. Full rationale and
+directory layout: [ADR-0002](adr/0002-modular-monolith-layout.md).
+
+Modules:
 
 - Identity
 - Companies
@@ -137,5 +148,28 @@ APIs must provide:
 - pagination
 - filtering
 - sorting
-- consistent responses
-- consistent error handling
+- consistent responses (`App\Http\Responses\ApiResponse` envelopes)
+- consistent error handling (`{ message, errors }`, always JSON for `/api/*`)
+
+See [`docs/API.md`](API.md) for the response/error contract.
+
+---
+
+## 10. Local environment
+
+`docker-compose.yml` runs the whole stack: `app` (php-fpm), `nginx`, `queue`,
+`scheduler`, `mysql`, `redis`, `node` (Vite), `mailpit`. Day-to-day commands are
+wrapped in the root `Makefile` (`make up`, `make setup`, `make check`,
+`make check-frontend`). Node/vendor trees sit on named volumes for bind-mount
+performance. See [`docs/DEVELOPMENT.md`](DEVELOPMENT.md).
+
+---
+
+## 11. Quality gates
+
+- **Backend:** Pint (style), Larastan/PHPStan level 6 (→ 8 by end of Phase 1),
+  Pest on MySQL (`nexora_test`), line-coverage floor 60%.
+- **Frontend:** ESLint (type-checked flat config), `tsc --noEmit`, Prettier,
+  Vitest (coverage thresholds 80/80/75/65).
+- **CI:** `.github/workflows/ci.yml` runs both plus gitleaks and dependency
+  audits on every push and PR.
