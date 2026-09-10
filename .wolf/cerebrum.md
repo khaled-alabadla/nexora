@@ -39,3 +39,4 @@ budget_tokens: 2000
 - [2026-09-09] **Test database:** MySQL 8 (dedicated `nexora_test` schema), NOT SQLite — DECIMAL/`FOR UPDATE` locking/FK/JSON semantics matter for financial+inventory modules. → ADR-0005.
 - [2026-09-09] **Git/CI:** `git init` now, author `.github/workflows/ci.yml`, defer GitHub remote (CI verified once remote provisioned). No commits without explicit request.
 - [2026-09-09] **PHPStan:** level 6 in Phase 0; level 8 is a Phase 1 exit criterion. **Coverage floor:** 60% in Phase 0 CI, raised per phase.
+- [2026-09-09] **Phase 1 decisions:** system-defined roles only (8 from PRD, seeded); register creates user + first company + Owner membership in a txn, verified users can create more companies; active company persisted on `users.current_company_id` (one at a time, membership-checked on switch). Tenancy via `BelongsToCompany` trait + `CompanyContext` singleton + `SetActiveCompany` middleware → ADR-0006.

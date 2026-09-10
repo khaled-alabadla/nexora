@@ -87,7 +87,7 @@ final class MakeModuleCommand extends Command
             '/\n\];\s*$/',
             "\n    {$fqcn},\n];\n",
             rtrim($contents)."\n",
-        );
+        ) ?? $contents;
 
         $files->put($path, $contents);
     }
