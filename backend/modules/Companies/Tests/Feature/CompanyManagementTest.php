@@ -43,6 +43,17 @@ it('forbids company creation for unverified users', function () {
     $this->postJson(apiUrl('companies'), ['name' => 'Nope'])->assertStatus(403);
 });
 
+it('exposes the system role catalogue to any authenticated user', function () {
+    [, $owner] = companyWithOwner();
+    $this->actingAs($owner);
+
+    $response = $this->getJson(apiUrl('roles'))->assertOk();
+
+    $slugs = collect($response->json('data'))->pluck('slug');
+    expect($slugs)->toContain('owner', 'administrator', 'employee')
+        ->and($response->json('data.0.slug'))->toBe('owner'); // highest level first
+});
+
 it('shows the active company', function () {
     [$company, $owner] = companyWithOwner();
     $this->actingAs($owner);

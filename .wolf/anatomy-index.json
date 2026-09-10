@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-10T09:48:52.111Z",
-    "fileCount": 160,
+    "lastScanned": "2026-09-10T10:15:52.900Z",
+    "fileCount": 192,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "11e1097a8109f445887e1f9dc3aa58fce6a087e73a368bb56546d1291e2a9f2e",
-    "storeUpdatedAt": "2026-09-10T09:48:52.122Z",
-    "rootHash": "1185ec4ab52b39f7"
+    "renderedHash": "8af80715960001013a80bb870b4a3dff04f08e92fc4a71f110e304a41f4d57a7",
+    "storeUpdatedAt": "2026-09-10T10:15:52.915Z",
+    "rootHash": "153ec9b4eeef0ea1"
   },
   "files": {
     "AGENTS.md": {
@@ -435,11 +435,11 @@
     },
     "frontend/vite.config.ts": {
       "description": "/*.{ts,tsx}'],",
-      "tokens": 249,
-      "hash": "3373ae7b62ab18c0",
-      "size": 870,
-      "mtimeMs": 1788952634985.9558,
-      "updatedAt": "2026-09-09T11:17:15.139Z",
+      "tokens": 256,
+      "hash": "edd1421b699d117c",
+      "size": 895,
+      "mtimeMs": 1789034855435.5068,
+      "updatedAt": "2026-09-10T10:07:35.980Z",
       "source": "hook"
     },
     "frontend/eslint.config.js": {
@@ -489,11 +489,11 @@
     },
     "frontend/src/lib/api.ts": {
       "description": "Minimal typed API client for the Nexora backend.",
-      "tokens": 741,
-      "hash": "7c37116925b74de6",
-      "size": 2591,
-      "mtimeMs": 1788952117339.7979,
-      "updatedAt": "2026-09-09T11:08:37.647Z",
+      "tokens": 874,
+      "hash": "ae5c4ef048183c21",
+      "size": 3056,
+      "mtimeMs": 1789033977724.6697,
+      "updatedAt": "2026-09-10T09:52:57.894Z",
       "source": "hook",
       "symbols": [
         {
@@ -521,15 +521,22 @@
           "name": "request",
           "kind": "fn",
           "startLine": 38,
-          "endLine": 70,
-          "tokens": 315
+          "endLine": 74,
+          "tokens": 338
         },
         {
           "name": "csrf",
           "kind": "fn",
-          "startLine": 71,
-          "endLine": 83,
-          "tokens": 116
+          "startLine": 75,
+          "endLine": 78,
+          "tokens": 36
+        },
+        {
+          "name": "withBody",
+          "kind": "fn",
+          "startLine": 79,
+          "endLine": 93,
+          "tokens": 189
         }
       ]
     },
@@ -562,20 +569,20 @@
     },
     "frontend/src/App.tsx": {
       "description": "App",
-      "tokens": 74,
-      "hash": "8848af19be57047c",
-      "size": 257,
-      "mtimeMs": 1788951437222.9668,
-      "updatedAt": "2026-09-09T10:57:17.437Z",
+      "tokens": 387,
+      "hash": "38cff1ba8c69bd97",
+      "size": 1354,
+      "mtimeMs": 1789034250199.558,
+      "updatedAt": "2026-09-10T09:57:30.570Z",
       "source": "hook"
     },
     "frontend/src/main.tsx": {
       "description": "queryClient",
-      "tokens": 174,
-      "hash": "00588ed7e45d47a8",
-      "size": 607,
-      "mtimeMs": 1788951444044.8362,
-      "updatedAt": "2026-09-09T10:57:24.230Z",
+      "tokens": 201,
+      "hash": "c8add1551451a7b3",
+      "size": 703,
+      "mtimeMs": 1789034259924.5154,
+      "updatedAt": "2026-09-10T09:57:40.118Z",
       "source": "hook"
     },
     "frontend/src/test/setup.ts": {
@@ -589,11 +596,11 @@
     },
     "frontend/src/test/utils.tsx": {
       "description": "Build a minimal JSON `Response` for stubbing `fetch` in tests.",
-      "tokens": 313,
-      "hash": "637bae00fd0bd8a4",
-      "size": 1093,
-      "mtimeMs": 1788952755445.322,
-      "updatedAt": "2026-09-09T11:19:15.641Z",
+      "tokens": 474,
+      "hash": "42b2f79164895ba3",
+      "size": 1658,
+      "mtimeMs": 1789034414661.4307,
+      "updatedAt": "2026-09-10T10:00:14.952Z",
       "source": "hook"
     },
     "frontend/src/features/health/HealthCard.test.tsx": {
@@ -678,12 +685,12 @@
       "source": "hook"
     },
     "frontend/src/lib/api.test.ts": {
-      "description": "API routes: GET, POST (6 endpoints)",
-      "tokens": 463,
-      "hash": "0acb379e391b1c09",
-      "size": 1619,
-      "mtimeMs": 1788952800696.9988,
-      "updatedAt": "2026-09-09T11:20:00.896Z",
+      "description": "API routes: GET, POST, DELETE, PATCH (8 endpoints)",
+      "tokens": 705,
+      "hash": "114952fa915c56cd",
+      "size": 2465,
+      "mtimeMs": 1789034477084.963,
+      "updatedAt": "2026-09-10T10:01:17.261Z",
       "source": "hook"
     },
     ".github/workflows/ci.yml": {
@@ -714,12 +721,12 @@
       "source": "hook"
     },
     "frontend/src/App.test.tsx": {
-      "description": "fetchMock",
-      "tokens": 175,
-      "hash": "f12b8523a8d70f7c",
-      "size": 610,
-      "mtimeMs": 1788952767681.3225,
-      "updatedAt": "2026-09-09T11:19:27.915Z",
+      "description": "session",
+      "tokens": 609,
+      "hash": "da02fe415241b08a",
+      "size": 2137,
+      "mtimeMs": 1789034438453.213,
+      "updatedAt": "2026-09-10T10:00:38.635Z",
       "source": "hook"
     },
     "frontend/src/store/ui.test.ts": {
@@ -1354,11 +1361,11 @@
     },
     "backend/modules/Companies/Routes/api.php": {
       "description": "",
-      "tokens": 877,
-      "hash": "2333a2bd0b48cf53",
-      "size": 3287,
-      "mtimeMs": 1789028019942.5334,
-      "updatedAt": "2026-09-10T08:13:40.158Z",
+      "tokens": 914,
+      "hash": "e5f83b06c0e43f76",
+      "size": 3425,
+      "mtimeMs": 1789034143715.467,
+      "updatedAt": "2026-09-10T09:55:43.892Z",
       "source": "hook"
     },
     "backend/modules/Companies/Database/Factories/CompanyInvitationFactory.php": {
@@ -1426,11 +1433,11 @@
     },
     "backend/modules/Companies/Tests/Feature/CompanyManagementTest.php": {
       "description": "",
-      "tokens": 830,
-      "hash": "fe1f9bc9378ddf44",
-      "size": 3110,
-      "mtimeMs": 1789028706588.5388,
-      "updatedAt": "2026-09-10T08:25:06.790Z",
+      "tokens": 944,
+      "hash": "7eda1cfc91356be6",
+      "size": 3539,
+      "mtimeMs": 1789035352597.9783,
+      "updatedAt": "2026-09-10T10:15:52.899Z",
       "source": "hook"
     },
     "backend/modules/Companies/Tests/Feature/ActiveCompanyTest.php": {
@@ -1485,6 +1492,505 @@
       "size": 1112,
       "mtimeMs": 1789028697751.8147,
       "updatedAt": "2026-09-10T08:24:57.915Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/types.ts": {
+      "description": "Exports AuthUser, Role, CompanySummary, Session + 3 more",
+      "tokens": 228,
+      "hash": "7a8891029af959ed",
+      "size": 795,
+      "mtimeMs": 1789033983134.3923,
+      "updatedAt": "2026-09-10T09:53:03.307Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/api.ts": {
+      "description": "GET the current session, or `null` when the caller is not authenticated.",
+      "tokens": 390,
+      "hash": "3928ec126b28ea48",
+      "size": 1365,
+      "mtimeMs": 1789034001653.6028,
+      "updatedAt": "2026-09-10T09:53:21.836Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/session.ts": {
+      "description": "Exports sessionKey, useSession, usePermissions, useLogin + 5 more",
+      "tokens": 473,
+      "hash": "e69867c082b49622",
+      "size": 1654,
+      "mtimeMs": 1789034009947.3394,
+      "updatedAt": "2026-09-10T09:53:30.183Z",
+      "source": "hook"
+    },
+    "frontend/src/lib/forms.ts": {
+      "description": "Flatten an ApiError's `errors` map to the first message per field.",
+      "tokens": 211,
+      "hash": "7c114df683597596",
+      "size": 737,
+      "mtimeMs": 1789034019948.968,
+      "updatedAt": "2026-09-10T09:53:40.145Z",
+      "source": "hook"
+    },
+    "frontend/src/components/ui.tsx": {
+      "description": "Field",
+      "tokens": 642,
+      "hash": "6d233597b22e3394",
+      "size": 2245,
+      "mtimeMs": 1789034031572.8225,
+      "updatedAt": "2026-09-10T09:53:51.738Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "Field",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 30,
+          "tokens": 149
+        },
+        {
+          "name": "Input",
+          "kind": "fn",
+          "startLine": 31,
+          "endLine": 44,
+          "tokens": 116
+        },
+        {
+          "name": "Button",
+          "kind": "fn",
+          "startLine": 45,
+          "endLine": 68,
+          "tokens": 205
+        },
+        {
+          "name": "Alert",
+          "kind": "fn",
+          "startLine": 69,
+          "endLine": 82,
+          "tokens": 146
+        }
+      ]
+    },
+    "frontend/src/features/auth/AuthShell.tsx": {
+      "description": "AuthShell",
+      "tokens": 232,
+      "hash": "ce0a43da253c9ff5",
+      "size": 811,
+      "mtimeMs": 1789034041678.5256,
+      "updatedAt": "2026-09-10T09:54:01.844Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/LoginPage.tsx": {
+      "description": "LoginPage — renders form",
+      "tokens": 694,
+      "hash": "1ae1ffb4d9352b01",
+      "size": 2432,
+      "mtimeMs": 1789034065564.6653,
+      "updatedAt": "2026-09-10T09:54:25.763Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "LoginPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 77,
+          "tokens": 601
+        }
+      ]
+    },
+    "frontend/src/features/auth/RegisterPage.tsx": {
+      "description": "RegisterPage — renders form",
+      "tokens": 899,
+      "hash": "4209c281161e5040",
+      "size": 3147,
+      "mtimeMs": 1789034077511.4907,
+      "updatedAt": "2026-09-10T09:54:37.749Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "RegisterPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 98,
+          "tokens": 810
+        }
+      ]
+    },
+    "frontend/src/features/auth/ForgotPasswordPage.tsx": {
+      "description": "ForgotPasswordPage — renders form",
+      "tokens": 410,
+      "hash": "44408e0edcce8512",
+      "size": 1435,
+      "mtimeMs": 1789034087420.667,
+      "updatedAt": "2026-09-10T09:54:47.599Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/ResetPasswordPage.tsx": {
+      "description": "ResetPasswordPage — renders form",
+      "tokens": 720,
+      "hash": "8b2c7b3e7fdc334a",
+      "size": 2522,
+      "mtimeMs": 1789034376657.048,
+      "updatedAt": "2026-09-10T09:59:36.943Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "ResetPasswordPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 80,
+          "tokens": 627
+        }
+      ]
+    },
+    "frontend/src/features/companies/api.ts": {
+      "description": "Exports Member, Invitation, RoleOption, listRoles + 10 more",
+      "tokens": 544,
+      "hash": "872609b3ffe23c6b",
+      "size": 1901,
+      "mtimeMs": 1789034150741.5867,
+      "updatedAt": "2026-09-10T09:55:50.932Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "Member",
+          "kind": "section",
+          "startLine": 5,
+          "endLine": 12,
+          "tokens": 46
+        },
+        {
+          "name": "Invitation",
+          "kind": "section",
+          "startLine": 13,
+          "endLine": 22,
+          "tokens": 68
+        },
+        {
+          "name": "RoleOption",
+          "kind": "section",
+          "startLine": 23,
+          "endLine": 57,
+          "tokens": 403
+        }
+      ]
+    },
+    "frontend/src/features/companies/hooks.ts": {
+      "description": "Exports useRoles, useMembers, useInvitations, useSwitchCompany + 5 more",
+      "tokens": 699,
+      "hash": "b8302b6f89fd9bab",
+      "size": 2446,
+      "mtimeMs": 1789034159899.6716,
+      "updatedAt": "2026-09-10T09:56:00.145Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "useRoles",
+          "kind": "fn",
+          "startLine": 10,
+          "endLine": 13,
+          "tokens": 37
+        },
+        {
+          "name": "useMembers",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 17,
+          "tokens": 40
+        },
+        {
+          "name": "useInvitations",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 21,
+          "tokens": 43
+        },
+        {
+          "name": "useSwitchCompany",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 32,
+          "tokens": 95
+        },
+        {
+          "name": "useCreateCompany",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 42,
+          "tokens": 75
+        },
+        {
+          "name": "useInviteMember",
+          "kind": "fn",
+          "startLine": 43,
+          "endLine": 52,
+          "tokens": 88
+        },
+        {
+          "name": "useRevokeInvitation",
+          "kind": "fn",
+          "startLine": 53,
+          "endLine": 62,
+          "tokens": 76
+        },
+        {
+          "name": "useUpdateMemberRole",
+          "kind": "fn",
+          "startLine": 63,
+          "endLine": 73,
+          "tokens": 91
+        },
+        {
+          "name": "useRemoveMember",
+          "kind": "fn",
+          "startLine": 74,
+          "endLine": 83,
+          "tokens": 75
+        }
+      ]
+    },
+    "backend/modules/Companies/Http/Controllers/RoleCatalogController.php": {
+      "description": "The system role catalogue (Phase 1 has no per-company custom roles). Used by",
+      "tokens": 157,
+      "hash": "e868f1717ecfa649",
+      "size": 587,
+      "mtimeMs": 1789034129637.0095,
+      "updatedAt": "2026-09-10T09:55:29.825Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/RequireAuth.tsx": {
+      "description": "RequireAuth",
+      "tokens": 172,
+      "hash": "900d73b29fd3cf57",
+      "size": 603,
+      "mtimeMs": 1789034167473.0066,
+      "updatedAt": "2026-09-10T09:56:07.673Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/CompanySwitcher.tsx": {
+      "description": "CompanySwitcher",
+      "tokens": 318,
+      "hash": "c815df7a92799fcf",
+      "size": 1116,
+      "mtimeMs": 1789034177986.0857,
+      "updatedAt": "2026-09-10T09:56:18.297Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/MembersPanel.tsx": {
+      "description": "MembersPanel — renders form",
+      "tokens": 1644,
+      "hash": "fb25e2351515e284",
+      "size": 5757,
+      "mtimeMs": 1789034202331.3772,
+      "updatedAt": "2026-09-10T09:56:42.541Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "MembersPanel",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 109,
+          "tokens": 1115
+        },
+        {
+          "name": "InviteForm",
+          "kind": "fn",
+          "startLine": 110,
+          "endLine": 153,
+          "tokens": 421
+        }
+      ]
+    },
+    "frontend/src/features/companies/CreateCompanyCard.tsx": {
+      "description": "CreateCompanyCard — renders form",
+      "tokens": 358,
+      "hash": "a976149402738eef",
+      "size": 1253,
+      "mtimeMs": 1789034212130.415,
+      "updatedAt": "2026-09-10T09:56:52.438Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/VerifyEmailBanner.tsx": {
+      "description": "VerifyEmailBanner",
+      "tokens": 181,
+      "hash": "b5689ae3d5bd0ff0",
+      "size": 636,
+      "mtimeMs": 1789034218263.2278,
+      "updatedAt": "2026-09-10T09:56:58.443Z",
+      "source": "hook"
+    },
+    "frontend/src/pages/DashboardPage.tsx": {
+      "description": "DashboardPage",
+      "tokens": 479,
+      "hash": "0bfec740ee309b67",
+      "size": 1677,
+      "mtimeMs": 1789034228201.0288,
+      "updatedAt": "2026-09-10T09:57:08.515Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/AcceptInvitationPage.tsx": {
+      "description": "AcceptInvitationPage",
+      "tokens": 517,
+      "hash": "0c62e40e757d6cb4",
+      "size": 1811,
+      "mtimeMs": 1789034369869.3425,
+      "updatedAt": "2026-09-10T09:59:30.066Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "AcceptInvitationPage",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 52,
+          "tokens": 412
+        }
+      ]
+    },
+    "frontend/src/test/fetchStub.ts": {
+      "description": "substring match against the request URL",
+      "tokens": 434,
+      "hash": "aa785ee58801e22b",
+      "size": 1516,
+      "mtimeMs": 1789035250882.1724,
+      "updatedAt": "2026-09-10T10:14:11.469Z",
+      "source": "hook"
+    },
+    "frontend/src/lib/forms.test.ts": {
+      "description": "Declares error",
+      "tokens": 319,
+      "hash": "bb8445cc60598117",
+      "size": 1114,
+      "mtimeMs": 1789034467430.4514,
+      "updatedAt": "2026-09-10T10:01:07.612Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/api.test.ts": {
+      "description": "Declares session",
+      "tokens": 654,
+      "hash": "4da1379f643044d5",
+      "size": 2289,
+      "mtimeMs": 1789035264977.6465,
+      "updatedAt": "2026-09-10T10:14:25.424Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/LoginPage.test.tsx": {
+      "description": "guest",
+      "tokens": 579,
+      "hash": "4e8a7538408c8130",
+      "size": 2024,
+      "mtimeMs": 1789034535632.307,
+      "updatedAt": "2026-09-10T10:02:15.817Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/RegisterPage.test.tsx": {
+      "description": "guest",
+      "tokens": 606,
+      "hash": "6a8f4367df74fe3e",
+      "size": 2119,
+      "mtimeMs": 1789034576760.1782,
+      "updatedAt": "2026-09-10T10:02:57.105Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "fillForm",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 58,
+          "tokens": 401
+        }
+      ]
+    },
+    "frontend/src/features/auth/PasswordPages.test.tsx": {
+      "description": "user",
+      "tokens": 740,
+      "hash": "eb86eee20c2f87ee",
+      "size": 2590,
+      "mtimeMs": 1789034610602.847,
+      "updatedAt": "2026-09-10T10:03:30.819Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/CompanySwitcher.test.tsx": {
+      "description": "role",
+      "tokens": 591,
+      "hash": "395db91d55383c02",
+      "size": 2068,
+      "mtimeMs": 1789035137061.058,
+      "updatedAt": "2026-09-10T10:12:17.481Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "role",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 58,
+          "tokens": 470
+        }
+      ]
+    },
+    "frontend/src/features/companies/MembersPanel.test.tsx": {
+      "description": "role",
+      "tokens": 1042,
+      "hash": "6adfbc9f07ae6d75",
+      "size": 3644,
+      "mtimeMs": 1789034715321.6033,
+      "updatedAt": "2026-09-10T10:05:15.557Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "role",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 15,
+          "tokens": 24
+        },
+        {
+          "name": "sessionWith",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 35,
+          "tokens": 218
+        },
+        {
+          "name": "renderPanel",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 101,
+          "tokens": 674
+        }
+      ]
+    },
+    "frontend/src/features/companies/CreateCompanyCard.test.tsx": {
+      "description": "emptySession",
+      "tokens": 613,
+      "hash": "8cf5b3bf8d7d3f82",
+      "size": 2143,
+      "mtimeMs": 1789035148980.3506,
+      "updatedAt": "2026-09-10T10:12:29.480Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/AcceptInvitationPage.test.tsx": {
+      "description": "session",
+      "tokens": 546,
+      "hash": "baced75b76c59eda",
+      "size": 1910,
+      "mtimeMs": 1789034756562.9607,
+      "updatedAt": "2026-09-10T10:05:56.987Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/VerifyEmailBanner.test.tsx": {
+      "description": "session",
+      "tokens": 396,
+      "hash": "30de82782446314a",
+      "size": 1385,
+      "mtimeMs": 1789034768429.1687,
+      "updatedAt": "2026-09-10T10:06:08.879Z",
+      "source": "hook"
+    },
+    "frontend/src/pages/DashboardPage.test.tsx": {
+      "description": "role",
+      "tokens": 838,
+      "hash": "46ec74e9a53d31cc",
+      "size": 2930,
+      "mtimeMs": 1789035162666.9944,
+      "updatedAt": "2026-09-10T10:12:42.948Z",
       "source": "hook"
     }
   },

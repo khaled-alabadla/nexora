@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T09:48:52.111Z
-> Files: 160 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T10:15:52.900Z
+> Files: 192 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -121,6 +121,7 @@
 - `InvitationAcceptanceController.php` — Accept an invitation. Runs with no active company: trust comes from the (~244 tok)
 - `InvitationController.php` — Invitations for the active company. CompanyInvitation is tenant-scoped (~489 tok)
 - `MemberController.php` — Members of the active company. Every query is scoped to CompanyContext::id(); (~634 tok)
+- `RoleCatalogController.php` — The system role catalogue (Phase 1 has no per-company custom roles). Used by (~157 tok)
 
 ## backend/modules/Companies/Http/Middleware/
 
@@ -160,7 +161,7 @@
 
 ## backend/modules/Companies/Routes/
 
-- `api.php` (~877 tok)
+- `api.php` (~914 tok)
 
 ## backend/modules/Companies/Services/
 
@@ -171,7 +172,7 @@
 ## backend/modules/Companies/Tests/Feature/
 
 - `ActiveCompanyTest.php` (~364 tok)
-- `CompanyManagementTest.php` (~830 tok)
+- `CompanyManagementTest.php` (~944 tok)
 - `InvitationTest.php` — Persist an invitation directly (bypassing the tenant scope, as the service (~1537 tok)
 - `MemberManagementTest.php` (~888 tok)
 - `TenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006). A user who (~1133 tok)
@@ -293,15 +294,50 @@
 - `README.md` — Project documentation (~415 tok)
 - `tsconfig.app.json` (~266 tok)
 - `tsconfig.node.json` (~171 tok)
-- `vite.config.ts` — /*.{ts,tsx}'], (~249 tok)
+- `vite.config.ts` — /*.{ts,tsx}'], (~256 tok)
 
 ## frontend/src/
 
-- `App.test.tsx` — fetchMock (~175 tok)
-- `App.tsx` — App (~74 tok)
+- `App.test.tsx` — session (~609 tok)
+- `App.tsx` — App (~387 tok)
 - `index.css` — Styles: 1 rules (~51 tok)
-- `main.tsx` — queryClient (~174 tok)
+- `main.tsx` — queryClient (~201 tok)
 - `vite-env.d.ts` — / <reference types="vite/client" /> (~45 tok)
+
+## frontend/src/components/
+
+- `ui.tsx` — Field (~642 tok)
+
+## frontend/src/features/auth/
+
+- `api.test.ts` — Declares session (~654 tok)
+- `api.ts` — GET the current session, or `null` when the caller is not authenticated. (~390 tok)
+- `AuthShell.tsx` — AuthShell (~232 tok)
+- `ForgotPasswordPage.tsx` — ForgotPasswordPage — renders form (~410 tok)
+- `LoginPage.test.tsx` — guest (~579 tok)
+- `LoginPage.tsx` — LoginPage — renders form (~694 tok)
+- `PasswordPages.test.tsx` — user (~740 tok)
+- `RegisterPage.test.tsx` — guest (~606 tok)
+- `RegisterPage.tsx` — RegisterPage — renders form (~899 tok)
+- `RequireAuth.tsx` — RequireAuth (~172 tok)
+- `ResetPasswordPage.tsx` — ResetPasswordPage — renders form (~720 tok)
+- `session.ts` — Exports sessionKey, useSession, usePermissions, useLogin + 5 more (~473 tok)
+- `types.ts` — Exports AuthUser, Role, CompanySummary, Session + 3 more (~228 tok)
+- `VerifyEmailBanner.test.tsx` — session (~396 tok)
+- `VerifyEmailBanner.tsx` — VerifyEmailBanner (~181 tok)
+
+## frontend/src/features/companies/
+
+- `AcceptInvitationPage.test.tsx` — session (~546 tok)
+- `AcceptInvitationPage.tsx` — AcceptInvitationPage (~517 tok)
+- `api.ts` — Exports Member, Invitation, RoleOption, listRoles + 10 more (~544 tok)
+- `CompanySwitcher.test.tsx` — role (~591 tok)
+- `CompanySwitcher.tsx` — CompanySwitcher (~318 tok)
+- `CreateCompanyCard.test.tsx` — emptySession (~613 tok)
+- `CreateCompanyCard.tsx` — CreateCompanyCard — renders form (~358 tok)
+- `hooks.ts` — Exports useRoles, useMembers, useInvitations, useSwitchCompany + 5 more (~699 tok)
+- `MembersPanel.test.tsx` — role (~1042 tok)
+- `MembersPanel.tsx` — MembersPanel — renders form (~1644 tok)
 
 ## frontend/src/features/health/
 
@@ -311,10 +347,17 @@
 
 ## frontend/src/lib/
 
-- `api.test.ts` — API routes: GET, POST (6 endpoints) (~463 tok)
-- `api.ts` — Minimal typed API client for the Nexora backend. (~741 tok)
+- `api.test.ts` — API routes: GET, POST, DELETE, PATCH (8 endpoints) (~705 tok)
+- `api.ts` — Minimal typed API client for the Nexora backend. (~874 tok)
+- `forms.test.ts` — Declares error (~319 tok)
+- `forms.ts` — Flatten an ApiError's `errors` map to the first message per field. (~211 tok)
 - `utils.test.ts` — Declares names (~85 tok)
 - `utils.ts` — Merge conditional class names, de-duplicating Tailwind utilities. (~71 tok)
+
+## frontend/src/pages/
+
+- `DashboardPage.test.tsx` — role (~838 tok)
+- `DashboardPage.tsx` — DashboardPage (~479 tok)
 
 ## frontend/src/store/
 
@@ -323,5 +366,6 @@
 
 ## frontend/src/test/
 
+- `fetchStub.ts` — substring match against the request URL (~434 tok)
 - `setup.ts` (~46 tok)
-- `utils.tsx` — Build a minimal JSON `Response` for stubbing `fetch` in tests. (~313 tok)
+- `utils.tsx` — Build a minimal JSON `Response` for stubbing `fetch` in tests. (~474 tok)

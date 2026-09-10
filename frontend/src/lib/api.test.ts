@@ -38,6 +38,31 @@ it('sends X-XSRF-TOKEN on mutating requests only', async () => {
   expect(headers.get('Content-Type')).toBe('application/json')
 })
 
+it('returns undefined for a 204 with no body', async () => {
+  fetchMock.mockResolvedValue({
+    ok: true,
+    status: 204,
+    statusText: 'No Content',
+    headers: new Headers(),
+    json: () => Promise.reject(new Error('no body')),
+  })
+
+  await expect(api.delete('/things/1')).resolves.toBeUndefined()
+
+  const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit]
+  expect(url).toBe('http://localhost:8000/api/v1/things/1')
+  expect(init.method).toBe('DELETE')
+})
+
+it('serializes bodies for put and patch', async () => {
+  fetchMock.mockResolvedValue(json({ data: { id: 1 }, message: 'OK' }))
+
+  await api.patch('/things/1', { role: 'admin' })
+  const [, init] = fetchMock.mock.calls[0] as [string, RequestInit]
+  expect(init.method).toBe('PATCH')
+  expect(init.body).toBe(JSON.stringify({ role: 'admin' }))
+})
+
 it('throws ApiError carrying status and validation errors', async () => {
   fetchMock.mockResolvedValue(
     json(

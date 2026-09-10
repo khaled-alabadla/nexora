@@ -277,3 +277,66 @@ description: chronological action log per session, consolidated weekly
 | 12:48 | Edited backend/modules/Identity/Providers/IdentityServiceProvider.php | modified createUrlUsing() | ~167 |
 | 12:48 | Edited backend/app/Console/Commands/MakeModuleCommand.php | added nullish coalescing | ~52 |
 | 12:48 | Edited backend/app/Support/Authorization/GrantedPermissions.php | values() → array_values() | ~54 |
+| 12:52 | Edited frontend/src/lib/api.ts | modified withBody() | ~189 |
+| 12:52 | Edited frontend/src/lib/api.ts | added 1 condition(s) | ~96 |
+| 12:53 | Created frontend/src/features/auth/types.ts | — | ~228 |
+| 12:53 | Created frontend/src/features/auth/api.ts | — | ~422 |
+| 12:53 | Edited frontend/src/features/auth/api.ts | modified forgotPassword() | ~42 |
+| 12:53 | Edited frontend/src/features/auth/api.ts | modified isStatus() | ~47 |
+| 12:53 | Created frontend/src/features/auth/session.ts | — | ~473 |
+| 12:53 | Created frontend/src/lib/forms.ts | — | ~211 |
+| 12:53 | Created frontend/src/components/ui.tsx | — | ~642 |
+| 12:54 | Created frontend/src/features/auth/AuthShell.tsx | — | ~232 |
+| 12:54 | Created frontend/src/features/auth/LoginPage.tsx | — | ~704 |
+| 12:54 | Created frontend/src/features/auth/LoginPage.tsx | — | ~694 |
+| 12:54 | Created frontend/src/features/auth/RegisterPage.tsx | — | ~899 |
+| 12:54 | Created frontend/src/features/auth/ForgotPasswordPage.tsx | — | ~410 |
+| 12:54 | Created frontend/src/features/auth/ResetPasswordPage.tsx | — | ~722 |
+| 12:55 | Created frontend/src/features/companies/api.ts | — | ~496 |
+| 12:55 | Created frontend/src/features/companies/hooks.ts | — | ~662 |
+| 12:55 | Created backend/modules/Companies/Http/Controllers/RoleCatalogController.php | — | ~157 |
+| 12:55 | Edited backend/modules/Companies/Routes/api.php | added 1 import(s) | ~32 |
+| 12:55 | Edited backend/modules/Companies/Routes/api.php | 2→3 lines | ~56 |
+| 12:55 | Edited frontend/src/features/companies/api.ts | expanded (+8 lines) | ~77 |
+| 12:56 | Edited frontend/src/features/companies/hooks.ts | modified useRoles() | ~68 |
+| 12:56 | Created frontend/src/features/auth/RequireAuth.tsx | — | ~172 |
+| 12:56 | Created frontend/src/features/companies/CompanySwitcher.tsx | — | ~318 |
+| 12:56 | Created frontend/src/features/companies/MembersPanel.tsx | — | ~1644 |
+| 12:56 | Created frontend/src/features/companies/CreateCompanyCard.tsx | — | ~358 |
+| 12:56 | Created frontend/src/features/auth/VerifyEmailBanner.tsx | — | ~181 |
+| 12:57 | Created frontend/src/pages/DashboardPage.tsx | — | ~479 |
+| 12:57 | Created frontend/src/features/companies/AcceptInvitationPage.tsx | — | ~570 |
+| 12:57 | Created frontend/src/App.tsx | — | ~387 |
+| 12:57 | Edited frontend/src/main.tsx | added 1 import(s) | ~49 |
+| 12:57 | Edited frontend/src/main.tsx | 7→9 lines | ~56 |
+| 12:59 | Created frontend/src/features/companies/AcceptInvitationPage.tsx | — | ~514 |
+| 12:59 | Edited frontend/src/features/companies/AcceptInvitationPage.tsx | inline fix | ~33 |
+| 12:59 | Edited frontend/src/features/companies/AcceptInvitationPage.tsx | inline fix | ~26 |
+| 12:59 | Edited frontend/src/features/auth/ResetPasswordPage.tsx | inline fix | ~23 |
+| 13:00 | Created frontend/src/test/utils.tsx | — | ~474 |
+| 13:00 | Created frontend/src/test/fetchStub.ts | — | ~446 |
+| 13:00 | Created frontend/src/App.test.tsx | — | ~609 |
+| 13:01 | Created frontend/src/lib/forms.test.ts | — | ~319 |
+| 13:01 | Edited frontend/src/lib/api.test.ts | expanded (+25 lines) | ~258 |
+| 13:01 | Created frontend/src/features/auth/api.test.ts | — | ~657 |
+| 13:01 | Created frontend/src/features/auth/LoginPage.test.tsx | — | ~647 |
+| 13:02 | Created frontend/src/features/auth/LoginPage.test.tsx | — | ~579 |
+| 13:02 | Created frontend/src/features/auth/RegisterPage.test.tsx | — | ~606 |
+| 13:03 | Created frontend/src/features/auth/PasswordPages.test.tsx | — | ~717 |
+| 13:03 | Edited frontend/src/features/auth/PasswordPages.test.tsx | added 1 import(s) | ~40 |
+| 13:03 | Edited frontend/src/features/auth/PasswordPages.test.tsx | 14→15 lines | ~198 |
+| 13:03 | Created frontend/src/features/companies/CompanySwitcher.test.tsx | — | ~577 |
+| 13:04 | Created frontend/src/features/companies/MembersPanel.test.tsx | — | ~1047 |
+| 13:05 | Edited frontend/src/features/companies/MembersPanel.test.tsx | 14→19 lines | ~148 |
+| 13:05 | Created frontend/src/features/companies/CreateCompanyCard.test.tsx | — | ~585 |
+| 13:05 | Created frontend/src/features/companies/AcceptInvitationPage.test.tsx | — | ~540 |
+| 13:05 | Edited frontend/src/features/companies/AcceptInvitationPage.test.tsx | 5→5 lines | ~50 |
+| 13:06 | Created frontend/src/features/auth/VerifyEmailBanner.test.tsx | — | ~396 |
+| 13:06 | Created frontend/src/pages/DashboardPage.test.tsx | — | ~822 |
+| 13:07 | Edited frontend/vite.config.ts | 5→6 lines | ~39 |
+| 13:12 | Edited frontend/src/features/companies/CompanySwitcher.test.tsx | CSS: timeout | ~48 |
+| 13:12 | Edited frontend/src/features/companies/CreateCompanyCard.test.tsx | CSS: timeout | ~66 |
+| 13:12 | Edited frontend/src/pages/DashboardPage.test.tsx | CSS: timeout | ~61 |
+| 13:14 | Edited frontend/src/test/fetchStub.ts | 3→2 lines | ~36 |
+| 13:14 | Edited frontend/src/features/auth/api.test.ts | inline fix | ~14 |
+| 13:15 | Edited backend/modules/Companies/Tests/Feature/CompanyManagementTest.php | modified it() | ~127 |

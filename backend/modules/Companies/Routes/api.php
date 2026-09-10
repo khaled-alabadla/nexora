@@ -10,6 +10,7 @@ use Modules\Companies\Http\Controllers\CurrentCompanyController;
 use Modules\Companies\Http\Controllers\InvitationAcceptanceController;
 use Modules\Companies\Http\Controllers\InvitationController;
 use Modules\Companies\Http\Controllers\MemberController;
+use Modules\Companies\Http\Controllers\RoleCatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
         ->name('companies.active');
     Route::post('invitations/{token}/accept', [InvitationAcceptanceController::class, 'store'])
         ->name('invitations.accept');
+    Route::get('roles', RoleCatalogController::class)->name('roles.index');
 
     // Operates inside the active company.
     Route::middleware('active-company')->group(function (): void {
