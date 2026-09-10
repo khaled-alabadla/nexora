@@ -14,55 +14,76 @@ app — see [ADR-0004](adr/0004-authentication-transport.md).
 - Personal-access (Bearer) tokens remain available for future external/API
   clients; not used by the SPA.
 
-Requirements:
+Requirements (all live as of Phase 1.1):
 
-- Secure authentication (implemented in Phase 1)
-- Password hashing (bcrypt, cost 12)
-- Password reset
-- Email verification
-- Session/token security
-- Logout / session invalidation
+- Password hashing — `bcrypt` via the `hashed` cast; `Password::defaults()`
+  (min 8) + confirmation on registration and reset.
+- Registration is transactional: user + first company + Owner membership commit
+  together or not at all.
+- Login — session ID regenerated on success; 5 failed attempts per email+IP
+  trigger a timed lockout (`LoginRequest`).
+- Logout — `Auth::logout()` + `session()->invalidate()` + token regeneration.
+- Password reset — Laravel broker (single-use token, 60-min expiry); the
+  "forgot" endpoint always returns the same message, so it never reveals
+  whether an address is registered.
+- Email verification — signed, expiring URL checked against `sha1(email)`; the
+  route trusts the signature, never an auth guard. Resend is throttled.
+- Invitation tokens — 48-char random, stored **only as a sha256 hash**; the
+  plaintext is emailed once. Acceptance requires the signed-in user to own the
+  invited address (`hash_equals`), and enforces single-use + expiry.
 
-Phase 0 configures Sanctum, CORS, and CSRF middleware only; auth endpoints are
-Phase 1.
+Phase 0 configured Sanctum, CORS, and CSRF middleware; the endpoints landed in
+Phase 1 (`Modules\Identity`).
 
 ---
 
 ## 2. Authorization
 
-Authorization must always happen server-side.
+Authorization always happens server-side. Hiding a button in React is NOT
+security — the SPA's `permissions` list is a UX hint only.
 
-Use:
+Phase 1 implementation:
 
-- Policies
-- Gates
-- Permissions
-- Roles
-
-Never rely on frontend authorization.
-
-Hiding a button in React is NOT security.
+- **System roles** (`roles` table, seeded) with a numeric `level`. One role per
+  user per company (`company_user.role_id`).
+- **Permission catalogue** in `App\Support\Authorization\Permissions`; role →
+  permission grants in `role_permission`. Owner implicitly holds every
+  permission (`Gate::before` + `Role::isOwner()`).
+- **`permission:<slug>` route middleware** (`EnsurePermission`) on every mutating
+  company route; a matching `Gate::define` per slug for controller/policy use.
+- Checks always resolve against the caller's **active** company, never the
+  highest role they hold elsewhere (covered by `TenantIsolationTest`).
+- The Owner role can never be granted through the API (invite / role-update
+  reject it); a company can never lose its last Owner.
 
 ---
 
 ## 3. Multi-Tenant Isolation
 
-Tenant isolation is a critical security requirement.
+Tenant isolation is a critical security requirement — see
+[ADR-0006](adr/0006-tenancy-mechanism.md).
 
-Users must never access data belonging to another company.
-
-The backend must derive the active company from authenticated
-context.
-
-Never trust:
-
-company_id
-
-from request input.
-
-Every tenant-owned query must be properly scoped.
-
-Tenant isolation must have automated tests.
+- `App\Support\Tenancy\CompanyContext` — request-scoped singleton holding the
+  active company. `id()` **throws** when unset; a missing context is a bug,
+  never a silent "all tenants" query.
+- `SetActiveCompany` middleware resolves `users.current_company_id`, re-verifies
+  a live membership and an `active` company on every request, and binds the
+  context. No/stale pointer → `409 no_active_company` (the pointer is cleared).
+- `BelongsToCompany` trait — global `where company_id = <active>` scope, a
+  `creating` hook that forces `company_id` from the context (client values are
+  ignored), and `Model::withoutCompanyScope(Closure)` as the **only** sanctioned,
+  grep-auditable bypass (seeders, and invitation acceptance which runs with no
+  active company).
+- `company_id` is never in `$fillable`. The API never trusts a client
+  `company_id` / `user_id` / `role_id`.
+- Route parameters for members and invitations are resolved through
+  company-scoped lookups, so a foreign id returns `404`, not `403` (no
+  existence disclosure). Switching the active company to one you don't belong
+  to returns `404`.
+- **Automated tests**: `modules/Companies/Tests/Feature/TenantIsolationTest.php`
+  (cross-tenant reads/writes, per-company permission evaluation, mid-session
+  membership revocation) and `Tests/Unit/BelongsToCompanyScopeTest.php` (the
+  scope mechanism itself).
 
 ---
 

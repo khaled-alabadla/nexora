@@ -43,6 +43,8 @@ Never start the next major phase without explicit approval.
 
 ## Current Phase
 
-Phase 0 — Foundation
+Phase 1 — Identity & Multi-Tenancy. Slice **1.1 (Identity Foundation) complete**
+(see `docs/PHASE-1.md`): auth, companies/memberships, roles/permissions, tenant
+isolation, and the SPA that drives them. PHPStan is now at level 8.
 
-Do not implement business functionality until Phase 0 is approved.
+Do not start the next major phase without explicit approval.

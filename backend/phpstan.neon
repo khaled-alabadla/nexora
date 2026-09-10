@@ -2,7 +2,7 @@ includes:
     - vendor/larastan/larastan/extension.neon
 
 parameters:
-    level: 6
+    level: 8
 
     paths:
         - app
@@ -13,8 +13,22 @@ parameters:
 
     excludePaths:
         - modules/*/Database/Migrations/*
+        # Test suites are covered by Pest, not static analysis (mirrors the
+        # top-level tests/ directory being out of scope).
+        - modules/*/Tests/*
 
     tmpDir: .phpstan.cache
+
+    ignoreErrors:
+        # Stock Laravel config files: env() is typed string|bool and the
+        # framework's own published configs feed it straight into string funcs.
+        - message: '#Parameter \#(1|2) \$string of function (rtrim|explode) expects string, bool\|string given\.#'
+          paths:
+            - config/filesystems.php
+            - config/sanctum.php
+        # Laravel's factory-name resolver closure — signature is stock artisan.
+        - message: '#guessFactoryNamesUsing\(\) expects callable#'
+          path: app/Providers/AppServiceProvider.php
 
     checkModelProperties: true
     checkOctaneCompatibility: false

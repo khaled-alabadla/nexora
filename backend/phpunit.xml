@@ -25,7 +25,12 @@
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="APP_URL" value="http://localhost"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <!-- The SPA auth flow (ADR-0004) needs stateful requests; tests mark the
+             host as the frontend origin (see tests/Pest.php beforeEach). -->
+        <env name="SANCTUM_STATEFUL_DOMAINS" value="localhost"/>
+        <env name="FRONTEND_URL" value="http://localhost"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="BROADCAST_CONNECTION" value="null"/>
         <env name="CACHE_STORE" value="array"/>
@@ -34,7 +39,9 @@
         <env name="DB_DATABASE" value="nexora_test"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="SESSION_DRIVER" value="array"/>
+        <!-- database (not array): the SPA auth flow round-trips the session
+             cookie across requests, which the array driver does not persist. -->
+        <env name="SESSION_DRIVER" value="database"/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
