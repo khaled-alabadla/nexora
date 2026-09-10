@@ -4,15 +4,16 @@ budget_tokens: 1000
 ---
 # STATUS — Nexora
 
-> Read FIRST when resuming. Last updated: 2026-09-10
+> Read FIRST when resuming. Last updated: 2026-09-10 (evening)
 
 ## Mode
 
 Autonomous build (user: full autonomy through all phases). Branch model
-`main` / `develop` / `feature/*`, local `--no-ff` merges, phase → tag.
-**`git push` is BLOCKED** (auto-mode classifier; no `gh`/token) — history is
-local only. CI (`.github/workflows/ci.yml`) runs on first push; the local full
-quality suite is the working gate.
+`main` / `develop` / `feature/*`, `--no-ff` merges, phase → annotated tag.
+**`git push` now works** — `origin` (github.com/khaled-alabadla/nexora) accepts
+pushes; CI (`.github/workflows/ci.yml`) runs on `main`/`develop`/PR. No `gh`
+CLI — query runs via the GitHub REST API (`curl`, unauthenticated). Local
+`make check` / `make check-frontend` remain the fast gate.
 
 ## ✅ Phase 0 — Foundation — COMPLETE (tag `phase-0`, on `main` + `develop`)
 
@@ -22,9 +23,11 @@ Sanctum SPA cookie config. React 19 / Vite / TS strict, Tailwind v4, TanStack
 Query, Zustand, typed API client. Compose: app/nginx/queue/scheduler/mysql/
 redis/node/mailpit. ADRs 0001–0005.
 
-## ✅ Phase 1.1 — Identity Foundation — COMPLETE (tag `phase-1.1`, on `develop`)
+## ✅ Phase 1 — Identity & Multi-Tenancy — COMPLETE & PROMOTED
 
-Merged `347ea90`. Not on `main` — full-phase promotion needs user sign-off.
+On `main` + `develop`. Tags `phase-1.1` (slice) and `phase-1` (`main`, `d0a1c49`).
+**CI green on first push** (run #3, after a composer-audit fix — the security
+job needed `composer audit --locked` since it has no `composer install`).
 
 - **Identity module**: register (txn: user + first company + Owner membership),
   login (session regen, 5/email+IP lockout), logout, `GET /auth/me` (session
@@ -55,28 +58,35 @@ Merged `347ea90`. Not on `main` — full-phase promotion needs user sign-off.
   (`companyWithOwner`, `addMember`, `actingInCompany`). Frontend `test/fetchStub.ts`
   (fetch router) + `MemoryRouter` in `renderWithProviders`.
 
-## 🚀 Next quest — Phase 1 close-out / Phase 2
+## 🚀 Next quest — Phase 2: Products & Inventory
 
-The ROADMAP Phase 1 checklist is fully delivered by slice 1.1. Options for the
-user to decide:
+**PLAN drafted** → `docs/PHASE-2-PLAN.md`. Next step is **GRILL-ME** on that
+doc's §7 (12 open decisions), then IMPLEMENT slice 2.1.
 
-1. **Promote Phase 1 to `main` + tag `phase-1`** — needs explicit approval
-   (production line). Nothing code-wise blocks it.
-2. **Phase 1.2 polish** (deferred, non-blocking): per-company custom roles,
-   invitation-resend UI, pending-invite management polish.
-3. **Start Phase 2 — Products & Inventory** — needs PLAN → GRILL-ME. Adds the
-   first real `BelongsToCompany` business models; `inventory_movements.unit_cost`
-   (18,4) to add per `docs/DATABASE.md`.
+- Modules `Products` + `Inventory` (both scaffolded, empty). First real
+  `BelongsToCompany` business models.
+- Slices: 2.1 Products/Categories CRUD (+ shared infra: `ApiResponse::paginated`,
+  query-filter helper, route-binding-order spike) → 2.2 Warehouses → 2.3 ledger
+  + `stock` projection + `inventory:reconcile` → 2.4 adjustments → 2.5 transfers
+  → 2.6 low-stock → 2.7 docs/close.
+- Key open decisions: stock projection vs on-the-fly SUM; signed vs
+  positive+direction quantity; category tree; negative-stock policy; route
+  binding via middleware priority vs manual lookup. See plan §7.
+- Add `inventory_movements.unit_cost` `DECIMAL(18,4)` (flagged in DATABASE.md).
+- Do NOT start implementing until GRILL-ME is done with the user.
 
 ## Context
 
-- Branch `develop` clean; `feature/1.1-identity-foundation` merged (not deleted).
-- Docker stack is up. Host PHP 8.2 is unsupported — all backend cmds via
-  `docker compose exec -T app …`. Coverage needs `XDEBUG_MODE=coverage`.
-- `make check` = pint + phpstan + pest. Ports: API 8000, MySQL 33061,
-  Mailpit 8025, Vite 5173.
+- `develop` = `main` + this handoff. `feature/1.1-identity-foundation` merged
+  (kept, also on origin).
+- Docker stack up. Host PHP 8.2 unsupported — backend cmds via
+  `docker compose exec -T app …`; coverage needs `XDEBUG_MODE=coverage`.
+- Test infra quirk: `phpunit.xml` uses `SESSION_DRIVER=database` + a stateful
+  `Origin` header (Sanctum SPA cookie flow). See
+  `.wolf/` memory / `docs/PHASE-1.md`.
+- Ports: API 8000, MySQL 33061, Mailpit 8025, Vite 5173.
 
 ## References
 
-- `docs/PHASE-1.md`, `docs/PHASE-0.md`, `docs/adr/0006-tenancy-mechanism.md`
-- `docs/ROADMAP.md` (deferred items), `.wolf/cerebrum.md` (decisions)
+- `docs/PHASE-2-PLAN.md` (next), `docs/PHASE-1.md`, `docs/PHASE-0.md`
+- `docs/adr/0006-tenancy-mechanism.md`, `docs/ROADMAP.md`, `.wolf/cerebrum.md`
