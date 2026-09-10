@@ -355,3 +355,6 @@ description: chronological action log per session, consolidated weekly
 | 13:29 | Edited .github/workflows/ci.yml | 2→2 lines | ~25 |
 | 13:29 | Edited docs/PHASE-1.md | inline fix | ~16 |
 | 13:29 | Edited docs/ARCHITECTURE.md | inline fix | ~21 |
+| 14:06 | Edited .github/workflows/ci.yml | 3→6 lines | ~100 |
+| 14:06 | Edited docs/TESTING.md | 3→3 lines | ~47 |
+| 14:06 | Edited docs/TESTING.md | inline fix | ~22 |

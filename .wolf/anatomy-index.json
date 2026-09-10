@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-10T10:29:50.797Z",
+    "lastScanned": "2026-09-10T11:06:46.294Z",
     "fileCount": 193,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "32e7c98ac5ae4c388aa39749a419b369051c049ab5c20aae4f99ff5214442792",
-    "storeUpdatedAt": "2026-09-10T10:29:50.811Z",
-    "rootHash": "d545cbb122a51b6a"
+    "renderedHash": "2af8385875c9a8b886ad246fb0c7ece62a3df4da5b0eed7ec1cc28e34dfe27f7",
+    "storeUpdatedAt": "2026-09-10T11:06:46.313Z",
+    "rootHash": "b84f3806963b60c1"
   },
   "files": {
     "AGENTS.md": {
@@ -363,11 +363,11 @@
     },
     "docs/TESTING.md": {
       "description": "Nexora — Testing Strategy",
-      "tokens": 679,
-      "hash": "dca9d1b184634a8b",
-      "size": 2741,
-      "mtimeMs": 1788948314863.21,
-      "updatedAt": "2026-09-09T10:05:15.098Z",
+      "tokens": 680,
+      "hash": "88bf89b6105b820c",
+      "size": 2745,
+      "mtimeMs": 1789038406042.7307,
+      "updatedAt": "2026-09-10T11:06:46.292Z",
       "source": "hook"
     },
     "docs/DEVELOPMENT.md": {
@@ -695,11 +695,11 @@
     },
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
-      "tokens": 1060,
-      "hash": "980c5784404203d1",
-      "size": 3709,
-      "mtimeMs": 1789036181057.5369,
-      "updatedAt": "2026-09-10T10:29:41.323Z",
+      "tokens": 1128,
+      "hash": "090a21d15a6d2645",
+      "size": 3948,
+      "mtimeMs": 1789038391779.7397,
+      "updatedAt": "2026-09-10T11:06:32.009Z",
       "source": "hook"
     },
     ".gitleaks.toml": {

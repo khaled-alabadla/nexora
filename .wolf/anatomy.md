@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T10:29:50.797Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T11:06:46.294Z
 > Files: 193 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
@@ -24,7 +24,7 @@
 
 ## .github/workflows/
 
-- `ci.yml` — CI: CI (~1060 tok)
+- `ci.yml` — CI: CI (~1128 tok)
 
 ## backend/
 
@@ -272,7 +272,7 @@
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
 - `ROADMAP.md` — Nexora — Development Roadmap (~1044 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
-- `TESTING.md` — Nexora — Testing Strategy (~679 tok)
+- `TESTING.md` — Nexora — Testing Strategy (~680 tok)
 
 ## docs/adr/
 
