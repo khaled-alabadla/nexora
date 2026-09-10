@@ -60,14 +60,14 @@ make artisan ARGS="test modules/Sales"
 
 ## Coverage
 
-CI enforces a **minimum line-coverage floor of 60%** for Phase 0, raised each
-phase (target 85%+ for business modules). Coverage is reported by
-`php artisan test --coverage`.
+CI enforces a **minimum line-coverage floor of 85%** (raised from 60% in
+Phase 1), reported by `php artisan test --coverage`. Run coverage locally with
+`XDEBUG_MODE=coverage`.
 
 ## Static analysis & style
 
 Not optional, and run in CI:
 
-- **PHPStan / Larastan** — level 6 (Phase 0); level 8 is a Phase 1 exit gate.
+- **PHPStan / Larastan** — **level 8** (raised from 6 at the Phase 1 exit gate).
 - **Pint** — Laravel preset plus strict types / strict comparisons.
 - **ESLint** + **tsc --noEmit** for the frontend.

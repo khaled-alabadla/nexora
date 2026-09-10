@@ -143,7 +143,10 @@ jobs:
 
       - name: Composer audit
         working-directory: backend
-        run: composer audit --no-interaction
+        # --locked: audit the lock file directly (this job does not run
+        # `composer install`). --abandoned=report: don't fail the build on an
+        # abandoned transitive dep, only on real advisories.
+        run: composer audit --no-interaction --locked --abandoned=report
 
       - uses: actions/setup-node@v4
         with:
