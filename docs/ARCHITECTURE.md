@@ -50,10 +50,11 @@ module's `Routes/api.php` (under `/api/v1`, `api` middleware), migrations, and
 translations. Scaffold with `php artisan make:module <Name>`. Full rationale and
 directory layout: [ADR-0002](adr/0002-modular-monolith-layout.md).
 
-Modules:
+Modules (⬤ = has functionality as of Phase 1.1):
 
-- Identity
-- Companies
+- ⬤ Identity — registration, login/logout, password reset, email verification
+- ⬤ Companies — companies, memberships, active company, roles, permissions,
+  invitations, and the tenancy middleware/context
 - Customers
 - Suppliers
 - Products
@@ -70,16 +71,20 @@ Modules:
 
 ## 5. Multi-Tenancy
 
-A Company represents a tenant.
+A Company represents a tenant; users may belong to many, with exactly one
+**active** at a time (`users.current_company_id`). Implemented in Phase 1 per
+[ADR-0006](adr/0006-tenancy-mechanism.md):
 
-Users may belong to multiple companies.
+- `App\Support\Tenancy\CompanyContext` — request-scoped singleton; `id()` throws
+  when unbound.
+- `SetActiveCompany` middleware — re-verifies membership + company status per
+  request and binds the context; `409 no_active_company` otherwise.
+- `App\Support\Tenancy\BelongsToCompany` trait — global `company_id` scope +
+  forced `company_id` on create; `withoutCompanyScope()` is the only bypass.
 
-The active company is resolved from the authenticated
-user context.
-
-The backend MUST NOT trust company_id supplied by the client.
-
-All tenant-owned queries must be scoped to the active company.
+The backend never trusts a client-supplied `company_id`. All tenant-owned
+queries are scoped to the active company, and this is covered by a dedicated
+cross-tenant test suite.
 
 ---
 
@@ -167,8 +172,8 @@ performance. See [`docs/DEVELOPMENT.md`](DEVELOPMENT.md).
 
 ## 11. Quality gates
 
-- **Backend:** Pint (style), Larastan/PHPStan level 6 (→ 8 by end of Phase 1),
-  Pest on MySQL (`nexora_test`), line-coverage floor 60%.
+- **Backend:** Pint (style), Larastan/PHPStan **level 8** (raised in Phase 1),
+  Pest on MySQL (`nexora_test`), line-coverage floor 85% (raised in Phase 1).
 - **Frontend:** ESLint (type-checked flat config), `tsc --noEmit`, Prettier,
   Vitest (coverage thresholds 80/80/75/65).
 - **CI:** `.github/workflows/ci.yml` runs both plus gitleaks and dependency

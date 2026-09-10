@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T10:15:52.900Z
-> Files: 192 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T10:29:50.797Z
+> Files: 193 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -16,7 +16,7 @@
 - `.gitleaks.toml` — Extends the default gitleaks rule set. (~74 tok)
 - `.nvmrc` (~1 tok)
 - `AGENTS.md` — OpenWolf (~75 tok)
-- `CLAUDE.md` — OpenWolf (~99 tok)
+- `CLAUDE.md` — OpenWolf (~389 tok)
 - `docker-compose.yml` — Docker Compose services (~1012 tok)
 - `GEMINI.md` — OpenWolf (~75 tok)
 - `Makefile` — Nexora — developer command surface. (~1002 tok)
@@ -264,13 +264,14 @@
 
 ## docs/
 
-- `API.md` — Nexora — API Specification (~811 tok)
-- `ARCHITECTURE.md` — Nexora — Architecture (~968 tok)
-- `DATABASE.md` — Nexora — Database Design (~797 tok)
+- `API.md` — Nexora — API Specification (~1749 tok)
+- `ARCHITECTURE.md` — Nexora — Architecture (~1110 tok)
+- `DATABASE.md` — Nexora — Database Design (~1154 tok)
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
-- `ROADMAP.md` — Nexora — Development Roadmap (~856 tok)
-- `SECURITY.md` — Nexora — Security Requirements (~983 tok)
+- `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
+- `ROADMAP.md` — Nexora — Development Roadmap (~1044 tok)
+- `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~679 tok)
 
 ## docs/adr/

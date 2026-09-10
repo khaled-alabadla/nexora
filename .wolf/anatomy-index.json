@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-10T10:15:52.900Z",
-    "fileCount": 192,
+    "lastScanned": "2026-09-10T10:29:50.797Z",
+    "fileCount": 193,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "8af80715960001013a80bb870b4a3dff04f08e92fc4a71f110e304a41f4d57a7",
-    "storeUpdatedAt": "2026-09-10T10:15:52.915Z",
-    "rootHash": "153ec9b4eeef0ea1"
+    "renderedHash": "32e7c98ac5ae4c388aa39749a419b369051c049ab5c20aae4f99ff5214442792",
+    "storeUpdatedAt": "2026-09-10T10:29:50.811Z",
+    "rootHash": "d545cbb122a51b6a"
   },
   "files": {
     "AGENTS.md": {
@@ -21,12 +21,12 @@
     },
     "CLAUDE.md": {
       "description": "OpenWolf",
-      "tokens": 99,
-      "hash": "074d6b42b583729a",
-      "size": 395,
-      "mtimeMs": 1788944210801.8586,
-      "updatedAt": "2026-09-09T08:56:50.978Z",
-      "source": "scan"
+      "tokens": 389,
+      "hash": "f721ef528d98ef8c",
+      "size": 1573,
+      "mtimeMs": 1789036170767.2095,
+      "updatedAt": "2026-09-10T10:29:31.079Z",
+      "source": "hook"
     },
     "GEMINI.md": {
       "description": "OpenWolf",
@@ -696,10 +696,10 @@
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
       "tokens": 1060,
-      "hash": "216b89f2339781e9",
+      "hash": "980c5784404203d1",
       "size": 3709,
-      "mtimeMs": 1788953673656.4653,
-      "updatedAt": "2026-09-09T11:34:33.916Z",
+      "mtimeMs": 1789036181057.5369,
+      "updatedAt": "2026-09-10T10:29:41.323Z",
       "source": "hook"
     },
     ".gitleaks.toml": {
@@ -740,47 +740,47 @@
     },
     "docs/API.md": {
       "description": "Nexora — API Specification",
-      "tokens": 811,
-      "hash": "f3ff5cdad5a0657b",
-      "size": 3251,
-      "mtimeMs": 1788953136894.587,
-      "updatedAt": "2026-09-09T11:25:37.064Z",
+      "tokens": 1749,
+      "hash": "13ff62eb22429b0f",
+      "size": 7021,
+      "mtimeMs": 1789035988385.6528,
+      "updatedAt": "2026-09-10T10:26:28.721Z",
       "source": "hook"
     },
     "docs/ARCHITECTURE.md": {
       "description": "Nexora — Architecture",
-      "tokens": 968,
-      "hash": "e3d0d8879fae61aa",
-      "size": 3891,
-      "mtimeMs": 1788953174770.327,
-      "updatedAt": "2026-09-09T11:26:15.010Z",
+      "tokens": 1110,
+      "hash": "50990e806ca3a399",
+      "size": 4474,
+      "mtimeMs": 1789036190559.2322,
+      "updatedAt": "2026-09-10T10:29:50.795Z",
       "source": "hook"
     },
     "docs/ROADMAP.md": {
       "description": "Nexora — Development Roadmap",
-      "tokens": 856,
-      "hash": "8abe2b8d13320b00",
-      "size": 3474,
-      "mtimeMs": 1788953189230.3018,
-      "updatedAt": "2026-09-09T11:26:29.439Z",
+      "tokens": 1044,
+      "hash": "bc5aab6d8a280f97",
+      "size": 4255,
+      "mtimeMs": 1789036129969.9717,
+      "updatedAt": "2026-09-10T10:28:50.258Z",
       "source": "hook"
     },
     "docs/DATABASE.md": {
       "description": "Nexora — Database Design",
-      "tokens": 797,
-      "hash": "bb2be171d4fc2f4c",
-      "size": 3196,
-      "mtimeMs": 1788953213168.0432,
-      "updatedAt": "2026-09-09T11:26:53.337Z",
+      "tokens": 1154,
+      "hash": "04a94972ecdd8d45",
+      "size": 4648,
+      "mtimeMs": 1789036018908.8457,
+      "updatedAt": "2026-09-10T10:26:59.138Z",
       "source": "hook"
     },
     "docs/SECURITY.md": {
       "description": "Nexora — Security Requirements",
-      "tokens": 983,
-      "hash": "64ed12663e9264d8",
-      "size": 3936,
-      "mtimeMs": 1788953225001.9978,
-      "updatedAt": "2026-09-09T11:27:05.181Z",
+      "tokens": 1615,
+      "hash": "03a280478caac05e",
+      "size": 6485,
+      "mtimeMs": 1789036060181.209,
+      "updatedAt": "2026-09-10T10:27:40.585Z",
       "source": "hook"
     },
     "docs/PHASE-0.md": {
@@ -1991,6 +1991,15 @@
       "size": 2930,
       "mtimeMs": 1789035162666.9944,
       "updatedAt": "2026-09-10T10:12:42.948Z",
+      "source": "hook"
+    },
+    "docs/PHASE-1.md": {
+      "description": "Phase 1 — Identity & Multi-Tenancy",
+      "tokens": 1388,
+      "hash": "4624413370756378",
+      "size": 5583,
+      "mtimeMs": 1789036186448.9636,
+      "updatedAt": "2026-09-10T10:29:46.704Z",
       "source": "hook"
     }
   },
