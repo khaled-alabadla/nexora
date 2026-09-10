@@ -64,6 +64,10 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     throw new ApiError(response.status, body.message ?? response.statusText, body.errors)
   }
 
+  if (response.status === 204 || payload == null) {
+    return undefined as T
+  }
+
   return (payload as ApiEnvelope<T>).data
 }
 
@@ -72,11 +76,18 @@ export async function csrf(): Promise<void> {
   await fetch(`${API_BASE}/sanctum/csrf-cookie`, { credentials: 'include' })
 }
 
+function withBody(method: string, body: unknown): RequestInit {
+  return {
+    method,
+    ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+  }
+}
+
 export const api = {
   get: <T>(path: string): Promise<T> => request<T>(path, { method: 'GET' }),
-  post: <T>(path: string, body?: unknown): Promise<T> =>
-    request<T>(path, {
-      method: 'POST',
-      ...(body === undefined ? {} : { body: JSON.stringify(body) }),
-    }),
+  post: <T>(path: string, body?: unknown): Promise<T> => request<T>(path, withBody('POST', body)),
+  put: <T>(path: string, body?: unknown): Promise<T> => request<T>(path, withBody('PUT', body)),
+  patch: <T>(path: string, body?: unknown): Promise<T> => request<T>(path, withBody('PATCH', body)),
+  delete: <T>(path: string, body?: unknown): Promise<T> =>
+    request<T>(path, withBody('DELETE', body)),
 }

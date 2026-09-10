@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-09T11:34:33.918Z",
-    "fileCount": 83,
+    "lastScanned": "2026-09-10T10:29:50.797Z",
+    "fileCount": 193,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "f819ddb2a46b2a0114f0637a972de5f04dbb1a63b03c7d3f6b458563b4d1e34e",
-    "storeUpdatedAt": "2026-09-09T11:34:33.933Z",
-    "rootHash": "3bd3d6791059c924"
+    "renderedHash": "32e7c98ac5ae4c388aa39749a419b369051c049ab5c20aae4f99ff5214442792",
+    "storeUpdatedAt": "2026-09-10T10:29:50.811Z",
+    "rootHash": "d545cbb122a51b6a"
   },
   "files": {
     "AGENTS.md": {
@@ -21,12 +21,12 @@
     },
     "CLAUDE.md": {
       "description": "OpenWolf",
-      "tokens": 99,
-      "hash": "074d6b42b583729a",
-      "size": 395,
-      "mtimeMs": 1788944210801.8586,
-      "updatedAt": "2026-09-09T08:56:50.978Z",
-      "source": "scan"
+      "tokens": 389,
+      "hash": "f721ef528d98ef8c",
+      "size": 1573,
+      "mtimeMs": 1789036170767.2095,
+      "updatedAt": "2026-09-10T10:29:31.079Z",
+      "source": "hook"
     },
     "GEMINI.md": {
       "description": "OpenWolf",
@@ -282,20 +282,20 @@
     },
     "backend/app/Console/Commands/MakeModuleCommand.php": {
       "description": "Scaffolds a business module (see ADR-0002) and registers its service",
-      "tokens": 1226,
-      "hash": "73e34874eb91f869",
-      "size": 4594,
-      "mtimeMs": 1788950393303.4841,
-      "updatedAt": "2026-09-09T10:39:53.748Z",
+      "tokens": 1229,
+      "hash": "899ba9979c028776",
+      "size": 4606,
+      "mtimeMs": 1789033699482.9392,
+      "updatedAt": "2026-09-10T09:48:19.732Z",
       "source": "hook"
     },
     "backend/phpunit.xml": {
       "description": "",
-      "tokens": 432,
-      "hash": "ede61d7480de9630",
-      "size": 1619,
-      "mtimeMs": 1788947961933.1577,
-      "updatedAt": "2026-09-09T09:59:22.175Z",
+      "tokens": 566,
+      "hash": "127c78c2111063cc",
+      "size": 2121,
+      "mtimeMs": 1789028312383.2456,
+      "updatedAt": "2026-09-10T08:18:32.932Z",
       "source": "hook"
     },
     "backend/pint.json": {
@@ -309,11 +309,11 @@
     },
     "backend/phpstan.neon": {
       "description": "",
-      "tokens": 92,
-      "hash": "8e04bf5a079b48e4",
-      "size": 345,
-      "mtimeMs": 1788947992133.4067,
-      "updatedAt": "2026-09-09T09:59:52.356Z",
+      "tokens": 289,
+      "hash": "4af0ee15b5570b4a",
+      "size": 1083,
+      "mtimeMs": 1789033561258.2769,
+      "updatedAt": "2026-09-10T09:46:01.563Z",
       "source": "hook"
     },
     "backend/config/cors.php": {
@@ -335,12 +335,12 @@
       "source": "hook"
     },
     "backend/tests/Pest.php": {
-      "description": "Declares apiUrl",
-      "tokens": 336,
-      "hash": "d96fe9c16242a116",
-      "size": 1257,
-      "mtimeMs": 1788948225810.6465,
-      "updatedAt": "2026-09-09T10:03:46.010Z",
+      "description": "Create a company owned by $owner (a fresh verified user if omitted) together",
+      "tokens": 936,
+      "hash": "c3a1df0d38915470",
+      "size": 3509,
+      "mtimeMs": 1789028175999.5469,
+      "updatedAt": "2026-09-10T08:16:16.213Z",
       "source": "hook"
     },
     "backend/tests/Feature/HealthEndpointTest.php": {
@@ -435,11 +435,11 @@
     },
     "frontend/vite.config.ts": {
       "description": "/*.{ts,tsx}'],",
-      "tokens": 249,
-      "hash": "3373ae7b62ab18c0",
-      "size": 870,
-      "mtimeMs": 1788952634985.9558,
-      "updatedAt": "2026-09-09T11:17:15.139Z",
+      "tokens": 256,
+      "hash": "edd1421b699d117c",
+      "size": 895,
+      "mtimeMs": 1789034855435.5068,
+      "updatedAt": "2026-09-10T10:07:35.980Z",
       "source": "hook"
     },
     "frontend/eslint.config.js": {
@@ -489,11 +489,11 @@
     },
     "frontend/src/lib/api.ts": {
       "description": "Minimal typed API client for the Nexora backend.",
-      "tokens": 741,
-      "hash": "7c37116925b74de6",
-      "size": 2591,
-      "mtimeMs": 1788952117339.7979,
-      "updatedAt": "2026-09-09T11:08:37.647Z",
+      "tokens": 874,
+      "hash": "ae5c4ef048183c21",
+      "size": 3056,
+      "mtimeMs": 1789033977724.6697,
+      "updatedAt": "2026-09-10T09:52:57.894Z",
       "source": "hook",
       "symbols": [
         {
@@ -521,15 +521,22 @@
           "name": "request",
           "kind": "fn",
           "startLine": 38,
-          "endLine": 70,
-          "tokens": 315
+          "endLine": 74,
+          "tokens": 338
         },
         {
           "name": "csrf",
           "kind": "fn",
-          "startLine": 71,
-          "endLine": 83,
-          "tokens": 116
+          "startLine": 75,
+          "endLine": 78,
+          "tokens": 36
+        },
+        {
+          "name": "withBody",
+          "kind": "fn",
+          "startLine": 79,
+          "endLine": 93,
+          "tokens": 189
         }
       ]
     },
@@ -562,20 +569,20 @@
     },
     "frontend/src/App.tsx": {
       "description": "App",
-      "tokens": 74,
-      "hash": "8848af19be57047c",
-      "size": 257,
-      "mtimeMs": 1788951437222.9668,
-      "updatedAt": "2026-09-09T10:57:17.437Z",
+      "tokens": 387,
+      "hash": "38cff1ba8c69bd97",
+      "size": 1354,
+      "mtimeMs": 1789034250199.558,
+      "updatedAt": "2026-09-10T09:57:30.570Z",
       "source": "hook"
     },
     "frontend/src/main.tsx": {
       "description": "queryClient",
-      "tokens": 174,
-      "hash": "00588ed7e45d47a8",
-      "size": 607,
-      "mtimeMs": 1788951444044.8362,
-      "updatedAt": "2026-09-09T10:57:24.230Z",
+      "tokens": 201,
+      "hash": "c8add1551451a7b3",
+      "size": 703,
+      "mtimeMs": 1789034259924.5154,
+      "updatedAt": "2026-09-10T09:57:40.118Z",
       "source": "hook"
     },
     "frontend/src/test/setup.ts": {
@@ -589,11 +596,11 @@
     },
     "frontend/src/test/utils.tsx": {
       "description": "Build a minimal JSON `Response` for stubbing `fetch` in tests.",
-      "tokens": 313,
-      "hash": "637bae00fd0bd8a4",
-      "size": 1093,
-      "mtimeMs": 1788952755445.322,
-      "updatedAt": "2026-09-09T11:19:15.641Z",
+      "tokens": 474,
+      "hash": "42b2f79164895ba3",
+      "size": 1658,
+      "mtimeMs": 1789034414661.4307,
+      "updatedAt": "2026-09-10T10:00:14.952Z",
       "source": "hook"
     },
     "frontend/src/features/health/HealthCard.test.tsx": {
@@ -678,21 +685,21 @@
       "source": "hook"
     },
     "frontend/src/lib/api.test.ts": {
-      "description": "API routes: GET, POST (6 endpoints)",
-      "tokens": 463,
-      "hash": "0acb379e391b1c09",
-      "size": 1619,
-      "mtimeMs": 1788952800696.9988,
-      "updatedAt": "2026-09-09T11:20:00.896Z",
+      "description": "API routes: GET, POST, DELETE, PATCH (8 endpoints)",
+      "tokens": 705,
+      "hash": "114952fa915c56cd",
+      "size": 2465,
+      "mtimeMs": 1789034477084.963,
+      "updatedAt": "2026-09-10T10:01:17.261Z",
       "source": "hook"
     },
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
       "tokens": 1060,
-      "hash": "216b89f2339781e9",
+      "hash": "980c5784404203d1",
       "size": 3709,
-      "mtimeMs": 1788953673656.4653,
-      "updatedAt": "2026-09-09T11:34:33.916Z",
+      "mtimeMs": 1789036181057.5369,
+      "updatedAt": "2026-09-10T10:29:41.323Z",
       "source": "hook"
     },
     ".gitleaks.toml": {
@@ -714,12 +721,12 @@
       "source": "hook"
     },
     "frontend/src/App.test.tsx": {
-      "description": "fetchMock",
-      "tokens": 175,
-      "hash": "f12b8523a8d70f7c",
-      "size": 610,
-      "mtimeMs": 1788952767681.3225,
-      "updatedAt": "2026-09-09T11:19:27.915Z",
+      "description": "session",
+      "tokens": 609,
+      "hash": "da02fe415241b08a",
+      "size": 2137,
+      "mtimeMs": 1789034438453.213,
+      "updatedAt": "2026-09-10T10:00:38.635Z",
       "source": "hook"
     },
     "frontend/src/store/ui.test.ts": {
@@ -733,47 +740,47 @@
     },
     "docs/API.md": {
       "description": "Nexora — API Specification",
-      "tokens": 811,
-      "hash": "f3ff5cdad5a0657b",
-      "size": 3251,
-      "mtimeMs": 1788953136894.587,
-      "updatedAt": "2026-09-09T11:25:37.064Z",
+      "tokens": 1749,
+      "hash": "13ff62eb22429b0f",
+      "size": 7021,
+      "mtimeMs": 1789035988385.6528,
+      "updatedAt": "2026-09-10T10:26:28.721Z",
       "source": "hook"
     },
     "docs/ARCHITECTURE.md": {
       "description": "Nexora — Architecture",
-      "tokens": 968,
-      "hash": "e3d0d8879fae61aa",
-      "size": 3891,
-      "mtimeMs": 1788953174770.327,
-      "updatedAt": "2026-09-09T11:26:15.010Z",
+      "tokens": 1110,
+      "hash": "50990e806ca3a399",
+      "size": 4474,
+      "mtimeMs": 1789036190559.2322,
+      "updatedAt": "2026-09-10T10:29:50.795Z",
       "source": "hook"
     },
     "docs/ROADMAP.md": {
       "description": "Nexora — Development Roadmap",
-      "tokens": 856,
-      "hash": "8abe2b8d13320b00",
-      "size": 3474,
-      "mtimeMs": 1788953189230.3018,
-      "updatedAt": "2026-09-09T11:26:29.439Z",
+      "tokens": 1044,
+      "hash": "bc5aab6d8a280f97",
+      "size": 4255,
+      "mtimeMs": 1789036129969.9717,
+      "updatedAt": "2026-09-10T10:28:50.258Z",
       "source": "hook"
     },
     "docs/DATABASE.md": {
       "description": "Nexora — Database Design",
-      "tokens": 797,
-      "hash": "bb2be171d4fc2f4c",
-      "size": 3196,
-      "mtimeMs": 1788953213168.0432,
-      "updatedAt": "2026-09-09T11:26:53.337Z",
+      "tokens": 1154,
+      "hash": "04a94972ecdd8d45",
+      "size": 4648,
+      "mtimeMs": 1789036018908.8457,
+      "updatedAt": "2026-09-10T10:26:59.138Z",
       "source": "hook"
     },
     "docs/SECURITY.md": {
       "description": "Nexora — Security Requirements",
-      "tokens": 983,
-      "hash": "64ed12663e9264d8",
-      "size": 3936,
-      "mtimeMs": 1788953225001.9978,
-      "updatedAt": "2026-09-09T11:27:05.181Z",
+      "tokens": 1615,
+      "hash": "03a280478caac05e",
+      "size": 6485,
+      "mtimeMs": 1789036060181.209,
+      "updatedAt": "2026-09-10T10:27:40.585Z",
       "source": "hook"
     },
     "docs/PHASE-0.md": {
@@ -792,6 +799,1207 @@
       "size": 934,
       "mtimeMs": 1788953258786.2021,
       "updatedAt": "2026-09-09T11:27:39.005Z",
+      "source": "hook"
+    },
+    "docs/adr/0006-tenancy-mechanism.md": {
+      "description": "ADR-0006: Multi-tenancy mechanism",
+      "tokens": 674,
+      "hash": "7d495fad1b2d569c",
+      "size": 2709,
+      "mtimeMs": 1788956335621.9126,
+      "updatedAt": "2026-09-09T12:18:55.919Z",
+      "source": "hook"
+    },
+    "backend/app/Support/Tenancy/TenantContextMissingException.php": {
+      "description": "Thrown when tenant-scoped code runs without an active company bound.",
+      "tokens": 147,
+      "hash": "755a1e9aafdc5f4e",
+      "size": 553,
+      "mtimeMs": 1788956377454.1685,
+      "updatedAt": "2026-09-09T12:19:38.036Z",
+      "source": "hook"
+    },
+    "backend/app/Support/Tenancy/CompanyContext.php": {
+      "description": "Holds the active company for the current request / job (see ADR-0006).",
+      "tokens": 442,
+      "hash": "69870b5268fd8317",
+      "size": 1657,
+      "mtimeMs": 1788956390383.1604,
+      "updatedAt": "2026-09-09T12:19:50.686Z",
+      "source": "hook"
+    },
+    "backend/app/Support/Tenancy/BelongsToCompany.php": {
+      "description": "Applied to every tenant-owned model (see ADR-0006).",
+      "tokens": 508,
+      "hash": "7c532424b23b2c94",
+      "size": 1903,
+      "mtimeMs": 1789028979972.277,
+      "updatedAt": "2026-09-10T08:29:40.140Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000001_create_companies_table.php": {
+      "description": "Migration: create companies table",
+      "tokens": 179,
+      "hash": "d8c6b0e5dc772ab2",
+      "size": 671,
+      "mtimeMs": 1788956423698.7383,
+      "updatedAt": "2026-09-09T12:20:24.103Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000002_create_roles_table.php": {
+      "description": "Migration: create roles table",
+      "tokens": 190,
+      "hash": "e012321752f06b7d",
+      "size": 712,
+      "mtimeMs": 1788956440853.285,
+      "updatedAt": "2026-09-09T12:20:41.379Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000003_create_permissions_table.php": {
+      "description": "Migration: create permissions table",
+      "tokens": 162,
+      "hash": "1bea6c72c7d3b588",
+      "size": 607,
+      "mtimeMs": 1788956450019.75,
+      "updatedAt": "2026-09-09T12:20:50.263Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000004_create_role_permission_table.php": {
+      "description": "Migration: create role_permission table",
+      "tokens": 171,
+      "hash": "779f131114bd585e",
+      "size": 640,
+      "mtimeMs": 1788956468012.6309,
+      "updatedAt": "2026-09-09T12:21:08.314Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000005_create_company_user_table.php": {
+      "description": "Migration: create company_user table",
+      "tokens": 215,
+      "hash": "6e036198e7130415",
+      "size": 805,
+      "mtimeMs": 1788956476363.6016,
+      "updatedAt": "2026-09-09T12:21:16.590Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000006_add_current_company_id_to_users_table.php": {
+      "description": "Migration: alter users table",
+      "tokens": 188,
+      "hash": "7e2dcc312f2aa860",
+      "size": 704,
+      "mtimeMs": 1788956489372.6619,
+      "updatedAt": "2026-09-09T12:21:29.657Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000007_create_company_invitations_table.php": {
+      "description": "Migration: create company_invitations table",
+      "tokens": 261,
+      "hash": "a1caf9a1043557fa",
+      "size": 978,
+      "mtimeMs": 1788956497911.6833,
+      "updatedAt": "2026-09-09T12:21:38.326Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Models/Company.php": {
+      "description": "A tenant. Users belong to many companies through `company_user`.",
+      "tokens": 518,
+      "hash": "cd40f347b285a131",
+      "size": 1942,
+      "mtimeMs": 1789028994232.655,
+      "updatedAt": "2026-09-10T08:29:54.544Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Models/Role.php": {
+      "description": "A system-defined role (Phase 1 has no per-company custom roles).",
+      "tokens": 357,
+      "hash": "91f479e7a919688e",
+      "size": 1337,
+      "mtimeMs": 1788956537071.5227,
+      "updatedAt": "2026-09-09T12:22:17.304Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Models/Permission.php": {
+      "description": "Model — 3 fields, 1 rels",
+      "tokens": 153,
+      "hash": "8c84c65d3bba6f1d",
+      "size": 573,
+      "mtimeMs": 1788956545789.2405,
+      "updatedAt": "2026-09-09T12:22:26.090Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Models/CompanyUser.php": {
+      "description": "Membership row: one user's role in one company.",
+      "tokens": 299,
+      "hash": "f23089c88a176f9a",
+      "size": 1118,
+      "mtimeMs": 1789028998350.1836,
+      "updatedAt": "2026-09-10T08:29:58.512Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Models/CompanyInvitation.php": {
+      "description": "A pending invitation for an email address to join a company with a role.",
+      "tokens": 576,
+      "hash": "ed04b8e3381ab3cc",
+      "size": 2161,
+      "mtimeMs": 1789028990281.418,
+      "updatedAt": "2026-09-10T08:29:50.475Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Concerns/HasCompanyMemberships.php": {
+      "description": "Company membership + authorization surface for the User model.",
+      "tokens": 673,
+      "hash": "283213d608529a76",
+      "size": 2523,
+      "mtimeMs": 1788956643493.8484,
+      "updatedAt": "2026-09-09T12:24:03.711Z",
+      "source": "hook"
+    },
+    "backend/app/Models/User.php": {
+      "description": "Model — 3 fields",
+      "tokens": 356,
+      "hash": "37c2a69dffd91a77",
+      "size": 1335,
+      "mtimeMs": 1789028976393.6948,
+      "updatedAt": "2026-09-10T08:29:36.553Z",
+      "source": "hook"
+    },
+    "backend/app/Support/Authorization/Permissions.php": {
+      "description": "Central registry of every permission slug in the system.",
+      "tokens": 386,
+      "hash": "8c639ad2a50b0fba",
+      "size": 1447,
+      "mtimeMs": 1788956691699.6414,
+      "updatedAt": "2026-09-09T12:24:51.972Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Seeders/RolesAndPermissionsSeeder.php": {
+      "description": "Idempotent. Runs on every `migrate --seed`; safe to re-run.",
+      "tokens": 651,
+      "hash": "5debf670b21539fb",
+      "size": 2441,
+      "mtimeMs": 1788956714719.2488,
+      "updatedAt": "2026-09-09T12:25:14.936Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_10_000008_seed_roles_and_permissions.php": {
+      "description": "Roles and permissions are reference data — effectively part of the schema.",
+      "tokens": 186,
+      "hash": "1ecf7267ae094306",
+      "size": 699,
+      "mtimeMs": 1788956733517.33,
+      "updatedAt": "2026-09-09T12:25:33.721Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Middleware/SetActiveCompany.php": {
+      "description": "Binds the caller's active company into CompanyContext (see ADR-0006).",
+      "tokens": 445,
+      "hash": "700647c17244e9f1",
+      "size": 1667,
+      "mtimeMs": 1788956778093.3582,
+      "updatedAt": "2026-09-09T12:26:18.322Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Middleware/EnsurePermission.php": {
+      "description": "Route middleware: `permission:member.invite`.",
+      "tokens": 192,
+      "hash": "79f3b6e0bc46403b",
+      "size": 720,
+      "mtimeMs": 1788956788264.7927,
+      "updatedAt": "2026-09-09T12:26:28.502Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Factories/CompanyFactory.php": {
+      "description": "CompanyFactory: definition, suspended",
+      "tokens": 195,
+      "hash": "fde3d2010cf35d70",
+      "size": 731,
+      "mtimeMs": 1788956800344.6514,
+      "updatedAt": "2026-09-09T12:26:40.933Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Providers/CompaniesServiceProvider.php": {
+      "description": "CompaniesServiceProvider: register, boot",
+      "tokens": 472,
+      "hash": "523a27f63b349435",
+      "size": 1767,
+      "mtimeMs": 1789029032285.7761,
+      "updatedAt": "2026-09-10T08:30:32.449Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Requests/RegisterRequest.php": {
+      "description": "RegisterRequest: authorize, rules",
+      "tokens": 191,
+      "hash": "c3615d0e32ee58ff",
+      "size": 714,
+      "mtimeMs": 1789027583806.9497,
+      "updatedAt": "2026-09-10T08:06:24.010Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Requests/LoginRequest.php": {
+      "description": "LoginRequest: authorize, rules, authenticate, throttleKey",
+      "tokens": 534,
+      "hash": "1b731a560b1c65a4",
+      "size": 2000,
+      "mtimeMs": 1789027592990.7397,
+      "updatedAt": "2026-09-10T08:06:33.189Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Requests/ForgotPasswordRequest.php": {
+      "description": "ForgotPasswordRequest: authorize, rules",
+      "tokens": 116,
+      "hash": "1dcca72478a8dbca",
+      "size": 434,
+      "mtimeMs": 1789027612853.756,
+      "updatedAt": "2026-09-10T08:06:53.044Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Requests/ResetPasswordRequest.php": {
+      "description": "ResetPasswordRequest: authorize, rules",
+      "tokens": 162,
+      "hash": "56b0681f032296a9",
+      "size": 607,
+      "mtimeMs": 1789027621633.7666,
+      "updatedAt": "2026-09-10T08:07:01.800Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Services/CompanyProvisioner.php": {
+      "description": "Creates a company and its founding Owner membership as one atomic unit.",
+      "tokens": 443,
+      "hash": "898bddfd9904c4dd",
+      "size": 1661,
+      "mtimeMs": 1789027631039.5881,
+      "updatedAt": "2026-09-10T08:07:11.243Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Actions/RegisterUser.php": {
+      "description": "Registration: create the user, their first company, and the Owner membership",
+      "tokens": 348,
+      "hash": "34587198325344dd",
+      "size": 1303,
+      "mtimeMs": 1789027641171.8652,
+      "updatedAt": "2026-09-10T08:07:21.360Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Resources/UserResource.php": {
+      "description": "UserResource: toArray",
+      "tokens": 151,
+      "hash": "bb0d3f5d3e59273c",
+      "size": 565,
+      "mtimeMs": 1789027650090.1191,
+      "updatedAt": "2026-09-10T08:07:30.273Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Resources/RoleResource.php": {
+      "description": "RoleResource: toArray",
+      "tokens": 138,
+      "hash": "be9a15d273511547",
+      "size": 517,
+      "mtimeMs": 1789027660630.506,
+      "updatedAt": "2026-09-10T08:07:40.831Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Resources/CompanyResource.php": {
+      "description": "CompanyResource: toArray",
+      "tokens": 167,
+      "hash": "31ac67d1f464885a",
+      "size": 626,
+      "mtimeMs": 1789027667621.0486,
+      "updatedAt": "2026-09-10T08:07:47.810Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Resources/MembershipResource.php": {
+      "description": "A company as seen from one user's membership — the company fields plus the",
+      "tokens": 266,
+      "hash": "26ca6d61f7592fa8",
+      "size": 999,
+      "mtimeMs": 1789033595829.6067,
+      "updatedAt": "2026-09-10T09:46:36.074Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Resources/MemberResource.php": {
+      "description": "One member of the active company (a company_user row with user + role loaded).",
+      "tokens": 243,
+      "hash": "f95c9edb5092f1d4",
+      "size": 909,
+      "mtimeMs": 1789033606494.954,
+      "updatedAt": "2026-09-10T09:46:46.676Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Resources/InvitationResource.php": {
+      "description": "InvitationResource: toArray",
+      "tokens": 238,
+      "hash": "7afb868bf523b82f",
+      "size": 892,
+      "mtimeMs": 1789027678751.1926,
+      "updatedAt": "2026-09-10T08:07:58.989Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Support/SessionPayload.php": {
+      "description": "Assembles the \"who am I\" payload returned by register / login / GET me:",
+      "tokens": 367,
+      "hash": "8f581302abf07f17",
+      "size": 1373,
+      "mtimeMs": 1789033637004.7324,
+      "updatedAt": "2026-09-10T09:47:17.173Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Controllers/RegisteredUserController.php": {
+      "description": "store",
+      "tokens": 231,
+      "hash": "655244e02d12f319",
+      "size": 864,
+      "mtimeMs": 1789027703576.9814,
+      "updatedAt": "2026-09-10T08:08:23.798Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Controllers/AuthenticatedSessionController.php": {
+      "description": "store, destroy",
+      "tokens": 264,
+      "hash": "c61398e9ab5ddf15",
+      "size": 990,
+      "mtimeMs": 1789027709124.428,
+      "updatedAt": "2026-09-10T08:08:29.348Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Controllers/SessionUserController.php": {
+      "description": "__invoke",
+      "tokens": 130,
+      "hash": "e34f4b5a151a8563",
+      "size": 484,
+      "mtimeMs": 1789027713141.1228,
+      "updatedAt": "2026-09-10T08:08:33.343Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Controllers/EmailVerificationNotificationController.php": {
+      "description": "store",
+      "tokens": 170,
+      "hash": "053d939d44536433",
+      "size": 635,
+      "mtimeMs": 1789029020784.6838,
+      "updatedAt": "2026-09-10T08:30:21.012Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Controllers/VerifyEmailController.php": {
+      "description": "Handles the signed link from the verification email. The link is opened",
+      "tokens": 281,
+      "hash": "9db4a602786aa321",
+      "size": 1055,
+      "mtimeMs": 1789027745351.0298,
+      "updatedAt": "2026-09-10T08:09:05.540Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Controllers/PasswordResetLinkController.php": {
+      "description": "store",
+      "tokens": 175,
+      "hash": "eb042c77ab2637e2",
+      "size": 658,
+      "mtimeMs": 1789027750192.3862,
+      "updatedAt": "2026-09-10T08:09:10.367Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Http/Controllers/NewPasswordController.php": {
+      "description": "store",
+      "tokens": 336,
+      "hash": "c280605ef700a9b6",
+      "size": 1260,
+      "mtimeMs": 1789027756891.4875,
+      "updatedAt": "2026-09-10T08:09:17.058Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Routes/api.php": {
+      "description": "",
+      "tokens": 585,
+      "hash": "2acec4147140c41c",
+      "size": 2193,
+      "mtimeMs": 1789027773709.531,
+      "updatedAt": "2026-09-10T08:09:33.893Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Providers/IdentityServiceProvider.php": {
+      "description": "The verification email is opened in a browser; the password-reset link is",
+      "tokens": 404,
+      "hash": "b13b66bcda32509b",
+      "size": 1514,
+      "mtimeMs": 1789033688168.4324,
+      "updatedAt": "2026-09-10T09:48:08.329Z",
+      "source": "hook"
+    },
+    "backend/config/app.php": {
+      "description": "",
+      "tokens": 1266,
+      "hash": "89accd0df6d8e238",
+      "size": 4746,
+      "mtimeMs": 1789027794654.7854,
+      "updatedAt": "2026-09-10T08:09:54.857Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Services/CompanyMembershipService.php": {
+      "description": "Membership lifecycle within a single company: switching the active company,",
+      "tokens": 914,
+      "hash": "fc629d613775dc57",
+      "size": 3428,
+      "mtimeMs": 1789033668455.453,
+      "updatedAt": "2026-09-10T09:47:48.982Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Services/CompanyInvitationService.php": {
+      "description": "Invitations to join the active company. Creation and revocation run inside a",
+      "tokens": 1330,
+      "hash": "00ad20e25341c21c",
+      "size": 4985,
+      "mtimeMs": 1789029045954.6328,
+      "updatedAt": "2026-09-10T08:30:46.173Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Notifications/CompanyInvitationNotification.php": {
+      "description": "CompanyInvitationNotification: via, toMail",
+      "tokens": 327,
+      "hash": "8714a86c8f79b14b",
+      "size": 1226,
+      "mtimeMs": 1789027885143.2146,
+      "updatedAt": "2026-09-10T08:11:25.318Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Requests/StoreCompanyRequest.php": {
+      "description": "StoreCompanyRequest: authorize, rules",
+      "tokens": 121,
+      "hash": "e25d5bca88b3060c",
+      "size": 452,
+      "mtimeMs": 1789027891937.473,
+      "updatedAt": "2026-09-10T08:11:32.143Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Requests/UpdateCompanyRequest.php": {
+      "description": "UpdateCompanyRequest: authorize, rules",
+      "tokens": 131,
+      "hash": "2fb6e5b603135b1f",
+      "size": 490,
+      "mtimeMs": 1789027895980.2112,
+      "updatedAt": "2026-09-10T08:11:36.246Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Requests/InviteMemberRequest.php": {
+      "description": "InviteMemberRequest: authorize, rules",
+      "tokens": 207,
+      "hash": "3db6b15e770d5943",
+      "size": 775,
+      "mtimeMs": 1789027901155.4785,
+      "updatedAt": "2026-09-10T08:11:41.324Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Requests/UpdateMemberRoleRequest.php": {
+      "description": "UpdateMemberRoleRequest: authorize, rules",
+      "tokens": 192,
+      "hash": "e0cb304dc1b3d16d",
+      "size": 717,
+      "mtimeMs": 1789027905833.1846,
+      "updatedAt": "2026-09-10T08:11:46.057Z",
+      "source": "hook"
+    },
+    "backend/app/Support/Authorization/GrantedPermissions.php": {
+      "description": "Resolves the effective permission slugs for a role. Owner implicitly holds",
+      "tokens": 212,
+      "hash": "18cd2880c68bc8b6",
+      "size": 794,
+      "mtimeMs": 1789033731844.9587,
+      "updatedAt": "2026-09-10T09:48:52.110Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Controllers/CompanyController.php": {
+      "description": "The caller's companies. Neither endpoint requires an active company — this is",
+      "tokens": 451,
+      "hash": "4770f2579a298358",
+      "size": 1693,
+      "mtimeMs": 1789033617249.7283,
+      "updatedAt": "2026-09-10T09:46:57.521Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Controllers/ActiveCompanyController.php": {
+      "description": "update",
+      "tokens": 230,
+      "hash": "1b0d88c2ce9cb7e4",
+      "size": 862,
+      "mtimeMs": 1789027966029.2708,
+      "updatedAt": "2026-09-10T08:12:46.245Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Controllers/CurrentCompanyController.php": {
+      "description": "Read / update the active company (bound by SetActiveCompany). The company is",
+      "tokens": 253,
+      "hash": "146c7c0d72228522",
+      "size": 947,
+      "mtimeMs": 1789027972375.934,
+      "updatedAt": "2026-09-10T08:12:52.534Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Controllers/MemberController.php": {
+      "description": "Members of the active company. Every query is scoped to CompanyContext::id();",
+      "tokens": 634,
+      "hash": "8d3d080acbc6c345",
+      "size": 2376,
+      "mtimeMs": 1789033622944.8562,
+      "updatedAt": "2026-09-10T09:47:03.110Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Controllers/InvitationController.php": {
+      "description": "Invitations for the active company. CompanyInvitation is tenant-scoped",
+      "tokens": 489,
+      "hash": "30e200cf11063b80",
+      "size": 1833,
+      "mtimeMs": 1789029012747.3538,
+      "updatedAt": "2026-09-10T08:30:12.935Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Http/Controllers/InvitationAcceptanceController.php": {
+      "description": "Accept an invitation. Runs with no active company: trust comes from the",
+      "tokens": 244,
+      "hash": "1a37265975517370",
+      "size": 915,
+      "mtimeMs": 1789028005266.9336,
+      "updatedAt": "2026-09-10T08:13:25.448Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Routes/api.php": {
+      "description": "",
+      "tokens": 914,
+      "hash": "e5f83b06c0e43f76",
+      "size": 3425,
+      "mtimeMs": 1789034143715.467,
+      "updatedAt": "2026-09-10T09:55:43.892Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Factories/CompanyInvitationFactory.php": {
+      "description": "CompanyInvitationFactory: definition, expired, accepted",
+      "tokens": 359,
+      "hash": "f6081e702893490a",
+      "size": 1346,
+      "mtimeMs": 1789029016454.3418,
+      "updatedAt": "2026-09-10T08:30:16.618Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Tests/Feature/RegistrationTest.php": {
+      "description": "",
+      "tokens": 830,
+      "hash": "2b1df3773211ae9f",
+      "size": 3112,
+      "mtimeMs": 1789028097287.3337,
+      "updatedAt": "2026-09-10T08:14:57.447Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Tests/Feature/LoginTest.php": {
+      "description": "",
+      "tokens": 385,
+      "hash": "4cb76c3fdf753c23",
+      "size": 1442,
+      "mtimeMs": 1789028205285.667,
+      "updatedAt": "2026-09-10T08:16:45.464Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Tests/Feature/LogoutTest.php": {
+      "description": "",
+      "tokens": 218,
+      "hash": "6ee4e6019963fd81",
+      "size": 815,
+      "mtimeMs": 1789028378565.3748,
+      "updatedAt": "2026-09-10T08:19:38.917Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Tests/Feature/SessionTest.php": {
+      "description": "",
+      "tokens": 463,
+      "hash": "f68410916a681a29",
+      "size": 1736,
+      "mtimeMs": 1789028232686.9436,
+      "updatedAt": "2026-09-10T08:17:12.859Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Tests/Feature/EmailVerificationTest.php": {
+      "description": "",
+      "tokens": 684,
+      "hash": "cd38ea8614bd8c25",
+      "size": 2563,
+      "mtimeMs": 1789028244175.617,
+      "updatedAt": "2026-09-10T08:17:24.379Z",
+      "source": "hook"
+    },
+    "backend/modules/Identity/Tests/Feature/PasswordResetTest.php": {
+      "description": "",
+      "tokens": 600,
+      "hash": "f298fc31ef061ad9",
+      "size": 2250,
+      "mtimeMs": 1789028260256.045,
+      "updatedAt": "2026-09-10T08:17:40.432Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Tests/Feature/CompanyManagementTest.php": {
+      "description": "",
+      "tokens": 944,
+      "hash": "7eda1cfc91356be6",
+      "size": 3539,
+      "mtimeMs": 1789035352597.9783,
+      "updatedAt": "2026-09-10T10:15:52.899Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Tests/Feature/ActiveCompanyTest.php": {
+      "description": "",
+      "tokens": 364,
+      "hash": "c0fe78e64f662b5b",
+      "size": 1364,
+      "mtimeMs": 1789028701469.2004,
+      "updatedAt": "2026-09-10T08:25:01.648Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Tests/Feature/MemberManagementTest.php": {
+      "description": "",
+      "tokens": 888,
+      "hash": "5d6c2426602c9753",
+      "size": 3329,
+      "mtimeMs": 1789028438200.2305,
+      "updatedAt": "2026-09-10T08:20:38.611Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Tests/Feature/InvitationTest.php": {
+      "description": "Persist an invitation directly (bypassing the tenant scope, as the service",
+      "tokens": 1537,
+      "hash": "0d09ec8fbf02964f",
+      "size": 5762,
+      "mtimeMs": 1789028474206.9043,
+      "updatedAt": "2026-09-10T08:21:14.383Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Tests/Unit/BelongsToCompanyScopeTest.php": {
+      "description": "Exercises the BelongsToCompany mechanism (ADR-0006) through CompanyInvitation,",
+      "tokens": 783,
+      "hash": "b15bfe28aabe0a0c",
+      "size": 2935,
+      "mtimeMs": 1789028495773.0496,
+      "updatedAt": "2026-09-10T08:21:36.017Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Tests/Feature/TenantIsolationTest.php": {
+      "description": "The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006). A user who",
+      "tokens": 1133,
+      "hash": "dc16995ad911ae25",
+      "size": 4250,
+      "mtimeMs": 1789028521733.297,
+      "updatedAt": "2026-09-10T08:22:01.974Z",
+      "source": "hook"
+    },
+    "backend/database/factories/UserFactory.php": {
+      "description": "UserFactory: definition, unverified",
+      "tokens": 297,
+      "hash": "96d159143d70cd2a",
+      "size": 1112,
+      "mtimeMs": 1789028697751.8147,
+      "updatedAt": "2026-09-10T08:24:57.915Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/types.ts": {
+      "description": "Exports AuthUser, Role, CompanySummary, Session + 3 more",
+      "tokens": 228,
+      "hash": "7a8891029af959ed",
+      "size": 795,
+      "mtimeMs": 1789033983134.3923,
+      "updatedAt": "2026-09-10T09:53:03.307Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/api.ts": {
+      "description": "GET the current session, or `null` when the caller is not authenticated.",
+      "tokens": 390,
+      "hash": "3928ec126b28ea48",
+      "size": 1365,
+      "mtimeMs": 1789034001653.6028,
+      "updatedAt": "2026-09-10T09:53:21.836Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/session.ts": {
+      "description": "Exports sessionKey, useSession, usePermissions, useLogin + 5 more",
+      "tokens": 473,
+      "hash": "e69867c082b49622",
+      "size": 1654,
+      "mtimeMs": 1789034009947.3394,
+      "updatedAt": "2026-09-10T09:53:30.183Z",
+      "source": "hook"
+    },
+    "frontend/src/lib/forms.ts": {
+      "description": "Flatten an ApiError's `errors` map to the first message per field.",
+      "tokens": 211,
+      "hash": "7c114df683597596",
+      "size": 737,
+      "mtimeMs": 1789034019948.968,
+      "updatedAt": "2026-09-10T09:53:40.145Z",
+      "source": "hook"
+    },
+    "frontend/src/components/ui.tsx": {
+      "description": "Field",
+      "tokens": 642,
+      "hash": "6d233597b22e3394",
+      "size": 2245,
+      "mtimeMs": 1789034031572.8225,
+      "updatedAt": "2026-09-10T09:53:51.738Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "Field",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 30,
+          "tokens": 149
+        },
+        {
+          "name": "Input",
+          "kind": "fn",
+          "startLine": 31,
+          "endLine": 44,
+          "tokens": 116
+        },
+        {
+          "name": "Button",
+          "kind": "fn",
+          "startLine": 45,
+          "endLine": 68,
+          "tokens": 205
+        },
+        {
+          "name": "Alert",
+          "kind": "fn",
+          "startLine": 69,
+          "endLine": 82,
+          "tokens": 146
+        }
+      ]
+    },
+    "frontend/src/features/auth/AuthShell.tsx": {
+      "description": "AuthShell",
+      "tokens": 232,
+      "hash": "ce0a43da253c9ff5",
+      "size": 811,
+      "mtimeMs": 1789034041678.5256,
+      "updatedAt": "2026-09-10T09:54:01.844Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/LoginPage.tsx": {
+      "description": "LoginPage — renders form",
+      "tokens": 694,
+      "hash": "1ae1ffb4d9352b01",
+      "size": 2432,
+      "mtimeMs": 1789034065564.6653,
+      "updatedAt": "2026-09-10T09:54:25.763Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "LoginPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 77,
+          "tokens": 601
+        }
+      ]
+    },
+    "frontend/src/features/auth/RegisterPage.tsx": {
+      "description": "RegisterPage — renders form",
+      "tokens": 899,
+      "hash": "4209c281161e5040",
+      "size": 3147,
+      "mtimeMs": 1789034077511.4907,
+      "updatedAt": "2026-09-10T09:54:37.749Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "RegisterPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 98,
+          "tokens": 810
+        }
+      ]
+    },
+    "frontend/src/features/auth/ForgotPasswordPage.tsx": {
+      "description": "ForgotPasswordPage — renders form",
+      "tokens": 410,
+      "hash": "44408e0edcce8512",
+      "size": 1435,
+      "mtimeMs": 1789034087420.667,
+      "updatedAt": "2026-09-10T09:54:47.599Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/ResetPasswordPage.tsx": {
+      "description": "ResetPasswordPage — renders form",
+      "tokens": 720,
+      "hash": "8b2c7b3e7fdc334a",
+      "size": 2522,
+      "mtimeMs": 1789034376657.048,
+      "updatedAt": "2026-09-10T09:59:36.943Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "ResetPasswordPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 80,
+          "tokens": 627
+        }
+      ]
+    },
+    "frontend/src/features/companies/api.ts": {
+      "description": "Exports Member, Invitation, RoleOption, listRoles + 10 more",
+      "tokens": 544,
+      "hash": "872609b3ffe23c6b",
+      "size": 1901,
+      "mtimeMs": 1789034150741.5867,
+      "updatedAt": "2026-09-10T09:55:50.932Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "Member",
+          "kind": "section",
+          "startLine": 5,
+          "endLine": 12,
+          "tokens": 46
+        },
+        {
+          "name": "Invitation",
+          "kind": "section",
+          "startLine": 13,
+          "endLine": 22,
+          "tokens": 68
+        },
+        {
+          "name": "RoleOption",
+          "kind": "section",
+          "startLine": 23,
+          "endLine": 57,
+          "tokens": 403
+        }
+      ]
+    },
+    "frontend/src/features/companies/hooks.ts": {
+      "description": "Exports useRoles, useMembers, useInvitations, useSwitchCompany + 5 more",
+      "tokens": 699,
+      "hash": "b8302b6f89fd9bab",
+      "size": 2446,
+      "mtimeMs": 1789034159899.6716,
+      "updatedAt": "2026-09-10T09:56:00.145Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "useRoles",
+          "kind": "fn",
+          "startLine": 10,
+          "endLine": 13,
+          "tokens": 37
+        },
+        {
+          "name": "useMembers",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 17,
+          "tokens": 40
+        },
+        {
+          "name": "useInvitations",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 21,
+          "tokens": 43
+        },
+        {
+          "name": "useSwitchCompany",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 32,
+          "tokens": 95
+        },
+        {
+          "name": "useCreateCompany",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 42,
+          "tokens": 75
+        },
+        {
+          "name": "useInviteMember",
+          "kind": "fn",
+          "startLine": 43,
+          "endLine": 52,
+          "tokens": 88
+        },
+        {
+          "name": "useRevokeInvitation",
+          "kind": "fn",
+          "startLine": 53,
+          "endLine": 62,
+          "tokens": 76
+        },
+        {
+          "name": "useUpdateMemberRole",
+          "kind": "fn",
+          "startLine": 63,
+          "endLine": 73,
+          "tokens": 91
+        },
+        {
+          "name": "useRemoveMember",
+          "kind": "fn",
+          "startLine": 74,
+          "endLine": 83,
+          "tokens": 75
+        }
+      ]
+    },
+    "backend/modules/Companies/Http/Controllers/RoleCatalogController.php": {
+      "description": "The system role catalogue (Phase 1 has no per-company custom roles). Used by",
+      "tokens": 157,
+      "hash": "e868f1717ecfa649",
+      "size": 587,
+      "mtimeMs": 1789034129637.0095,
+      "updatedAt": "2026-09-10T09:55:29.825Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/RequireAuth.tsx": {
+      "description": "RequireAuth",
+      "tokens": 172,
+      "hash": "900d73b29fd3cf57",
+      "size": 603,
+      "mtimeMs": 1789034167473.0066,
+      "updatedAt": "2026-09-10T09:56:07.673Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/CompanySwitcher.tsx": {
+      "description": "CompanySwitcher",
+      "tokens": 318,
+      "hash": "c815df7a92799fcf",
+      "size": 1116,
+      "mtimeMs": 1789034177986.0857,
+      "updatedAt": "2026-09-10T09:56:18.297Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/MembersPanel.tsx": {
+      "description": "MembersPanel — renders form",
+      "tokens": 1644,
+      "hash": "fb25e2351515e284",
+      "size": 5757,
+      "mtimeMs": 1789034202331.3772,
+      "updatedAt": "2026-09-10T09:56:42.541Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "MembersPanel",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 109,
+          "tokens": 1115
+        },
+        {
+          "name": "InviteForm",
+          "kind": "fn",
+          "startLine": 110,
+          "endLine": 153,
+          "tokens": 421
+        }
+      ]
+    },
+    "frontend/src/features/companies/CreateCompanyCard.tsx": {
+      "description": "CreateCompanyCard — renders form",
+      "tokens": 358,
+      "hash": "a976149402738eef",
+      "size": 1253,
+      "mtimeMs": 1789034212130.415,
+      "updatedAt": "2026-09-10T09:56:52.438Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/VerifyEmailBanner.tsx": {
+      "description": "VerifyEmailBanner",
+      "tokens": 181,
+      "hash": "b5689ae3d5bd0ff0",
+      "size": 636,
+      "mtimeMs": 1789034218263.2278,
+      "updatedAt": "2026-09-10T09:56:58.443Z",
+      "source": "hook"
+    },
+    "frontend/src/pages/DashboardPage.tsx": {
+      "description": "DashboardPage",
+      "tokens": 479,
+      "hash": "0bfec740ee309b67",
+      "size": 1677,
+      "mtimeMs": 1789034228201.0288,
+      "updatedAt": "2026-09-10T09:57:08.515Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/AcceptInvitationPage.tsx": {
+      "description": "AcceptInvitationPage",
+      "tokens": 517,
+      "hash": "0c62e40e757d6cb4",
+      "size": 1811,
+      "mtimeMs": 1789034369869.3425,
+      "updatedAt": "2026-09-10T09:59:30.066Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "AcceptInvitationPage",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 52,
+          "tokens": 412
+        }
+      ]
+    },
+    "frontend/src/test/fetchStub.ts": {
+      "description": "substring match against the request URL",
+      "tokens": 434,
+      "hash": "aa785ee58801e22b",
+      "size": 1516,
+      "mtimeMs": 1789035250882.1724,
+      "updatedAt": "2026-09-10T10:14:11.469Z",
+      "source": "hook"
+    },
+    "frontend/src/lib/forms.test.ts": {
+      "description": "Declares error",
+      "tokens": 319,
+      "hash": "bb8445cc60598117",
+      "size": 1114,
+      "mtimeMs": 1789034467430.4514,
+      "updatedAt": "2026-09-10T10:01:07.612Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/api.test.ts": {
+      "description": "Declares session",
+      "tokens": 654,
+      "hash": "4da1379f643044d5",
+      "size": 2289,
+      "mtimeMs": 1789035264977.6465,
+      "updatedAt": "2026-09-10T10:14:25.424Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/LoginPage.test.tsx": {
+      "description": "guest",
+      "tokens": 579,
+      "hash": "4e8a7538408c8130",
+      "size": 2024,
+      "mtimeMs": 1789034535632.307,
+      "updatedAt": "2026-09-10T10:02:15.817Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/RegisterPage.test.tsx": {
+      "description": "guest",
+      "tokens": 606,
+      "hash": "6a8f4367df74fe3e",
+      "size": 2119,
+      "mtimeMs": 1789034576760.1782,
+      "updatedAt": "2026-09-10T10:02:57.105Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "fillForm",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 58,
+          "tokens": 401
+        }
+      ]
+    },
+    "frontend/src/features/auth/PasswordPages.test.tsx": {
+      "description": "user",
+      "tokens": 740,
+      "hash": "eb86eee20c2f87ee",
+      "size": 2590,
+      "mtimeMs": 1789034610602.847,
+      "updatedAt": "2026-09-10T10:03:30.819Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/CompanySwitcher.test.tsx": {
+      "description": "role",
+      "tokens": 591,
+      "hash": "395db91d55383c02",
+      "size": 2068,
+      "mtimeMs": 1789035137061.058,
+      "updatedAt": "2026-09-10T10:12:17.481Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "role",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 58,
+          "tokens": 470
+        }
+      ]
+    },
+    "frontend/src/features/companies/MembersPanel.test.tsx": {
+      "description": "role",
+      "tokens": 1042,
+      "hash": "6adfbc9f07ae6d75",
+      "size": 3644,
+      "mtimeMs": 1789034715321.6033,
+      "updatedAt": "2026-09-10T10:05:15.557Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "role",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 15,
+          "tokens": 24
+        },
+        {
+          "name": "sessionWith",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 35,
+          "tokens": 218
+        },
+        {
+          "name": "renderPanel",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 101,
+          "tokens": 674
+        }
+      ]
+    },
+    "frontend/src/features/companies/CreateCompanyCard.test.tsx": {
+      "description": "emptySession",
+      "tokens": 613,
+      "hash": "8cf5b3bf8d7d3f82",
+      "size": 2143,
+      "mtimeMs": 1789035148980.3506,
+      "updatedAt": "2026-09-10T10:12:29.480Z",
+      "source": "hook"
+    },
+    "frontend/src/features/companies/AcceptInvitationPage.test.tsx": {
+      "description": "session",
+      "tokens": 546,
+      "hash": "baced75b76c59eda",
+      "size": 1910,
+      "mtimeMs": 1789034756562.9607,
+      "updatedAt": "2026-09-10T10:05:56.987Z",
+      "source": "hook"
+    },
+    "frontend/src/features/auth/VerifyEmailBanner.test.tsx": {
+      "description": "session",
+      "tokens": 396,
+      "hash": "30de82782446314a",
+      "size": 1385,
+      "mtimeMs": 1789034768429.1687,
+      "updatedAt": "2026-09-10T10:06:08.879Z",
+      "source": "hook"
+    },
+    "frontend/src/pages/DashboardPage.test.tsx": {
+      "description": "role",
+      "tokens": 838,
+      "hash": "46ec74e9a53d31cc",
+      "size": 2930,
+      "mtimeMs": 1789035162666.9944,
+      "updatedAt": "2026-09-10T10:12:42.948Z",
+      "source": "hook"
+    },
+    "docs/PHASE-1.md": {
+      "description": "Phase 1 — Identity & Multi-Tenancy",
+      "tokens": 1388,
+      "hash": "4624413370756378",
+      "size": 5583,
+      "mtimeMs": 1789036186448.9636,
+      "updatedAt": "2026-09-10T10:29:46.704Z",
       "source": "hook"
     }
   },

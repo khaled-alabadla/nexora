@@ -59,20 +59,28 @@ No business features were implemented.
 
 ---
 
-# Phase 1 — Identity & Multi-Tenancy
+# Phase 1 — Identity & Multi-Tenancy ✅ 1.1 COMPLETE (2026-09-10)
 
-- Registration
-- Login
-- Logout
-- Password reset
-- Email verification
-- Companies
-- Company memberships
-- Active company
-- Roles
-- Permissions
-- Authorization
-- Tenant isolation
+Delivered in slice 1.1 (`feature/1.1-identity-foundation`) — see
+[PHASE-1.md](PHASE-1.md):
+
+- ✅ Registration (transactional: user + first company + Owner membership)
+- ✅ Login / logout (session regeneration + invalidation; login rate-limited)
+- ✅ Password reset (broker; no user enumeration)
+- ✅ Email verification (signed link → SPA)
+- ✅ Companies, memberships, active company (`users.current_company_id`)
+- ✅ System roles + permission catalogue (seeded)
+- ✅ Authorization (`permission:` middleware + Gates; per-company)
+- ✅ Tenant isolation (`BelongsToCompany` + `CompanyContext` + `SetActiveCompany`;
+  dedicated cross-tenant test suite) — ADR-0006
+- ✅ Member invitations (hashed tokens, email-bound acceptance)
+- ✅ SPA: auth pages, company switcher, members panel, invitation acceptance
+- ✅ Exit gates: PHPStan raised to **level 8**; money precision 18,2 / 18,4
+  ratified
+
+Ratified decisions: system roles only (no per-company custom roles in Phase 1);
+one role per user per company (`company_user.role_id`); active company as a
+lean FK re-checked per request.
 
 ---
 

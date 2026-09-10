@@ -4,19 +4,33 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Modules\Companies\Concerns\HasCompanyMemberships;
 
-class User extends Authenticatable
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property \Carbon\CarbonInterface|null $email_verified_at
+ * @property int|null $current_company_id
+ */
+class User extends Authenticatable implements MustVerifyEmail
 {
+    use HasCompanyMemberships;
+
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+
+    use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Mass-assignable attributes. Never includes current_company_id,
+     * email_verified_at, or any role/company identifier — those are set
+     * explicitly by services.
      *
      * @var list<string>
      */
@@ -26,21 +40,13 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+    /** @var list<string> */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [

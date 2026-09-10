@@ -80,6 +80,390 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-09T11:34:09.340Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-09-10T08:06:24.033Z",
+      "error_message": "Incorrect value in code",
+      "file": "backend/modules/Identity/Http/Requests/RegisterRequest.php",
+      "root_cause": "Had 'email:rfc,dns'",
+      "fix": "Changed to 'email:rfc'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:06:24.033Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-09-10T08:10:20.618Z",
+      "error_message": "Wrong condition in logic",
+      "file": "backend/modules/Companies/Services/CompanyMembershipService.php",
+      "root_cause": "Condition was: if ($this->isRole($membership, Role::OWNER)",
+      "fix": "Changed to: if ($membership->role->slug === Role::OWNER && $this->)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:10:20.618Z"
+    },
+    {
+      "id": "bug-008",
+      "timestamp": "2026-09-10T08:10:27.510Z",
+      "error_message": "Significant refactor of CompanyMembershipService.php",
+      "file": "backend/modules/Companies/Services/CompanyMembershipService.php",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 22→16 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:10:27.510Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-09-10T08:11:18.178Z",
+      "error_message": "Wrong reference: Str should be Facades",
+      "file": "backend/modules/Companies/Services/CompanyInvitationService.php",
+      "root_cause": "Used \"Str\" instead of \"Facades\"",
+      "fix": "Changed Str → Facades",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:11:18.178Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-09-10T08:12:29.308Z",
+      "error_message": "Significant refactor of SessionPayload.php",
+      "file": "backend/modules/Identity/Support/SessionPayload.php",
+      "root_cause": "11 lines replaced/restructured",
+      "fix": "Rewrote 20→4 lines (11 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:12:29.308Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-09-10T08:18:32.997Z",
+      "error_message": "Incorrect value in code",
+      "file": "backend/phpunit.xml",
+      "root_cause": "Had \"array\"",
+      "fix": "Changed to \"database\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "xml"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:18:32.997Z"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-09-10T08:19:38.958Z",
+      "error_message": "Significant refactor of LogoutTest.php",
+      "file": "backend/modules/Identity/Tests/Feature/LogoutTest.php",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 5→6 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:19:38.958Z"
+    },
+    {
+      "id": "bug-013",
+      "timestamp": "2026-09-10T08:21:14.399Z",
+      "error_message": "Significant refactor of InvitationTest.php",
+      "file": "backend/modules/Companies/Tests/Feature/InvitationTest.php",
+      "root_cause": "6 lines replaced/restructured",
+      "fix": "Rewrote 9→28 lines (6 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:21:14.399Z"
+    },
+    {
+      "id": "bug-014",
+      "timestamp": "2026-09-10T08:25:01.670Z",
+      "error_message": "Wrong reference: update should be forceFill",
+      "file": "backend/modules/Companies/Tests/Feature/ActiveCompanyTest.php",
+      "root_cause": "Used \"update\" instead of \"forceFill\"",
+      "fix": "Changed update → forceFill",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:25:01.670Z"
+    },
+    {
+      "id": "bug-015",
+      "timestamp": "2026-09-10T08:25:06.805Z",
+      "error_message": "Wrong reference: update should be forceFill",
+      "file": "backend/modules/Companies/Tests/Feature/CompanyManagementTest.php",
+      "root_cause": "Used \"update\" instead of \"forceFill\"",
+      "fix": "Changed update → forceFill",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:25:06.805Z"
+    },
+    {
+      "id": "bug-016",
+      "timestamp": "2026-09-10T08:29:40.156Z",
+      "error_message": "Wrong return value",
+      "file": "backend/app/Support/Tenancy/BelongsToCompany.php",
+      "root_cause": "Was returning: $this->belongsTo(Company::class);",
+      "fix": "Now returns: BelongsTo<Company, $this>",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T08:29:40.156Z"
+    },
+    {
+      "id": "bug-017",
+      "timestamp": "2026-09-10T09:46:19.271Z",
+      "error_message": "Wrong return value",
+      "file": "backend/app/Support/Authorization/GrantedPermissions.php",
+      "root_cause": "Was returning: $role->permissions()->pluck('slug')->values()->all",
+      "fix": "Now returns: $role->permissions()",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-09-10T09:48:52.152Z"
+    },
+    {
+      "id": "bug-018",
+      "timestamp": "2026-09-10T09:46:36.103Z",
+      "error_message": "Significant refactor of MembershipResource.php",
+      "file": "backend/modules/Companies/Http/Resources/MembershipResource.php",
+      "root_cause": "5 lines replaced/restructured",
+      "fix": "Rewrote 7→12 lines (5 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T09:46:36.103Z"
+    },
+    {
+      "id": "bug-019",
+      "timestamp": "2026-09-10T09:46:46.699Z",
+      "error_message": "Significant refactor of MemberResource.php",
+      "file": "backend/modules/Companies/Http/Resources/MemberResource.php",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 7→12 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T09:46:46.699Z"
+    },
+    {
+      "id": "bug-020",
+      "timestamp": "2026-09-10T09:47:41.189Z",
+      "error_message": "Wrong condition in logic",
+      "file": "backend/modules/Companies/Services/CompanyMembershipService.php",
+      "root_cause": "Condition was: if ($membership->role->slug === Role::OWNER && $this->)",
+      "fix": "Changed to: if ($this->roleSlug($membership)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T09:47:41.189Z"
+    },
+    {
+      "id": "bug-021",
+      "timestamp": "2026-09-10T09:48:19.747Z",
+      "error_message": "Null/undefined access in MakeModuleCommand.php",
+      "file": "backend/app/Console/Commands/MakeModuleCommand.php",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T09:48:19.747Z"
+    },
+    {
+      "id": "bug-022",
+      "timestamp": "2026-09-10T09:52:51.576Z",
+      "error_message": "Significant refactor of api.ts",
+      "file": "frontend/src/lib/api.ts",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 8→14 lines (4 removed) | Also: async function messageOf(pending: Promise<unknown>; await pending",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-09-10T09:53:21.856Z"
+    },
+    {
+      "id": "bug-023",
+      "timestamp": "2026-09-10T09:56:00.168Z",
+      "error_message": "Type error",
+      "file": "frontend/src/features/companies/hooks.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T09:56:00.168Z"
+    },
+    {
+      "id": "bug-024",
+      "timestamp": "2026-09-10T09:59:36.964Z",
+      "error_message": "CSS fix: onSuccess",
+      "file": "frontend/src/features/auth/ResetPasswordPage.tsx",
+      "root_cause": "onSuccess: () => navigate('/login?reset=1', { replace: true → () => void navigate('/login?reset=1', { replace: true",
+      "fix": "Changed onSuccess: () => navigate('/login?reset=1', { replace: true → () => void navigate('/login?reset=1', { replace: true",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T09:59:36.964Z"
+    },
+    {
+      "id": "bug-025",
+      "timestamp": "2026-09-10T10:01:17.283Z",
+      "error_message": "Missing await",
+      "file": "frontend/src/lib/api.test.ts",
+      "root_cause": "Async call without await — returned Promise instead of value",
+      "fix": "Added await to async call",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T10:01:17.283Z"
+    },
+    {
+      "id": "bug-026",
+      "timestamp": "2026-09-10T10:03:30.854Z",
+      "error_message": "CSS fix: route, name",
+      "file": "frontend/src/features/auth/PasswordPages.test.tsx",
+      "root_cause": "route: '/reset-password?token=abc&email=a%40example.com', → '/reset-password?token=abc&email=a%40example.com'; name: 'Sign in' → 'Set new password'",
+      "fix": "Changed route: '/reset-password?token=abc&email=a%40example.com', → '/reset-password?token=abc&email=a%40example.com'; name: 'Sign in' → 'Set new password'",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T10:03:30.854Z"
+    },
+    {
+      "id": "bug-027",
+      "timestamp": "2026-09-10T10:05:15.602Z",
+      "error_message": "CSS fix: handler",
+      "file": "frontend/src/features/companies/MembersPanel.test.tsx",
+      "root_cause": "handler: created({ id: 9, email: 'new@example.com', role: role('employee', 'Employee'), status: 'pending', expires_at: '', accepted_at: null, created_at: null → created({",
+      "fix": "Changed handler: created({ id: 9, email: 'new@example.com', role: role('employee', 'Employee'), status: 'pending', expires_at: '', accepted_at: null, created_at: null → created({",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T10:05:15.602Z"
+    },
+    {
+      "id": "bug-028",
+      "timestamp": "2026-09-10T10:05:57.021Z",
+      "error_message": "CSS fix: handler",
+      "file": "frontend/src/features/companies/AcceptInvitationPage.test.tsx",
+      "root_cause": "handler: fail(422, 'Invalid', { token: ['This invitation has expired.'] → fail(422, 'This invitation has expired.', { token: ['This invitation has expired.']",
+      "fix": "Changed handler: fail(422, 'Invalid', { token: ['This invitation has expired.'] → fail(422, 'This invitation has expired.', { token: ['This invitation has expired.']",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T10:05:57.021Z"
+    },
+    {
+      "id": "bug-029",
+      "timestamp": "2026-09-10T10:12:29.579Z",
+      "error_message": "Significant refactor of CreateCompanyCard.test.tsx",
+      "file": "frontend/src/features/companies/CreateCompanyCard.test.tsx",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 4→10 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-10T10:12:29.579Z"
     }
   ]
 }

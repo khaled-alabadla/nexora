@@ -16,9 +16,10 @@ MySQL 8+
 - Enforce important constraints at database level.
 - Tenant-owned data must contain company_id where appropriate.
 
-### Monetary precision (draft — ratify in Phase 1)
+### Monetary precision (ratified — Phase 1, 2026-09-10)
 
-Standard column types, mirrored in `backend/config/nexora.php`:
+Standard column types, mirrored in `backend/config/nexora.php`
+(`money.precision` 18, `amount_scale` 2, `rate_scale` 4):
 
 | Use | Type |
 |---|---|
@@ -29,22 +30,46 @@ All money math is done with these scales; never with floats.
 
 ---
 
-## 3. Tenancy
+## 3. Tenancy & authorization (Phase 1)
 
-companies
+Mechanism: [ADR-0006](adr/0006-tenancy-mechanism.md) — one database, row-level
+`company_id` scoping via `App\Support\Tenancy\BelongsToCompany` + a
+request-scoped `CompanyContext`.
 
-- id
-- name
-- slug
-- status
-- created_at
-- updated_at
+**companies** — the tenant
 
-company_user
+- id, name, slug (unique), status (`active` | `suspended`)
+- timestamps, `deleted_at` (soft delete)
 
-- company_id
-- user_id
-- role_id
+**roles** — system-defined (Phase 1 has no per-company custom roles)
+
+- id, slug (unique), name, level (`unsignedSmallInteger`; higher = more
+  privileged), is_system, timestamps
+- 8 rows seeded by migration `…_seed_roles_and_permissions`: owner (100),
+  administrator (80), accountant / sales-manager / inventory-manager /
+  purchasing-manager (50), sales-rep (20), employee (10)
+
+**permissions** — the catalogue (`App\Support\Authorization\Permissions`)
+
+- id, slug (unique), name, group (indexed), timestamps
+- Phase 1: `company.update`, `member.view`, `member.invite`,
+  `member.role.update`, `member.remove`
+
+**role_permission** — composite PK `(role_id, permission_id)`, both cascade.
+Owner is omitted here — it implicitly holds every permission.
+
+**company_user** — membership: one role per user per company
+
+- id, company_id, user_id, role_id (`restrictOnDelete`)
+- unique `(company_id, user_id)`; index `(user_id)`
+
+**company_invitations**
+
+- id, company_id, role_id, invited_by (→ users), email
+- token — **sha256 hash** of the emailed token, never the raw value; `token`
+  is `$hidden`
+- expires_at, accepted_at (nullable), timestamps
+- unique `(company_id, email)`
 
 ---
 
@@ -52,13 +77,11 @@ company_user
 
 users
 
-- id
-- name
-- email
-- password
-- email_verified_at
-- created_at
-- updated_at
+- id, name, email (unique), password, email_verified_at, remember_token
+- current_company_id — nullable FK → companies, `nullOnDelete` (Phase 1). The
+  active company; membership is re-checked by `SetActiveCompany` on every
+  tenant-scoped request.
+- timestamps
 
 ---
 
