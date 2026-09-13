@@ -456,3 +456,35 @@ description: chronological action log per session, consolidated weekly
 | 12:03 | Edited frontend/src/features/products/ProductsPage.test.tsx | expanded (+37 lines) | ~444 |
 | 12:03 | Edited frontend/src/features/products/ProductsPage.test.tsx | 11→13 lines | ~185 |
 | 12:04 | Edited frontend/src/features/products/ProductsPage.test.tsx | CSS: name | ~45 |
+| 12:13 | Created backend/modules/Inventory/Database/Migrations/2026_09_13_000001_create_warehouses_table.php | — | ~238 |
+| 12:13 | Created backend/modules/Inventory/Models/Warehouse.php | — | ~503 |
+| 12:13 | Created backend/modules/Inventory/Database/Factories/WarehouseFactory.php | — | ~307 |
+| 12:13 | Created backend/modules/Inventory/Services/WarehouseService.php | — | ~1082 |
+| 12:14 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 import(s) | ~55 |
+| 12:14 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified lockCompanyWarehouses() | ~33 |
+| 12:14 | Created backend/modules/Inventory/Http/Requests/StoreWarehouseRequest.php | — | ~256 |
+| 12:14 | Created backend/modules/Inventory/Http/Requests/UpdateWarehouseRequest.php | — | ~299 |
+| 12:14 | Created backend/modules/Inventory/Http/Resources/WarehouseResource.php | — | ~184 |
+| 12:14 | Created backend/modules/Inventory/Http/Controllers/WarehouseController.php | — | ~490 |
+| 12:14 | Created backend/modules/Inventory/Routes/api.php | — | ~406 |
+| 12:15 | Created backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php | — | ~1822 |
+| 12:15 | Created backend/modules/Inventory/Tests/Feature/WarehouseTenantIsolationTest.php | — | ~581 |
+| 12:17 | Created frontend/src/features/warehouses/types.ts | — | ~109 |
+| 12:17 | Created frontend/src/features/warehouses/api.ts | — | ~160 |
+| 12:17 | Created frontend/src/features/warehouses/hooks.ts | — | ~335 |
+| 12:17 | Created frontend/src/features/warehouses/WarehousesPage.tsx | — | ~1990 |
+| 12:17 | Edited frontend/src/App.tsx | added 1 import(s) | ~54 |
+| 12:17 | Edited frontend/src/App.tsx | expanded (+8 lines) | ~118 |
+| 12:17 | Edited frontend/src/components/AppHeader.tsx | 6→11 lines | ~103 |
+| 12:18 | Created frontend/src/features/warehouses/WarehousesPage.test.tsx | — | ~1861 |
+| 12:18 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified create() | ~43 |
+| 12:18 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified update() | ~49 |
+| 12:21 | Edited docs/DATABASE.md | expanded (+16 lines) | ~347 |
+| 12:21 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | inline fix | ~16 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | CSS: routes | ~118 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | inline fix | ~19 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 4→6 lines | ~96 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | expanded (+7 lines) | ~131 |
+| 12:25 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 22→26 lines | ~338 |
+| 12:26 | Edited docs/API.md | expanded (+18 lines) | ~388 |
+| 12:27 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 17→14 lines | ~221 |

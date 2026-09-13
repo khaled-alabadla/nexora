@@ -37,6 +37,11 @@ export function AppHeader() {
               Categories
             </Link>
           )}
+          {permissions.has('warehouse.view') && (
+            <Link to="/warehouses" className="hover:underline">
+              Warehouses
+            </Link>
+          )}
         </nav>
       ) : null}
 

@@ -112,17 +112,33 @@ Tenant-scoped via `BelongsToCompany` — see [ADR-0006](adr/0006-tenancy-mechani
 
 ---
 
-## 6. Warehouses
+## 6. Warehouses (Phase 2.2)
 
-warehouses
+Tenant-scoped via `BelongsToCompany`.
 
-- id
-- company_id
-- name
-- location
-- status
-- created_at
-- updated_at
+**warehouses**
+
+- id, company_id, name, location (nullable), is_default (boolean, default
+  false), status (`active` \| `inactive`), timestamps
+- unique `(company_id, name)`; index `(company_id, is_default)`
+
+Exactly one warehouse is the company's default once it has at least one —
+**enforced in `Modules\Inventory\Services\WarehouseService`, not the
+database**: MySQL has no partial/filtered unique index, so a plain unique
+constraint on `is_default` can't express "unique only where true". Every
+write (create/update/delete) goes through the service, inside a
+`DB::transaction` that `lockForUpdate`s the company's warehouse rows to
+serialize concurrent default-flips. Rules:
+
+- The first warehouse a company creates becomes the default automatically
+  (client input for `is_default` is ignored for that first row).
+- Setting `is_default: true` on another warehouse atomically clears the
+  previous default.
+- A default warehouse cannot be un-defaulted directly (`422`) — another
+  warehouse must be made default first.
+- A default warehouse cannot be deleted while other warehouses exist
+  (`422`); it *can* be deleted when it is the company's only warehouse
+  (leaving zero — the next one created becomes default again).
 
 ---
 

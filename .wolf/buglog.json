@@ -640,6 +640,54 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-13T09:04:18.202Z"
+    },
+    {
+      "id": "bug-041",
+      "timestamp": "2026-09-13T09:14:10.243Z",
+      "error_message": "Wrong return value",
+      "file": "backend/modules/Inventory/Services/WarehouseService.php",
+      "root_cause": "Was returning: \\Illuminate\\Database\\Eloquent\\Builder<Warehouse>",
+      "fix": "Now returns: Builder<Warehouse>",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T09:14:10.243Z"
+    },
+    {
+      "id": "bug-042",
+      "timestamp": "2026-09-13T09:17:47.476Z",
+      "error_message": "Incorrect value in code",
+      "file": "frontend/src/App.tsx",
+      "root_cause": "Had '@/pages/DashboardPage'",
+      "fix": "Changed to '@/features/warehouses/WarehousesPage'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T09:17:47.476Z"
+    },
+    {
+      "id": "bug-043",
+      "timestamp": "2026-09-13T09:22:30.361Z",
+      "error_message": "CSS fix: permissions",
+      "file": "frontend/src/features/warehouses/WarehousesPage.test.tsx",
+      "root_cause": "permissions: string[], warehouses = [main, secondary]) { → string[],",
+      "fix": "Changed permissions: string[], warehouses = [main, secondary]) { → string[],",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-09-13T09:27:45.089Z"
     }
   ]
 }
