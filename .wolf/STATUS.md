@@ -4,92 +4,67 @@ budget_tokens: 1000
 ---
 # STATUS — Nexora
 
-> Read FIRST when resuming. Last updated: 2026-09-10 (evening)
+> Read FIRST when resuming. Last updated: 2026-09-13
 
 ## Mode
 
 Autonomous build (user: full autonomy through all phases). Branch model
 `main` / `develop` / `feature/*`, `--no-ff` merges, phase → annotated tag.
-**`git push` now works** — `origin` (github.com/khaled-alabadla/nexora) accepts
+`git push` works — `origin` (github.com/khaled-alabadla/nexora) accepts
 pushes; CI (`.github/workflows/ci.yml`) runs on `main`/`develop`/PR. No `gh`
-CLI — query runs via the GitHub REST API (`curl`, unauthenticated). Local
-`make check` / `make check-frontend` remain the fast gate.
+CLI — query runs via the GitHub REST API (`curl`, unauthenticated).
 
-## ✅ Phase 0 — Foundation — COMPLETE (tag `phase-0`, on `main` + `develop`)
+## ✅ Done
 
-Containerized modular monolith. Laravel 12 / PHP 8.4, `Modules\` PSR-4 (13
-modules), thin API (`ApiResponse`, JSON exceptions), `GET /api/v1/health`,
-Sanctum SPA cookie config. React 19 / Vite / TS strict, Tailwind v4, TanStack
-Query, Zustand, typed API client. Compose: app/nginx/queue/scheduler/mysql/
-redis/node/mailpit. ADRs 0001–0005.
+- **Git hygiene**: reconciled a divergence where a docs commit had landed
+  directly on `main` instead of via `develop` (fixed by merging forward);
+  verified `main`/`develop`/`phase-1`/`phase-1.1` tags all point to the
+  intended commits and match origin.
+- **Phase 2 GRILL-ME**: all 12 open decisions in `docs/PHASE-2-PLAN.md` §7
+  ratified with the user (every one matched the recommendation) — stock is a
+  maintained projection, signed ledger quantity, category adjacency list,
+  negative stock blocked (force-flag escape hatch), soft-deleted products,
+  active-company added to the middleware priority list, per-action
+  permissions, damage-as-adjustment-type, modeled default warehouse, full FE
+  each slice.
+- **Phase 2.1 — Products & Categories** (merged to `develop` @ `6f636fc`):
+  first real `BelongsToCompany` business models. Full CRUD both resources,
+  permission-gated, paginated/filtered/searched/sorted products list.
+  Middleware-priority fix in `bootstrap/app.php` makes route-model binding
+  tenant-scoped (no more manual `findOrFail`). Shared infra:
+  `ApiResponse::paginated()`, `App\Support\Http\QueryFilter`. Full SPA pages
+  at `/products` and `/categories`, `AppHeader` nav extracted.
+  Code-reviewed (`/code-review high`) — 4 findings fixed + regression tests:
+  frontend fetching `/categories` without `category.manage`; category
+  parent-cycle guard only checked direct self-parent; search didn't escape
+  SQL LIKE wildcards; price `max:` validation was 1 digit short of the
+  `DECIMAL(18,4)` column.
+- Gates: backend 109 tests / 96.7% coverage (Pint + PHPStan L8 clean);
+  frontend 70 tests / 93.9% coverage (eslint + tsc + prettier + build clean).
 
-## ✅ Phase 1 — Identity & Multi-Tenancy — COMPLETE & PROMOTED
+## 🚀 Next quest — Phase 2.2: Warehouses
 
-On `main` + `develop`. Tags `phase-1.1` (slice) and `phase-1` (`main`, `d0a1c49`).
-**CI green on first push** (run #3, after a composer-audit fix — the security
-job needed `composer audit --locked` since it has no `composer install`).
+Per `docs/PHASE-2-PLAN.md` §6 slice table. Modeled: `warehouses`
+(company_id, name, location?, `is_default`, status) — first warehouse
+created for a company becomes default automatically (ratified §7.9). CRUD +
+permissions (`warehouse.view/create/update/delete`, already in
+`Permissions.php` + seeder) + FE page, same pattern as 2.1. Then continue
+2.3 (ledger + stock projection — the phase's core) → 2.7 (docs/ADR/close).
 
-- **Identity module**: register (txn: user + first company + Owner membership),
-  login (session regen, 5/email+IP lockout), logout, `GET /auth/me` (session
-  payload), password reset (broker, no user enumeration), email verification
-  (signed link → SPA redirect) + resend. `IdentityServiceProvider` points
-  notification URLs at `FRONTEND_URL`.
-- **Companies module**: `Company`/`Role`/`Permission`/`CompanyUser`/
-  `CompanyInvitation` models; `CompanyProvisioner` / `CompanyMembershipService`
-  / `CompanyInvitationService`; endpoints for companies list/create, switch
-  active, company show/update, members list/role/remove, invitations
-  list/send/revoke/accept, `GET /roles`. 8 system roles + 5 permissions seeded
-  in a migration.
-- **Tenancy (ADR-0006)**: `CompanyContext` singleton (throws when unset),
-  `BelongsToCompany` trait (global scope + forced `company_id` +
-  `withoutCompanyScope`), `SetActiveCompany` + `EnsurePermission` middleware,
-  per-permission Gates. `CompanyInvitation` is the one model using the trait.
-- **Frontend**: react-router-dom; auth pages (login/register/forgot/reset),
-  `RequireAuth`, dashboard, company switcher, members panel (permission-gated),
-  invitation acceptance, verify-email banner. `lib/api.ts` gained
-  put/patch/delete + 204 handling.
-- **Gates**: PHPStan **6 → 8** (exit gate); Pint clean; Pest 80/299 @ 95.9%;
-  CI backend coverage floor 60 → 85. Frontend eslint/tsc/prettier/vitest 51 @
-  95%/82%, build clean. `composer audit` / `npm audit` clean.
-- **Security review**: 0 critical / 0 high. Lows tracked in `docs/PHASE-1.md`
-  (IP-rotation login-throttle bypass → Phase 8; GET-clears-stale-pointer).
-- **Test infra**: `phpunit.xml` `SESSION_DRIVER=database` + stateful `Origin`
-  so the SPA cookie flow runs end-to-end. Helpers in `tests/Pest.php`
-  (`companyWithOwner`, `addMember`, `actingInCompany`). Frontend `test/fetchStub.ts`
-  (fetch router) + `MemoryRouter` in `renderWithProviders`.
-
-## 🚀 Next quest — Phase 2: Products & Inventory — IMPLEMENT
-
-**PLAN + GRILL-ME complete** (2026-09-13) → `docs/PHASE-2-PLAN.md` (all §7
-decisions ratified, every one matching the recommended option). Next: IMPLEMENT
-slice 2.1.
-
-- Modules `Products` + `Inventory` (both scaffolded, empty). First real
-  `BelongsToCompany` business models.
-- Slice 2.1 starts with the middleware-priority fix (`active-company` +
-  `auth:sanctum` into `bootstrap/app.php`'s priority list) so `{product}` etc.
-  route-model-bind tenant-scoped — do this before any controller.
-- Slices: 2.1 Products/Categories CRUD (+ `ApiResponse::paginated`, query-filter
-  helper) → 2.2 Warehouses (`is_default`) → 2.3 ledger + `stock` projection +
-  `inventory:reconcile` → 2.4 adjustments (+damage, +`force`) → 2.5 transfers
-  → 2.6 low-stock → 2.7 docs/close.
-- Ratified: signed `quantity`; negative stock blocked unless `force:true` on
-  adjustments (never transfers); soft-delete products; per-action permissions;
-  full frontend UI this phase. Role matrix in plan §7.
-- Add `inventory_movements.unit_cost` `DECIMAL(18,4)` (flagged in DATABASE.md).
+No open decisions — proceed straight to IMPLEMENT.
 
 ## Context
 
-- `develop` = `main` + this handoff. `feature/1.1-identity-foundation` merged
-  (kept, also on origin).
+- `develop` clean at `6f636fc`, matches origin. `main` is one slice behind
+  (still at the Phase 1 promotion) — Phase 2 stays on `develop` until the
+  whole phase is done and promoted (mirrors the Phase 1.1→Phase 1 pattern).
 - Docker stack up. Host PHP 8.2 unsupported — backend cmds via
   `docker compose exec -T app …`; coverage needs `XDEBUG_MODE=coverage`.
-- Test infra quirk: `phpunit.xml` uses `SESSION_DRIVER=database` + a stateful
-  `Origin` header (Sanctum SPA cookie flow). See
-  `.wolf/` memory / `docs/PHASE-1.md`.
+- Test helper `withoutTenantScope(fn)` in `tests/Pest.php` — required for
+  any `BelongsToCompany` factory fixture built outside `actingAs`+real HTTP.
 - Ports: API 8000, MySQL 33061, Mailpit 8025, Vite 5173.
 
 ## References
 
-- `docs/PHASE-2-PLAN.md` (next), `docs/PHASE-1.md`, `docs/PHASE-0.md`
-- `docs/adr/0006-tenancy-mechanism.md`, `docs/ROADMAP.md`, `.wolf/cerebrum.md`
+- `docs/PHASE-2-PLAN.md` (current phase, ratified decisions in §7)
+- `docs/PHASE-1.md`, `docs/adr/0006-tenancy-mechanism.md`, `.wolf/cerebrum.md`
