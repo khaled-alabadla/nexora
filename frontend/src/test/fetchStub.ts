@@ -43,6 +43,24 @@ export function created(body: unknown) {
   return () => jsonResponse({ data: body, message: 'Created' }, { status: 201 })
 }
 
+/** A paginated `{data, message, meta}` envelope. */
+export function page(data: unknown[], meta: Partial<Record<string, number>> = {}) {
+  return () =>
+    jsonResponse({
+      data,
+      message: 'OK',
+      meta: {
+        current_page: 1,
+        last_page: 1,
+        per_page: 20,
+        total: data.length,
+        from: data.length ? 1 : null,
+        to: data.length,
+        ...meta,
+      },
+    })
+}
+
 export function noContent() {
   return () => noContentResponse()
 }

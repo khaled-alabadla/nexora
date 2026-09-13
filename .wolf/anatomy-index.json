@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-13T08:00:44.871Z",
-    "fileCount": 194,
+    "lastScanned": "2026-09-13T09:04:18.166Z",
+    "fileCount": 224,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "8b6d65575d179ba7a36940ee8baf7040869f238794c9a7543c38932fd20d6b5a",
-    "storeUpdatedAt": "2026-09-13T08:00:44.883Z",
-    "rootHash": "115353882cb8c564"
+    "renderedHash": "1bbc18b98fe61dd7865d9dcc8ad903b2e61b449da103a97426913480247a3632",
+    "storeUpdatedAt": "2026-09-13T09:04:18.190Z",
+    "rootHash": "58b3fb37e778f467"
   },
   "files": {
     "AGENTS.md": {
@@ -228,11 +228,11 @@
     },
     "backend/app/Http/Responses/ApiResponse.php": {
       "description": "Builds the API's canonical success envelope (see docs/API.md):",
-      "tokens": 396,
-      "hash": "5e24885518db2b9e",
-      "size": 1484,
-      "mtimeMs": 1788950833313.825,
-      "updatedAt": "2026-09-09T10:47:13.661Z",
+      "tokens": 683,
+      "hash": "b3889e97af988b77",
+      "size": 2566,
+      "mtimeMs": 1789287101279.0005,
+      "updatedAt": "2026-09-13T08:11:41.502Z",
       "source": "hook"
     },
     "backend/app/Http/Middleware/ForceJsonResponse.php": {
@@ -264,11 +264,11 @@
     },
     "backend/bootstrap/app.php": {
       "description": "",
-      "tokens": 317,
-      "hash": "bac2fb2ba38f46b6",
-      "size": 1188,
-      "mtimeMs": 1788948169392.795,
-      "updatedAt": "2026-09-09T10:02:49.595Z",
+      "tokens": 448,
+      "hash": "d2f2e81be8a3b5d8",
+      "size": 1685,
+      "mtimeMs": 1789286633280.731,
+      "updatedAt": "2026-09-13T08:03:53.520Z",
       "source": "hook"
     },
     "backend/app/Providers/AppServiceProvider.php": {
@@ -336,11 +336,11 @@
     },
     "backend/tests/Pest.php": {
       "description": "Create a company owned by $owner (a fresh verified user if omitted) together",
-      "tokens": 936,
-      "hash": "c3a1df0d38915470",
-      "size": 3509,
-      "mtimeMs": 1789028175999.5469,
-      "updatedAt": "2026-09-10T08:16:16.213Z",
+      "tokens": 1069,
+      "hash": "33509a9236d7c95e",
+      "size": 4011,
+      "mtimeMs": 1789287265578.2363,
+      "updatedAt": "2026-09-13T08:14:25.843Z",
       "source": "hook"
     },
     "backend/tests/Feature/HealthEndpointTest.php": {
@@ -489,11 +489,11 @@
     },
     "frontend/src/lib/api.ts": {
       "description": "Minimal typed API client for the Nexora backend.",
-      "tokens": 874,
-      "hash": "ae5c4ef048183c21",
-      "size": 3056,
-      "mtimeMs": 1789033977724.6697,
-      "updatedAt": "2026-09-10T09:52:57.894Z",
+      "tokens": 1060,
+      "hash": "57c164ab2a6b00be",
+      "size": 3707,
+      "mtimeMs": 1789287624505.9495,
+      "updatedAt": "2026-09-13T08:20:24.728Z",
       "source": "hook",
       "symbols": [
         {
@@ -511,32 +511,53 @@
           "tokens": 22
         },
         {
+          "name": "PageMeta",
+          "kind": "section",
+          "startLine": 33,
+          "endLine": 41,
+          "tokens": 43
+        },
+        {
+          "name": "Page",
+          "kind": "section",
+          "startLine": 42,
+          "endLine": 46,
+          "tokens": 17
+        },
+        {
           "name": "readCookie",
           "kind": "fn",
-          "startLine": 33,
-          "endLine": 37,
+          "startLine": 47,
+          "endLine": 51,
           "tokens": 57
+        },
+        {
+          "name": "requestEnvelope",
+          "kind": "fn",
+          "startLine": 52,
+          "endLine": 87,
+          "tokens": 322
         },
         {
           "name": "request",
           "kind": "fn",
-          "startLine": 38,
-          "endLine": 74,
-          "tokens": 338
+          "startLine": 88,
+          "endLine": 93,
+          "tokens": 81
         },
         {
           "name": "csrf",
           "kind": "fn",
-          "startLine": 75,
-          "endLine": 78,
+          "startLine": 94,
+          "endLine": 97,
           "tokens": 36
         },
         {
           "name": "withBody",
           "kind": "fn",
-          "startLine": 79,
-          "endLine": 93,
-          "tokens": 189
+          "startLine": 98,
+          "endLine": 117,
+          "tokens": 251
         }
       ]
     },
@@ -569,12 +590,21 @@
     },
     "frontend/src/App.tsx": {
       "description": "App",
-      "tokens": 387,
-      "hash": "38cff1ba8c69bd97",
-      "size": 1354,
-      "mtimeMs": 1789034250199.558,
-      "updatedAt": "2026-09-10T09:57:30.570Z",
-      "source": "hook"
+      "tokens": 523,
+      "hash": "5e3c1aba1283e7a4",
+      "size": 1828,
+      "mtimeMs": 1789287947338.3132,
+      "updatedAt": "2026-09-13T08:25:47.637Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "App",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 58,
+          "tokens": 339
+        }
+      ]
     },
     "frontend/src/main.tsx": {
       "description": "queryClient",
@@ -740,11 +770,11 @@
     },
     "docs/API.md": {
       "description": "Nexora — API Specification",
-      "tokens": 1749,
-      "hash": "13ff62eb22429b0f",
-      "size": 7021,
-      "mtimeMs": 1789035988385.6528,
-      "updatedAt": "2026-09-10T10:26:28.721Z",
+      "tokens": 2081,
+      "hash": "e30b62b24fb465da",
+      "size": 8356,
+      "mtimeMs": 1789288957464.2966,
+      "updatedAt": "2026-09-13T08:42:37.681Z",
       "source": "hook"
     },
     "docs/ARCHITECTURE.md": {
@@ -767,11 +797,11 @@
     },
     "docs/DATABASE.md": {
       "description": "Nexora — Database Design",
-      "tokens": 1154,
-      "hash": "04a94972ecdd8d45",
-      "size": 4648,
-      "mtimeMs": 1789036018908.8457,
-      "updatedAt": "2026-09-10T10:26:59.138Z",
+      "tokens": 1361,
+      "hash": "637087221a29061e",
+      "size": 5484,
+      "mtimeMs": 1789288919089.4124,
+      "updatedAt": "2026-09-13T08:42:00.627Z",
       "source": "hook"
     },
     "docs/SECURITY.md": {
@@ -965,20 +995,20 @@
     },
     "backend/app/Support/Authorization/Permissions.php": {
       "description": "Central registry of every permission slug in the system.",
-      "tokens": 386,
-      "hash": "8c639ad2a50b0fba",
-      "size": 1447,
-      "mtimeMs": 1788956691699.6414,
-      "updatedAt": "2026-09-09T12:24:51.972Z",
+      "tokens": 883,
+      "hash": "fb38debd2b7d1b2f",
+      "size": 3312,
+      "mtimeMs": 1789286774970.257,
+      "updatedAt": "2026-09-13T08:06:15.273Z",
       "source": "hook"
     },
     "backend/modules/Companies/Database/Seeders/RolesAndPermissionsSeeder.php": {
       "description": "Idempotent. Runs on every `migrate --seed`; safe to re-run.",
-      "tokens": 651,
-      "hash": "5debf670b21539fb",
-      "size": 2441,
-      "mtimeMs": 1788956714719.2488,
-      "updatedAt": "2026-09-09T12:25:14.936Z",
+      "tokens": 908,
+      "hash": "0d18da77d5159746",
+      "size": 3408,
+      "mtimeMs": 1789286792988.7627,
+      "updatedAt": "2026-09-13T08:06:33.188Z",
       "source": "hook"
     },
     "backend/modules/Companies/Database/Migrations/2026_09_10_000008_seed_roles_and_permissions.php": {
@@ -1406,11 +1436,11 @@
     },
     "backend/modules/Identity/Tests/Feature/SessionTest.php": {
       "description": "",
-      "tokens": 463,
-      "hash": "f68410916a681a29",
-      "size": 1736,
-      "mtimeMs": 1789028232686.9436,
-      "updatedAt": "2026-09-10T08:17:12.859Z",
+      "tokens": 470,
+      "hash": "926c6672f5bf561f",
+      "size": 1761,
+      "mtimeMs": 1789287580862.74,
+      "updatedAt": "2026-09-13T08:19:41.084Z",
       "source": "hook"
     },
     "backend/modules/Identity/Tests/Feature/EmailVerificationTest.php": {
@@ -1819,11 +1849,11 @@
     },
     "frontend/src/pages/DashboardPage.tsx": {
       "description": "DashboardPage",
-      "tokens": 479,
-      "hash": "0bfec740ee309b67",
-      "size": 1677,
-      "mtimeMs": 1789034228201.0288,
-      "updatedAt": "2026-09-10T09:57:08.515Z",
+      "tokens": 289,
+      "hash": "f7856d57a9093dd1",
+      "size": 1010,
+      "mtimeMs": 1789287795908.849,
+      "updatedAt": "2026-09-13T08:23:16.169Z",
       "source": "hook"
     },
     "frontend/src/features/companies/AcceptInvitationPage.tsx": {
@@ -1846,12 +1876,63 @@
     },
     "frontend/src/test/fetchStub.ts": {
       "description": "substring match against the request URL",
-      "tokens": 434,
-      "hash": "aa785ee58801e22b",
-      "size": 1516,
-      "mtimeMs": 1789035250882.1724,
-      "updatedAt": "2026-09-10T10:14:11.469Z",
-      "source": "hook"
+      "tokens": 552,
+      "hash": "c74299b2ef2aec1e",
+      "size": 1930,
+      "mtimeMs": 1789288129188.4802,
+      "updatedAt": "2026-09-13T08:28:49.404Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "RouteSpec",
+          "kind": "section",
+          "startLine": 7,
+          "endLine": 18,
+          "tokens": 99
+        },
+        {
+          "name": "stubFetch",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 37,
+          "tokens": 153
+        },
+        {
+          "name": "ok",
+          "kind": "fn",
+          "startLine": 38,
+          "endLine": 41,
+          "tokens": 28
+        },
+        {
+          "name": "created",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 46,
+          "tokens": 51
+        },
+        {
+          "name": "page",
+          "kind": "fn",
+          "startLine": 47,
+          "endLine": 63,
+          "tokens": 103
+        },
+        {
+          "name": "noContent",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 67,
+          "tokens": 20
+        },
+        {
+          "name": "fail",
+          "kind": "fn",
+          "startLine": 68,
+          "endLine": 71,
+          "tokens": 54
+        }
+      ]
     },
     "frontend/src/lib/forms.test.ts": {
       "description": "Declares error",
@@ -2004,12 +2085,432 @@
     },
     "docs/PHASE-2-PLAN.md": {
       "description": "Phase 2 — Products & Inventory — PLAN",
-      "tokens": 2696,
-      "hash": "6bac2590ab732052",
-      "size": 10871,
-      "mtimeMs": 1789286419798.2263,
-      "updatedAt": "2026-09-13T08:00:19.991Z",
+      "tokens": 2714,
+      "hash": "3d925320a37a9078",
+      "size": 10947,
+      "mtimeMs": 1789289007166.3025,
+      "updatedAt": "2026-09-13T08:43:27.698Z",
       "source": "hook"
+    },
+    "backend/app/Support/Http/QueryFilter.php": {
+      "description": "Whitelisted filter / search / sort for list endpoints (docs/API.md §6–8).",
+      "tokens": 666,
+      "hash": "e4482c904adcac03",
+      "size": 2505,
+      "mtimeMs": 1789289591895.7803,
+      "updatedAt": "2026-09-13T08:53:12.128Z",
+      "source": "hook"
+    },
+    "backend/modules/Companies/Database/Migrations/2026_09_13_000001_reseed_roles_and_permissions.php": {
+      "description": "Phase 2 added product/warehouse/inventory permissions and extended the role",
+      "tokens": 191,
+      "hash": "963e60dc406c0a79",
+      "size": 714,
+      "mtimeMs": 1789286810227.8203,
+      "updatedAt": "2026-09-13T08:06:50.428Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Database/Migrations/2026_09_13_000001_create_product_categories_table.php": {
+      "description": "Migration: create product_categories table",
+      "tokens": 231,
+      "hash": "188197707ec088bf",
+      "size": 863,
+      "mtimeMs": 1789286835177.0847,
+      "updatedAt": "2026-09-13T08:07:15.389Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Database/Migrations/2026_09_13_000002_create_products_table.php": {
+      "description": "Migration: create products table",
+      "tokens": 449,
+      "hash": "1c981398a87b9605",
+      "size": 1685,
+      "mtimeMs": 1789286843371.9988,
+      "updatedAt": "2026-09-13T08:07:23.592Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Models/ProductCategory.php": {
+      "description": "A product category, optionally nested under a parent (no enforced depth —",
+      "tokens": 542,
+      "hash": "1e907203c50191bb",
+      "size": 2035,
+      "mtimeMs": 1789287330978.4468,
+      "updatedAt": "2026-09-13T08:15:31.238Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Models/Product.php": {
+      "description": "Model — 11 fields, 1 rels",
+      "tokens": 691,
+      "hash": "24c1e51712b13e45",
+      "size": 2593,
+      "mtimeMs": 1789287339234.2534,
+      "updatedAt": "2026-09-13T08:15:39.465Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Database/Factories/ProductCategoryFactory.php": {
+      "description": "ProductCategoryFactory: definition, inactive",
+      "tokens": 212,
+      "hash": "e7a6d9f4ffb1f54c",
+      "size": 795,
+      "mtimeMs": 1789286882995.684,
+      "updatedAt": "2026-09-13T08:08:03.330Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Database/Factories/ProductFactory.php": {
+      "description": "ProductFactory: definition, inactive, withMinimumStock",
+      "tokens": 359,
+      "hash": "dd68704dd61290be",
+      "size": 1346,
+      "mtimeMs": 1789287202751.2031,
+      "updatedAt": "2026-09-13T08:13:22.960Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Requests/StoreProductCategoryRequest.php": {
+      "description": "StoreProductCategoryRequest: authorize, rules",
+      "tokens": 279,
+      "hash": "8881e8a7f355b53c",
+      "size": 1044,
+      "mtimeMs": 1789286919372.2395,
+      "updatedAt": "2026-09-13T08:08:39.660Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Requests/UpdateProductCategoryRequest.php": {
+      "description": "UpdateProductCategoryRequest: authorize, rules, withValidator",
+      "tokens": 730,
+      "hash": "fac6357a5d9cdc4c",
+      "size": 2746,
+      "mtimeMs": 1789289569375.051,
+      "updatedAt": "2026-09-13T08:52:49.612Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Requests/StoreProductRequest.php": {
+      "description": "StoreProductRequest: authorize, rules",
+      "tokens": 459,
+      "hash": "d4a3dc3d622aa628",
+      "size": 1718,
+      "mtimeMs": 1789286934099.0232,
+      "updatedAt": "2026-09-13T08:08:54.321Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Requests/UpdateProductRequest.php": {
+      "description": "UpdateProductRequest: authorize, rules",
+      "tokens": 506,
+      "hash": "6b59cda83fb84406",
+      "size": 1895,
+      "mtimeMs": 1789286941861.674,
+      "updatedAt": "2026-09-13T08:09:02.260Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Resources/ProductCategoryResource.php": {
+      "description": "ProductCategoryResource: toArray",
+      "tokens": 176,
+      "hash": "06350360f76f1563",
+      "size": 658,
+      "mtimeMs": 1789286947189.7231,
+      "updatedAt": "2026-09-13T08:09:07.436Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Resources/ProductResource.php": {
+      "description": "ProductResource: toArray",
+      "tokens": 280,
+      "hash": "bbf4f050eec6a51d",
+      "size": 1049,
+      "mtimeMs": 1789287679697.0818,
+      "updatedAt": "2026-09-13T08:21:19.885Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Controllers/ProductCategoryController.php": {
+      "description": "Categories for the active company. A small, flat-ish list — not paginated.",
+      "tokens": 446,
+      "hash": "dac1f778716aea36",
+      "size": 1672,
+      "mtimeMs": 1789286970426.1577,
+      "updatedAt": "2026-09-13T08:09:30.711Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Http/Controllers/ProductController.php": {
+      "description": "index, store, show, update, destroy",
+      "tokens": 479,
+      "hash": "95bde1c9400e99b7",
+      "size": 1793,
+      "mtimeMs": 1789286977875.3071,
+      "updatedAt": "2026-09-13T08:09:38.370Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Routes/api.php": {
+      "description": "",
+      "tokens": 664,
+      "hash": "947ee4e836b6805c",
+      "size": 2490,
+      "mtimeMs": 1789286991971.9817,
+      "updatedAt": "2026-09-13T08:09:52.362Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Tests/Feature/ProductCategoryTest.php": {
+      "description": "",
+      "tokens": 1462,
+      "hash": "4971d73b66ee95fc",
+      "size": 5481,
+      "mtimeMs": 1789289714803.554,
+      "updatedAt": "2026-09-13T08:55:15.104Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Tests/Feature/ProductManagementTest.php": {
+      "description": "",
+      "tokens": 1779,
+      "hash": "ea01d3dafb727193",
+      "size": 6668,
+      "mtimeMs": 1789289743499.8293,
+      "updatedAt": "2026-09-13T08:55:43.698Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Tests/Feature/ProductTenantIsolationTest.php": {
+      "description": "The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for the",
+      "tokens": 756,
+      "hash": "c284532f9f015a5f",
+      "size": 2837,
+      "mtimeMs": 1789287421756.4607,
+      "updatedAt": "2026-09-13T08:17:01.992Z",
+      "source": "hook"
+    },
+    "backend/modules/Products/Tests/Unit/ModelRelationsTest.php": {
+      "description": "",
+      "tokens": 248,
+      "hash": "cd89b8b90023b130",
+      "size": 929,
+      "mtimeMs": 1789287737298.2754,
+      "updatedAt": "2026-09-13T08:22:17.491Z",
+      "source": "hook"
+    },
+    "frontend/src/features/products/types.ts": {
+      "description": "Exports ProductStatus, ProductCategory, Product, ProductInput + 2 more",
+      "tokens": 360,
+      "hash": "4c7c59e36f3b8f86",
+      "size": 1257,
+      "mtimeMs": 1789287992213.8008,
+      "updatedAt": "2026-09-13T08:26:32.440Z",
+      "source": "hook"
+    },
+    "frontend/src/features/products/api.ts": {
+      "description": "Exports listProducts, getProduct, createProduct, updateProduct + 5 more",
+      "tokens": 440,
+      "hash": "e4874276974c8f30",
+      "size": 1540,
+      "mtimeMs": 1789287770035.3877,
+      "updatedAt": "2026-09-13T08:22:50.280Z",
+      "source": "hook"
+    },
+    "frontend/src/features/products/hooks.ts": {
+      "description": "Exports useProducts, useCategories, useCreateProduct, useUpdateProduct + 4 more",
+      "tokens": 648,
+      "hash": "3a10d6b4889e4b5e",
+      "size": 2267,
+      "mtimeMs": 1789287779434.5452,
+      "updatedAt": "2026-09-13T08:22:59.687Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "productsKey",
+          "kind": "fn",
+          "startLine": 6,
+          "endLine": 8,
+          "tokens": 36
+        },
+        {
+          "name": "useProducts",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 16,
+          "tokens": 62
+        },
+        {
+          "name": "useCategories",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 20,
+          "tokens": 41
+        },
+        {
+          "name": "useCreateProduct",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 28,
+          "tokens": 72
+        },
+        {
+          "name": "useUpdateProduct",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 37,
+          "tokens": 86
+        },
+        {
+          "name": "useDeleteProduct",
+          "kind": "fn",
+          "startLine": 38,
+          "endLine": 45,
+          "tokens": 68
+        },
+        {
+          "name": "useCreateCategory",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 53,
+          "tokens": 73
+        },
+        {
+          "name": "useUpdateCategory",
+          "kind": "fn",
+          "startLine": 54,
+          "endLine": 62,
+          "tokens": 87
+        },
+        {
+          "name": "useDeleteCategory",
+          "kind": "fn",
+          "startLine": 63,
+          "endLine": 70,
+          "tokens": 69
+        }
+      ]
+    },
+    "frontend/src/components/AppHeader.tsx": {
+      "description": "AppHeader",
+      "tokens": 446,
+      "hash": "9ae0e851dc1433f8",
+      "size": 1559,
+      "mtimeMs": 1789287786906.2903,
+      "updatedAt": "2026-09-13T08:23:07.167Z",
+      "source": "hook"
+    },
+    "frontend/src/features/products/CategoriesPage.tsx": {
+      "description": "CategoriesPage — renders form",
+      "tokens": 1312,
+      "hash": "7a1f94509055bcdf",
+      "size": 4592,
+      "mtimeMs": 1789287810357.538,
+      "updatedAt": "2026-09-13T08:23:30.635Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "CategoriesPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 38,
+          "tokens": 272
+        },
+        {
+          "name": "CreateCategoryForm",
+          "kind": "fn",
+          "startLine": 39,
+          "endLine": 82,
+          "tokens": 449
+        },
+        {
+          "name": "CategoryRow",
+          "kind": "fn",
+          "startLine": 83,
+          "endLine": 130,
+          "tokens": 470
+        }
+      ]
+    },
+    "frontend/src/features/products/ProductsPage.tsx": {
+      "description": "ProductsPage — renders form",
+      "tokens": 3525,
+      "hash": "579e4d08e925b6d2",
+      "size": 12342,
+      "mtimeMs": 1789289548436.1619,
+      "updatedAt": "2026-09-13T08:52:28.680Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "ProductsPage",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 70,
+          "tokens": 558
+        },
+        {
+          "name": "Filters",
+          "kind": "fn",
+          "startLine": 71,
+          "endLine": 132,
+          "tokens": 549
+        },
+        {
+          "name": "Pagination",
+          "kind": "fn",
+          "startLine": 133,
+          "endLine": 168,
+          "tokens": 278
+        },
+        {
+          "name": "CreateProductForm",
+          "kind": "fn",
+          "startLine": 169,
+          "endLine": 273,
+          "tokens": 953
+        },
+        {
+          "name": "ProductRow",
+          "kind": "fn",
+          "startLine": 274,
+          "endLine": 384,
+          "tokens": 1059
+        }
+      ]
+    },
+    "frontend/src/features/products/api.test.ts": {
+      "description": "Declares product",
+      "tokens": 728,
+      "hash": "a9c4d1d741c888a3",
+      "size": 2547,
+      "mtimeMs": 1789288139299.2244,
+      "updatedAt": "2026-09-13T08:28:59.601Z",
+      "source": "hook"
+    },
+    "frontend/src/features/products/CategoriesPage.test.tsx": {
+      "description": "role",
+      "tokens": 1283,
+      "hash": "ec20a4b9680a2316",
+      "size": 4489,
+      "mtimeMs": 1789288506864.576,
+      "updatedAt": "2026-09-13T08:35:07.119Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "sessionWith",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 121,
+          "tokens": 1138
+        }
+      ]
+    },
+    "frontend/src/features/products/ProductsPage.test.tsx": {
+      "description": "role",
+      "tokens": 2107,
+      "hash": "18a88ec95aeb4cff",
+      "size": 7377,
+      "mtimeMs": 1789290257759.7168,
+      "updatedAt": "2026-09-13T09:04:18.164Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "sessionWith",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 48,
+          "tokens": 209
+        },
+        {
+          "name": "renderPage",
+          "kind": "fn",
+          "startLine": 49,
+          "endLine": 217,
+          "tokens": 1751
+        }
+      ]
     }
   },
   "preamble": [

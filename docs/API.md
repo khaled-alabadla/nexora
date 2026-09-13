@@ -90,8 +90,8 @@ Consistent structure, always JSON for `/api/*` (enforced by
 GET /api/v1/products?page=1&per_page=20
 ```
 
-`per_page` is clamped server-side (default 20, max 100 — enforced per endpoint
-from Phase 2).
+`per_page` is clamped server-side (default 20, max 100). Live since Phase 2.1
+via `App\Support\Http\QueryFilter` + `ApiResponse::paginated()`.
 
 ---
 
@@ -193,19 +193,28 @@ so the SPA shows the company switcher. A stale `current_company_id` is cleared.
 
 ---
 
-## 11. Product endpoints
+## 11. Products & categories (Phase 2.1)
 
-> Implemented in Phase 2.
+All under `/api/v1`, `auth:sanctum` + `active-company`. Body/response fields
+match `docs/DATABASE.md` §5.
 
-```
-GET    /api/v1/products
-POST   /api/v1/products
-GET    /api/v1/products/{id}
-PUT    /api/v1/products/{id}
-DELETE /api/v1/products/{id}
-```
+| Method & path | Permission | Notes |
+|---|---|---|
+| `GET  /products` | `product.view` | Paginated (§5). Filters: `?status=`, `?category_id=`. Search: `?search=` over sku/name/barcode. Sort: `?sort=name\|sku\|created_at` (`-` for desc). |
+| `POST /products` | `product.create` | `{ category_id?, sku, name, description?, barcode?, unit?, cost_price?, selling_price?, tax_rate?, minimum_stock?, status? }`. `sku`/`barcode` unique per company. |
+| `GET  /products/{id}` | `product.view` | |
+| `PUT  /products/{id}` | `product.update` | Same fields, all optional. |
+| `DELETE /products/{id}` | `product.delete` | Soft delete — the SKU/barcode stay reserved. `204`. |
+| `GET  /categories` | `category.manage` | Not paginated. |
+| `POST /categories` | `category.manage` | `{ name, parent_id?, status? }`. `parent_id` must belong to the same company and cannot be the category itself. |
+| `GET  /categories/{id}` | `category.manage` | |
+| `PUT  /categories/{id}` | `category.manage` | |
+| `DELETE /categories/{id}` | `category.manage` | Hard delete; children and products are re-parented to `null`. `204`. |
 
-Authorization is required for every endpoint.
+Every id is resolved through Laravel route-model binding, tenant-scoped by
+`BelongsToCompany`'s global scope (`active-company` is in the middleware
+priority list, ahead of `SubstituteBindings` — see
+`docs/PHASE-2-PLAN.md` §7.6) — a foreign company's id always `404`s.
 
 ---
 

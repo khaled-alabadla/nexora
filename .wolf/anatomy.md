@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-13T08:00:44.871Z
-> Files: 194 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-13T09:04:18.166Z
+> Files: 224 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -49,7 +49,7 @@
 
 ## backend/app/Http/Responses/
 
-- `ApiResponse.php` — Builds the API's canonical success envelope (see docs/API.md): (~396 tok)
+- `ApiResponse.php` — Builds the API's canonical success envelope (see docs/API.md): (~683 tok)
 
 ## backend/app/Models/
 
@@ -62,7 +62,11 @@
 ## backend/app/Support/Authorization/
 
 - `GrantedPermissions.php` — Resolves the effective permission slugs for a role. Owner implicitly holds (~212 tok)
-- `Permissions.php` — Central registry of every permission slug in the system. (~386 tok)
+- `Permissions.php` — Central registry of every permission slug in the system. (~883 tok)
+
+## backend/app/Support/Http/
+
+- `QueryFilter.php` — Whitelisted filter / search / sort for list endpoints (docs/API.md §6–8). (~666 tok)
 
 ## backend/app/Support/Modules/
 
@@ -76,7 +80,7 @@
 
 ## backend/bootstrap/
 
-- `app.php` (~317 tok)
+- `app.php` (~448 tok)
 - `providers.php` (~269 tok)
 
 ## backend/config/
@@ -108,10 +112,11 @@
 - `2026_09_10_000006_add_current_company_id_to_users_table.php` — Migration: alter users table (~188 tok)
 - `2026_09_10_000007_create_company_invitations_table.php` — Migration: create company_invitations table (~261 tok)
 - `2026_09_10_000008_seed_roles_and_permissions.php` — Roles and permissions are reference data — effectively part of the schema. (~186 tok)
+- `2026_09_13_000001_reseed_roles_and_permissions.php` — Phase 2 added product/warehouse/inventory permissions and extended the role (~191 tok)
 
 ## backend/modules/Companies/Database/Seeders/
 
-- `RolesAndPermissionsSeeder.php` — Idempotent. Runs on every `migrate --seed`; safe to re-run. (~651 tok)
+- `RolesAndPermissionsSeeder.php` — Idempotent. Runs on every `migrate --seed`; safe to re-run. (~908 tok)
 
 ## backend/modules/Companies/Http/Controllers/
 
@@ -225,7 +230,53 @@
 - `LogoutTest.php` (~218 tok)
 - `PasswordResetTest.php` (~600 tok)
 - `RegistrationTest.php` (~830 tok)
-- `SessionTest.php` (~463 tok)
+- `SessionTest.php` (~470 tok)
+
+## backend/modules/Products/Database/Factories/
+
+- `ProductCategoryFactory.php` — ProductCategoryFactory: definition, inactive (~212 tok)
+- `ProductFactory.php` — ProductFactory: definition, inactive, withMinimumStock (~359 tok)
+
+## backend/modules/Products/Database/Migrations/
+
+- `2026_09_13_000001_create_product_categories_table.php` — Migration: create product_categories table (~231 tok)
+- `2026_09_13_000002_create_products_table.php` — Migration: create products table (~449 tok)
+
+## backend/modules/Products/Http/Controllers/
+
+- `ProductCategoryController.php` — Categories for the active company. A small, flat-ish list — not paginated. (~446 tok)
+- `ProductController.php` — index, store, show, update, destroy (~479 tok)
+
+## backend/modules/Products/Http/Requests/
+
+- `StoreProductCategoryRequest.php` — StoreProductCategoryRequest: authorize, rules (~279 tok)
+- `StoreProductRequest.php` — StoreProductRequest: authorize, rules (~459 tok)
+- `UpdateProductCategoryRequest.php` — UpdateProductCategoryRequest: authorize, rules, withValidator (~730 tok)
+- `UpdateProductRequest.php` — UpdateProductRequest: authorize, rules (~506 tok)
+
+## backend/modules/Products/Http/Resources/
+
+- `ProductCategoryResource.php` — ProductCategoryResource: toArray (~176 tok)
+- `ProductResource.php` — ProductResource: toArray (~280 tok)
+
+## backend/modules/Products/Models/
+
+- `Product.php` — Model — 11 fields, 1 rels (~691 tok)
+- `ProductCategory.php` — A product category, optionally nested under a parent (no enforced depth — (~542 tok)
+
+## backend/modules/Products/Routes/
+
+- `api.php` (~664 tok)
+
+## backend/modules/Products/Tests/Feature/
+
+- `ProductCategoryTest.php` (~1462 tok)
+- `ProductManagementTest.php` (~1779 tok)
+- `ProductTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for the (~756 tok)
+
+## backend/modules/Products/Tests/Unit/
+
+- `ModelRelationsTest.php` (~248 tok)
 
 ## backend/routes/
 
@@ -234,7 +285,7 @@
 
 ## backend/tests/
 
-- `Pest.php` — Create a company owned by $owner (a fresh verified user if omitted) together (~936 tok)
+- `Pest.php` — Create a company owned by $owner (a fresh verified user if omitted) together (~1069 tok)
 - `TestCase.php` — Declares TestCase (~45 tok)
 
 ## backend/tests/Feature/
@@ -264,13 +315,13 @@
 
 ## docs/
 
-- `API.md` — Nexora — API Specification (~1749 tok)
+- `API.md` — Nexora — API Specification (~2081 tok)
 - `ARCHITECTURE.md` — Nexora — Architecture (~1110 tok)
-- `DATABASE.md` — Nexora — Database Design (~1154 tok)
+- `DATABASE.md` — Nexora — Database Design (~1361 tok)
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
-- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2696 tok)
+- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2714 tok)
 - `ROADMAP.md` — Nexora — Development Roadmap (~1073 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~680 tok)
@@ -301,13 +352,14 @@
 ## frontend/src/
 
 - `App.test.tsx` — session (~609 tok)
-- `App.tsx` — App (~387 tok)
+- `App.tsx` — App (~523 tok)
 - `index.css` — Styles: 1 rules (~51 tok)
 - `main.tsx` — queryClient (~201 tok)
 - `vite-env.d.ts` — / <reference types="vite/client" /> (~45 tok)
 
 ## frontend/src/components/
 
+- `AppHeader.tsx` — AppHeader (~446 tok)
 - `ui.tsx` — Field (~642 tok)
 
 ## frontend/src/features/auth/
@@ -347,10 +399,21 @@
 - `HealthCard.tsx` — Indicator (~459 tok)
 - `useHealth.ts` — Exports HealthStatus, useHealth (~104 tok)
 
+## frontend/src/features/products/
+
+- `api.test.ts` — Declares product (~728 tok)
+- `api.ts` — Exports listProducts, getProduct, createProduct, updateProduct + 5 more (~440 tok)
+- `CategoriesPage.test.tsx` — role (~1283 tok)
+- `CategoriesPage.tsx` — CategoriesPage — renders form (~1312 tok)
+- `hooks.ts` — Exports useProducts, useCategories, useCreateProduct, useUpdateProduct + 4 more (~648 tok)
+- `ProductsPage.test.tsx` — role (~2107 tok)
+- `ProductsPage.tsx` — ProductsPage — renders form (~3525 tok)
+- `types.ts` — Exports ProductStatus, ProductCategory, Product, ProductInput + 2 more (~360 tok)
+
 ## frontend/src/lib/
 
 - `api.test.ts` — API routes: GET, POST, DELETE, PATCH (8 endpoints) (~705 tok)
-- `api.ts` — Minimal typed API client for the Nexora backend. (~874 tok)
+- `api.ts` — Minimal typed API client for the Nexora backend. (~1060 tok)
 - `forms.test.ts` — Declares error (~319 tok)
 - `forms.ts` — Flatten an ApiError's `errors` map to the first message per field. (~211 tok)
 - `utils.test.ts` — Declares names (~85 tok)
@@ -359,7 +422,7 @@
 ## frontend/src/pages/
 
 - `DashboardPage.test.tsx` — role (~838 tok)
-- `DashboardPage.tsx` — DashboardPage (~479 tok)
+- `DashboardPage.tsx` — DashboardPage (~289 tok)
 
 ## frontend/src/store/
 
@@ -368,6 +431,6 @@
 
 ## frontend/src/test/
 
-- `fetchStub.ts` — substring match against the request URL (~434 tok)
+- `fetchStub.ts` — substring match against the request URL (~552 tok)
 - `setup.ts` (~46 tok)
 - `utils.tsx` — Build a minimal JSON `Response` for stubbing `fetch` in tests. (~474 tok)
