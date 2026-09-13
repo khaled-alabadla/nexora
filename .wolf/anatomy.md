@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T11:06:46.294Z
-> Files: 193 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-10T11:10:31.705Z
+> Files: 194 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -270,7 +270,8 @@
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
-- `ROADMAP.md` — Nexora — Development Roadmap (~1044 tok)
+- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (draft, pre-GRILL-ME) (~2357 tok)
+- `ROADMAP.md` — Nexora — Development Roadmap (~1069 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~680 tok)
 

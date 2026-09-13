@@ -59,10 +59,10 @@ No business features were implemented.
 
 ---
 
-# Phase 1 — Identity & Multi-Tenancy ✅ 1.1 COMPLETE (2026-09-10)
+# Phase 1 — Identity & Multi-Tenancy ✅ COMPLETE (2026-09-10)
 
-Delivered in slice 1.1 (`feature/1.1-identity-foundation`) — see
-[PHASE-1.md](PHASE-1.md):
+On `main` + `develop`, tag `phase-1`. CI green on first push. Delivered in
+slice 1.1 (`feature/1.1-identity-foundation`) — see [PHASE-1.md](PHASE-1.md):
 
 - ✅ Registration (transactional: user + first company + Owner membership)
 - ✅ Login / logout (session regeneration + invalidation; login rate-limited)
@@ -84,7 +84,7 @@ lean FK re-checked per request.
 
 ---
 
-# Phase 2 — Products & Inventory
+# Phase 2 — Products & Inventory  ← NEXT (PLAN drafted: docs/PHASE-2-PLAN.md)
 
 - Products
 - Categories

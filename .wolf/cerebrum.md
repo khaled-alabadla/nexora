@@ -14,8 +14,10 @@ budget_tokens: 2000
   after gates pass. Only stop for missing credentials / unsafe destructive ops /
   genuinely ambiguous business requirements. Report `Phase X completed…` not
   `ready for review`.
-- Environment: `git push` is classifier-blocked; no `gh`/token. Work local-only
-  (branches, commits, `--no-ff` merges, phase tags). CI runs on first push.
+- Environment: `git push` to `origin` WORKS (verified 2026-09-10, Phase 1
+  promotion — earlier "blocked" note was wrong). No `gh` CLI — use the GitHub
+  REST API via `curl` (unauthenticated) to check CI. CI runs on
+  `main`/`develop`/PR. Still: branches, `--no-ff` merges, annotated phase tags.
 - Docker registry pulls are flaky/slow; npm registry ~17s/request. Prefer
   reusing running containers (`exec`) over `run --rm`; keep heavy trees on named
   volumes (Windows bind-mount is slow: dump-autoload was 150s on bind mount).
