@@ -110,3 +110,19 @@ function actingInCompany(App\Models\User $user, ?Modules\Companies\Models\Compan
 
     $context->set($company);
 }
+
+/**
+ * Run $callback with the CompanyContext global scope disabled — the sanctioned
+ * way to build BelongsToCompany fixtures (e.g. across several companies) in a
+ * test without first binding an active company. Mirrors the one bypass
+ * production code is allowed: `Model::withoutCompanyScope()`.
+ *
+ * @template T
+ *
+ * @param  Closure(): T  $callback
+ * @return T
+ */
+function withoutTenantScope(Closure $callback): mixed
+{
+    return app(App\Support\Tenancy\CompanyContext::class)->withoutScope($callback);
+}

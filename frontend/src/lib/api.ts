@@ -30,12 +30,29 @@ interface ApiEnvelope<T> {
   meta?: unknown
 }
 
+export interface PageMeta {
+  current_page: number
+  last_page: number
+  per_page: number
+  total: number
+  from: number | null
+  to: number | null
+}
+
+export interface Page<T> {
+  data: T[]
+  meta: PageMeta
+}
+
 function readCookie(name: string): string | undefined {
   const match = new RegExp(`(?:^|; )${name}=([^;]*)`).exec(document.cookie)
   return match?.[1] ? decodeURIComponent(match[1]) : undefined
 }
 
-async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
+async function requestEnvelope<T>(
+  path: string,
+  init: RequestInit = {},
+): Promise<ApiEnvelope<T> | undefined> {
   const method = (init.method ?? 'GET').toUpperCase()
   const headers = new Headers(init.headers)
   headers.set('Accept', 'application/json')
@@ -65,10 +82,15 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   }
 
   if (response.status === 204 || payload == null) {
-    return undefined as T
+    return undefined
   }
 
-  return (payload as ApiEnvelope<T>).data
+  return payload as ApiEnvelope<T>
+}
+
+async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
+  const envelope = await requestEnvelope<T>(path, init)
+  return envelope === undefined ? (undefined as T) : envelope.data
 }
 
 /** Prime the XSRF-TOKEN cookie. Call once before the first write request. */
@@ -85,6 +107,10 @@ function withBody(method: string, body: unknown): RequestInit {
 
 export const api = {
   get: <T>(path: string): Promise<T> => request<T>(path, { method: 'GET' }),
+  getPage: async <T>(path: string): Promise<Page<T>> => {
+    const envelope = await requestEnvelope<T[]>(path, { method: 'GET' })
+    return { data: envelope?.data ?? [], meta: envelope?.meta as PageMeta }
+  },
   post: <T>(path: string, body?: unknown): Promise<T> => request<T>(path, withBody('POST', body)),
   put: <T>(path: string, body?: unknown): Promise<T> => request<T>(path, withBody('PUT', body)),
   patch: <T>(path: string, body?: unknown): Promise<T> => request<T>(path, withBody('PATCH', body)),

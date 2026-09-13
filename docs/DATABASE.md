@@ -85,27 +85,30 @@ users
 
 ---
 
-## 5. Products
+## 5. Products (Phase 2.1)
 
-products
+Tenant-scoped via `BelongsToCompany` — see [ADR-0006](adr/0006-tenancy-mechanism.md).
 
-- id
-- company_id
-- category_id
-- sku
-- name
-- description
-- barcode
-- unit
-- cost_price
-- selling_price
-- tax_rate
-- minimum_stock
-- status
-- created_at
-- updated_at
+**product_categories**
 
-SKU must be unique within a company.
+- id, company_id, parent_id (nullable self-FK, `nullOnDelete` — adjacency
+  list, no enforced nesting depth), name, status (`active` \| `inactive`),
+  timestamps
+- unique `(company_id, name)`
+- Hard-deleted: no ledger references a category, so a delete just
+  `nullOnDelete`s its children and any products pointing at it.
+
+**products**
+
+- id, company_id, category_id (nullable, `nullOnDelete`), sku, name,
+  description (nullable), barcode (nullable), unit (default `pcs`),
+  cost_price `DECIMAL(18,4)`, selling_price `DECIMAL(18,4)`,
+  tax_rate `DECIMAL(18,4)`, minimum_stock `DECIMAL(18,4)`, status
+  (`active` \| `inactive`), timestamps, `deleted_at` (soft delete)
+- unique `(company_id, sku)`, unique `(company_id, barcode)`
+- SKU and barcode are unique **within a company**. A soft-deleted product
+  keeps its SKU reserved — a new product cannot reuse it while the deleted
+  row still exists (PHASE-2-PLAN.md §7.5).
 
 ---
 

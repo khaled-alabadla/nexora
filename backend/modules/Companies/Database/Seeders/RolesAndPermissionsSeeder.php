@@ -35,7 +35,23 @@ final class RolesAndPermissionsSeeder extends Seeder
      */
     private function rolePermissions(): array
     {
-        $managerView = [Permissions::MEMBER_VIEW];
+        $fullInventory = [
+            Permissions::PRODUCT_VIEW,
+            Permissions::PRODUCT_CREATE,
+            Permissions::PRODUCT_UPDATE,
+            Permissions::PRODUCT_DELETE,
+            Permissions::CATEGORY_MANAGE,
+            Permissions::WAREHOUSE_VIEW,
+            Permissions::WAREHOUSE_CREATE,
+            Permissions::WAREHOUSE_UPDATE,
+            Permissions::WAREHOUSE_DELETE,
+            Permissions::INVENTORY_VIEW,
+            Permissions::INVENTORY_ADJUST,
+            Permissions::INVENTORY_TRANSFER,
+        ];
+
+        // product.view + inventory.view only — the common "can look, can't touch" grant.
+        $catalogView = [Permissions::PRODUCT_VIEW, Permissions::INVENTORY_VIEW];
 
         return [
             Role::ADMINISTRATOR => [
@@ -44,13 +60,18 @@ final class RolesAndPermissionsSeeder extends Seeder
                 Permissions::MEMBER_INVITE,
                 Permissions::MEMBER_ROLE_UPDATE,
                 Permissions::MEMBER_REMOVE,
+                ...$fullInventory,
             ],
-            Role::ACCOUNTANT => $managerView,
-            Role::SALES_MANAGER => $managerView,
-            Role::INVENTORY_MANAGER => $managerView,
-            Role::PURCHASING_MANAGER => $managerView,
-            Role::SALES_REP => [],
-            Role::EMPLOYEE => [],
+            Role::ACCOUNTANT => [Permissions::MEMBER_VIEW, ...$catalogView],
+            Role::SALES_MANAGER => [Permissions::MEMBER_VIEW, ...$catalogView],
+            Role::INVENTORY_MANAGER => [Permissions::MEMBER_VIEW, ...$fullInventory],
+            Role::PURCHASING_MANAGER => [
+                Permissions::MEMBER_VIEW,
+                ...$catalogView,
+                Permissions::WAREHOUSE_VIEW,
+            ],
+            Role::SALES_REP => [Permissions::PRODUCT_VIEW],
+            Role::EMPLOYEE => [Permissions::PRODUCT_VIEW],
         ];
     }
 

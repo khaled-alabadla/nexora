@@ -464,6 +464,182 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-10T10:12:29.579Z"
+    },
+    {
+      "id": "bug-030",
+      "timestamp": "2026-09-13T08:05:13.332Z",
+      "error_message": "Significant refactor of ApiResponse.php",
+      "file": "backend/app/Http/Responses/ApiResponse.php",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 50→75 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:05:13.332Z"
+    },
+    {
+      "id": "bug-031",
+      "timestamp": "2026-09-13T08:06:33.207Z",
+      "error_message": "Significant refactor of RolesAndPermissionsSeeder.php",
+      "file": "backend/modules/Companies/Database/Seeders/RolesAndPermissionsSeeder.php",
+      "root_cause": "7 lines replaced/restructured",
+      "fix": "Rewrote 20→41 lines (7 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:06:33.207Z"
+    },
+    {
+      "id": "bug-032",
+      "timestamp": "2026-09-13T08:12:25.679Z",
+      "error_message": "Wrong reference: string should be implode",
+      "file": "backend/modules/Products/Database/Factories/ProductFactory.php",
+      "root_cause": "Used \"string\" instead of \"implode\"",
+      "fix": "Changed string → implode",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:12:25.679Z"
+    },
+    {
+      "id": "bug-033",
+      "timestamp": "2026-09-13T08:20:24.756Z",
+      "error_message": "Null/undefined access in api.ts",
+      "file": "frontend/src/lib/api.ts",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:20:24.756Z"
+    },
+    {
+      "id": "bug-034",
+      "timestamp": "2026-09-13T08:21:19.903Z",
+      "error_message": "Null/undefined access in ProductResource.php",
+      "file": "backend/modules/Products/Http/Resources/ProductResource.php",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:21:19.903Z"
+    },
+    {
+      "id": "bug-035",
+      "timestamp": "2026-09-13T08:26:32.488Z",
+      "error_message": "Significant refactor of types.ts",
+      "file": "frontend/src/features/products/types.ts",
+      "root_cause": "17 lines replaced/restructured",
+      "fix": "Rewrote 28→28 lines (17 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:26:32.488Z"
+    },
+    {
+      "id": "bug-036",
+      "timestamp": "2026-09-13T08:26:45.793Z",
+      "error_message": "Null/undefined access in ProductsPage.tsx",
+      "file": "frontend/src/features/products/ProductsPage.tsx",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:26:45.793Z"
+    },
+    {
+      "id": "bug-037",
+      "timestamp": "2026-09-13T08:52:49.642Z",
+      "error_message": "Null/undefined access in UpdateProductCategoryRequest.php",
+      "file": "backend/modules/Products/Http/Requests/UpdateProductCategoryRequest.php",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T08:52:49.642Z"
+    },
+    {
+      "id": "bug-038",
+      "timestamp": "2026-09-13T09:03:06.383Z",
+      "error_message": "Function not marked async",
+      "file": "frontend/src/features/products/ProductsPage.test.tsx",
+      "root_cause": "Function uses await but wasn't declared async",
+      "fix": "Added async modifier",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T09:03:06.383Z"
+    },
+    {
+      "id": "bug-039",
+      "timestamp": "2026-09-13T09:03:57.171Z",
+      "error_message": "Significant refactor of ProductsPage.test.tsx",
+      "file": "frontend/src/features/products/ProductsPage.test.tsx",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 11→13 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T09:03:57.171Z"
+    },
+    {
+      "id": "bug-040",
+      "timestamp": "2026-09-13T09:04:18.202Z",
+      "error_message": "Incorrect value in code",
+      "file": "frontend/src/features/products/ProductsPage.test.tsx",
+      "root_cause": "Had 'Category'",
+      "fix": "Changed to 'option'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T09:04:18.202Z"
     }
   ]
 }

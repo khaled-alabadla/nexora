@@ -44,5 +44,5 @@ it('scopes permissions to the active company role', function () {
     $this->getJson(apiUrl('auth/me'))
         ->assertOk()
         ->assertJsonPath('data.current_company.role.slug', Role::EMPLOYEE)
-        ->assertJsonPath('data.permissions', []);
+        ->assertJsonPath('data.permissions', [Permissions::PRODUCT_VIEW]);
 });
