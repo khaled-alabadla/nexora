@@ -1,6 +1,7 @@
-# Phase 2 — Products & Inventory — PLAN (draft, pre-GRILL-ME)
+# Phase 2 — Products & Inventory — PLAN
 
-Status: **PLAN**. Not started. Needs GRILL-ME before IMPLEMENT (§7).
+Status: **GRILL-ME complete (2026-09-13)** — all §7 decisions ratified with the
+user, every one matching the recommended option. Ready for IMPLEMENT.
 
 ## 1. Scope (from ROADMAP + PRD + DATABASE.md)
 
@@ -37,11 +38,11 @@ the append-only ledger are the audit trail for now).
   per `docs/API.md` §3 (first list endpoint needs it).
 - `App\Support\Http\QueryFilter` — whitelisted filter / search / sort helper
   (API.md §6–8). Hand-rolled, no package.
-- Middleware-ordering spike: route-model binding (`{product}` etc.) resolves in
-  `SubstituteBindings`, which currently runs **before** the route-level
-  `active-company` middleware, so the tenant scope has no context yet (Phase 1
-  hit this and used manual `findOrFail`). Decide: add `active-company` to the
-  middleware priority list (clean, do once) vs keep manual lookups. → GRILL-ME.
+- Middleware-ordering fix (ratified §7.6): add `active-company` (and
+  `auth:sanctum`) to the middleware priority list in `bootstrap/app.php` so
+  `SubstituteBindings` runs after tenant context is bound. Do this first in
+  2.1, then implicit route-model binding (`{product}` etc.) is tenant-scoped
+  automatically — no more manual `findOrFail` lookups.
 
 ## 4. Data model
 
@@ -84,8 +85,8 @@ GET/POST/GET{id}/PUT{id}/DELETE{id}  /warehouses
 ```
 GET  /inventory/stock          current levels (product × warehouse), paginated, ?warehouse_id ?product_id ?low_stock
 GET  /inventory/movements      the ledger, paginated, filtered
-POST /inventory/adjustments    { warehouse_id, lines:[{product_id, quantity_delta, unit_cost?, reason}] }  (type adjustment | damage)
-POST /inventory/transfers      { from_warehouse_id, to_warehouse_id, lines:[{product_id, quantity}] }      (paired transfer_out/in)
+POST /inventory/adjustments    { warehouse_id, type: adjustment|damage, force?, lines:[{product_id, quantity_delta, unit_cost?, reason}] }
+POST /inventory/transfers      { from_warehouse_id, to_warehouse_id, lines:[{product_id, quantity}] }      (paired transfer_out/in; never accepts force)
 GET  /inventory/low-stock      products at/≤ minimum_stock
 ```
 
@@ -104,20 +105,55 @@ GET  /inventory/low-stock      products at/≤ minimum_stock
 | 2.6 | Low-stock detection | `minimum_stock`, `GET /inventory/low-stock`, dashboard widget | correctness across warehouses |
 | 2.7 | Docs + close | DATABASE/API/ARCHITECTURE/SECURITY, ADR (stock projection), PHASE-2.md, ROADMAP; code review; CI floor review | 0 critical/high; docs match code |
 
-## 7. Open decisions — GRILL-ME (recommendation in parens)
+## 7. Decisions — RATIFIED (GRILL-ME, 2026-09-13)
 
-1. Stock: maintained projection table vs on-the-fly `SUM` (**projection + reconcile**).
-2. `inventory_movements.quantity`: signed +in/-out vs positive + direction-from-type (**signed**).
-3. Categories: flat vs `parent_id` adjacency list (**parent_id, no enforced depth**).
-4. Negative stock: hard block vs allow via privileged adjustment (**block; adjustments resolve to any ≥ 0; explicit "force correction" flag gated on `inventory.adjust` for true-ups**).
-5. Product delete: soft-delete always vs block-with-movements vs archive-only (**soft delete; keep movements; SKU stays reserved**).
-6. Route binding: `active-company` into middleware priority list vs manual `findOrFail` (**priority list — spike in 2.1**).
-7. Permission granularity: per-action vs coarse `product.manage` (**per-action, like Phase 1 `member.*`**).
-8. `damage`: own endpoint vs a `type` on the adjustment endpoint (**type on adjustment**).
-9. Default warehouse: model it now (`is_default`, first = default) vs defer (**model now — Phase 3/4 need a target**).
-10. Frontend: dedicated `/inventory` nav area + a dashboard inventory summary now (**yes, minimal**).
-11. Role → permission matrix for the ~11 new slugs (draft in GRILL-ME; inventory-manager gets all inventory/product/warehouse; sales/purchasing get `*.view`; accountant view-only; employee `product.view`).
-12. Coverage floor: keep 85 or raise for business modules (**keep 85 CI floor; aim 90 %+ in the modules**).
+1. **Stock**: maintained projection table + `inventory:reconcile` + drift
+   property test. Ledger (`inventory_movements`) stays the source of truth.
+2. **`inventory_movements.quantity`**: **signed** (+in / −out). Current stock
+   is `SUM(quantity)` per (product, warehouse) — that's exactly what the
+   projection caches.
+3. **Categories**: `parent_id` adjacency list (nullable self-FK), no enforced
+   depth limit.
+4. **Negative stock**: **blocked by default**. Adjustments/transfers may not
+   drop `stock.quantity` below 0 unless the caller passes `force: true` on
+   `POST /inventory/adjustments`, still gated on `inventory.adjust` — a true-up
+   correction path, not a loophole for normal operations. Transfers never
+   accept `force` (a transfer never fabricates stock).
+5. **Product delete**: soft delete always; `inventory_movements` /
+   `stock` rows are untouched; SKU/barcode stay reserved (unique index
+   includes soft-deleted rows, like `Company.slug`).
+6. **Route binding**: add `active-company` (and `auth:sanctum`) to the
+   Laravel middleware **priority list** in `bootstrap/app.php` so
+   `SubstituteBindings` runs after tenant context is bound — spike this first
+   in 2.1, then `{product}`/`{warehouse}` etc. type-hint straight to
+   tenant-scoped models like any other Eloquent binding.
+7. **Permission granularity**: per-action (`product.view/create/update/delete`,
+   `category.manage`, `warehouse.view/create/update/delete`,
+   `inventory.view/adjust/transfer`) — consistent with Phase 1's `member.*`.
+8. **Damage**: a `type` on `POST /inventory/adjustments`
+   (`adjustment` | `damage`), not a separate endpoint.
+9. **Default warehouse**: `warehouses.is_default` (unique-per-company via a
+   partial index / app-level invariant), first warehouse created for a company
+   becomes default automatically.
+10. **Frontend**: full UI this phase — product/category/warehouse CRUD pages,
+    stock view, adjustment + transfer forms, low-stock widget on the
+    dashboard. Matches how Phase 1.1 shipped backend + SPA together.
+
+### Role → permission matrix (ratified default; adjust only if it misfires in testing)
+
+| Role | product.* | category.manage | warehouse.* | inventory.view | inventory.adjust | inventory.transfer |
+|---|---|---|---|---|---|---|
+| owner | ✅ (implicit — all) | | | | | |
+| administrator | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| inventory-manager | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| accountant | view | | | view | | |
+| sales-manager | view | | | view | | |
+| sales-rep | view | | | | | |
+| purchasing-manager | view | | view | view | | |
+| employee | view | | | | | |
+
+11. **Coverage floor**: keep the CI floor at 85 %; aim for 90 %+ within
+    `Modules\Products` / `Modules\Inventory` given they carry the ledger.
 
 ## 8. Risks
 
@@ -125,7 +161,7 @@ GET  /inventory/low-stock      products at/≤ minimum_stock
 |---|---|
 | Stock projection drifts from the ledger | one `InventoryLedger` writer; projection update always in the movement txn; `inventory:reconcile` + property test in CI |
 | Concurrency: lost updates / negative stock races | `lockForUpdate` on `stock` rows inside the txn; dedicated non-`RefreshDatabase` concurrency tests (MySQL, per ADR-0005) |
-| Route-model binding runs before tenant context | spike in 2.1; pick priority-list or manual lookup before building 5 resources on it |
+| Route-model binding runs before tenant context | fixed via middleware priority list (§7.6), first thing in 2.1, before any resource controller is built on it |
 | Precision bugs | `DECIMAL(18,4)` for all quantities + unit_cost; model casts; explicit rounding tests; never float |
 | Scope creep from Sales/Purchases | movement enum includes purchase/sale/return but **no endpoints** for them this phase |
 | `ApiResponse` pagination shape churn | lock the `meta` contract in 2.1 against API.md §3; all later list endpoints reuse it |

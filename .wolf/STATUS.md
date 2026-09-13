@@ -58,22 +58,25 @@ job needed `composer audit --locked` since it has no `composer install`).
   (`companyWithOwner`, `addMember`, `actingInCompany`). Frontend `test/fetchStub.ts`
   (fetch router) + `MemoryRouter` in `renderWithProviders`.
 
-## 🚀 Next quest — Phase 2: Products & Inventory
+## 🚀 Next quest — Phase 2: Products & Inventory — IMPLEMENT
 
-**PLAN drafted** → `docs/PHASE-2-PLAN.md`. Next step is **GRILL-ME** on that
-doc's §7 (12 open decisions), then IMPLEMENT slice 2.1.
+**PLAN + GRILL-ME complete** (2026-09-13) → `docs/PHASE-2-PLAN.md` (all §7
+decisions ratified, every one matching the recommended option). Next: IMPLEMENT
+slice 2.1.
 
 - Modules `Products` + `Inventory` (both scaffolded, empty). First real
   `BelongsToCompany` business models.
-- Slices: 2.1 Products/Categories CRUD (+ shared infra: `ApiResponse::paginated`,
-  query-filter helper, route-binding-order spike) → 2.2 Warehouses → 2.3 ledger
-  + `stock` projection + `inventory:reconcile` → 2.4 adjustments → 2.5 transfers
+- Slice 2.1 starts with the middleware-priority fix (`active-company` +
+  `auth:sanctum` into `bootstrap/app.php`'s priority list) so `{product}` etc.
+  route-model-bind tenant-scoped — do this before any controller.
+- Slices: 2.1 Products/Categories CRUD (+ `ApiResponse::paginated`, query-filter
+  helper) → 2.2 Warehouses (`is_default`) → 2.3 ledger + `stock` projection +
+  `inventory:reconcile` → 2.4 adjustments (+damage, +`force`) → 2.5 transfers
   → 2.6 low-stock → 2.7 docs/close.
-- Key open decisions: stock projection vs on-the-fly SUM; signed vs
-  positive+direction quantity; category tree; negative-stock policy; route
-  binding via middleware priority vs manual lookup. See plan §7.
+- Ratified: signed `quantity`; negative stock blocked unless `force:true` on
+  adjustments (never transfers); soft-delete products; per-action permissions;
+  full frontend UI this phase. Role matrix in plan §7.
 - Add `inventory_movements.unit_cost` `DECIMAL(18,4)` (flagged in DATABASE.md).
-- Do NOT start implementing until GRILL-ME is done with the user.
 
 ## Context
 

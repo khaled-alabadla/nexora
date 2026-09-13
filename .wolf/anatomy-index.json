@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-10T11:10:31.705Z",
+    "lastScanned": "2026-09-13T08:00:44.871Z",
     "fileCount": 194,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "8895376bfff9b87f0ac3268119f23765024b9802dfa059ad3dc56d7a7ad8e2d3",
-    "storeUpdatedAt": "2026-09-10T11:10:31.720Z",
-    "rootHash": "5cf1f4c61ae67fd7"
+    "renderedHash": "8b6d65575d179ba7a36940ee8baf7040869f238794c9a7543c38932fd20d6b5a",
+    "storeUpdatedAt": "2026-09-13T08:00:44.883Z",
+    "rootHash": "115353882cb8c564"
   },
   "files": {
     "AGENTS.md": {
@@ -758,11 +758,11 @@
     },
     "docs/ROADMAP.md": {
       "description": "Nexora — Development Roadmap",
-      "tokens": 1069,
-      "hash": "39045f4d4d52032c",
-      "size": 4360,
-      "mtimeMs": 1789038631299.327,
-      "updatedAt": "2026-09-10T11:10:31.703Z",
+      "tokens": 1073,
+      "hash": "729756969b644657",
+      "size": 4375,
+      "mtimeMs": 1789286444696.7034,
+      "updatedAt": "2026-09-13T08:00:44.870Z",
       "source": "hook"
     },
     "docs/DATABASE.md": {
@@ -2003,12 +2003,12 @@
       "source": "hook"
     },
     "docs/PHASE-2-PLAN.md": {
-      "description": "Phase 2 — Products & Inventory — PLAN (draft, pre-GRILL-ME)",
-      "tokens": 2357,
-      "hash": "bbeb604ca55da4c5",
-      "size": 9479,
-      "mtimeMs": 1789038575631.9487,
-      "updatedAt": "2026-09-10T11:09:35.961Z",
+      "description": "Phase 2 — Products & Inventory — PLAN",
+      "tokens": 2696,
+      "hash": "6bac2590ab732052",
+      "size": 10871,
+      "mtimeMs": 1789286419798.2263,
+      "updatedAt": "2026-09-13T08:00:19.991Z",
       "source": "hook"
     }
   },

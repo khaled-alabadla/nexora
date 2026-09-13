@@ -84,7 +84,7 @@ lean FK re-checked per request.
 
 ---
 
-# Phase 2 — Products & Inventory  ← NEXT (PLAN drafted: docs/PHASE-2-PLAN.md)
+# Phase 2 — Products & Inventory  ← IN PROGRESS (PLAN + GRILL-ME done: docs/PHASE-2-PLAN.md)
 
 - Products
 - Categories
