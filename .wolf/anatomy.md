@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T09:35:49.062Z
-> Files: 240 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T10:34:04.616Z
+> Files: 263 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -30,7 +30,7 @@
 
 - `.gitignore` — Git ignore rules (~84 tok)
 - `composer.json` — PHP package manifest (~782 tok)
-- `phpstan.neon` (~289 tok)
+- `phpstan.neon` — Declares past (~438 tok)
 - `phpunit.xml` (~566 tok)
 - `pint.json` (~169 tok)
 - `README.md` — Project documentation (~232 tok)
@@ -232,16 +232,25 @@
 - `RegistrationTest.php` (~830 tok)
 - `SessionTest.php` (~470 tok)
 
+## backend/modules/Inventory/Console/Commands/
+
+- `ReconcileInventoryCommand.php` — Detects and repairs drift between the `stock` projection and the (~2124 tok)
+
 ## backend/modules/Inventory/Database/Factories/
 
+- `InventoryMovementFactory.php` — InventoryMovementFactory: definition, type (~317 tok)
+- `StockFactory.php` — StockFactory: definition (~202 tok)
 - `WarehouseFactory.php` — WarehouseFactory: definition, default, inactive (~307 tok)
 
 ## backend/modules/Inventory/Database/Migrations/
 
 - `2026_09_13_000001_create_warehouses_table.php` — Migration: create warehouses table (~238 tok)
+- `2026_09_14_000001_create_inventory_movements_table.php` — Migration: create inventory_movements table (~574 tok)
+- `2026_09_14_000002_create_stock_table.php` — Migration: create stock table (~462 tok)
 
 ## backend/modules/Inventory/Http/Controllers/
 
+- `InventoryController.php` — Read-only for now: the stock projection and the ledger behind it (~450 tok)
 - `WarehouseController.php` — Warehouses for the active company. Not paginated — a small reference list, (~490 tok)
 
 ## backend/modules/Inventory/Http/Requests/
@@ -251,22 +260,36 @@
 
 ## backend/modules/Inventory/Http/Resources/
 
+- `InventoryMovementResource.php` — InventoryMovementResource: toArray (~392 tok)
+- `StockResource.php` — StockResource: toArray (~311 tok)
 - `WarehouseResource.php` — WarehouseResource: toArray (~184 tok)
 
 ## backend/modules/Inventory/Models/
 
+- `InventoryMovement.php` — One line of the append-only inventory ledger — the source of truth for (~897 tok)
+- `Stock.php` — A maintained projection of SUM(inventory_movements.quantity) for one (~490 tok)
 - `Warehouse.php` — A stock location within a company. Exactly one warehouse is the company's (~503 tok)
+
+## backend/modules/Inventory/Providers/
+
+- `InventoryServiceProvider.php` — InventoryServiceProvider: boot (~150 tok)
 
 ## backend/modules/Inventory/Routes/
 
-- `api.php` (~406 tok)
+- `api.php` (~517 tok)
 
 ## backend/modules/Inventory/Services/
 
+- `InventoryLedger.php` — The single writer of `inventory_movements` + `stock` for the active (~1384 tok)
 - `WarehouseService.php` — Warehouse lifecycle for the active company. The single place that enforces (~1747 tok)
 
 ## backend/modules/Inventory/Tests/Feature/
 
+- `InventoryLedgerTest.php` — Declares ledgerFixture (~2097 tok)
+- `InventoryReadTest.php` (~1140 tok)
+- `InventoryTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for (~754 tok)
+- `ReconcileInventoryCommandTest.php` — reconcileFixture: corruptStock (~1407 tok)
+- `StockConcurrencyTest.php` — Real MySQL concurrency, deliberately NOT using RefreshDatabase: that trait (~1715 tok)
 - `WarehouseManagementTest.php` (~2368 tok)
 - `WarehouseTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for (~581 tok)
 
@@ -353,13 +376,13 @@
 
 ## docs/
 
-- `API.md` — Nexora — API Specification (~2376 tok)
+- `API.md` — Nexora — API Specification (~2592 tok)
 - `ARCHITECTURE.md` — Nexora — Architecture (~1110 tok)
-- `DATABASE.md` — Nexora — Database Design (~1787 tok)
+- `DATABASE.md` — Nexora — Database Design (~2241 tok)
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
-- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2757 tok)
+- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2804 tok)
 - `ROADMAP.md` — Nexora — Development Roadmap (~1073 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~680 tok)
@@ -372,6 +395,7 @@
 - `0004-authentication-transport.md` — ADR-0004: Authentication transport — Sanctum SPA cookie session (~504 tok)
 - `0005-test-database-mysql.md` — ADR-0005: Run the test suite against MySQL, not SQLite (~586 tok)
 - `0006-tenancy-mechanism.md` — ADR-0006: Multi-tenancy mechanism (~674 tok)
+- `0007-stock-projection.md` — ADR-0007: Stock as a maintained projection, and how it stays consistent under concurrency (~1201 tok)
 
 ## frontend/
 
@@ -390,14 +414,14 @@
 ## frontend/src/
 
 - `App.test.tsx` — session (~609 tok)
-- `App.tsx` — App (~592 tok)
+- `App.tsx` — App (~660 tok)
 - `index.css` — Styles: 1 rules (~51 tok)
 - `main.tsx` — queryClient (~201 tok)
 - `vite-env.d.ts` — / <reference types="vite/client" /> (~45 tok)
 
 ## frontend/src/components/
 
-- `AppHeader.tsx` — AppHeader (~495 tok)
+- `AppHeader.tsx` — AppHeader (~543 tok)
 - `ui.tsx` — Field (~642 tok)
 
 ## frontend/src/features/auth/
@@ -436,6 +460,14 @@
 - `HealthCard.test.tsx` — fetchMock (~345 tok)
 - `HealthCard.tsx` — Indicator (~459 tok)
 - `useHealth.ts` — Exports HealthStatus, useHealth (~104 tok)
+
+## frontend/src/features/inventory/
+
+- `api.ts` — Exports listStock, listMovements (~228 tok)
+- `hooks.ts` — Exports useStock, useMovements (~174 tok)
+- `InventoryPage.test.tsx` — role (~1467 tok)
+- `InventoryPage.tsx` — MOVEMENT_TYPES (~1702 tok)
+- `types.ts` — Exports MovementType, ProductSummary, WarehouseSummary, Stock + 3 more (~332 tok)
 
 ## frontend/src/features/products/
 

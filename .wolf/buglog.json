@@ -822,6 +822,102 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-14T09:35:02.415Z"
+    },
+    {
+      "id": "bug-052",
+      "timestamp": "2026-09-14T09:52:23.258Z",
+      "error_message": "Incorrect value in code",
+      "file": "backend/modules/Inventory/Database/Factories/InventoryMovementFactory.php",
+      "root_cause": "Had 'type'",
+      "fix": "Changed to 'warehouse_id'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:52:23.258Z"
+    },
+    {
+      "id": "bug-053",
+      "timestamp": "2026-09-14T10:03:15.798Z",
+      "error_message": "Significant refactor of StockConcurrencyTest.php",
+      "file": "backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php",
+      "root_cause": "7 lines replaced/restructured",
+      "fix": "Rewrote 12→7 lines (7 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:03:15.798Z"
+    },
+    {
+      "id": "bug-054",
+      "timestamp": "2026-09-14T10:06:11.462Z",
+      "error_message": "Significant refactor of ReconcileInventoryCommandTest.php",
+      "file": "backend/modules/Inventory/Tests/Feature/ReconcileInventoryCommandTest.php",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 5→8 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:06:11.462Z"
+    },
+    {
+      "id": "bug-055",
+      "timestamp": "2026-09-14T10:18:03.526Z",
+      "error_message": "CSS fix: product",
+      "file": "frontend/src/features/inventory/InventoryPage.test.tsx",
+      "root_cause": "product: { id: 1, sku: 'A1', name: 'Widget' → { id: 2, sku: 'B2', name: 'Gadget'",
+      "fix": "Changed product: { id: 1, sku: 'A1', name: 'Widget' → { id: 2, sku: 'B2', name: 'Gadget'",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:18:03.526Z"
+    },
+    {
+      "id": "bug-056",
+      "timestamp": "2026-09-14T10:20:43.863Z",
+      "error_message": "Type error",
+      "file": "frontend/src/features/inventory/InventoryPage.test.tsx",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:20:43.863Z"
+    },
+    {
+      "id": "bug-057",
+      "timestamp": "2026-09-14T10:23:10.174Z",
+      "error_message": "Type error",
+      "file": "frontend/src/features/inventory/api.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:23:10.174Z"
     }
   ]
 }

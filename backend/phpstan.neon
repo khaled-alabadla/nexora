@@ -29,6 +29,14 @@ parameters:
         # Laravel's factory-name resolver closure — signature is stock artisan.
         - message: '#guessFactoryNamesUsing\(\) expects callable#'
           path: app/Providers/AppServiceProvider.php
+        # Eloquent decimal:4-cast attributes (Stock/InventoryMovement.quantity,
+        # unit_cost) are runtime-guaranteed numeric strings, but Larastan can't
+        # narrow a cast's inferred type past plain `string` — bcmath's stubs
+        # require the stricter `numeric-string`.
+        - message: '#Parameter \#(1|2) \$num[12] of function (bcadd|bccomp) expects numeric-string, string given\.#'
+          paths:
+            - modules/Inventory/Services/InventoryLedger.php
+            - modules/Inventory/Console/Commands/ReconcileInventoryCommand.php
 
     checkModelProperties: true
     checkOctaneCompatibility: false

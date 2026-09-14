@@ -151,23 +151,44 @@ the instance it was given. Rules:
 
 ## 7. Inventory
 
-inventory_movements
+inventory_movements (append-only ledger — the source of truth, **Phase 2.3**)
 
 - id
 - company_id
-- product_id
-- warehouse_id
-- type
-- quantity
-- unit_cost          — DECIMAL(18,4); cost per unit at the time of the movement.
-                       Required for inventory valuation / COGS. **Added in Phase 2.**
-- reference_type
-- reference_id
-- created_by
-- created_at
+- product_id           — `restrictOnDelete` (a product with movement history can't be hard-deleted)
+- warehouse_id         — `restrictOnDelete`, same reasoning
+- type                 — `purchase|sale|return|adjustment|transfer_in|transfer_out|damage`;
+                          purchase/sale/return are modeled now but unreachable until Phase 3/4
+- quantity             — DECIMAL(18,4); **signed**, +in / −out (§7.2). Current stock for a
+                          (product, warehouse) pair is `SUM(quantity)` — see `stock` below.
+- unit_cost            — DECIMAL(18,4), nullable; cost per unit at the time of the movement.
+                          Required for inventory valuation / COGS. **Added in Phase 2.**
+- reference_type / reference_id — nullable, polymorphic-style link to the record that
+                          caused the movement (a sale, purchase, transfer — Phase 3/4/2.5)
+- note                 — nullable
+- created_by           — nullable FK to `users`, `nullOnDelete`
+- created_at only — **no `updated_at`, no soft deletes.** A row is never
+  modified or removed once written; correcting a mistake means recording a
+  new offsetting movement, never editing history.
 
-Inventory must be calculated from movements or through
-a carefully maintained projection derived from the ledger.
+stock (maintained projection of the ledger, **Phase 2.3**)
+
+- id, company_id, product_id (`restrictOnDelete`), warehouse_id (`restrictOnDelete`)
+- quantity — DECIMAL(18,4), default 0
+- timestamps
+- unique `(company_id, product_id, warehouse_id)`
+
+The only writer of either table is
+`Modules\Inventory\Services\InventoryLedger::record()` (and, for `stock`
+only, the `inventory:reconcile` command repairing drift) — never insert into
+these directly. Every write happens inside `DB::transaction()` with
+`lockForUpdate()` on the `stock` row; the *first* movement for a
+(product, warehouse) pair additionally relies on the table's real unique
+constraint (not gap-locking — see ADR-0007) to stay race-safe regardless of
+transaction isolation level. Negative stock is blocked by default; only
+`adjustment`/`damage` movements may pass `force: true` to bypass that guard
+(§7.4). All quantity arithmetic is done as decimal strings (`bcadd`/
+`bccomp`), never PHP floats.
 
 ---
 

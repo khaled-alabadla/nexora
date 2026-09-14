@@ -236,6 +236,23 @@ place the one-default-per-company invariant is enforced (see DATABASE.md §6).
 
 ---
 
+## 11b. Inventory — stock & movements (Phase 2.3)
+
+All under `/api/v1`, `auth:sanctum` + `active-company`, `inventory.view`.
+Read-only this slice — writes (adjustments, transfers) land in 2.4/2.5, both
+going through `Modules\Inventory\Services\InventoryLedger`, the sole writer
+of both tables (DATABASE.md §7, ADR-0007). Fields match DATABASE.md §7.
+
+| Method & path | Notes |
+|---|---|
+| `GET /inventory/stock` | Paginated (§5). Current level per (product, warehouse). Filters: `?product_id=`, `?warehouse_id=`. Sort: `?sort=quantity\|updated_at` (default `-updated_at`). |
+| `GET /inventory/movements` | Paginated. The ledger, newest first by default. Filters: `?product_id=`, `?warehouse_id=`, `?type=`. Sort: `?sort=created_at`. |
+
+Both `data[].product` and `data[].warehouse` are `{id, sku?, name}` summaries,
+not the full product/warehouse resource.
+
+---
+
 ## 12. Security
 
 The API never trusts client-provided:

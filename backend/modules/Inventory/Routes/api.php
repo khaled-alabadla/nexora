@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Support\Authorization\Permissions;
 use Illuminate\Support\Facades\Route;
+use Modules\Inventory\Http\Controllers\InventoryController;
 use Modules\Inventory\Http\Controllers\WarehouseController;
 
 /*
@@ -33,4 +34,11 @@ Route::middleware(['auth:sanctum', 'active-company'])->group(function (): void {
     Route::delete('warehouses/{warehouse}', [WarehouseController::class, 'destroy'])
         ->middleware('permission:'.Permissions::WAREHOUSE_DELETE)
         ->name('warehouses.destroy');
+
+    Route::get('inventory/stock', [InventoryController::class, 'stock'])
+        ->middleware('permission:'.Permissions::INVENTORY_VIEW)
+        ->name('inventory.stock');
+    Route::get('inventory/movements', [InventoryController::class, 'movements'])
+        ->middleware('permission:'.Permissions::INVENTORY_VIEW)
+        ->name('inventory.movements');
 });
