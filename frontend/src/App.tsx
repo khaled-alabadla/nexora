@@ -6,6 +6,7 @@ import { RegisterPage } from '@/features/auth/RegisterPage'
 import { RequireAuth } from '@/features/auth/RequireAuth'
 import { ResetPasswordPage } from '@/features/auth/ResetPasswordPage'
 import { AcceptInvitationPage } from '@/features/companies/AcceptInvitationPage'
+import { InventoryPage } from '@/features/inventory/InventoryPage'
 import { CategoriesPage } from '@/features/products/CategoriesPage'
 import { ProductsPage } from '@/features/products/ProductsPage'
 import { WarehousesPage } from '@/features/warehouses/WarehousesPage'
@@ -56,6 +57,14 @@ export default function App() {
           element={
             <RequireAuth>
               <WarehousesPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/inventory"
+          element={
+            <RequireAuth>
+              <InventoryPage />
             </RequireAuth>
           }
         />

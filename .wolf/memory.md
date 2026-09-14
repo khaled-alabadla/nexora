@@ -523,3 +523,82 @@ description: chronological action log per session, consolidated weekly
 | 12:35 | Edited docs/PHASE-2-PLAN.md | inline fix | ~80 |
 | 12:35 | Edited docs/DATABASE.md | expanded (+7 lines) | ~261 |
 | 12:36 | Completed Phase 2.2 (Warehouses) workflow: ran /code-review high on feature/2.2-warehouses, found 3 real backend concurrency bugs + 1 frontend loading-state bug in the already-implemented+committed CRUD (ca2007d); fixed all 4 (WarehouseService now re-reads locked rows instead of trusting the passed-in instance, and serializes writes per company via MySQL GET_LOCK instead of relying on FOR UPDATE gap-locking under an unpinned isolation level; WarehousesPage gates the create form on isSuccess); added 2 backend + 1 frontend regression tests | backend/modules/Inventory/Services/WarehouseService.php, backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php, frontend/src/features/warehouses/{WarehousesPage.tsx,WarehousesPage.test.tsx}, docs/{PHASE-2-PLAN.md,DATABASE.md}, .wolf/{cerebrum.md,buglog.json} | all gates green: 128 backend tests/96.9% cov, 80 frontend tests/93.0% cov, Pint/PHPStan L8/eslint/tsc/build/composer+npm audit clean | ~95000 |
+| 12:51 | Created backend/modules/Inventory/Database/Migrations/2026_09_14_000001_create_inventory_movements_table.php | — | ~574 |
+| 12:51 | Created backend/modules/Inventory/Database/Migrations/2026_09_14_000002_create_stock_table.php | — | ~462 |
+| 12:52 | Created backend/modules/Inventory/Models/InventoryMovement.php | — | ~897 |
+| 12:52 | Created backend/modules/Inventory/Models/Stock.php | — | ~490 |
+| 12:52 | Created backend/modules/Inventory/Database/Factories/InventoryMovementFactory.php | — | ~292 |
+| 12:52 | Edited backend/modules/Inventory/Database/Factories/InventoryMovementFactory.php | added 1 import(s) | ~47 |
+| 12:52 | Edited backend/modules/Inventory/Database/Factories/InventoryMovementFactory.php | 2→3 lines | ~42 |
+| 12:52 | Created backend/modules/Inventory/Database/Factories/StockFactory.php | — | ~202 |
+| 12:53 | Created backend/modules/Inventory/Services/InventoryLedger.php | — | ~1246 |
+| 12:53 | Created backend/modules/Inventory/Http/Resources/StockResource.php | — | ~255 |
+| 12:53 | Created backend/modules/Inventory/Http/Resources/InventoryMovementResource.php | — | ~336 |
+| 12:53 | Created backend/modules/Inventory/Http/Controllers/InventoryController.php | — | ~450 |
+| 12:53 | Edited backend/modules/Inventory/Routes/api.php | added 1 import(s) | ~54 |
+| 12:54 | Edited backend/modules/Inventory/Routes/api.php | expanded (+7 lines) | ~147 |
+| 12:55 | Created backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | — | ~2122 |
+| 12:55 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | added 1 import(s) | ~39 |
+| 12:55 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | inline fix | ~27 |
+| 12:55 | Edited backend/modules/Inventory/Providers/InventoryServiceProvider.php | added 1 condition(s) | ~130 |
+| 12:57 | Edited backend/phpstan.neon | expanded (+8 lines) | ~203 |
+| 12:57 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | 7→7 lines | ~86 |
+| 12:58 | Edited backend/modules/Inventory/Http/Resources/StockResource.php | modified toArray() | ~255 |
+| 12:58 | Edited backend/modules/Inventory/Http/Resources/InventoryMovementResource.php | modified toArray() | ~265 |
+| 13:02 | Created backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | — | ~2423 |
+| 13:03 | Created backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | — | ~1714 |
+| 13:03 | Edited backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | added 4 import(s) | ~95 |
+| 13:03 | Edited backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | 12→7 lines | ~84 |
+| 13:03 | Edited backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | modified catch() | ~36 |
+| 13:03 | Edited backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | modified catch() | ~21 |
+| 13:03 | Edited backend/modules/Inventory/Services/InventoryLedger.php | modified catch() | ~63 |
+| 13:04 | Edited backend/modules/Inventory/Services/InventoryLedger.php | added 1 condition(s) | ~208 |
+| 13:04 | Created backend/modules/Inventory/Tests/Feature/InventoryLedgerTest.php | — | ~2097 |
+| 13:05 | Created backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | — | ~1140 |
+| 13:05 | Created backend/modules/Inventory/Tests/Feature/InventoryTenantIsolationTest.php | — | ~754 |
+| 13:05 | Created backend/modules/Inventory/Tests/Feature/ReconcileInventoryCommandTest.php | — | ~1330 |
+| 13:06 | Edited backend/modules/Inventory/Tests/Feature/ReconcileInventoryCommandTest.php | 5→8 lines | ~142 |
+| 13:06 | Edited backend/modules/Inventory/Tests/Feature/ReconcileInventoryCommandTest.php | modified use() | ~82 |
+| 13:09 | Edited backend/modules/Inventory/Services/InventoryLedger.php | 2→2 lines | ~35 |
+| 13:14 | Created docs/adr/0007-stock-projection.md | — | ~1281 |
+| 13:15 | Edited docs/DATABASE.md | expanded (+21 lines) | ~603 |
+| 13:15 | Edited docs/API.md | expanded (+17 lines) | ~278 |
+| 13:15 | Created frontend/src/features/inventory/types.ts | — | ~332 |
+| 13:15 | Created frontend/src/features/inventory/api.ts | — | ~221 |
+| 13:15 | Created frontend/src/features/inventory/hooks.ts | — | ~174 |
+| 13:16 | Created frontend/src/features/inventory/InventoryPage.tsx | — | ~1702 |
+| 13:16 | Edited frontend/src/App.tsx | added 1 import(s) | ~77 |
+| 13:16 | Edited frontend/src/App.tsx | expanded (+8 lines) | ~117 |
+| 13:16 | Edited frontend/src/components/AppHeader.tsx | 6→11 lines | ~102 |
+| 13:17 | Created frontend/src/features/inventory/InventoryPage.test.tsx | — | ~1396 |
+| 13:17 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 2→2 lines | ~18 |
+| 13:17 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 2→2 lines | ~25 |
+| 13:18 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 4→4 lines | ~33 |
+| 13:18 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 5→6 lines | ~86 |
+| 13:19 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 2→4 lines | ~67 |
+| 13:20 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 15→17 lines | ~198 |
+| 13:20 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | inline fix | ~16 |
+| 13:20 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 6→7 lines | ~99 |
+| 13:20 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | inline fix | ~15 |
+| 13:22 | Edited frontend/src/features/inventory/api.ts | inline fix | ~25 |
+| 13:22 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 2→2 lines | ~29 |
+| 13:23 | Edited frontend/src/features/inventory/api.ts | modified toQueryString() | ~97 |
+| 13:34 | Edited docs/PHASE-2-PLAN.md | inline fix | ~116 |
+| 13:40 | Implemented Phase 2.3 (Ledger + stock projection) end-to-end: inventory_movements + stock migrations/models, InventoryLedger service (sole writer — real unique-constraint + lockForUpdate race safety instead of a named lock, since stock unlike warehouses.is_default has a real DB constraint backing it; ADR-0007), GET /inventory/stock + /inventory/movements, inventory:reconcile command (locked recompute-then-write per row to avoid clobbering concurrent writes), FE read-only /inventory page. 2 real-MySQL concurrency tests (plain PHPUnit, non-RefreshDatabase) proving the row lock and the unique-constraint race guard both actually block a second writer. Verified end-to-end against the real dev server via curl (register→create product/warehouse→record movement→read both endpoints→reconcile), not just Pest | backend/modules/Inventory/{Models,Services,Http,Console,Database,Tests}/*, docs/{PHASE-2-PLAN.md,DATABASE.md,API.md,adr/0007-stock-projection.md}, frontend/src/features/inventory/*, .wolf/cerebrum.md | all gates green: 158 backend tests/96%+ cov, 86 frontend tests/93%+ cov, Pint/PHPStan L8/eslint/tsc/prettier/build/composer+npm audit clean | ~340000 |
+| 13:43 | Edited backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | modified catch() | ~259 |
+| 13:43 | Edited frontend/src/features/inventory/hooks.ts | modified useStock() | ~148 |
+| 13:43 | Edited frontend/src/features/inventory/InventoryPage.tsx | 2→2 lines | ~31 |
+| 13:43 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | modified option() | ~282 |
+| 13:43 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | modified detect() | ~218 |
+| 13:44 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | modified ledgerSums() | ~408 |
+| 13:44 | Edited backend/modules/Inventory/Http/Controllers/InventoryController.php | modified movements() | ~234 |
+| 13:44 | Edited backend/modules/Inventory/Models/InventoryMovement.php | modified requiredSign() | ~243 |
+| 13:45 | Edited backend/modules/Inventory/Services/InventoryLedger.php | added 1 condition(s) | ~153 |
+| 13:45 | Edited backend/modules/Inventory/Database/Migrations/2026_09_14_000001_create_inventory_movements_table.php | 5→8 lines | ~132 |
+| 13:45 | Edited docs/PHASE-2-PLAN.md | inline fix | ~70 |
+| 13:48 | Edited backend/modules/Inventory/Tests/Feature/InventoryLedgerTest.php | modified it() | ~615 |
+| 13:49 | Edited backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | added 1 import(s) | ~71 |
+| 13:49 | Edited backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | modified function() | ~340 |
+| 13:49 | Edited backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | 5→3 lines | ~34 |
+| 13:49 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 7→11 lines | ~151 |
+| 13:55 | Ran /code-review high on feature/2.3-inventory-ledger; fixed all 6 findings: StockConcurrencyTest transaction-leak-on-assert-failure, InventoryPage queries not gated on canView, reconcile --dry-run N+1, movements sort missing an id tiebreaker for same-second ties, InventoryLedger not validating quantity sign vs movement type, a redundant DB index; added regression tests for the testable ones | backend/modules/Inventory/{Tests/Feature/StockConcurrencyTest.php,Console/Commands/ReconcileInventoryCommand.php,Http/Controllers/InventoryController.php,Services/InventoryLedger.php,Models/InventoryMovement.php,Database/Migrations/2026_09_14_000001*,Tests/Feature/InventoryLedgerTest.php,Tests/Feature/InventoryReadTest.php}, frontend/src/features/inventory/{hooks.ts,InventoryPage.tsx,InventoryPage.test.tsx}, docs/PHASE-2-PLAN.md, .wolf/buglog.json | all gates re-green: 160 backend tests/96.5% cov, 86 frontend tests/93.1% cov, Pint/PHPStan L8/eslint/tsc/prettier/build/composer+npm audit clean | ~420000 |

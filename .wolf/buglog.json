@@ -822,6 +822,265 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-14T09:35:02.415Z"
+    },
+    {
+      "id": "bug-052",
+      "timestamp": "2026-09-14T09:52:23.258Z",
+      "error_message": "Incorrect value in code",
+      "file": "backend/modules/Inventory/Database/Factories/InventoryMovementFactory.php",
+      "root_cause": "Had 'type'",
+      "fix": "Changed to 'warehouse_id'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:52:23.258Z"
+    },
+    {
+      "id": "bug-053",
+      "timestamp": "2026-09-14T10:03:15.798Z",
+      "error_message": "Significant refactor of StockConcurrencyTest.php",
+      "file": "backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php",
+      "root_cause": "7 lines replaced/restructured",
+      "fix": "Rewrote 12→7 lines (7 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:03:15.798Z"
+    },
+    {
+      "id": "bug-054",
+      "timestamp": "2026-09-14T10:06:11.462Z",
+      "error_message": "Significant refactor of ReconcileInventoryCommandTest.php",
+      "file": "backend/modules/Inventory/Tests/Feature/ReconcileInventoryCommandTest.php",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 5→8 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:06:11.462Z"
+    },
+    {
+      "id": "bug-055",
+      "timestamp": "2026-09-14T10:18:03.526Z",
+      "error_message": "CSS fix: product",
+      "file": "frontend/src/features/inventory/InventoryPage.test.tsx",
+      "root_cause": "product: { id: 1, sku: 'A1', name: 'Widget' → { id: 2, sku: 'B2', name: 'Gadget'",
+      "fix": "Changed product: { id: 1, sku: 'A1', name: 'Widget' → { id: 2, sku: 'B2', name: 'Gadget'",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:18:03.526Z"
+    },
+    {
+      "id": "bug-056",
+      "timestamp": "2026-09-14T10:20:43.863Z",
+      "error_message": "Type error",
+      "file": "frontend/src/features/inventory/InventoryPage.test.tsx",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:20:43.863Z"
+    },
+    {
+      "id": "bug-057",
+      "timestamp": "2026-09-14T10:23:10.174Z",
+      "error_message": "Type error",
+      "file": "frontend/src/features/inventory/api.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:23:10.174Z"
+    },
+    {
+      "id": "bug-058",
+      "timestamp": "2026-09-14T10:43:51.628Z",
+      "error_message": "Significant refactor of ReconcileInventoryCommand.php",
+      "file": "backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php",
+      "root_cause": "5 lines replaced/restructured",
+      "fix": "Rewrote 18→22 lines (5 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:43:51.628Z"
+    },
+    {
+      "id": "bug-059",
+      "timestamp": "2026-09-14T10:45:03.368Z",
+      "error_message": "Null/undefined access in InventoryLedger.php",
+      "file": "backend/modules/Inventory/Services/InventoryLedger.php",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:45:03.368Z"
+    },
+    {
+      "id": "bug-060",
+      "timestamp": "2026-09-14T10:49:25.445Z",
+      "error_message": "Significant refactor of InventoryReadTest.php",
+      "file": "backend/modules/Inventory/Tests/Feature/InventoryReadTest.php",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 5→3 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:49:25.445Z"
+    },
+    {
+      "id": "bug-061",
+      "timestamp": "2026-09-14T10:49:37.729Z",
+      "error_message": "Missing await",
+      "file": "frontend/src/features/inventory/InventoryPage.test.tsx",
+      "root_cause": "Async call without await — returned Promise instead of value",
+      "fix": "Added await to async call",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:49:37.729Z"
+    },
+    {
+      "id": "bug-062",
+      "timestamp": "2026-09-14T10:55:58.961Z",
+      "error_message": "StockConcurrencyTest asserted before committing the primary connection's transaction, so a failing assertion left the shared default connection holding an open transaction + row lock on stock, hanging every later test that touches that table.",
+      "file": "backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php",
+      "root_cause": "assertTrue() ran between beginTransaction() and commit(); PHPUnit throws on a failed assertion, skipping the commit.",
+      "fix": "Wrapped the blocking probe in try/finally so $primary->commit() always runs before the assertion, regardless of outcome.",
+      "tags": [
+        "test-hygiene",
+        "concurrency",
+        "php",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:55:58.961Z"
+    },
+    {
+      "id": "bug-063",
+      "timestamp": "2026-09-14T10:55:58.961Z",
+      "error_message": "InventoryPage called useStock()/useMovements() unconditionally (no enabled gate), so a user without inventory.view still fired GET /inventory/stock and /inventory/movements on every visit, guaranteed to 403 — unlike WarehousesPage/ProductsPage which gate their queries on the relevant permission.",
+      "file": "frontend/src/features/inventory/InventoryPage.tsx",
+      "root_cause": "useStock/useMovements had no enabled parameter at all.",
+      "fix": "Added an enabled parameter to both hooks; InventoryPage passes canView.",
+      "tags": [
+        "frontend",
+        "react-query",
+        "authorization",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:55:58.961Z"
+    },
+    {
+      "id": "bug-064",
+      "timestamp": "2026-09-14T10:55:58.961Z",
+      "error_message": "inventory:reconcile --dry-run re-queried the database (2 extra full queries) for every single (company,product,warehouse) key instead of reusing the bulk maps already fetched once in handle(), turning a documented \"sweep every company in one pass\" into tens of thousands of avoidable round-trips on a large dataset.",
+      "file": "backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php",
+      "root_cause": "detect() called ledgerSums()/existingStock() filtered to a single key instead of accepting the already-fetched bulk maps.",
+      "fix": "handle() now computes the bulk maps once and passes them into detect() for O(1) lookups; repair() (the real, correctness-critical path) still recomputes fresh under a per-row lock, unchanged.",
+      "tags": [
+        "performance",
+        "php",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:55:58.961Z"
+    },
+    {
+      "id": "bug-065",
+      "timestamp": "2026-09-14T10:55:58.961Z",
+      "error_message": "GET /inventory/movements sorted solely by created_at (second precision, no tiebreaker), so two movements recorded in the same wall-clock second could sort in an undefined order despite the documented/tested \"newest first\" contract.",
+      "file": "backend/modules/Inventory/Http/Controllers/InventoryController.php",
+      "root_cause": "No secondary sort column after QueryFilter applied created_at.",
+      "fix": "Added an unconditional orderByDesc('id') tiebreaker after the filter — id is monotonically increasing with insertion order.",
+      "tags": [
+        "correctness",
+        "php",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:55:58.961Z"
+    },
+    {
+      "id": "bug-066",
+      "timestamp": "2026-09-14T10:55:58.961Z",
+      "error_message": "InventoryLedger::record() validated the movement type was known but never validated that quantity's sign matched the type's semantic direction — a caller could record a \"purchase\" that decreases stock or a \"sale\" that increases it, corrupting the ledger's type-keyed meaning (COGS/valuation) while leaving the stock arithmetic internally consistent.",
+      "file": "backend/modules/Inventory/Services/InventoryLedger.php",
+      "root_cause": "No sign/type consistency check existed anywhere in the write path.",
+      "fix": "Added InventoryMovement::requiredSign(type) (1/-1/null-for-adjustment) and a bccomp check in record() that throws InvalidArgumentException when quantity's sign contradicts the type (zero satisfies neither direction for a directional type).",
+      "tags": [
+        "correctness",
+        "data-integrity",
+        "php",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:55:58.961Z"
+    },
+    {
+      "id": "bug-067",
+      "timestamp": "2026-09-14T10:55:58.961Z",
+      "error_message": "inventory_movements had a redundant index (company_id, product_id), a strict left-prefix of the (company_id, product_id, warehouse_id) composite declared immediately above it — zero query benefit, extra write overhead on every insert (the table's hot path).",
+      "file": "backend/modules/Inventory/Database/Migrations/2026_09_14_000001_create_inventory_movements_table.php",
+      "root_cause": "Copied the index list from PHASE-2-PLAN.md §4 literally without checking for prefix redundancy against the composite index also listed there.",
+      "fix": "Dropped the redundant index (migration not yet merged, safe to edit directly); documented the deviation from the ratified plan's literal index list in PHASE-2-PLAN.md §6.",
+      "tags": [
+        "database",
+        "performance",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T10:55:58.961Z"
     }
   ]
 }
