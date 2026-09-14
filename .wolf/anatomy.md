@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-13T09:04:18.166Z
-> Files: 224 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T09:35:49.062Z
+> Files: 240 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -232,6 +232,44 @@
 - `RegistrationTest.php` (~830 tok)
 - `SessionTest.php` (~470 tok)
 
+## backend/modules/Inventory/Database/Factories/
+
+- `WarehouseFactory.php` — WarehouseFactory: definition, default, inactive (~307 tok)
+
+## backend/modules/Inventory/Database/Migrations/
+
+- `2026_09_13_000001_create_warehouses_table.php` — Migration: create warehouses table (~238 tok)
+
+## backend/modules/Inventory/Http/Controllers/
+
+- `WarehouseController.php` — Warehouses for the active company. Not paginated — a small reference list, (~490 tok)
+
+## backend/modules/Inventory/Http/Requests/
+
+- `StoreWarehouseRequest.php` — StoreWarehouseRequest: authorize, rules (~256 tok)
+- `UpdateWarehouseRequest.php` — UpdateWarehouseRequest: authorize, rules (~299 tok)
+
+## backend/modules/Inventory/Http/Resources/
+
+- `WarehouseResource.php` — WarehouseResource: toArray (~184 tok)
+
+## backend/modules/Inventory/Models/
+
+- `Warehouse.php` — A stock location within a company. Exactly one warehouse is the company's (~503 tok)
+
+## backend/modules/Inventory/Routes/
+
+- `api.php` (~406 tok)
+
+## backend/modules/Inventory/Services/
+
+- `WarehouseService.php` — Warehouse lifecycle for the active company. The single place that enforces (~1747 tok)
+
+## backend/modules/Inventory/Tests/Feature/
+
+- `WarehouseManagementTest.php` (~2368 tok)
+- `WarehouseTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for (~581 tok)
+
 ## backend/modules/Products/Database/Factories/
 
 - `ProductCategoryFactory.php` — ProductCategoryFactory: definition, inactive (~212 tok)
@@ -315,13 +353,13 @@
 
 ## docs/
 
-- `API.md` — Nexora — API Specification (~2081 tok)
+- `API.md` — Nexora — API Specification (~2376 tok)
 - `ARCHITECTURE.md` — Nexora — Architecture (~1110 tok)
-- `DATABASE.md` — Nexora — Database Design (~1361 tok)
+- `DATABASE.md` — Nexora — Database Design (~1787 tok)
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
-- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2714 tok)
+- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2757 tok)
 - `ROADMAP.md` — Nexora — Development Roadmap (~1073 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~680 tok)
@@ -352,14 +390,14 @@
 ## frontend/src/
 
 - `App.test.tsx` — session (~609 tok)
-- `App.tsx` — App (~523 tok)
+- `App.tsx` — App (~592 tok)
 - `index.css` — Styles: 1 rules (~51 tok)
 - `main.tsx` — queryClient (~201 tok)
 - `vite-env.d.ts` — / <reference types="vite/client" /> (~45 tok)
 
 ## frontend/src/components/
 
-- `AppHeader.tsx` — AppHeader (~446 tok)
+- `AppHeader.tsx` — AppHeader (~495 tok)
 - `ui.tsx` — Field (~642 tok)
 
 ## frontend/src/features/auth/
@@ -409,6 +447,14 @@
 - `ProductsPage.test.tsx` — role (~2107 tok)
 - `ProductsPage.tsx` — ProductsPage — renders form (~3525 tok)
 - `types.ts` — Exports ProductStatus, ProductCategory, Product, ProductInput + 2 more (~360 tok)
+
+## frontend/src/features/warehouses/
+
+- `api.ts` — Exports listWarehouses, createWarehouse, updateWarehouse, deleteWarehouse (~160 tok)
+- `hooks.ts` — Exports useWarehouses, useCreateWarehouse, useUpdateWarehouse, useDeleteWarehouse (~335 tok)
+- `types.ts` — Exports WarehouseStatus, Warehouse, WarehouseInput (~109 tok)
+- `WarehousesPage.test.tsx` — role (~2318 tok)
+- `WarehousesPage.tsx` — WarehousesPage — renders form (~2002 tok)
 
 ## frontend/src/lib/
 

@@ -8,6 +8,7 @@ import { ResetPasswordPage } from '@/features/auth/ResetPasswordPage'
 import { AcceptInvitationPage } from '@/features/companies/AcceptInvitationPage'
 import { CategoriesPage } from '@/features/products/CategoriesPage'
 import { ProductsPage } from '@/features/products/ProductsPage'
+import { WarehousesPage } from '@/features/warehouses/WarehousesPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 
 export default function App() {
@@ -47,6 +48,14 @@ export default function App() {
           element={
             <RequireAuth>
               <CategoriesPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/warehouses"
+          element={
+            <RequireAuth>
+              <WarehousesPage />
             </RequireAuth>
           }
         />

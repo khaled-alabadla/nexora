@@ -98,7 +98,7 @@ GET  /inventory/low-stock      products at/≤ minimum_stock
 | # | Slice | Delivers | Gate highlights |
 |---|---|---|---|
 | 2.1 | ✅ Products & Categories CRUD (2026-09-13) | migrations, models, services, endpoints, permissions + shared infra (§3), FE products/categories pages | binding-order spike resolved; SKU/barcode uniqueness; tenant isolation per endpoint — 107 backend tests, 66 frontend tests, both gates green |
-| 2.2 | Warehouses CRUD | warehouses table/model/service/endpoints/permissions, FE | default-warehouse rule; tenant isolation |
+| 2.2 | ✅ Warehouses CRUD (2026-09-14) | warehouses table/model/service/endpoints/permissions, FE | default-warehouse rule; tenant isolation; concurrent-write correctness (`GET_LOCK` serialization + re-read-after-lock, found in code review) — 128 backend tests, 80 frontend tests, both gates green |
 | 2.3 | Ledger + stock projection | `inventory_movements` + `stock`, `InventoryLedger` (txn + row lock), read endpoints, `inventory:reconcile` cmd | projection == ledger **property test**; **concurrency test** (non-transactional); rollback test |
 | 2.4 | Adjustments & damage | `POST /inventory/adjustments`, negative-stock rules, FE adjustment form | permission boundary; negative-stock policy enforced |
 | 2.5 | Warehouse transfers | paired movements, source-stock validation + lock, FE transfer form | **concurrency test** (two transfers racing one stock row) |

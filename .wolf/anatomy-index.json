@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-13T09:04:18.166Z",
-    "fileCount": 224,
+    "lastScanned": "2026-09-14T09:35:49.062Z",
+    "fileCount": 240,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "1bbc18b98fe61dd7865d9dcc8ad903b2e61b449da103a97426913480247a3632",
-    "storeUpdatedAt": "2026-09-13T09:04:18.190Z",
-    "rootHash": "58b3fb37e778f467"
+    "renderedHash": "63c93f306a397e5577a224cf442426c000ae583f42658e20cf7228bef5255eee",
+    "storeUpdatedAt": "2026-09-14T09:35:49.076Z",
+    "rootHash": "fce8da9eabbfb3bd"
   },
   "files": {
     "AGENTS.md": {
@@ -590,19 +590,19 @@
     },
     "frontend/src/App.tsx": {
       "description": "App",
-      "tokens": 523,
-      "hash": "5e3c1aba1283e7a4",
-      "size": 1828,
-      "mtimeMs": 1789287947338.3132,
-      "updatedAt": "2026-09-13T08:25:47.637Z",
+      "tokens": 592,
+      "hash": "d10bce1762440516",
+      "size": 2071,
+      "mtimeMs": 1789291073371.7388,
+      "updatedAt": "2026-09-13T09:17:53.658Z",
       "source": "hook",
       "symbols": [
         {
           "name": "App",
           "kind": "fn",
-          "startLine": 13,
-          "endLine": 58,
-          "tokens": 339
+          "startLine": 14,
+          "endLine": 67,
+          "tokens": 389
         }
       ]
     },
@@ -770,11 +770,11 @@
     },
     "docs/API.md": {
       "description": "Nexora — API Specification",
-      "tokens": 2081,
-      "hash": "e30b62b24fb465da",
-      "size": 8356,
-      "mtimeMs": 1789288957464.2966,
-      "updatedAt": "2026-09-13T08:42:37.681Z",
+      "tokens": 2376,
+      "hash": "35891cd198c4a8b6",
+      "size": 9544,
+      "mtimeMs": 1789291591976.1921,
+      "updatedAt": "2026-09-13T09:26:32.315Z",
       "source": "hook"
     },
     "docs/ARCHITECTURE.md": {
@@ -797,11 +797,11 @@
     },
     "docs/DATABASE.md": {
       "description": "Nexora — Database Design",
-      "tokens": 1361,
-      "hash": "637087221a29061e",
-      "size": 5484,
-      "mtimeMs": 1789288919089.4124,
-      "updatedAt": "2026-09-13T08:42:00.627Z",
+      "tokens": 1787,
+      "hash": "914c87c8bd7d274e",
+      "size": 7195,
+      "mtimeMs": 1789378548847.7678,
+      "updatedAt": "2026-09-14T09:35:49.061Z",
       "source": "hook"
     },
     "docs/SECURITY.md": {
@@ -2085,11 +2085,11 @@
     },
     "docs/PHASE-2-PLAN.md": {
       "description": "Phase 2 — Products & Inventory — PLAN",
-      "tokens": 2714,
-      "hash": "3d925320a37a9078",
-      "size": 10947,
-      "mtimeMs": 1789289007166.3025,
-      "updatedAt": "2026-09-13T08:43:27.698Z",
+      "tokens": 2757,
+      "hash": "2bcf3237b6b9ced1",
+      "size": 11123,
+      "mtimeMs": 1789378535444.1538,
+      "updatedAt": "2026-09-14T09:35:35.664Z",
       "source": "hook"
     },
     "backend/app/Support/Http/QueryFilter.php": {
@@ -2375,11 +2375,11 @@
     },
     "frontend/src/components/AppHeader.tsx": {
       "description": "AppHeader",
-      "tokens": 446,
-      "hash": "9ae0e851dc1433f8",
-      "size": 1559,
-      "mtimeMs": 1789287786906.2903,
-      "updatedAt": "2026-09-13T08:23:07.167Z",
+      "tokens": 495,
+      "hash": "1585d09e34efce76",
+      "size": 1731,
+      "mtimeMs": 1789291077773.4045,
+      "updatedAt": "2026-09-13T09:17:58.083Z",
       "source": "hook"
     },
     "frontend/src/features/products/CategoriesPage.tsx": {
@@ -2509,6 +2509,189 @@
           "startLine": 49,
           "endLine": 217,
           "tokens": 1751
+        }
+      ]
+    },
+    "backend/modules/Inventory/Database/Migrations/2026_09_13_000001_create_warehouses_table.php": {
+      "description": "Migration: create warehouses table",
+      "tokens": 238,
+      "hash": "8104afbd51377f95",
+      "size": 891,
+      "mtimeMs": 1789290788795.9922,
+      "updatedAt": "2026-09-13T09:13:09.178Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Models/Warehouse.php": {
+      "description": "A stock location within a company. Exactly one warehouse is the company's",
+      "tokens": 503,
+      "hash": "e3d4d4a562218b3c",
+      "size": 1890,
+      "mtimeMs": 1789290798973.8303,
+      "updatedAt": "2026-09-13T09:13:19.364Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Database/Factories/WarehouseFactory.php": {
+      "description": "WarehouseFactory: definition, default, inactive",
+      "tokens": 307,
+      "hash": "b9a1d2f00a91e950",
+      "size": 1155,
+      "mtimeMs": 1789290806541.791,
+      "updatedAt": "2026-09-13T09:13:26.817Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Services/WarehouseService.php": {
+      "description": "Warehouse lifecycle for the active company. The single place that enforces",
+      "tokens": 1747,
+      "hash": "9f85420c34900719",
+      "size": 6561,
+      "mtimeMs": 1789378146558.7476,
+      "updatedAt": "2026-09-14T09:29:06.751Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Http/Requests/StoreWarehouseRequest.php": {
+      "description": "StoreWarehouseRequest: authorize, rules",
+      "tokens": 256,
+      "hash": "42ed92765ec24579",
+      "size": 957,
+      "mtimeMs": 1789290856389.5493,
+      "updatedAt": "2026-09-13T09:14:16.689Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Http/Requests/UpdateWarehouseRequest.php": {
+      "description": "UpdateWarehouseRequest: authorize, rules",
+      "tokens": 299,
+      "hash": "6236559ca7abe4f2",
+      "size": 1118,
+      "mtimeMs": 1789290861997.1758,
+      "updatedAt": "2026-09-13T09:14:22.334Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Http/Resources/WarehouseResource.php": {
+      "description": "WarehouseResource: toArray",
+      "tokens": 184,
+      "hash": "9e60bb0837faec87",
+      "size": 687,
+      "mtimeMs": 1789290867181.769,
+      "updatedAt": "2026-09-13T09:14:27.490Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Http/Controllers/WarehouseController.php": {
+      "description": "Warehouses for the active company. Not paginated — a small reference list,",
+      "tokens": 490,
+      "hash": "7818ab72cdd346df",
+      "size": 1839,
+      "mtimeMs": 1789290877405.3645,
+      "updatedAt": "2026-09-13T09:14:37.735Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Routes/api.php": {
+      "description": "",
+      "tokens": 406,
+      "hash": "eec70a4da6bcb317",
+      "size": 1521,
+      "mtimeMs": 1789290885201.6448,
+      "updatedAt": "2026-09-13T09:14:45.545Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php": {
+      "description": "",
+      "tokens": 2368,
+      "hash": "0d7492bcc5654e6a",
+      "size": 8882,
+      "mtimeMs": 1789377989744.6157,
+      "updatedAt": "2026-09-14T09:26:29.941Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Tests/Feature/WarehouseTenantIsolationTest.php": {
+      "description": "The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for",
+      "tokens": 581,
+      "hash": "8bcdf68b6f92828a",
+      "size": 2182,
+      "mtimeMs": 1789290953064.181,
+      "updatedAt": "2026-09-13T09:15:53.338Z",
+      "source": "hook"
+    },
+    "frontend/src/features/warehouses/types.ts": {
+      "description": "Exports WarehouseStatus, Warehouse, WarehouseInput",
+      "tokens": 109,
+      "hash": "642479c1d0e8d8c5",
+      "size": 379,
+      "mtimeMs": 1789291022266.3906,
+      "updatedAt": "2026-09-13T09:17:02.537Z",
+      "source": "hook"
+    },
+    "frontend/src/features/warehouses/api.ts": {
+      "description": "Exports listWarehouses, createWarehouse, updateWarehouse, deleteWarehouse",
+      "tokens": 160,
+      "hash": "18097b6eb56b3bba",
+      "size": 558,
+      "mtimeMs": 1789291026617.7798,
+      "updatedAt": "2026-09-13T09:17:06.914Z",
+      "source": "hook"
+    },
+    "frontend/src/features/warehouses/hooks.ts": {
+      "description": "Exports useWarehouses, useCreateWarehouse, useUpdateWarehouse, useDeleteWarehouse",
+      "tokens": 335,
+      "hash": "07368599f4369226",
+      "size": 1170,
+      "mtimeMs": 1789291033298.0151,
+      "updatedAt": "2026-09-13T09:17:13.608Z",
+      "source": "hook"
+    },
+    "frontend/src/features/warehouses/WarehousesPage.tsx": {
+      "description": "WarehousesPage — renders form",
+      "tokens": 2002,
+      "hash": "646696d63ed12b72",
+      "size": 7010,
+      "mtimeMs": 1789377718721.1677,
+      "updatedAt": "2026-09-14T09:21:58.906Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "WarehousesPage",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 50,
+          "tokens": 394
+        },
+        {
+          "name": "CreateWarehouseForm",
+          "kind": "fn",
+          "startLine": 51,
+          "endLine": 118,
+          "tokens": 634
+        },
+        {
+          "name": "WarehouseRow",
+          "kind": "fn",
+          "startLine": 119,
+          "endLine": 206,
+          "tokens": 855
+        }
+      ]
+    },
+    "frontend/src/features/warehouses/WarehousesPage.test.tsx": {
+      "description": "role",
+      "tokens": 2318,
+      "hash": "32772b8d82593747",
+      "size": 8119,
+      "mtimeMs": 1789377739378.1775,
+      "updatedAt": "2026-09-14T09:22:19.629Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "sessionWith",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 41,
+          "tokens": 168
+        },
+        {
+          "name": "renderPage",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 220,
+          "tokens": 2006
         }
       ]
     }

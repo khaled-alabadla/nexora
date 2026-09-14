@@ -218,6 +218,24 @@ priority list, ahead of `SubstituteBindings` — see
 
 ---
 
+## 11a. Warehouses (Phase 2.2)
+
+All under `/api/v1`, `auth:sanctum` + `active-company`. Not paginated (a
+small reference list, like categories). Fields match `docs/DATABASE.md` §6.
+
+| Method & path | Permission | Notes |
+|---|---|---|
+| `GET  /warehouses` | `warehouse.view` | Ordered default-first, then by name. |
+| `POST /warehouses` | `warehouse.create` | `{ name, location?, status?, is_default? }`. The company's first warehouse always becomes the default — `is_default` in the body is ignored for it. |
+| `GET  /warehouses/{id}` | `warehouse.view` | |
+| `PUT  /warehouses/{id}` | `warehouse.update` | Same fields, all optional. Setting `is_default: true` atomically un-defaults the previous one. Setting `is_default: false` on the current default is rejected (`422`, `errors.is_default`) — pick another default first. |
+| `DELETE /warehouses/{id}` | `warehouse.delete` | Rejected (`422`, `errors.is_default`) for the default warehouse while others exist; allowed when it's the company's only warehouse. `204`. |
+
+All writes go through `Modules\Inventory\Services\WarehouseService`, the only
+place the one-default-per-company invariant is enforced (see DATABASE.md §6).
+
+---
+
 ## 12. Security
 
 The API never trusts client-provided:

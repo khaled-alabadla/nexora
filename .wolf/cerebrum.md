@@ -6,7 +6,7 @@ budget_tokens: 2000
 
 > OpenWolf's learning memory. Updated automatically as the AI learns from interactions.
 > Do not edit manually unless correcting an error.
-> Last updated: 2026-09-09
+> Last updated: 2026-09-14
 
 ## User Preferences
 
@@ -30,6 +30,9 @@ budget_tokens: 2000
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->
+
+- [2026-09-14] Don't fix a "must serialize concurrent writes reliably" invariant with `DB::statement('SET TRANSACTION ISOLATION LEVEL ...')` before `DB::transaction()`. It throws `SQLSTATE[25001]`/error 1568 ("Transaction characteristics can't be changed while a transaction is in progress") under `RefreshDatabase`, which wraps every test in its own transaction — so it fails the whole suite, not just the target test. Use a MySQL named lock (`GET_LOCK`/`RELEASE_LOCK`, keyed by tenant/company id, in a try/finally around `DB::transaction()`) instead — it holds regardless of isolation level or ambient transaction state and doesn't conflict with test wrapping. Also remember: a bare `lockForUpdate()` query matching zero rows only gap-locks under REPEATABLE READ (MySQL's default, but never explicitly pinned in this app) — under READ COMMITTED it takes no lock, so "first row for this tenant" invariants can't lean on it alone.
+- [2026-09-14] After acquiring a lock (`lockForUpdate()` or a named lock) inside a service method that receives an already-loaded Eloquent model as a parameter (e.g. from route-model binding), never keep branching on that parameter's in-memory attributes — re-read the row from inside the lock and branch on that. The passed-in instance can be stale relative to a write another request committed between when it was bound and when this method's lock was acquired. Caught in `WarehouseService::update()`/`delete()` via code review.
 
 ## Decision Log
 

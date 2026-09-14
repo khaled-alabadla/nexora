@@ -456,3 +456,70 @@ description: chronological action log per session, consolidated weekly
 | 12:03 | Edited frontend/src/features/products/ProductsPage.test.tsx | expanded (+37 lines) | ~444 |
 | 12:03 | Edited frontend/src/features/products/ProductsPage.test.tsx | 11→13 lines | ~185 |
 | 12:04 | Edited frontend/src/features/products/ProductsPage.test.tsx | CSS: name | ~45 |
+| 12:13 | Created backend/modules/Inventory/Database/Migrations/2026_09_13_000001_create_warehouses_table.php | — | ~238 |
+| 12:13 | Created backend/modules/Inventory/Models/Warehouse.php | — | ~503 |
+| 12:13 | Created backend/modules/Inventory/Database/Factories/WarehouseFactory.php | — | ~307 |
+| 12:13 | Created backend/modules/Inventory/Services/WarehouseService.php | — | ~1082 |
+| 12:14 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 import(s) | ~55 |
+| 12:14 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified lockCompanyWarehouses() | ~33 |
+| 12:14 | Created backend/modules/Inventory/Http/Requests/StoreWarehouseRequest.php | — | ~256 |
+| 12:14 | Created backend/modules/Inventory/Http/Requests/UpdateWarehouseRequest.php | — | ~299 |
+| 12:14 | Created backend/modules/Inventory/Http/Resources/WarehouseResource.php | — | ~184 |
+| 12:14 | Created backend/modules/Inventory/Http/Controllers/WarehouseController.php | — | ~490 |
+| 12:14 | Created backend/modules/Inventory/Routes/api.php | — | ~406 |
+| 12:15 | Created backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php | — | ~1822 |
+| 12:15 | Created backend/modules/Inventory/Tests/Feature/WarehouseTenantIsolationTest.php | — | ~581 |
+| 12:17 | Created frontend/src/features/warehouses/types.ts | — | ~109 |
+| 12:17 | Created frontend/src/features/warehouses/api.ts | — | ~160 |
+| 12:17 | Created frontend/src/features/warehouses/hooks.ts | — | ~335 |
+| 12:17 | Created frontend/src/features/warehouses/WarehousesPage.tsx | — | ~1990 |
+| 12:17 | Edited frontend/src/App.tsx | added 1 import(s) | ~54 |
+| 12:17 | Edited frontend/src/App.tsx | expanded (+8 lines) | ~118 |
+| 12:17 | Edited frontend/src/components/AppHeader.tsx | 6→11 lines | ~103 |
+| 12:18 | Created frontend/src/features/warehouses/WarehousesPage.test.tsx | — | ~1861 |
+| 12:18 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified create() | ~43 |
+| 12:18 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified update() | ~49 |
+| 12:21 | Edited docs/DATABASE.md | expanded (+16 lines) | ~347 |
+| 12:21 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | inline fix | ~16 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | CSS: routes | ~118 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | inline fix | ~19 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 4→6 lines | ~96 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | expanded (+7 lines) | ~131 |
+| 12:25 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 22→26 lines | ~338 |
+| 12:26 | Edited docs/API.md | expanded (+18 lines) | ~388 |
+| 12:27 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 17→14 lines | ~221 |
+
+## Session: 2026-09-13 13:41
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 13:49 | Session end: 312 writes across 147 files (RegisterRequest.php, LoginRequest.php, ForgotPasswordRequest.php, ResetPasswordRequest.php, CompanyProvisioner.php) | 93 reads | ~181624 tok |
+
+## Session: 2026-09-14 12:10
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 import(s) | ~70 |
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified create() | ~90 |
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 condition(s) | ~519 |
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 condition(s) | ~528 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified update() | ~84 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified contains() | ~64 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified requireLocked() | ~177 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 import(s) | ~49 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified requireLocked() | ~39 |
+| 12:21 | Edited frontend/src/features/warehouses/WarehousesPage.tsx | 3→3 lines | ~42 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | expanded (+26 lines) | ~246 |
+| 12:24 | Edited backend/modules/Inventory/Services/WarehouseService.php | transaction() → serialized() | ~74 |
+| 12:24 | Edited backend/modules/Inventory/Services/WarehouseService.php | transaction() → serialized() | ~90 |
+| 12:25 | Edited backend/modules/Inventory/Services/WarehouseService.php | transaction() → serialized() | ~70 |
+| 12:25 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 condition(s) | ~422 |
+| 12:26 | Edited backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php | added 3 import(s) | ~62 |
+| 12:26 | Edited backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php | modified it() | ~527 |
+| 12:28 | Edited backend/modules/Inventory/Services/WarehouseService.php | inline fix | ~21 |
+| 12:28 | Edited backend/modules/Inventory/Services/WarehouseService.php | inline fix | ~24 |
+| 12:29 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 2 import(s) | ~91 |
+| 12:29 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified serialized() | ~121 |
+| 12:35 | Edited docs/PHASE-2-PLAN.md | inline fix | ~80 |
+| 12:35 | Edited docs/DATABASE.md | expanded (+7 lines) | ~261 |
+| 12:36 | Completed Phase 2.2 (Warehouses) workflow: ran /code-review high on feature/2.2-warehouses, found 3 real backend concurrency bugs + 1 frontend loading-state bug in the already-implemented+committed CRUD (ca2007d); fixed all 4 (WarehouseService now re-reads locked rows instead of trusting the passed-in instance, and serializes writes per company via MySQL GET_LOCK instead of relying on FOR UPDATE gap-locking under an unpinned isolation level; WarehousesPage gates the create form on isSuccess); added 2 backend + 1 frontend regression tests | backend/modules/Inventory/Services/WarehouseService.php, backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php, frontend/src/features/warehouses/{WarehousesPage.tsx,WarehousesPage.test.tsx}, docs/{PHASE-2-PLAN.md,DATABASE.md}, .wolf/{cerebrum.md,buglog.json} | all gates green: 128 backend tests/96.9% cov, 80 frontend tests/93.0% cov, Pint/PHPStan L8/eslint/tsc/build/composer+npm audit clean | ~95000 |

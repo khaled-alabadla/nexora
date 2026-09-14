@@ -640,6 +640,188 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-13T09:04:18.202Z"
+    },
+    {
+      "id": "bug-041",
+      "timestamp": "2026-09-13T09:14:10.243Z",
+      "error_message": "Wrong return value",
+      "file": "backend/modules/Inventory/Services/WarehouseService.php",
+      "root_cause": "Was returning: \\Illuminate\\Database\\Eloquent\\Builder<Warehouse>",
+      "fix": "Now returns: Builder<Warehouse>",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T09:14:10.243Z"
+    },
+    {
+      "id": "bug-042",
+      "timestamp": "2026-09-13T09:17:47.476Z",
+      "error_message": "Incorrect value in code",
+      "file": "frontend/src/App.tsx",
+      "root_cause": "Had '@/pages/DashboardPage'",
+      "fix": "Changed to '@/features/warehouses/WarehousesPage'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-13T09:17:47.476Z"
+    },
+    {
+      "id": "bug-043",
+      "timestamp": "2026-09-13T09:22:30.361Z",
+      "error_message": "CSS fix: permissions",
+      "file": "frontend/src/features/warehouses/WarehousesPage.test.tsx",
+      "root_cause": "permissions: string[], warehouses = [main, secondary]) { → string[],",
+      "fix": "Changed permissions: string[], warehouses = [main, secondary]) { → string[],",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-09-13T09:27:45.089Z"
+    },
+    {
+      "id": "bug-044",
+      "timestamp": "2026-09-14T09:21:12.476Z",
+      "error_message": "Significant refactor of WarehouseService.php",
+      "file": "backend/modules/Inventory/Services/WarehouseService.php",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 8→4 lines (4 removed) | Also: * Runs $callback in a transaction pinned to REPEAT; * of the connection's configured default: the \"is ",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-09-14T09:25:09.406Z"
+    },
+    {
+      "id": "bug-045",
+      "timestamp": "2026-09-14T09:21:58.923Z",
+      "error_message": "Wrong operator: ?? should be &&",
+      "file": "frontend/src/features/warehouses/WarehousesPage.tsx",
+      "root_cause": "Used \"??\" instead of \"&&\"",
+      "fix": "Changed operator ?? → &&",
+      "tags": [
+        "auto-detected",
+        "operator-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:21:58.923Z"
+    },
+    {
+      "id": "bug-046",
+      "timestamp": "2026-09-14T09:22:19.668Z",
+      "error_message": "Missing await",
+      "file": "frontend/src/features/warehouses/WarehousesPage.test.tsx",
+      "root_cause": "Async call without await — returned Promise instead of value",
+      "fix": "Added await to async call",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:22:19.668Z"
+    },
+    {
+      "id": "bug-047",
+      "timestamp": "2026-09-14T09:24:53.756Z",
+      "error_message": "Wrong return value",
+      "file": "backend/modules/Inventory/Services/WarehouseService.php",
+      "root_cause": "Was returning: $this->transaction(function () use ($warehouse, $d",
+      "fix": "Now returns: $this->serialized($companyId, function () use ($co",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:24:53.756Z"
+    },
+    {
+      "id": "bug-048",
+      "timestamp": "2026-09-14T09:28:44.864Z",
+      "error_message": "Wrong reference: get should be exists",
+      "file": "backend/modules/Inventory/Services/WarehouseService.php",
+      "root_cause": "Used \"get\" instead of \"exists\"",
+      "fix": "Changed get → exists",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "php"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:28:44.864Z"
+    },
+    {
+      "id": "bug-049",
+      "timestamp": "2026-09-14T09:35:02.415Z",
+      "error_message": "WarehouseService::update()/delete() operated on a stale in-memory $warehouse (e.g. from route-model binding) instead of the row just locked, so a concurrent default-flip could silently not persist, or a warehouse that had just become the actual default could be deleted, leaving zero default warehouses.",
+      "file": "backend/modules/Inventory/Services/WarehouseService.php",
+      "root_cause": "lockCompanyWarehouses(...)->get() was called for its locking side-effect only, its result discarded; is_default branching kept reading the pre-transaction $warehouse object instead of the freshly-locked row.",
+      "fix": "Added requireLocked() to pull the current row for $warehouse out of the just-locked company collection; update()/delete() now branch on that fresh copy, never the possibly-stale instance passed in.",
+      "tags": [
+        "concurrency",
+        "race-condition",
+        "php",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:35:02.415Z"
+    },
+    {
+      "id": "bug-050",
+      "timestamp": "2026-09-14T09:35:02.415Z",
+      "error_message": "WarehouseService::create() relied on SELECT ... FOR UPDATE matching zero rows to gap-lock a fresh company (\"is this the first warehouse\"), which only serializes concurrent inserts under REPEATABLE READ — under READ COMMITTED it takes no lock at all, letting two concurrent first-warehouse creates both become default.",
+      "file": "backend/modules/Inventory/Services/WarehouseService.php",
+      "root_cause": "The \"exactly one default warehouse\" invariant silently depended on the connection's transaction isolation level, which was never pinned anywhere in the app.",
+      "fix": "Wrapped every mutation in serialized(): a MySQL named lock (GET_LOCK/RELEASE_LOCK) keyed by company id, independent of isolation level. (Tried SET TRANSACTION ISOLATION LEVEL first — MySQL rejects that once a transaction is already open, which it always is under RefreshDatabase's test-wrapping transaction.)",
+      "tags": [
+        "concurrency",
+        "race-condition",
+        "mysql",
+        "php",
+        "code-review"
+      ],
+      "related_bugs": [
+        "bug-049"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:35:02.415Z"
+    },
+    {
+      "id": "bug-051",
+      "timestamp": "2026-09-14T09:35:02.415Z",
+      "error_message": "WarehousesPage create form computed hasWarehouses from warehouses.data before the list finished loading, so a company that already has warehouses briefly showed the \"this will be the default\" hint and hid the default checkbox — a submit during that window created a non-default warehouse despite the UI's promise.",
+      "file": "frontend/src/features/warehouses/WarehousesPage.tsx",
+      "root_cause": "(warehouses.data ?? []).length > 0 treated \"still loading\" (data: undefined) the same as \"loaded and empty\".",
+      "fix": "Gated the create form on warehouses.isSuccess so it only renders once the real list has loaded; hasWarehouses now reads warehouses.data.length directly.",
+      "tags": [
+        "frontend",
+        "react-query",
+        "loading-state",
+        "code-review"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T09:35:02.415Z"
     }
   ]
 }
