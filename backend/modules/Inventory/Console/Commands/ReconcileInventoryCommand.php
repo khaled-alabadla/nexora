@@ -31,10 +31,9 @@ final class ReconcileInventoryCommand extends Command
         $companyId = $this->option('company') !== null ? (int) $this->option('company') : null;
         $dryRun = (bool) $this->option('dry-run');
 
-        $keys = array_unique(array_merge(
-            array_keys($this->ledgerSums($companyId)),
-            array_keys($this->existingStock($companyId)),
-        ));
+        $ledgerSums = $this->ledgerSums($companyId);
+        $existingStock = $this->existingStock($companyId);
+        $keys = array_unique(array_merge(array_keys($ledgerSums), array_keys($existingStock)));
 
         $checked = 0;
         $driftCount = 0;
@@ -43,8 +42,13 @@ final class ReconcileInventoryCommand extends Command
             $checked++;
             [$cId, $pId, $wId] = array_map('intval', explode(':', $key));
 
+            // --dry-run reads the one bulk snapshot taken above (O(1) map
+            // lookups) — fine for a report, where a little staleness against
+            // concurrent live traffic is acceptable because nothing gets
+            // written. A real repair still recomputes fresh under a lock,
+            // per row, to stay correct against concurrent writers.
             $result = $dryRun
-                ? $this->detect($cId, $pId, $wId)
+                ? $this->detect($key, $ledgerSums, $existingStock)
                 : $this->repair($cId, $pId, $wId);
 
             if ($result === null) {
@@ -69,16 +73,18 @@ final class ReconcileInventoryCommand extends Command
     }
 
     /**
-     * Read-only check against the bulk snapshot — fine for a --dry-run
-     * report, where a little staleness against concurrent live traffic is
-     * acceptable because nothing gets written.
+     * O(1) lookup against the bulk snapshot handle() already fetched once —
+     * never re-queries per key (a --dry-run sweep across a large dataset
+     * must stay one pass, not one pass plus two extra round-trips per row).
      *
+     * @param  array<string, string>  $ledgerSums
+     * @param  array<string, array{id: int, quantity: string}>  $existingStock
      * @return array{before: string, after: string}|null
      */
-    private function detect(int $companyId, int $productId, int $warehouseId): ?array
+    private function detect(string $key, array $ledgerSums, array $existingStock): ?array
     {
-        $sum = $this->ledgerSums($companyId, $productId, $warehouseId)[$this->key($companyId, $productId, $warehouseId)] ?? '0.0000';
-        $row = $this->existingStock($companyId, $productId, $warehouseId)[$this->key($companyId, $productId, $warehouseId)] ?? null;
+        $sum = $ledgerSums[$key] ?? '0.0000';
+        $row = $existingStock[$key] ?? null;
 
         if ($row !== null && bccomp($row['quantity'], $sum, 4) === 0) {
             return null;
@@ -161,13 +167,13 @@ final class ReconcileInventoryCommand extends Command
     /**
      * @return array<string, string> "company:product:warehouse" => SUM(quantity) as a normalized decimal string
      */
-    private function ledgerSums(?int $companyId, ?int $productId = null, ?int $warehouseId = null): array
+    private function ledgerSums(?int $companyId): array
     {
         $query = DB::table('inventory_movements')
             ->selectRaw('company_id, product_id, warehouse_id, SUM(quantity) as total')
             ->groupBy('company_id', 'product_id', 'warehouse_id');
 
-        $this->scope($query, $companyId, $productId, $warehouseId);
+        $this->scope($query, $companyId);
 
         $sums = [];
 
@@ -182,11 +188,11 @@ final class ReconcileInventoryCommand extends Command
     /**
      * @return array<string, array{id: int, quantity: string}>
      */
-    private function existingStock(?int $companyId, ?int $productId = null, ?int $warehouseId = null): array
+    private function existingStock(?int $companyId): array
     {
         $query = DB::table('stock')->select('id', 'company_id', 'product_id', 'warehouse_id', 'quantity');
 
-        $this->scope($query, $companyId, $productId, $warehouseId);
+        $this->scope($query, $companyId);
 
         $rows = [];
 
@@ -200,18 +206,10 @@ final class ReconcileInventoryCommand extends Command
         return $rows;
     }
 
-    private function scope(Builder $query, ?int $companyId, ?int $productId, ?int $warehouseId): void
+    private function scope(Builder $query, ?int $companyId): void
     {
         if ($companyId !== null) {
             $query->where('company_id', $companyId);
-        }
-
-        if ($productId !== null) {
-            $query->where('product_id', $productId);
-        }
-
-        if ($warehouseId !== null) {
-            $query->where('warehouse_id', $warehouseId);
         }
     }
 

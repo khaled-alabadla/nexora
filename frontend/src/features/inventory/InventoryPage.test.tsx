@@ -55,12 +55,16 @@ function renderPage(permissions: string[], routes: Parameters<typeof stubFetch>[
   return { mock, ...renderWithProviders(<InventoryPage />, { queryClient: qc }) }
 }
 
-it('shows an access message without inventory.view', () => {
+it('shows an access message without inventory.view, and never requests stock or movements', async () => {
   const qc = createTestQueryClient()
   qc.setQueryData(sessionKey, sessionWith([]))
-  stubFetch([])
+  const mock = stubFetch([])
   renderWithProviders(<InventoryPage />, { queryClient: qc })
   expect(screen.getByText(/don't have access/)).toBeInTheDocument()
+
+  // Give any wrongly-enabled query a tick to fire before asserting it didn't.
+  await new Promise((resolve) => setTimeout(resolve, 0))
+  expect(mock).not.toHaveBeenCalled()
 })
 
 it('lists stock and movements', async () => {

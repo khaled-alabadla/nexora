@@ -42,6 +42,12 @@ final class InventoryController
             defaultSort: '-created_at',
         );
 
+        // created_at is second-precision, so two movements recorded in the
+        // same second would otherwise sort in an undefined order — id is
+        // monotonically increasing with insertion order, so it's a stable
+        // tiebreaker for the documented "newest first" contract.
+        $query->orderByDesc('id');
+
         return ApiResponse::paginated($query->paginate($filter->perPage())->through(
             fn (InventoryMovement $movement): InventoryMovementResource => new InventoryMovementResource($movement)
         ));

@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-14T10:34:04.616Z",
+    "lastScanned": "2026-09-14T10:49:37.700Z",
     "fileCount": 263,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "57a2491826fe768008673454891518346360045fc49f1b174918cdabeca20195",
-    "storeUpdatedAt": "2026-09-14T10:34:04.681Z",
-    "rootHash": "4d8dcca2e13301f5"
+    "renderedHash": "cc982e37a61466249720e3a4ccda0b6420087bd332b757c28af3d26fcfb2d9ab",
+    "storeUpdatedAt": "2026-09-14T10:49:37.718Z",
+    "rootHash": "0c28bdddf212a285"
   },
   "files": {
     "AGENTS.md": {
@@ -2085,11 +2085,11 @@
     },
     "docs/PHASE-2-PLAN.md": {
       "description": "Phase 2 — Products & Inventory — PLAN",
-      "tokens": 2804,
-      "hash": "85096bf4c7239287",
-      "size": 11316,
-      "mtimeMs": 1789382044219.5781,
-      "updatedAt": "2026-09-14T10:34:04.614Z",
+      "tokens": 2840,
+      "hash": "02608b30a06f595f",
+      "size": 11464,
+      "mtimeMs": 1789382728577.6616,
+      "updatedAt": "2026-09-14T10:45:28.833Z",
       "source": "hook"
     },
     "backend/app/Support/Http/QueryFilter.php": {
@@ -2706,11 +2706,11 @@
     },
     "backend/modules/Inventory/Database/Migrations/2026_09_14_000001_create_inventory_movements_table.php": {
       "description": "Migration: create inventory_movements table",
-      "tokens": 574,
-      "hash": "34e0584ba744a2ed",
-      "size": 2160,
-      "mtimeMs": 1789379503149.4087,
-      "updatedAt": "2026-09-14T09:51:43.353Z",
+      "tokens": 637,
+      "hash": "aafaa6e25e4f1c0d",
+      "size": 2400,
+      "mtimeMs": 1789382713699.1858,
+      "updatedAt": "2026-09-14T10:45:14.079Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Database/Migrations/2026_09_14_000002_create_stock_table.php": {
@@ -2724,11 +2724,11 @@
     },
     "backend/modules/Inventory/Models/InventoryMovement.php": {
       "description": "One line of the append-only inventory ledger — the source of truth for",
-      "tokens": 897,
-      "hash": "4a78b72c93539a0c",
-      "size": 3373,
-      "mtimeMs": 1789379522766.2795,
-      "updatedAt": "2026-09-14T09:52:02.963Z",
+      "tokens": 1108,
+      "hash": "d24453ad65f9bf5b",
+      "size": 4164,
+      "mtimeMs": 1789382691004.0317,
+      "updatedAt": "2026-09-14T10:44:51.368Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Models/Stock.php": {
@@ -2760,11 +2760,11 @@
     },
     "backend/modules/Inventory/Services/InventoryLedger.php": {
       "description": "The single writer of `inventory_movements` + `stock` for the active",
-      "tokens": 1384,
-      "hash": "783215f8c0c5f809",
-      "size": 5198,
-      "mtimeMs": 1789380565249.4907,
-      "updatedAt": "2026-09-14T10:09:25.669Z",
+      "tokens": 1479,
+      "hash": "7eee426ea180f05c",
+      "size": 5555,
+      "mtimeMs": 1789382702953.4866,
+      "updatedAt": "2026-09-14T10:45:03.329Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Http/Resources/StockResource.php": {
@@ -2787,20 +2787,20 @@
     },
     "backend/modules/Inventory/Http/Controllers/InventoryController.php": {
       "description": "Read-only for now: the stock projection and the ledger behind it",
-      "tokens": 450,
-      "hash": "bb597c6ec83bd719",
-      "size": 1690,
-      "mtimeMs": 1789379632385.0432,
-      "updatedAt": "2026-09-14T09:53:52.626Z",
+      "tokens": 538,
+      "hash": "e70d5a6dd953ee76",
+      "size": 2019,
+      "mtimeMs": 1789382673853.5227,
+      "updatedAt": "2026-09-14T10:44:34.359Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php": {
       "description": "Detects and repairs drift between the `stock` projection and the",
-      "tokens": 2124,
-      "hash": "5b4c9a62d97461f7",
-      "size": 7976,
-      "mtimeMs": 1789379858787.983,
-      "updatedAt": "2026-09-14T09:57:39.053Z",
+      "tokens": 2131,
+      "hash": "c0f743f2ff8e455e",
+      "size": 8004,
+      "mtimeMs": 1789382654382.338,
+      "updatedAt": "2026-09-14T10:44:14.763Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Providers/InventoryServiceProvider.php": {
@@ -2814,29 +2814,29 @@
     },
     "backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php": {
       "description": "Real MySQL concurrency, deliberately NOT using RefreshDatabase: that trait",
-      "tokens": 1715,
-      "hash": "8ff9ebfe3148b268",
-      "size": 6445,
-      "mtimeMs": 1789380212260.954,
-      "updatedAt": "2026-09-14T10:03:32.493Z",
+      "tokens": 1809,
+      "hash": "04e9682efe954224",
+      "size": 6799,
+      "mtimeMs": 1789382602502.8726,
+      "updatedAt": "2026-09-14T10:43:22.762Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Tests/Feature/InventoryLedgerTest.php": {
       "description": "Declares ledgerFixture",
-      "tokens": 2097,
-      "hash": "07f600d4b36fba04",
-      "size": 7865,
-      "mtimeMs": 1789380277354.338,
-      "updatedAt": "2026-09-14T10:04:37.595Z",
+      "tokens": 2643,
+      "hash": "8f140065238f446f",
+      "size": 9916,
+      "mtimeMs": 1789382932583.362,
+      "updatedAt": "2026-09-14T10:48:52.917Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Tests/Feature/InventoryReadTest.php": {
       "description": "",
-      "tokens": 1140,
-      "hash": "268314fd3cba6c9d",
-      "size": 4275,
-      "mtimeMs": 1789380309552.7986,
-      "updatedAt": "2026-09-14T10:05:09.814Z",
+      "tokens": 1435,
+      "hash": "33ea3663515a2707",
+      "size": 5378,
+      "mtimeMs": 1789382965131.6943,
+      "updatedAt": "2026-09-14T10:49:25.409Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Tests/Feature/InventoryTenantIsolationTest.php": {
@@ -2886,59 +2886,59 @@
     },
     "frontend/src/features/inventory/hooks.ts": {
       "description": "Exports useStock, useMovements",
-      "tokens": 174,
-      "hash": "91223a92f2f9b2e6",
-      "size": 608,
-      "mtimeMs": 1789380945435.2974,
-      "updatedAt": "2026-09-14T10:15:45.651Z",
+      "tokens": 191,
+      "hash": "8eca21d73d6dbf48",
+      "size": 666,
+      "mtimeMs": 1789382612394.6133,
+      "updatedAt": "2026-09-14T10:43:32.776Z",
       "source": "hook"
     },
     "frontend/src/features/inventory/InventoryPage.tsx": {
       "description": "MOVEMENT_TYPES",
-      "tokens": 1702,
-      "hash": "32d9a60d09394098",
-      "size": 5958,
-      "mtimeMs": 1789380985665.3362,
-      "updatedAt": "2026-09-14T10:16:25.925Z",
+      "tokens": 1741,
+      "hash": "01e833c8056e5d8c",
+      "size": 6094,
+      "mtimeMs": 1789382618973.6533,
+      "updatedAt": "2026-09-14T10:43:39.233Z",
       "source": "hook",
       "symbols": [
         {
           "name": "InventoryPage",
           "kind": "fn",
           "startLine": 21,
-          "endLine": 109,
-          "tokens": 928
+          "endLine": 113,
+          "tokens": 951
         },
         {
           "name": "StockRow",
           "kind": "fn",
-          "startLine": 110,
-          "endLine": 125,
+          "startLine": 114,
+          "endLine": 129,
           "tokens": 158
         },
         {
           "name": "MovementRow",
           "kind": "fn",
-          "startLine": 126,
-          "endLine": 143,
-          "tokens": 212
+          "startLine": 130,
+          "endLine": 151,
+          "tokens": 228
         },
         {
           "name": "Pagination",
           "kind": "fn",
-          "startLine": 144,
-          "endLine": 177,
+          "startLine": 152,
+          "endLine": 185,
           "tokens": 251
         }
       ]
     },
     "frontend/src/features/inventory/InventoryPage.test.tsx": {
       "description": "role",
-      "tokens": 1467,
-      "hash": "284b887fb3ec35f8",
-      "size": 5132,
-      "mtimeMs": 1789381350878.2139,
-      "updatedAt": "2026-09-14T10:22:31.142Z",
+      "tokens": 1543,
+      "hash": "8817b8de94450b43",
+      "size": 5398,
+      "mtimeMs": 1789382977422.3218,
+      "updatedAt": "2026-09-14T10:49:37.698Z",
       "source": "hook",
       "symbols": [
         {
@@ -2952,8 +2952,8 @@
           "name": "renderPage",
           "kind": "fn",
           "startLine": 47,
-          "endLine": 151,
-          "tokens": 1106
+          "endLine": 161,
+          "tokens": 1182
         }
       ]
     }

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Modules\Companies\Models\Role;
 use Modules\Inventory\Models\InventoryMovement;
 use Modules\Inventory\Models\Warehouse;
@@ -62,6 +63,25 @@ it('lists the movement ledger, filterable by type, newest first by default', fun
     $onlySales = $this->getJson(apiUrl('inventory/movements?type=sale'))->assertOk();
     expect($onlySales->json('data'))->toHaveCount(1)
         ->and($onlySales->json('data.0.quantity'))->toBe('-4.0000');
+});
+
+it('breaks a same-second created_at tie deterministically, newest (highest id) first', function () {
+    // created_at is second-precision, so two movements recorded in the same
+    // wall-clock second would otherwise sort in an undefined order.
+    [$company, $owner] = companyWithOwner();
+    $product = withoutTenantScope(fn () => Product::factory()->for($company)->create());
+    $warehouse = withoutTenantScope(fn () => Warehouse::factory()->for($company)->create());
+    actingInCompany($owner, $company);
+    $ledger = app(InventoryLedger::class);
+    $first = $ledger->record($product, $warehouse, InventoryMovement::TYPE_PURCHASE, '1.0000');
+    $second = $ledger->record($product, $warehouse, InventoryMovement::TYPE_PURCHASE, '2.0000');
+
+    DB::table('inventory_movements')->whereIn('id', [$first->id, $second->id])->update(['created_at' => now()]);
+
+    $response = $this->getJson(apiUrl('inventory/movements'))->assertOk();
+
+    expect($response->json('data.0.id'))->toBe($second->id)
+        ->and($response->json('data.1.id'))->toBe($first->id);
 });
 
 it('forbids stock and movement access without inventory.view', function () {

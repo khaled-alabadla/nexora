@@ -585,3 +585,20 @@ description: chronological action log per session, consolidated weekly
 | 13:23 | Edited frontend/src/features/inventory/api.ts | modified toQueryString() | ~97 |
 | 13:34 | Edited docs/PHASE-2-PLAN.md | inline fix | ~116 |
 | 13:40 | Implemented Phase 2.3 (Ledger + stock projection) end-to-end: inventory_movements + stock migrations/models, InventoryLedger service (sole writer — real unique-constraint + lockForUpdate race safety instead of a named lock, since stock unlike warehouses.is_default has a real DB constraint backing it; ADR-0007), GET /inventory/stock + /inventory/movements, inventory:reconcile command (locked recompute-then-write per row to avoid clobbering concurrent writes), FE read-only /inventory page. 2 real-MySQL concurrency tests (plain PHPUnit, non-RefreshDatabase) proving the row lock and the unique-constraint race guard both actually block a second writer. Verified end-to-end against the real dev server via curl (register→create product/warehouse→record movement→read both endpoints→reconcile), not just Pest | backend/modules/Inventory/{Models,Services,Http,Console,Database,Tests}/*, docs/{PHASE-2-PLAN.md,DATABASE.md,API.md,adr/0007-stock-projection.md}, frontend/src/features/inventory/*, .wolf/cerebrum.md | all gates green: 158 backend tests/96%+ cov, 86 frontend tests/93%+ cov, Pint/PHPStan L8/eslint/tsc/prettier/build/composer+npm audit clean | ~340000 |
+| 13:43 | Edited backend/modules/Inventory/Tests/Feature/StockConcurrencyTest.php | modified catch() | ~259 |
+| 13:43 | Edited frontend/src/features/inventory/hooks.ts | modified useStock() | ~148 |
+| 13:43 | Edited frontend/src/features/inventory/InventoryPage.tsx | 2→2 lines | ~31 |
+| 13:43 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | modified option() | ~282 |
+| 13:43 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | modified detect() | ~218 |
+| 13:44 | Edited backend/modules/Inventory/Console/Commands/ReconcileInventoryCommand.php | modified ledgerSums() | ~408 |
+| 13:44 | Edited backend/modules/Inventory/Http/Controllers/InventoryController.php | modified movements() | ~234 |
+| 13:44 | Edited backend/modules/Inventory/Models/InventoryMovement.php | modified requiredSign() | ~243 |
+| 13:45 | Edited backend/modules/Inventory/Services/InventoryLedger.php | added 1 condition(s) | ~153 |
+| 13:45 | Edited backend/modules/Inventory/Database/Migrations/2026_09_14_000001_create_inventory_movements_table.php | 5→8 lines | ~132 |
+| 13:45 | Edited docs/PHASE-2-PLAN.md | inline fix | ~70 |
+| 13:48 | Edited backend/modules/Inventory/Tests/Feature/InventoryLedgerTest.php | modified it() | ~615 |
+| 13:49 | Edited backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | added 1 import(s) | ~71 |
+| 13:49 | Edited backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | modified function() | ~340 |
+| 13:49 | Edited backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | 5→3 lines | ~34 |
+| 13:49 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 7→11 lines | ~151 |
+| 13:55 | Ran /code-review high on feature/2.3-inventory-ledger; fixed all 6 findings: StockConcurrencyTest transaction-leak-on-assert-failure, InventoryPage queries not gated on canView, reconcile --dry-run N+1, movements sort missing an id tiebreaker for same-second ties, InventoryLedger not validating quantity sign vs movement type, a redundant DB index; added regression tests for the testable ones | backend/modules/Inventory/{Tests/Feature/StockConcurrencyTest.php,Console/Commands/ReconcileInventoryCommand.php,Http/Controllers/InventoryController.php,Services/InventoryLedger.php,Models/InventoryMovement.php,Database/Migrations/2026_09_14_000001*,Tests/Feature/InventoryLedgerTest.php,Tests/Feature/InventoryReadTest.php}, frontend/src/features/inventory/{hooks.ts,InventoryPage.tsx,InventoryPage.test.tsx}, docs/PHASE-2-PLAN.md, .wolf/buglog.json | all gates re-green: 160 backend tests/96.5% cov, 86 frontend tests/93.1% cov, Pint/PHPStan L8/eslint/tsc/prettier/build/composer+npm audit clean | ~420000 |

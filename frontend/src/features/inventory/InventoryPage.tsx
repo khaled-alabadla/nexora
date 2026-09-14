@@ -24,8 +24,8 @@ export function InventoryPage() {
 
   const [stockFilters, setStockFilters] = useState<StockFilters>({ per_page: 20 })
   const [movementFilters, setMovementFilters] = useState<MovementFilters>({ per_page: 20 })
-  const stock = useStock(stockFilters)
-  const movements = useMovements(movementFilters)
+  const stock = useStock(stockFilters, canView)
+  const movements = useMovements(movementFilters, canView)
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-4xl flex-col gap-8 px-4 py-8 text-neutral-900 dark:text-neutral-100">

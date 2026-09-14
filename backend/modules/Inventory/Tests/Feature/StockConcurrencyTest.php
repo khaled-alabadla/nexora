@@ -73,17 +73,23 @@ final class StockConcurrencyTest extends TestCase
         $blockedOnLock = false;
 
         try {
-            $secondary->table('stock')->where('id', $stockId)->lockForUpdate()->first();
-        } catch (Throwable $e) {
-            $blockedOnLock = str_contains($e->getMessage(), 'Lock wait timeout exceeded');
+            try {
+                $secondary->table('stock')->where('id', $stockId)->lockForUpdate()->first();
+            } catch (Throwable $e) {
+                $blockedOnLock = str_contains($e->getMessage(), 'Lock wait timeout exceeded');
+            }
+        } finally {
+            // Always release the primary's lock before asserting — an
+            // assertion failure here must never leave an open transaction
+            // holding a row lock on the shared default connection, which
+            // would hang every later test that touches `stock`.
+            $primary->commit();
         }
 
         $this->assertTrue(
             $blockedOnLock,
             'A second connection must block (and eventually time out) on the row InventoryLedger has locked, never read past it.',
         );
-
-        $primary->commit();
 
         // Now unblocked: the same row the second connection couldn't reach
         // a moment ago is reachable immediately once the lock is released.

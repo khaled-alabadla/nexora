@@ -34,8 +34,11 @@ return new class extends Migration
             // Modules\Inventory\Models\InventoryMovement.
             $table->timestamp('created_at')->useCurrent();
 
+            // No separate (company_id, product_id) index: it would be a
+            // strict left-prefix of the composite below, so MySQL can
+            // already satisfy any such query from it — a second index would
+            // add write overhead to every insert for zero query benefit.
             $table->index(['company_id', 'product_id', 'warehouse_id']);
-            $table->index(['company_id', 'product_id']);
             $table->index(['warehouse_id']);
             $table->index(['type']);
             $table->index(['created_at']);

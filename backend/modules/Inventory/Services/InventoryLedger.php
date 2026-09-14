@@ -47,6 +47,14 @@ final class InventoryLedger
             throw new InvalidArgumentException("Unknown inventory movement type [{$type}].");
         }
 
+        $requiredSign = InventoryMovement::requiredSign($type);
+
+        if ($requiredSign !== null && bccomp($quantity, '0', 4) !== $requiredSign) {
+            throw new InvalidArgumentException(
+                "Movement type [{$type}] requires a ".($requiredSign > 0 ? 'positive' : 'negative')." quantity, got [{$quantity}].",
+            );
+        }
+
         $companyId = $this->context->id();
 
         // Defense in depth beyond tenant-scoped route-model binding: this is

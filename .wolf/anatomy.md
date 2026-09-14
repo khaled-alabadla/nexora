@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T10:34:04.616Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T10:49:37.700Z
 > Files: 263 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
@@ -234,7 +234,7 @@
 
 ## backend/modules/Inventory/Console/Commands/
 
-- `ReconcileInventoryCommand.php` — Detects and repairs drift between the `stock` projection and the (~2124 tok)
+- `ReconcileInventoryCommand.php` — Detects and repairs drift between the `stock` projection and the (~2131 tok)
 
 ## backend/modules/Inventory/Database/Factories/
 
@@ -245,12 +245,12 @@
 ## backend/modules/Inventory/Database/Migrations/
 
 - `2026_09_13_000001_create_warehouses_table.php` — Migration: create warehouses table (~238 tok)
-- `2026_09_14_000001_create_inventory_movements_table.php` — Migration: create inventory_movements table (~574 tok)
+- `2026_09_14_000001_create_inventory_movements_table.php` — Migration: create inventory_movements table (~637 tok)
 - `2026_09_14_000002_create_stock_table.php` — Migration: create stock table (~462 tok)
 
 ## backend/modules/Inventory/Http/Controllers/
 
-- `InventoryController.php` — Read-only for now: the stock projection and the ledger behind it (~450 tok)
+- `InventoryController.php` — Read-only for now: the stock projection and the ledger behind it (~538 tok)
 - `WarehouseController.php` — Warehouses for the active company. Not paginated — a small reference list, (~490 tok)
 
 ## backend/modules/Inventory/Http/Requests/
@@ -266,7 +266,7 @@
 
 ## backend/modules/Inventory/Models/
 
-- `InventoryMovement.php` — One line of the append-only inventory ledger — the source of truth for (~897 tok)
+- `InventoryMovement.php` — One line of the append-only inventory ledger — the source of truth for (~1108 tok)
 - `Stock.php` — A maintained projection of SUM(inventory_movements.quantity) for one (~490 tok)
 - `Warehouse.php` — A stock location within a company. Exactly one warehouse is the company's (~503 tok)
 
@@ -280,16 +280,16 @@
 
 ## backend/modules/Inventory/Services/
 
-- `InventoryLedger.php` — The single writer of `inventory_movements` + `stock` for the active (~1384 tok)
+- `InventoryLedger.php` — The single writer of `inventory_movements` + `stock` for the active (~1479 tok)
 - `WarehouseService.php` — Warehouse lifecycle for the active company. The single place that enforces (~1747 tok)
 
 ## backend/modules/Inventory/Tests/Feature/
 
-- `InventoryLedgerTest.php` — Declares ledgerFixture (~2097 tok)
-- `InventoryReadTest.php` (~1140 tok)
+- `InventoryLedgerTest.php` — Declares ledgerFixture (~2643 tok)
+- `InventoryReadTest.php` (~1435 tok)
 - `InventoryTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for (~754 tok)
 - `ReconcileInventoryCommandTest.php` — reconcileFixture: corruptStock (~1407 tok)
-- `StockConcurrencyTest.php` — Real MySQL concurrency, deliberately NOT using RefreshDatabase: that trait (~1715 tok)
+- `StockConcurrencyTest.php` — Real MySQL concurrency, deliberately NOT using RefreshDatabase: that trait (~1809 tok)
 - `WarehouseManagementTest.php` (~2368 tok)
 - `WarehouseTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for (~581 tok)
 
@@ -382,7 +382,7 @@
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
-- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2804 tok)
+- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2840 tok)
 - `ROADMAP.md` — Nexora — Development Roadmap (~1073 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~680 tok)
@@ -464,9 +464,9 @@
 ## frontend/src/features/inventory/
 
 - `api.ts` — Exports listStock, listMovements (~228 tok)
-- `hooks.ts` — Exports useStock, useMovements (~174 tok)
-- `InventoryPage.test.tsx` — role (~1467 tok)
-- `InventoryPage.tsx` — MOVEMENT_TYPES (~1702 tok)
+- `hooks.ts` — Exports useStock, useMovements (~191 tok)
+- `InventoryPage.test.tsx` — role (~1543 tok)
+- `InventoryPage.tsx` — MOVEMENT_TYPES (~1741 tok)
 - `types.ts` — Exports MovementType, ProductSummary, WarehouseSummary, Stock + 3 more (~332 tok)
 
 ## frontend/src/features/products/

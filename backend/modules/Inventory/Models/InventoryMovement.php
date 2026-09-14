@@ -75,6 +75,25 @@ final class InventoryMovement extends Model
         ];
     }
 
+    /**
+     * The sign a type's `quantity` must carry, so the ledger's `type` stays
+     * semantically meaningful (COGS/valuation reporting keys off it) instead
+     * of only being internally consistent with the stock arithmetic.
+     * `adjustment` has no fixed direction — it's a true-up correction that
+     * can move stock either way.
+     *
+     * @return 1|-1|null 1 = must be positive, -1 = must be negative, null = either
+     */
+    public static function requiredSign(string $type): ?int
+    {
+        return match ($type) {
+            self::TYPE_PURCHASE, self::TYPE_RETURN, self::TYPE_TRANSFER_IN => 1,
+            self::TYPE_SALE, self::TYPE_TRANSFER_OUT, self::TYPE_DAMAGE => -1,
+            self::TYPE_ADJUSTMENT => null,
+            default => null,
+        };
+    }
+
     // company_id is forced by BelongsToCompany — never client-settable.
     // Every other column is set exclusively by InventoryLedger; there is
     // intentionally no public write endpoint or FormRequest for this model.

@@ -130,6 +130,37 @@ it('rejects an unknown movement type', function () {
         ->toThrow(InvalidArgumentException::class);
 });
 
+it('rejects a quantity sign that contradicts the movement type, so `type` stays semantically meaningful', function () {
+    [, , $product, $warehouse] = ledgerFixture();
+    $ledger = app(InventoryLedger::class);
+    $ledger->record($product, $warehouse, InventoryMovement::TYPE_PURCHASE, '10.0000');
+
+    // A "purchase" that decreases stock, or a "sale" that increases it,
+    // would corrupt COGS/valuation reporting keyed off type — even though
+    // the stock arithmetic itself would stay internally consistent.
+    expect(fn () => $ledger->record($product, $warehouse, InventoryMovement::TYPE_PURCHASE, '-5.0000'))
+        ->toThrow(InvalidArgumentException::class);
+    expect(fn () => $ledger->record($product, $warehouse, InventoryMovement::TYPE_SALE, '5.0000'))
+        ->toThrow(InvalidArgumentException::class);
+    expect(fn () => $ledger->record($product, $warehouse, InventoryMovement::TYPE_RETURN, '-1.0000'))
+        ->toThrow(InvalidArgumentException::class);
+    expect(fn () => $ledger->record($product, $warehouse, InventoryMovement::TYPE_TRANSFER_IN, '-1.0000'))
+        ->toThrow(InvalidArgumentException::class);
+    expect(fn () => $ledger->record($product, $warehouse, InventoryMovement::TYPE_TRANSFER_OUT, '1.0000'))
+        ->toThrow(InvalidArgumentException::class);
+    expect(fn () => $ledger->record($product, $warehouse, InventoryMovement::TYPE_DAMAGE, '1.0000'))
+        ->toThrow(InvalidArgumentException::class);
+
+    // Zero satisfies neither "positive" nor "negative" for a directional type.
+    expect(fn () => $ledger->record($product, $warehouse, InventoryMovement::TYPE_SALE, '0.0000'))
+        ->toThrow(InvalidArgumentException::class);
+
+    // adjustment has no fixed direction — a true-up correction may go either way.
+    $up = $ledger->record($product, $warehouse, InventoryMovement::TYPE_ADJUSTMENT, '2.0000');
+    $down = $ledger->record($product, $warehouse, InventoryMovement::TYPE_ADJUSTMENT, '-3.0000');
+    expect($up->quantity)->toBe('2.0000')->and($down->quantity)->toBe('-3.0000');
+});
+
 it('keeps the ledger and projection isolated per warehouse for the same product', function () {
     [$company, , $product] = ledgerFixture();
     $warehouseA = withoutTenantScope(fn () => Warehouse::factory()->for($company)->create());
