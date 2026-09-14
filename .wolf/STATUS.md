@@ -4,7 +4,7 @@ budget_tokens: 1000
 ---
 # STATUS — Nexora
 
-> Read FIRST when resuming. Last updated: 2026-09-13
+> Read FIRST when resuming. Last updated: 2026-09-14
 
 ## Mode
 
@@ -16,55 +16,59 @@ CLI — query runs via the GitHub REST API (`curl`, unauthenticated).
 
 ## ✅ Done
 
-- **Git hygiene**: reconciled a divergence where a docs commit had landed
-  directly on `main` instead of via `develop` (fixed by merging forward);
-  verified `main`/`develop`/`phase-1`/`phase-1.1` tags all point to the
-  intended commits and match origin.
-- **Phase 2 GRILL-ME**: all 12 open decisions in `docs/PHASE-2-PLAN.md` §7
-  ratified with the user (every one matched the recommendation) — stock is a
-  maintained projection, signed ledger quantity, category adjacency list,
-  negative stock blocked (force-flag escape hatch), soft-deleted products,
-  active-company added to the middleware priority list, per-action
-  permissions, damage-as-adjustment-type, modeled default warehouse, full FE
-  each slice.
-- **Phase 2.1 — Products & Categories** (merged to `develop` @ `6f636fc`):
-  first real `BelongsToCompany` business models. Full CRUD both resources,
-  permission-gated, paginated/filtered/searched/sorted products list.
-  Middleware-priority fix in `bootstrap/app.php` makes route-model binding
-  tenant-scoped (no more manual `findOrFail`). Shared infra:
-  `ApiResponse::paginated()`, `App\Support\Http\QueryFilter`. Full SPA pages
-  at `/products` and `/categories`, `AppHeader` nav extracted.
-  Code-reviewed (`/code-review high`) — 4 findings fixed + regression tests:
-  frontend fetching `/categories` without `category.manage`; category
-  parent-cycle guard only checked direct self-parent; search didn't escape
-  SQL LIKE wildcards; price `max:` validation was 1 digit short of the
-  `DECIMAL(18,4)` column.
-- Gates: backend 109 tests / 96.7% coverage (Pint + PHPStan L8 clean);
-  frontend 70 tests / 93.9% coverage (eslint + tsc + prettier + build clean).
+- **Phase 2.1 — Products & Categories** (merged @ `6f636fc`): full CRUD,
+  permission-gated. Middleware-priority fix makes route-model binding
+  tenant-scoped. Code-reviewed, 4 findings fixed.
+- **Phase 2.2 — Warehouses** (merged to `develop` @ `c308298`, pushed, CI
+  green): `warehouses` CRUD, first-warehouse-becomes-default invariant
+  (§7.9), FE `/warehouses` page. `/code-review high` on the initial
+  implementation (`ca2007d`) found 3 real backend concurrency bugs + 1
+  frontend loading-state bug — fixed in `7c94d60`:
+  - `WarehouseService::update()`/`delete()` now re-read the row from inside
+    the lock (`requireLocked()`) instead of trusting the (possibly stale,
+    e.g. route-model-bound) instance the caller passed in.
+  - `create()`'s "first warehouse" check no longer leans on `lockForUpdate`
+    gap-locking a zero-row range (isolation-level-dependent, never pinned)
+    — every mutation now holds a MySQL named lock (`GET_LOCK`, keyed by
+    company id) via `WarehouseService::serialized()`. `SET TRANSACTION
+    ISOLATION LEVEL` was tried first; MySQL rejects it mid-transaction,
+    which `RefreshDatabase` always has open in tests — see
+    `.wolf/cerebrum.md` Do-Not-Repeat.
+  - `WarehousesPage` create form now gates on `warehouses.isSuccess`.
+  - Docs: `DATABASE.md` §6, `PHASE-2-PLAN.md` §6, buglog bug-049..051.
+- Gates (post-2.2): backend 128 tests / 96.9% cov, frontend 80 tests /
+  93.0% cov; Pint/PHPStan L8/eslint/tsc/build/composer+npm audit clean.
 
-## 🚀 Next quest — Phase 2.2: Warehouses
+## 🚀 Next quest — Phase 2.3: Ledger + stock projection
 
-Per `docs/PHASE-2-PLAN.md` §6 slice table. Modeled: `warehouses`
-(company_id, name, location?, `is_default`, status) — first warehouse
-created for a company becomes default automatically (ratified §7.9). CRUD +
-permissions (`warehouse.view/create/update/delete`, already in
-`Permissions.php` + seeder) + FE page, same pattern as 2.1. Then continue
-2.3 (ledger + stock projection — the phase's core) → 2.7 (docs/ADR/close).
+Per `docs/PHASE-2-PLAN.md` §6 (this is the phase's core slice). Build:
+`inventory_movements` (signed `quantity`, ratified §7) + `stock` projection
+table, `InventoryLedger` service (txn + row lock), read endpoints,
+`inventory:reconcile` artisan command. Gate highlights per the plan:
+**projection == ledger property test**, **concurrency test**
+(non-transactional — this is the first slice that needs a real multi-
+connection concurrency-test harness; 2.2's races were caught via code
+review + deterministic stale-object unit tests, not live concurrency), and
+a rollback test. No open decisions — GRILL-ME already ratified in §7.
 
-No open decisions — proceed straight to IMPLEMENT.
+After 2.3: 2.4 (adjustments/damage) → 2.5 (transfers, needs its own
+concurrency test) → 2.6 (low-stock) → 2.7 (docs/ADR/close, promote
+`develop`→`main`, tag `phase-2`).
 
 ## Context
 
-- `develop` clean at `6f636fc`, matches origin. `main` is one slice behind
-  (still at the Phase 1 promotion) — Phase 2 stays on `develop` until the
-  whole phase is done and promoted (mirrors the Phase 1.1→Phase 1 pattern).
+- `develop` clean at `c308298`, pushed, CI green. `main` still one phase
+  behind (Phase 1 promotion only) — Phase 2 stays on `develop` until the
+  whole phase closes (mirrors the Phase 1.1→Phase 1 pattern).
 - Docker stack up. Host PHP 8.2 unsupported — backend cmds via
   `docker compose exec -T app …`; coverage needs `XDEBUG_MODE=coverage`.
-- Test helper `withoutTenantScope(fn)` in `tests/Pest.php` — required for
-  any `BelongsToCompany` factory fixture built outside `actingAs`+real HTTP.
+- Test helper `withoutTenantScope(fn)` in `tests/Pest.php`. New this
+  session: to unit-test a service against a stale pre-loaded model (route-
+  model-binding staleness), `app(CompanyContext::class)->set($company)`
+  then call the service directly — no HTTP round trip needed.
 - Ports: API 8000, MySQL 33061, Mailpit 8025, Vite 5173.
 
 ## References
 
 - `docs/PHASE-2-PLAN.md` (current phase, ratified decisions in §7)
-- `docs/PHASE-1.md`, `docs/adr/0006-tenancy-mechanism.md`, `.wolf/cerebrum.md`
+- `docs/DATABASE.md` §6 (warehouses locking), `.wolf/cerebrum.md`
