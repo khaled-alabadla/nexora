@@ -37,6 +37,13 @@ parameters:
           paths:
             - modules/Inventory/Services/InventoryLedger.php
             - modules/Inventory/Console/Commands/ReconcileInventoryCommand.php
+        # Same reasoning, one call removed: StoreAdjustmentRequest validates
+        # quantity_delta/unit_cost as 'numeric' before the controller ever
+        # reads them, so they're runtime-guaranteed numeric strings once
+        # cast — Larastan just can't see through the FormRequest validation
+        # to narrow a plain array value that way.
+        - message: '#Parameter \$(quantity|unitCost) of method Modules\\Inventory\\Services\\InventoryLedger::record\(\) expects numeric-string(\|null)?, string(\|null)? given\.#'
+          path: modules/Inventory/Http/Controllers/AdjustmentController.php
 
     checkModelProperties: true
     checkOctaneCompatibility: false

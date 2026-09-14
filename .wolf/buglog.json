@@ -1081,6 +1081,150 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-09-14T10:55:58.961Z"
+    },
+    {
+      "id": "bug-068",
+      "timestamp": "2026-09-14T11:06:56.954Z",
+      "error_message": "Significant refactor of hooks.ts",
+      "file": "frontend/src/features/inventory/hooks.ts",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 4→4 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T11:06:56.954Z"
+    },
+    {
+      "id": "bug-069",
+      "timestamp": "2026-09-14T11:07:09.297Z",
+      "error_message": "Function not marked async",
+      "file": "frontend/src/features/inventory/hooks.ts",
+      "root_cause": "Function uses await but wasn't declared async",
+      "fix": "Added async modifier",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T11:07:09.297Z"
+    },
+    {
+      "id": "bug-070",
+      "timestamp": "2026-09-14T11:07:43.944Z",
+      "error_message": "Significant refactor of InventoryPage.tsx",
+      "file": "frontend/src/features/inventory/InventoryPage.tsx",
+      "root_cause": "5 lines replaced/restructured",
+      "fix": "Rewrote 9→18 lines (5 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T11:07:43.944Z"
+    },
+    {
+      "id": "bug-071",
+      "timestamp": "2026-09-14T11:08:10.617Z",
+      "error_message": "Null/undefined access in InventoryPage.tsx",
+      "file": "frontend/src/features/inventory/InventoryPage.tsx",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check) | Also: error={errors['lines.0.quantity_delta'] ?? errors.quantity}",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-09-14T11:12:06.695Z"
+    },
+    {
+      "id": "bug-072",
+      "timestamp": "2026-09-14T11:09:34.914Z",
+      "error_message": "Null/undefined access in InventoryPage.test.tsx",
+      "file": "frontend/src/features/inventory/InventoryPage.test.tsx",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T11:09:34.914Z"
+    },
+    {
+      "id": "bug-073",
+      "timestamp": "2026-09-14T11:10:45.976Z",
+      "error_message": "Incorrect value in code",
+      "file": "frontend/src/features/inventory/InventoryPage.tsx",
+      "root_cause": "Had \"Type\"",
+      "fix": "Changed to \"Adjustment type\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T11:10:45.976Z"
+    },
+    {
+      "id": "bug-074",
+      "timestamp": "2026-09-14T11:11:00.956Z",
+      "error_message": "Incorrect value in code",
+      "file": "frontend/src/features/inventory/InventoryPage.test.tsx",
+      "root_cause": "Had 'Type'",
+      "fix": "Changed to 'Adjustment type'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-09-14T11:12:20.513Z"
+    },
+    {
+      "id": "bug-075",
+      "timestamp": "2026-09-14T11:25:04.187Z",
+      "error_message": "AdjustmentForm and the movement filter both had a Field labeled exactly \"Type\", making getByLabelText('Type') ambiguous in tests and confusing for screen-reader users navigating the page as one document.",
+      "file": "frontend/src/features/inventory/InventoryPage.tsx",
+      "root_cause": "Two unrelated selects (movement-type filter, adjustment type) reused the generic label \"Type\" without considering they render on the same page.",
+      "fix": "Renamed the adjustment form's label to \"Adjustment type\".",
+      "tags": [
+        "frontend",
+        "accessibility",
+        "ux"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T11:25:04.187Z"
+    },
+    {
+      "id": "bug-076",
+      "timestamp": "2026-09-14T11:25:04.187Z",
+      "error_message": "InventoryLedger's negative-stock rejection surfaces under the validation-error key \"quantity\", which the adjustment form had no Field displaying — combined with the form's has-any-field-errors-so-suppress-the-blanket-Alert convention (copied from ProductsPage/WarehousesPage, where every possible error key does map to a visible Field), the message was silently swallowed: nothing told the user why their adjustment failed.",
+      "file": "frontend/src/features/inventory/InventoryPage.tsx",
+      "root_cause": "The \"quantity\" key (from the service layer) was never accounted for alongside the FormRequest-level keys (lines.0.*) the form does render inline.",
+      "fix": "Merged errors.quantity into the quantity-delta Field's error prop (errors['lines.0.quantity_delta'] ?? errors.quantity) — same user input, same place to show the problem.",
+      "tags": [
+        "frontend",
+        "ux",
+        "error-handling"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-09-14T11:25:04.187Z"
     }
   ]
 }

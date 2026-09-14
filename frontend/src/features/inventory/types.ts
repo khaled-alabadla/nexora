@@ -50,3 +50,19 @@ export interface MovementFilters {
   page?: number | undefined
   per_page?: number | undefined
 }
+
+export type AdjustmentType = 'adjustment' | 'damage'
+
+export interface AdjustmentLineInput {
+  product_id: number
+  quantity_delta: number
+  unit_cost?: number | undefined
+  reason?: string | undefined
+}
+
+export interface AdjustmentInput {
+  warehouse_id: number
+  type: AdjustmentType
+  force?: boolean | undefined
+  lines: AdjustmentLineInput[]
+}

@@ -4,7 +4,7 @@ import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { sessionKey } from '@/features/auth/session'
-import { page, stubFetch } from '@/test/fetchStub'
+import { created, fail, ok, page, stubFetch } from '@/test/fetchStub'
 import { createTestQueryClient, renderWithProviders } from '@/test/utils'
 
 import { InventoryPage } from './InventoryPage'
@@ -41,6 +41,31 @@ const movement = {
   reference_id: null,
   note: null,
   created_by: 1,
+  created_at: null,
+}
+
+const warehouseOption = {
+  id: 1,
+  name: 'Main',
+  location: null,
+  is_default: true,
+  status: 'active',
+  created_at: null,
+}
+
+const productOption = {
+  id: 1,
+  category: null,
+  sku: 'A1',
+  name: 'Widget',
+  description: null,
+  barcode: null,
+  unit: 'pcs',
+  cost_price: '1.0000',
+  selling_price: '2.0000',
+  tax_rate: '0.0000',
+  minimum_stock: '0.0000',
+  status: 'active',
   created_at: null,
 }
 
@@ -157,4 +182,107 @@ it('surfaces a fetch error for stock', async () => {
   renderWithProviders(<InventoryPage />, { queryClient: qc })
 
   expect(await screen.findByRole('status')).toBeInTheDocument()
+})
+
+it('does not render the adjustment form, or fetch warehouses/products, without inventory.adjust', async () => {
+  const { mock } = renderPage(['inventory.view'])
+  await screen.findByText('Widget')
+
+  expect(screen.queryByText('Adjust stock')).not.toBeInTheDocument()
+  expect(mock.mock.calls.some((c) => String(c[0]).includes('/warehouses'))).toBe(false)
+  expect(mock.mock.calls.some((c) => String(c[0]).includes('/products'))).toBe(false)
+})
+
+it('submits an adjustment with the selected warehouse, product, and quantity', async () => {
+  const user = userEvent.setup({ delay: null })
+  const { mock } = renderPage(
+    ['inventory.view', 'inventory.adjust'],
+    [
+      { method: 'GET', url: '/warehouses', handler: ok([warehouseOption]) },
+      { method: 'GET', url: '/products', handler: page([productOption]) },
+      {
+        method: 'POST',
+        url: '/inventory/adjustments',
+        handler: created([
+          {
+            id: 9,
+            product: { id: 1, sku: 'A1', name: 'Widget' },
+            warehouse: { id: 1, name: 'Main' },
+            type: 'adjustment',
+            quantity: '5.0000',
+            unit_cost: null,
+            reference_type: null,
+            reference_id: null,
+            note: null,
+            created_by: 1,
+            created_at: null,
+          },
+        ]),
+      },
+    ],
+  )
+
+  await screen.findByRole('option', { name: 'Main' })
+  await screen.findByRole('option', { name: 'A1 — Widget' })
+
+  await user.selectOptions(screen.getByLabelText('Warehouse'), '1')
+  await user.selectOptions(screen.getByLabelText('Product'), '1')
+  await user.type(screen.getByLabelText('Quantity change'), '5')
+  await user.click(screen.getByRole('button', { name: 'Record adjustment' }))
+
+  await vi.waitFor(() => {
+    const call = mock.mock.calls.find(
+      (c) => String(c[0]).includes('/inventory/adjustments') && c[1]?.method === 'POST',
+    )
+    expect(call).toBeDefined()
+    expect(JSON.parse(call?.[1]?.body as string)).toMatchObject({
+      warehouse_id: 1,
+      type: 'adjustment',
+      lines: [{ product_id: 1, quantity_delta: 5 }],
+    })
+  })
+})
+
+it('shows a hint that damage always decreases stock', async () => {
+  const user = userEvent.setup({ delay: null })
+  renderPage(
+    ['inventory.view', 'inventory.adjust'],
+    [
+      { method: 'GET', url: '/warehouses', handler: ok([warehouseOption]) },
+      { method: 'GET', url: '/products', handler: page([productOption]) },
+    ],
+  )
+  await screen.findByRole('option', { name: 'Main' })
+
+  expect(screen.queryByText(/Damage always decreases stock/)).not.toBeInTheDocument()
+  await user.selectOptions(screen.getByLabelText('Adjustment type'), 'damage')
+  expect(screen.getByText(/Damage always decreases stock/)).toBeInTheDocument()
+})
+
+it('surfaces a validation error from a failed adjustment', async () => {
+  const user = userEvent.setup({ delay: null })
+  renderPage(
+    ['inventory.view', 'inventory.adjust'],
+    [
+      { method: 'GET', url: '/warehouses', handler: ok([warehouseOption]) },
+      { method: 'GET', url: '/products', handler: page([productOption]) },
+      {
+        method: 'POST',
+        url: '/inventory/adjustments',
+        handler: fail(422, 'This movement would take stock below zero.', {
+          quantity: ['This movement would take stock below zero.'],
+        }),
+      },
+    ],
+  )
+  await screen.findByRole('option', { name: 'Main' })
+
+  await user.selectOptions(screen.getByLabelText('Warehouse'), '1')
+  await user.selectOptions(screen.getByLabelText('Product'), '1')
+  await user.type(screen.getByLabelText('Quantity change'), '-50')
+  await user.click(screen.getByRole('button', { name: 'Record adjustment' }))
+
+  expect(await screen.findByRole('alert')).toHaveTextContent(
+    'This movement would take stock below zero.',
+  )
 })

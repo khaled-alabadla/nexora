@@ -1,6 +1,12 @@
 import { api, type Page } from '@/lib/api'
 
-import type { InventoryMovement, MovementFilters, Stock, StockFilters } from './types'
+import type {
+  AdjustmentInput,
+  InventoryMovement,
+  MovementFilters,
+  Stock,
+  StockFilters,
+} from './types'
 
 function toQueryString(filters: StockFilters | MovementFilters): string {
   const params = new URLSearchParams()
@@ -16,3 +22,6 @@ export const listStock = (filters: StockFilters = {}): Promise<Page<Stock>> =>
 
 export const listMovements = (filters: MovementFilters = {}): Promise<Page<InventoryMovement>> =>
   api.getPage<InventoryMovement>(`/inventory/movements${toQueryString(filters)}`)
+
+export const createAdjustment = (input: AdjustmentInput): Promise<InventoryMovement[]> =>
+  api.post<InventoryMovement[]>('/inventory/adjustments', input)

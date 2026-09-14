@@ -239,17 +239,35 @@ place the one-default-per-company invariant is enforced (see DATABASE.md §6).
 ## 11b. Inventory — stock & movements (Phase 2.3)
 
 All under `/api/v1`, `auth:sanctum` + `active-company`, `inventory.view`.
-Read-only this slice — writes (adjustments, transfers) land in 2.4/2.5, both
-going through `Modules\Inventory\Services\InventoryLedger`, the sole writer
-of both tables (DATABASE.md §7, ADR-0007). Fields match DATABASE.md §7.
+Read-only — writes go through `Modules\Inventory\Services\InventoryLedger`,
+the sole writer of both tables (DATABASE.md §7, ADR-0007). Fields match
+DATABASE.md §7.
 
 | Method & path | Notes |
 |---|---|
 | `GET /inventory/stock` | Paginated (§5). Current level per (product, warehouse). Filters: `?product_id=`, `?warehouse_id=`. Sort: `?sort=quantity\|updated_at` (default `-updated_at`). |
-| `GET /inventory/movements` | Paginated. The ledger, newest first by default. Filters: `?product_id=`, `?warehouse_id=`, `?type=`. Sort: `?sort=created_at`. |
+| `GET /inventory/movements` | Paginated. The ledger, newest first by default (tiebroken by `id` for same-second entries). Filters: `?product_id=`, `?warehouse_id=`, `?type=`. Sort: `?sort=created_at`. |
 
 Both `data[].product` and `data[].warehouse` are `{id, sku?, name}` summaries,
 not the full product/warehouse resource.
+
+---
+
+## 11c. Inventory — adjustments & damage (Phase 2.4)
+
+| Method & path | Permission | Notes |
+|---|---|---|
+| `POST /inventory/adjustments` | `inventory.adjust` | `{ warehouse_id, type: adjustment\|damage, force?, lines: [{ product_id, quantity_delta, unit_cost?, reason? }] }`. Every line is recorded in one transaction — the whole request lands or none of it does. Returns `201` with `data` = an array of the created movement resources (§11b shape). |
+
+- `quantity_delta` is signed and must not be `0`; `damage` additionally
+  requires it to be negative (damage only ever decreases stock) — enforced
+  both by validation (`422`) and, authoritatively, by `InventoryLedger`.
+- `force: true` bypasses the negative-stock guard (`422` otherwise, `errors.quantity`)
+  — only honored for `adjustment`/`damage`, a true-up correction path, never
+  a routine way to go negative.
+- `warehouse_id` and every `lines[].product_id` must belong to the active
+  company (`422`, not `404` — same tenant-safe non-leaking behavior as any
+  other validated foreign key) and the product must not be soft-deleted.
 
 ---
 

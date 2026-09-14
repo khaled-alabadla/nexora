@@ -602,3 +602,29 @@ description: chronological action log per session, consolidated weekly
 | 13:49 | Edited backend/modules/Inventory/Tests/Feature/InventoryReadTest.php | 5→3 lines | ~34 |
 | 13:49 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 7→11 lines | ~151 |
 | 13:55 | Ran /code-review high on feature/2.3-inventory-ledger; fixed all 6 findings: StockConcurrencyTest transaction-leak-on-assert-failure, InventoryPage queries not gated on canView, reconcile --dry-run N+1, movements sort missing an id tiebreaker for same-second ties, InventoryLedger not validating quantity sign vs movement type, a redundant DB index; added regression tests for the testable ones | backend/modules/Inventory/{Tests/Feature/StockConcurrencyTest.php,Console/Commands/ReconcileInventoryCommand.php,Http/Controllers/InventoryController.php,Services/InventoryLedger.php,Models/InventoryMovement.php,Database/Migrations/2026_09_14_000001*,Tests/Feature/InventoryLedgerTest.php,Tests/Feature/InventoryReadTest.php}, frontend/src/features/inventory/{hooks.ts,InventoryPage.tsx,InventoryPage.test.tsx}, docs/PHASE-2-PLAN.md, .wolf/buglog.json | all gates re-green: 160 backend tests/96.5% cov, 86 frontend tests/93.1% cov, Pint/PHPStan L8/eslint/tsc/prettier/build/composer+npm audit clean | ~420000 |
+| 14:02 | Created backend/modules/Inventory/Http/Requests/StoreAdjustmentRequest.php | — | ~616 |
+| 14:02 | Edited backend/modules/Inventory/Http/Requests/StoreAdjustmentRequest.php | 11→11 lines | ~144 |
+| 14:02 | Created backend/modules/Inventory/Http/Controllers/AdjustmentController.php | — | ~582 |
+| 14:03 | Edited backend/modules/Inventory/Routes/api.php | added 1 import(s) | ~70 |
+| 14:03 | Edited backend/modules/Inventory/Routes/api.php | 4→7 lines | ~102 |
+| 14:05 | Edited backend/phpstan.neon | expanded (+7 lines) | ~235 |
+| 14:05 | Created backend/modules/Inventory/Tests/Feature/AdjustmentTest.php | — | ~1975 |
+| 14:06 | Edited frontend/src/features/inventory/types.ts | expanded (+16 lines) | ~166 |
+| 14:06 | Edited frontend/src/features/inventory/api.ts | expanded (+6 lines) | ~46 |
+| 14:06 | Edited frontend/src/features/inventory/api.ts | 2→5 lines | ~96 |
+| 14:06 | Edited frontend/src/features/inventory/hooks.ts | 4→4 lines | ~56 |
+| 14:07 | Edited frontend/src/features/inventory/hooks.ts | modified useMovements() | ~150 |
+| 14:07 | Edited frontend/src/features/inventory/InventoryPage.tsx | expanded (+9 lines) | ~170 |
+| 14:07 | Edited frontend/src/features/inventory/InventoryPage.tsx | 2→3 lines | ~42 |
+| 14:07 | Edited frontend/src/features/inventory/InventoryPage.tsx | 4→6 lines | ~54 |
+| 14:08 | Edited frontend/src/features/inventory/InventoryPage.tsx | added optional chaining | ~1429 |
+| 14:09 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 3→3 lines | ~56 |
+| 14:09 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | modified renderPage() | ~140 |
+| 14:09 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | added optional chaining | ~1030 |
+| 14:10 | Edited frontend/src/features/inventory/InventoryPage.tsx | "Type" → "Adjustment type" | ~17 |
+| 14:11 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 3→3 lines | ~70 |
+| 14:12 | Edited frontend/src/features/inventory/InventoryPage.tsx | added nullish coalescing | ~45 |
+| 14:12 | Edited frontend/src/features/inventory/InventoryPage.test.tsx | 2→2 lines | ~32 |
+| 14:22 | Edited docs/API.md | expanded (+18 lines) | ~518 |
+| 14:24 | Edited docs/PHASE-2-PLAN.md | inline fix | ~84 |
+| 14:25 | Implemented Phase 2.4 (Adjustments & damage): POST /inventory/adjustments (StoreAdjustmentRequest + AdjustmentController, multi-line atomic via an outer DB::transaction wrapping per-line InventoryLedger::record() calls), FE adjustment form on /inventory (warehouse/product selects, damage-sign hint, force checkbox). Found/fixed 2 issues in the FE form before it shipped: duplicate "Type" label collided with the movements filter (renamed to "Adjustment type"), and the service-level "quantity" validation-error key had no Field to render in and was being silently swallowed by the has-field-errors-so-suppress-the-blanket-Alert logic (merged it into the quantity-delta Field's error prop). Verified end-to-end against the real dev server via curl (adjustment, damage, damage-wrong-sign rejection, negative-stock-without-force rejection, final stock value) | backend/modules/Inventory/{Http/Requests/StoreAdjustmentRequest.php,Http/Controllers/AdjustmentController.php,Routes/api.php,Tests/Feature/AdjustmentTest.php}, backend/phpstan.neon, frontend/src/features/inventory/{types.ts,api.ts,hooks.ts,InventoryPage.tsx,InventoryPage.test.tsx}, docs/{API.md,PHASE-2-PLAN.md} | all gates green: 170 backend tests/96.7% cov, 90 frontend tests/93% cov, Pint/PHPStan L8/eslint/tsc/prettier/build/composer+npm audit clean | ~520000 |

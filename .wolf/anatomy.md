@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T10:49:37.700Z
-> Files: 263 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T11:24:35.889Z
+> Files: 266 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -30,7 +30,7 @@
 
 - `.gitignore` — Git ignore rules (~84 tok)
 - `composer.json` — PHP package manifest (~782 tok)
-- `phpstan.neon` — Declares past (~438 tok)
+- `phpstan.neon` — Declares past (~600 tok)
 - `phpunit.xml` (~566 tok)
 - `pint.json` (~169 tok)
 - `README.md` — Project documentation (~232 tok)
@@ -250,11 +250,13 @@
 
 ## backend/modules/Inventory/Http/Controllers/
 
+- `AdjustmentController.php` — `POST /inventory/adjustments` — the only public writer that can set (~582 tok)
 - `InventoryController.php` — Read-only for now: the stock projection and the ledger behind it (~538 tok)
 - `WarehouseController.php` — Warehouses for the active company. Not paginated — a small reference list, (~490 tok)
 
 ## backend/modules/Inventory/Http/Requests/
 
+- `StoreAdjustmentRequest.php` — `POST /inventory/adjustments` (PHASE-2-PLAN.md §5): one warehouse, one (~618 tok)
 - `StoreWarehouseRequest.php` — StoreWarehouseRequest: authorize, rules (~256 tok)
 - `UpdateWarehouseRequest.php` — UpdateWarehouseRequest: authorize, rules (~299 tok)
 
@@ -276,7 +278,7 @@
 
 ## backend/modules/Inventory/Routes/
 
-- `api.php` (~517 tok)
+- `api.php` (~585 tok)
 
 ## backend/modules/Inventory/Services/
 
@@ -285,6 +287,7 @@
 
 ## backend/modules/Inventory/Tests/Feature/
 
+- `AdjustmentTest.php` — Declares adjustmentFixture (~1975 tok)
 - `InventoryLedgerTest.php` — Declares ledgerFixture (~2643 tok)
 - `InventoryReadTest.php` (~1435 tok)
 - `InventoryTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for (~754 tok)
@@ -376,13 +379,13 @@
 
 ## docs/
 
-- `API.md` — Nexora — API Specification (~2592 tok)
+- `API.md` — Nexora — API Specification (~2862 tok)
 - `ARCHITECTURE.md` — Nexora — Architecture (~1110 tok)
 - `DATABASE.md` — Nexora — Database Design (~2241 tok)
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
-- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2840 tok)
+- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2879 tok)
 - `ROADMAP.md` — Nexora — Development Roadmap (~1073 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~680 tok)
@@ -463,11 +466,11 @@
 
 ## frontend/src/features/inventory/
 
-- `api.ts` — Exports listStock, listMovements (~228 tok)
-- `hooks.ts` — Exports useStock, useMovements (~191 tok)
-- `InventoryPage.test.tsx` — role (~1543 tok)
-- `InventoryPage.tsx` — MOVEMENT_TYPES (~1741 tok)
-- `types.ts` — Exports MovementType, ProductSummary, WarehouseSummary, Stock + 3 more (~332 tok)
+- `api.ts` — Exports listStock, listMovements, createAdjustment (~281 tok)
+- `hooks.ts` — Exports useStock, useMovements, useCreateAdjustment (~278 tok)
+- `InventoryPage.test.tsx` — role (~2675 tok)
+- `InventoryPage.tsx` — MOVEMENT_TYPES — renders form (~3256 tok)
+- `types.ts` — Exports MovementType, ProductSummary, WarehouseSummary, Stock + 6 more (~428 tok)
 
 ## frontend/src/features/products/
 

@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-14T10:49:37.700Z",
-    "fileCount": 263,
+    "lastScanned": "2026-09-14T11:24:35.889Z",
+    "fileCount": 266,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "cc982e37a61466249720e3a4ccda0b6420087bd332b757c28af3d26fcfb2d9ab",
-    "storeUpdatedAt": "2026-09-14T10:49:37.718Z",
-    "rootHash": "0c28bdddf212a285"
+    "renderedHash": "d0700925cdd05b62307f6594071d403bc2a7a09761966f35554bd1b4d35221bd",
+    "storeUpdatedAt": "2026-09-14T11:24:35.909Z",
+    "rootHash": "668fc685d53782af"
   },
   "files": {
     "AGENTS.md": {
@@ -309,11 +309,11 @@
     },
     "backend/phpstan.neon": {
       "description": "Declares past",
-      "tokens": 438,
-      "hash": "a0980510c83cdc23",
-      "size": 1645,
-      "mtimeMs": 1789379853595.0154,
-      "updatedAt": "2026-09-14T09:57:33.844Z",
+      "tokens": 600,
+      "hash": "9c5a0e56902f4baf",
+      "size": 2254,
+      "mtimeMs": 1789383905498.5571,
+      "updatedAt": "2026-09-14T11:05:05.747Z",
       "source": "hook"
     },
     "backend/config/cors.php": {
@@ -770,11 +770,11 @@
     },
     "docs/API.md": {
       "description": "Nexora — API Specification",
-      "tokens": 2592,
-      "hash": "fcedab540e037e03",
-      "size": 10413,
-      "mtimeMs": 1789380912517.7134,
-      "updatedAt": "2026-09-14T10:15:12.922Z",
+      "tokens": 2862,
+      "hash": "5e63ee57205d20fd",
+      "size": 11505,
+      "mtimeMs": 1789384968105.9905,
+      "updatedAt": "2026-09-14T11:22:48.457Z",
       "source": "hook"
     },
     "docs/ARCHITECTURE.md": {
@@ -2085,11 +2085,11 @@
     },
     "docs/PHASE-2-PLAN.md": {
       "description": "Phase 2 — Products & Inventory — PLAN",
-      "tokens": 2840,
-      "hash": "02608b30a06f595f",
-      "size": 11464,
-      "mtimeMs": 1789382728577.6616,
-      "updatedAt": "2026-09-14T10:45:28.833Z",
+      "tokens": 2879,
+      "hash": "83409b98d50cc04a",
+      "size": 11623,
+      "mtimeMs": 1789385075654.2202,
+      "updatedAt": "2026-09-14T11:24:35.887Z",
       "source": "hook"
     },
     "backend/app/Support/Http/QueryFilter.php": {
@@ -2595,11 +2595,11 @@
     },
     "backend/modules/Inventory/Routes/api.php": {
       "description": "",
-      "tokens": 517,
-      "hash": "54284c02a48fa39e",
-      "size": 1938,
-      "mtimeMs": 1789379640949.449,
-      "updatedAt": "2026-09-14T09:54:01.264Z",
+      "tokens": 585,
+      "hash": "072220e4924a4ec5",
+      "size": 2193,
+      "mtimeMs": 1789383791296.451,
+      "updatedAt": "2026-09-14T11:03:11.547Z",
       "source": "hook"
     },
     "backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php": {
@@ -2867,95 +2867,129 @@
       "source": "hook"
     },
     "frontend/src/features/inventory/types.ts": {
-      "description": "Exports MovementType, ProductSummary, WarehouseSummary, Stock + 3 more",
-      "tokens": 332,
-      "hash": "dc676642e8ed77cf",
-      "size": 1162,
-      "mtimeMs": 1789380936443.4453,
-      "updatedAt": "2026-09-14T10:15:36.658Z",
+      "description": "Exports MovementType, ProductSummary, WarehouseSummary, Stock + 6 more",
+      "tokens": 428,
+      "hash": "add8b15c0c5c9af6",
+      "size": 1498,
+      "mtimeMs": 1789383996416.4978,
+      "updatedAt": "2026-09-14T11:06:36.736Z",
       "source": "hook"
     },
     "frontend/src/features/inventory/api.ts": {
-      "description": "Exports listStock, listMovements",
-      "tokens": 228,
-      "hash": "f2f5ed96556a907a",
-      "size": 797,
-      "mtimeMs": 1789381389836.511,
-      "updatedAt": "2026-09-14T10:23:10.137Z",
+      "description": "Exports listStock, listMovements, createAdjustment",
+      "tokens": 281,
+      "hash": "5e5c67f747d444b5",
+      "size": 981,
+      "mtimeMs": 1789384009021.043,
+      "updatedAt": "2026-09-14T11:06:49.319Z",
       "source": "hook"
     },
     "frontend/src/features/inventory/hooks.ts": {
-      "description": "Exports useStock, useMovements",
-      "tokens": 191,
-      "hash": "8eca21d73d6dbf48",
-      "size": 666,
-      "mtimeMs": 1789382612394.6133,
-      "updatedAt": "2026-09-14T10:43:32.776Z",
+      "description": "Exports useStock, useMovements, useCreateAdjustment",
+      "tokens": 278,
+      "hash": "86bb5e6d865d777a",
+      "size": 973,
+      "mtimeMs": 1789384028671.6455,
+      "updatedAt": "2026-09-14T11:07:09.218Z",
       "source": "hook"
     },
     "frontend/src/features/inventory/InventoryPage.tsx": {
-      "description": "MOVEMENT_TYPES",
-      "tokens": 1741,
-      "hash": "01e833c8056e5d8c",
-      "size": 6094,
-      "mtimeMs": 1789382618973.6533,
-      "updatedAt": "2026-09-14T10:43:39.233Z",
+      "description": "MOVEMENT_TYPES — renders form",
+      "tokens": 3256,
+      "hash": "ebe5ee532931c6c4",
+      "size": 11406,
+      "mtimeMs": 1789384326286.0955,
+      "updatedAt": "2026-09-14T11:12:06.626Z",
       "source": "hook",
       "symbols": [
         {
           "name": "InventoryPage",
           "kind": "fn",
-          "startLine": 21,
-          "endLine": 113,
-          "tokens": 951
+          "startLine": 30,
+          "endLine": 125,
+          "tokens": 982
+        },
+        {
+          "name": "AdjustmentForm",
+          "kind": "fn",
+          "startLine": 126,
+          "endLine": 273,
+          "tokens": 1427
         },
         {
           "name": "StockRow",
           "kind": "fn",
-          "startLine": 114,
-          "endLine": 129,
+          "startLine": 274,
+          "endLine": 289,
           "tokens": 158
         },
         {
           "name": "MovementRow",
           "kind": "fn",
-          "startLine": 130,
-          "endLine": 151,
+          "startLine": 290,
+          "endLine": 311,
           "tokens": 228
         },
         {
           "name": "Pagination",
           "kind": "fn",
-          "startLine": 152,
-          "endLine": 185,
+          "startLine": 312,
+          "endLine": 345,
           "tokens": 251
         }
       ]
     },
     "frontend/src/features/inventory/InventoryPage.test.tsx": {
       "description": "role",
-      "tokens": 1543,
-      "hash": "8817b8de94450b43",
-      "size": 5398,
-      "mtimeMs": 1789382977422.3218,
-      "updatedAt": "2026-09-14T10:49:37.698Z",
+      "tokens": 2675,
+      "hash": "3ee868d60220b498",
+      "size": 9363,
+      "mtimeMs": 1789384340007.7754,
+      "updatedAt": "2026-09-14T11:12:20.433Z",
       "source": "hook",
       "symbols": [
         {
           "name": "sessionWith",
           "kind": "fn",
           "startLine": 16,
-          "endLine": 46,
-          "tokens": 221
+          "endLine": 64,
+          "tokens": 334
         },
         {
           "name": "renderPage",
           "kind": "fn",
-          "startLine": 47,
-          "endLine": 161,
-          "tokens": 1182
+          "startLine": 65,
+          "endLine": 257,
+          "tokens": 2196
         }
       ]
+    },
+    "backend/modules/Inventory/Http/Requests/StoreAdjustmentRequest.php": {
+      "description": "`POST /inventory/adjustments` (PHASE-2-PLAN.md §5): one warehouse, one",
+      "tokens": 618,
+      "hash": "fc41e1f4913fda2a",
+      "size": 2319,
+      "mtimeMs": 1789383764759.1084,
+      "updatedAt": "2026-09-14T11:02:45.479Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Http/Controllers/AdjustmentController.php": {
+      "description": "`POST /inventory/adjustments` — the only public writer that can set",
+      "tokens": 582,
+      "hash": "1ab2d4339a723c42",
+      "size": 2186,
+      "mtimeMs": 1789383778276.4905,
+      "updatedAt": "2026-09-14T11:02:58.579Z",
+      "source": "hook"
+    },
+    "backend/modules/Inventory/Tests/Feature/AdjustmentTest.php": {
+      "description": "Declares adjustmentFixture",
+      "tokens": 1975,
+      "hash": "e0d437e0434ebb93",
+      "size": 7405,
+      "mtimeMs": 1789383951855.451,
+      "updatedAt": "2026-09-14T11:05:52.074Z",
+      "source": "hook"
     }
   },
   "preamble": [
