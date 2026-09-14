@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-09-13T09:27:45.043Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-09-14T09:35:49.062Z
 > Files: 240 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
@@ -263,11 +263,11 @@
 
 ## backend/modules/Inventory/Services/
 
-- `WarehouseService.php` — Warehouse lifecycle for the active company. The single place that enforces (~1072 tok)
+- `WarehouseService.php` — Warehouse lifecycle for the active company. The single place that enforces (~1747 tok)
 
 ## backend/modules/Inventory/Tests/Feature/
 
-- `WarehouseManagementTest.php` (~1822 tok)
+- `WarehouseManagementTest.php` (~2368 tok)
 - `WarehouseTenantIsolationTest.php` — The mandatory cross-tenant isolation suite (CLAUDE.md / ADR-0006) for (~581 tok)
 
 ## backend/modules/Products/Database/Factories/
@@ -355,11 +355,11 @@
 
 - `API.md` — Nexora — API Specification (~2376 tok)
 - `ARCHITECTURE.md` — Nexora — Architecture (~1110 tok)
-- `DATABASE.md` — Nexora — Database Design (~1659 tok)
+- `DATABASE.md` — Nexora — Database Design (~1787 tok)
 - `DEVELOPMENT.md` — Nexora — Development Guide (~963 tok)
 - `PHASE-0.md` — Phase 0 — Foundation (completed 2026-09-09) (~898 tok)
 - `PHASE-1.md` — Phase 1 — Identity & Multi-Tenancy (~1388 tok)
-- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2714 tok)
+- `PHASE-2-PLAN.md` — Phase 2 — Products & Inventory — PLAN (~2757 tok)
 - `ROADMAP.md` — Nexora — Development Roadmap (~1073 tok)
 - `SECURITY.md` — Nexora — Security Requirements (~1615 tok)
 - `TESTING.md` — Nexora — Testing Strategy (~680 tok)
@@ -453,8 +453,8 @@
 - `api.ts` — Exports listWarehouses, createWarehouse, updateWarehouse, deleteWarehouse (~160 tok)
 - `hooks.ts` — Exports useWarehouses, useCreateWarehouse, useUpdateWarehouse, useDeleteWarehouse (~335 tok)
 - `types.ts` — Exports WarehouseStatus, Warehouse, WarehouseInput (~109 tok)
-- `WarehousesPage.test.tsx` — role (~2098 tok)
-- `WarehousesPage.tsx` — WarehousesPage — renders form (~1990 tok)
+- `WarehousesPage.test.tsx` — role (~2318 tok)
+- `WarehousesPage.tsx` — WarehousesPage — renders form (~2002 tok)
 
 ## frontend/src/lib/
 

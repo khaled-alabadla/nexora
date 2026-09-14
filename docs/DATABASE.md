@@ -127,8 +127,15 @@ Exactly one warehouse is the company's default once it has at least one —
 database**: MySQL has no partial/filtered unique index, so a plain unique
 constraint on `is_default` can't express "unique only where true". Every
 write (create/update/delete) goes through the service, inside a
-`DB::transaction` that `lockForUpdate`s the company's warehouse rows to
-serialize concurrent default-flips. Rules:
+`DB::transaction` that `lockForUpdate`s the company's warehouse rows *and*
+holds a MySQL named lock (`GET_LOCK`/`RELEASE_LOCK`) keyed by company id for
+the duration — the named lock is what actually serializes concurrent
+default-flips (a `lockForUpdate` matching zero rows, as when checking "is
+this the company's first warehouse", only gap-locks under REPEATABLE READ,
+which the app never explicitly pins). Because the model instance a write
+operates on may have been loaded before a concurrent write committed, the
+service always re-reads the row from inside the lock rather than trusting
+the instance it was given. Rules:
 
 - The first warehouse a company creates becomes the default automatically
   (client input for `is_default` is ignored for that first row).

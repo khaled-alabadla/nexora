@@ -488,3 +488,38 @@ description: chronological action log per session, consolidated weekly
 | 12:25 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 22→26 lines | ~338 |
 | 12:26 | Edited docs/API.md | expanded (+18 lines) | ~388 |
 | 12:27 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | 17→14 lines | ~221 |
+
+## Session: 2026-09-13 13:41
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 13:49 | Session end: 312 writes across 147 files (RegisterRequest.php, LoginRequest.php, ForgotPasswordRequest.php, ResetPasswordRequest.php, CompanyProvisioner.php) | 93 reads | ~181624 tok |
+
+## Session: 2026-09-14 12:10
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 import(s) | ~70 |
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified create() | ~90 |
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 condition(s) | ~519 |
+| 12:20 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 condition(s) | ~528 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified update() | ~84 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified contains() | ~64 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified requireLocked() | ~177 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 import(s) | ~49 |
+| 12:21 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified requireLocked() | ~39 |
+| 12:21 | Edited frontend/src/features/warehouses/WarehousesPage.tsx | 3→3 lines | ~42 |
+| 12:22 | Edited frontend/src/features/warehouses/WarehousesPage.test.tsx | expanded (+26 lines) | ~246 |
+| 12:24 | Edited backend/modules/Inventory/Services/WarehouseService.php | transaction() → serialized() | ~74 |
+| 12:24 | Edited backend/modules/Inventory/Services/WarehouseService.php | transaction() → serialized() | ~90 |
+| 12:25 | Edited backend/modules/Inventory/Services/WarehouseService.php | transaction() → serialized() | ~70 |
+| 12:25 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 1 condition(s) | ~422 |
+| 12:26 | Edited backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php | added 3 import(s) | ~62 |
+| 12:26 | Edited backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php | modified it() | ~527 |
+| 12:28 | Edited backend/modules/Inventory/Services/WarehouseService.php | inline fix | ~21 |
+| 12:28 | Edited backend/modules/Inventory/Services/WarehouseService.php | inline fix | ~24 |
+| 12:29 | Edited backend/modules/Inventory/Services/WarehouseService.php | added 2 import(s) | ~91 |
+| 12:29 | Edited backend/modules/Inventory/Services/WarehouseService.php | modified serialized() | ~121 |
+| 12:35 | Edited docs/PHASE-2-PLAN.md | inline fix | ~80 |
+| 12:35 | Edited docs/DATABASE.md | expanded (+7 lines) | ~261 |
+| 12:36 | Completed Phase 2.2 (Warehouses) workflow: ran /code-review high on feature/2.2-warehouses, found 3 real backend concurrency bugs + 1 frontend loading-state bug in the already-implemented+committed CRUD (ca2007d); fixed all 4 (WarehouseService now re-reads locked rows instead of trusting the passed-in instance, and serializes writes per company via MySQL GET_LOCK instead of relying on FOR UPDATE gap-locking under an unpinned isolation level; WarehousesPage gates the create form on isSuccess); added 2 backend + 1 frontend regression tests | backend/modules/Inventory/Services/WarehouseService.php, backend/modules/Inventory/Tests/Feature/WarehouseManagementTest.php, frontend/src/features/warehouses/{WarehousesPage.tsx,WarehousesPage.test.tsx}, docs/{PHASE-2-PLAN.md,DATABASE.md}, .wolf/{cerebrum.md,buglog.json} | all gates green: 128 backend tests/96.9% cov, 80 frontend tests/93.0% cov, Pint/PHPStan L8/eslint/tsc/build/composer+npm audit clean | ~95000 |

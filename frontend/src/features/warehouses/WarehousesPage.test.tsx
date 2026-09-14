@@ -76,6 +76,32 @@ it('hints that the first warehouse becomes the default when the company has none
   expect(screen.queryByLabelText('Make default')).not.toBeInTheDocument()
 })
 
+it('hides the create form until the warehouse list has loaded, so it never mis-promises a default', async () => {
+  const qc = createTestQueryClient()
+  qc.setQueryData(sessionKey, sessionWith(['warehouse.view', 'warehouse.create']))
+  let resolveList!: () => void
+  const pending = new Promise<void>((resolve) => {
+    resolveList = resolve
+  })
+  stubFetch([
+    {
+      method: 'GET',
+      url: '/warehouses',
+      handler: async () => {
+        await pending
+        return ok([main, secondary])()
+      },
+    },
+  ])
+  renderWithProviders(<WarehousesPage />, { queryClient: qc })
+
+  expect(screen.queryByLabelText('Name')).not.toBeInTheDocument()
+
+  resolveList()
+  await screen.findByText('Main')
+  expect(screen.getByLabelText('Name')).toBeInTheDocument()
+})
+
 it('creates a warehouse with an explicit default checkbox once one exists', async () => {
   const user = userEvent.setup({ delay: null })
   const { mock } = renderPage(['warehouse.view', 'warehouse.create'])

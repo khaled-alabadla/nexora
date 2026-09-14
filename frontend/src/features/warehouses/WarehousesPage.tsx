@@ -25,8 +25,8 @@ export function WarehousesPage() {
         </p>
       ) : (
         <>
-          {canCreate ? (
-            <CreateWarehouseForm hasWarehouses={(warehouses.data ?? []).length > 0} />
+          {canCreate && warehouses.isSuccess ? (
+            <CreateWarehouseForm hasWarehouses={warehouses.data.length > 0} />
           ) : null}
 
           {warehouses.isError ? <Alert>{errorMessage(warehouses.error)}</Alert> : null}

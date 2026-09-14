@@ -3,8 +3,11 @@
 declare(strict_types=1);
 
 use App\Models\User;
+use App\Support\Tenancy\CompanyContext;
+use Illuminate\Validation\ValidationException;
 use Modules\Companies\Models\Role;
 use Modules\Inventory\Models\Warehouse;
+use Modules\Inventory\Services\WarehouseService;
 
 it('lists warehouses for the active company only, default first', function () {
     [$company, $owner] = companyWithOwner();
@@ -131,6 +134,45 @@ it('allows deleting the default warehouse when it is the only one', function () 
     $this->deleteJson(apiUrl("warehouses/{$main->id}"))->assertNoContent();
 
     expect(Warehouse::where('company_id', $company->id)->count())->toBe(0);
+});
+
+it('flips the default from the current DB state, not a stale pre-lock copy of the model', function () {
+    // Regression for a race where $warehouse was bound (e.g. by route-model
+    // binding) before a concurrent request already flipped the default
+    // underneath it — the service must re-derive state after locking, not
+    // trust the instance it was handed.
+    [$company] = companyWithOwner();
+    $a = withoutTenantScope(fn () => Warehouse::factory()->for($company)->default()->create(['name' => 'A']));
+    $b = withoutTenantScope(fn () => Warehouse::factory()->for($company)->create(['name' => 'B']));
+
+    app(CompanyContext::class)->set($company);
+    $staleA = $a->fresh(); // is_default: true, about to go stale below
+
+    Warehouse::whereKey($a->id)->update(['is_default' => false]);
+    Warehouse::whereKey($b->id)->update(['is_default' => true]);
+
+    app(WarehouseService::class)->update($staleA, ['is_default' => true]);
+
+    expect($a->fresh()->is_default)->toBeTrue()
+        ->and($b->fresh()->is_default)->toBeFalse();
+});
+
+it('refuses to delete a warehouse that became the actual default after it was loaded, despite a stale non-default flag', function () {
+    [$company] = companyWithOwner();
+    $a = withoutTenantScope(fn () => Warehouse::factory()->for($company)->create(['name' => 'A']));
+    $b = withoutTenantScope(fn () => Warehouse::factory()->for($company)->default()->create(['name' => 'B']));
+
+    app(CompanyContext::class)->set($company);
+    $staleA = $a->fresh(); // is_default: false, about to go stale below
+
+    Warehouse::whereKey($b->id)->update(['is_default' => false]);
+    Warehouse::whereKey($a->id)->update(['is_default' => true]);
+
+    expect(fn () => app(WarehouseService::class)->delete($staleA))
+        ->toThrow(ValidationException::class);
+
+    expect(Warehouse::find($a->id))->not->toBeNull()
+        ->and($a->fresh()->is_default)->toBeTrue();
 });
 
 it('enforces per-action warehouse permissions', function () {
